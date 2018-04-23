@@ -1,0 +1,25 @@
+# ignore system files
+.DS_Store
+thumbs.db
+__MACOSX
+._*
+
+# Ignore Config
+# /application/config/database.php
+# /application/config/doctrine/*
+# /application/config/generated_overrides/*
+# /application/files/*
+# !/application/files/.gitkeep
+
+# Ignore sitemap.xml
+sitemap.xml
+
+
+# Ignore concrete5 core
+# concrete
+
+# Ignore Package folder
+# /packages
+
+#Ignore Update folder
+# /updates
