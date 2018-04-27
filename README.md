@@ -9,6 +9,7 @@ This is sample site for concrete5 Express
 - concrete5 8.4.0 RC2 is used
 - c58expressdemo.sql is sample demo deta.
 - /application/files has all of site data lol
+- Some files and folder may be missing. You may need to re-create those folders.
 
 ## What is Demo Data
 
@@ -57,11 +58,12 @@ paypal@deerstudio.com
 
 - concrete5 8.4.0 RC2 を利用しています。
 - c58expressdemo.sql にサンプルサイトの MySQL データが入っています。
-- /application/files にもサイトの写真データとかハイています。
+- /application/files にもサイトの写真データが入っています
+- Git の関係で、一部のフォルダが作成されていません。元の concrete5 データを参考に再度作成して頂く必要があるかもです。
 
 ## デモデータには
 
-カレーが好きなので、事務所のある神田周辺のカレー屋さんの小さい食べログみたいなデモサイトを作りました。
+カレーが好きなので、事務所のある神田周辺のカレー屋さん食べログみたいなデモサイトを作りました。
 
 - [concrete5]/index.php/stores にページがあります。
 - 作者が訪問したカレー屋さんの情報と、作者自身が撮影した写真データが掲載されいます。
