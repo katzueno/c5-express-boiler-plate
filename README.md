@@ -9,13 +9,15 @@ This is sample site for concrete5 Express
 - concrete5 8.4.0 RC2 is used
 - c58expressdemo.sql is sample demo deta.
 - /application/files has all of site data lol
-- Some files and folder may be missing. You may need to re-create those folders.
 
 ## What is Demo Data
 
 I love curry rice.
 I made a simple store lisiting around my office (real info) and my photos.
 
+- Import `c58expressdemo.sql` onto your local MySQL
+- Modify /appliction/config/database.php to your environment
+- Visit your concrete5 site
 - Go to [concrete5]/index.php/stores
 - You can check my stores
 - Check My Express custom template as samples
@@ -59,17 +61,20 @@ paypal@deerstudio.com
 - concrete5 8.4.0 RC2 を利用しています。
 - c58expressdemo.sql にサンプルサイトの MySQL データが入っています。
 - /application/files にもサイトの写真データが入っています
-- Git の関係で、一部のフォルダが作成されていません。元の concrete5 データを参考に再度作成して頂く必要があるかもです。
 
 ## デモデータには
 
 カレーが好きなので、事務所のある神田周辺のカレー屋さん食べログみたいなデモサイトを作りました。
 
+- `c58expressdemo.sql` を自分のローカル環境の MySQL にインポート
+- 「/appliction/config/database.php」を自分の環境の設定に変更。
+- サイトに訪問
 - [concrete5]/index.php/stores にページがあります。
 - 作者が訪問したカレー屋さんの情報と、作者自身が撮影した写真データが掲載されいます。
 - Express 一覧ブロックと詳細ブロックのサンプルカスタムテンプレートコードがこちらです
     - /application/blocks/express_entry_detail/templates/curry_store_detail.php
     - /application/blocks/express_entry_detail/templates/curry_store_list.php
+
 
 ## ID & パスワード。
 
