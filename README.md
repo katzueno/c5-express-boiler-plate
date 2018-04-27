@@ -66,7 +66,7 @@ paypal@deerstudio.com
 - [concrete5]/index.php/stores にページがあります。
 - 作者が訪問したカレー屋さんの情報と、作者自身が撮影した写真データが掲載されいます。
 - Express 一覧ブロックと詳細ブロックのサンプルカスタムテンプレートコードがこちらです
-    - /application/blocks/express_entry_detail/templates/curry_store_detail.php
+    - /application/blocks/express_entry_detail/templates/curry_store_detail.php
     - /application/blocks/express_entry_detail/templates/curry_store_list.php
 
 ## ID & パスワード。
