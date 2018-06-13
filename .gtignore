@@ -10,6 +10,7 @@ __MACOSX
 # /application/config/generated_overrides/*
 # /application/files/*
 # !/application/files/.gitkeep
+/application/files/cache
 
 # Ignore sitemap.xml
 sitemap.xml
