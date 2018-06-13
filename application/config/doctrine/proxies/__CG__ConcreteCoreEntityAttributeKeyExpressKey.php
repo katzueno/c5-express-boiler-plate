@@ -64,10 +64,10 @@ class ExpressKey extends \Concrete\Core\Entity\Attribute\Key\ExpressKey implemen
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'entity', 'controller', 'settings', 'akID', 'akHandle', 'akName', 'akIsSearchable', 'akIsInternal', 'akIsSearchableIndexed', 'set_keys', 'type', 'category', 'package'];
+            return ['__isInitialized__', 'entity', 'settings', 'akID', 'akHandle', 'akName', 'akIsSearchable', 'akIsInternal', 'akIsSearchableIndexed', 'set_keys', 'type', 'category', 'package'];
         }
 
-        return ['__isInitialized__', 'entity', 'controller', 'settings', 'akID', 'akHandle', 'akName', 'akIsSearchable', 'akIsInternal', 'akIsSearchableIndexed', 'set_keys', 'type', 'category', 'package'];
+        return ['__isInitialized__', 'entity', 'settings', 'akID', 'akHandle', 'akName', 'akIsSearchable', 'akIsInternal', 'akIsSearchableIndexed', 'set_keys', 'type', 'category', 'package'];
     }
 
     /**

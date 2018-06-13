@@ -64,10 +64,10 @@ class EventKey extends \Concrete\Core\Entity\Attribute\Key\EventKey implements \
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'controller', 'settings', 'akID', 'akHandle', 'akName', 'akIsSearchable', 'akIsInternal', 'akIsSearchableIndexed', 'set_keys', 'type', 'category', 'package'];
+            return ['__isInitialized__', 'settings', 'akID', 'akHandle', 'akName', 'akIsSearchable', 'akIsInternal', 'akIsSearchableIndexed', 'set_keys', 'type', 'category', 'package'];
         }
 
-        return ['__isInitialized__', 'controller', 'settings', 'akID', 'akHandle', 'akName', 'akIsSearchable', 'akIsInternal', 'akIsSearchableIndexed', 'set_keys', 'type', 'category', 'package'];
+        return ['__isInitialized__', 'settings', 'akID', 'akHandle', 'akName', 'akIsSearchable', 'akIsInternal', 'akIsSearchableIndexed', 'set_keys', 'type', 'category', 'package'];
     }
 
     /**
