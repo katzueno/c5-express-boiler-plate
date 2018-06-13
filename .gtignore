@@ -11,6 +11,7 @@ __MACOSX
 # /application/files/*
 # !/application/files/.gitkeep
 /application/files/cache/*
+!/application/files/cache/index.html
 
 # Ignore sitemap.xml
 sitemap.xml
