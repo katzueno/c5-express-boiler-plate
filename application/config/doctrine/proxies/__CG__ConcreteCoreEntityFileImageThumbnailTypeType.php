@@ -64,10 +64,10 @@ class Type extends \Concrete\Core\Entity\File\Image\Thumbnail\Type\Type implemen
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'ftTypeID', 'ftTypeHandle', 'ftTypeName', 'ftTypeWidth', 'ftTypeHeight', 'ftTypeIsRequired', 'ftTypeSizingMode', 'ftLimitedToFileSets', 'ftAssociatedFileSets'];
+            return ['__isInitialized__', 'ftTypeID', 'ftTypeHandle', 'ftTypeName', 'ftTypeWidth', 'ftTypeHeight', 'ftTypeIsRequired', 'ftTypeSizingMode', 'ftUpscalingEnabled', 'ftLimitedToFileSets', 'ftAssociatedFileSets', 'ftKeepAnimations'];
         }
 
-        return ['__isInitialized__', 'ftTypeID', 'ftTypeHandle', 'ftTypeName', 'ftTypeWidth', 'ftTypeHeight', 'ftTypeIsRequired', 'ftTypeSizingMode', 'ftLimitedToFileSets', 'ftAssociatedFileSets'];
+        return ['__isInitialized__', 'ftTypeID', 'ftTypeHandle', 'ftTypeName', 'ftTypeWidth', 'ftTypeHeight', 'ftTypeIsRequired', 'ftTypeSizingMode', 'ftUpscalingEnabled', 'ftLimitedToFileSets', 'ftAssociatedFileSets', 'ftKeepAnimations'];
     }
 
     /**
@@ -330,6 +330,28 @@ class Type extends \Concrete\Core\Entity\File\Image\Thumbnail\Type\Type implemen
     /**
      * {@inheritDoc}
      */
+    public function isUpscalingEnabled()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'isUpscalingEnabled', []);
+
+        return parent::isUpscalingEnabled();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setIsUpscalingEnabled($value)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setIsUpscalingEnabled', [$value]);
+
+        return parent::setIsUpscalingEnabled($value);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getSizingModeDisplayName()
     {
 
@@ -369,6 +391,28 @@ class Type extends \Concrete\Core\Entity\File\Image\Thumbnail\Type\Type implemen
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAssociatedFileSets', []);
 
         return parent::getAssociatedFileSets();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setKeepAnimations($value)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setKeepAnimations', [$value]);
+
+        return parent::setKeepAnimations($value);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function isKeepAnimations()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'isKeepAnimations', []);
+
+        return parent::isKeepAnimations();
     }
 
     /**

@@ -429,6 +429,28 @@ class Calendar extends \Concrete\Core\Entity\Calendar\Calendar implements \Doctr
     /**
      * {@inheritDoc}
      */
+    public function setChildPermissionsToOverride()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setChildPermissionsToOverride', []);
+
+        return parent::setChildPermissionsToOverride();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPermissionsToOverride()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPermissionsToOverride', []);
+
+        return parent::setPermissionsToOverride();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function assignPermissions($userOrGroup, $permissions = array (
 ), $accessType = 10, $cascadeToChildren = true)
     {

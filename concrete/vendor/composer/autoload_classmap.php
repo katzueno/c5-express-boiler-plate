@@ -85,5 +85,5 @@ return array(
     'aCssRulesetEndToken' => $vendorDir . '/natxet/CssMin/src/CssMin.php',
     'aCssRulesetStartToken' => $vendorDir . '/natxet/CssMin/src/CssMin.php',
     'aCssToken' => $vendorDir . '/natxet/CssMin/src/CssMin.php',
-    'lessc' => $vendorDir . '/concrete5/less.php/lessc.inc.php',
+    'lessc' => $vendorDir . '/wikimedia/less.php/lessc.inc.php',
 );

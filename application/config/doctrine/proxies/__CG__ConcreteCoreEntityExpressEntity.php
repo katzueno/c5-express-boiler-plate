@@ -64,10 +64,10 @@ class Entity extends \Concrete\Core\Entity\Express\Entity implements \Doctrine\O
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return ['__isInitialized__', 'id', 'name', 'handle', 'plural_handle', 'label_mask', 'supports_custom_display_order', 'description', 'result_column_set', 'include_in_public_list', 'entity_results_node_id', 'attributes', 'associations', 'forms', 'default_view_form', 'default_edit_form', 'entries', 'created_date', 'package'];
+            return ['__isInitialized__', 'id', 'name', 'handle', 'plural_handle', 'label_mask', 'supports_custom_display_order', 'description', 'result_column_set', 'include_in_public_list', 'entity_results_node_id', 'items_per_page', 'attributes', 'associations', 'forms', 'default_view_form', 'default_edit_form', 'entries', 'created_date', 'package'];
         }
 
-        return ['__isInitialized__', 'id', 'name', 'handle', 'plural_handle', 'label_mask', 'supports_custom_display_order', 'description', 'result_column_set', 'include_in_public_list', 'entity_results_node_id', 'attributes', 'associations', 'forms', 'default_view_form', 'default_edit_form', 'entries', 'created_date', 'package'];
+        return ['__isInitialized__', 'id', 'name', 'handle', 'plural_handle', 'label_mask', 'supports_custom_display_order', 'description', 'result_column_set', 'include_in_public_list', 'entity_results_node_id', 'items_per_page', 'attributes', 'associations', 'forms', 'default_view_form', 'default_edit_form', 'entries', 'created_date', 'package'];
     }
 
     /**
@@ -488,6 +488,28 @@ class Entity extends \Concrete\Core\Entity\Express\Entity implements \Doctrine\O
     /**
      * {@inheritDoc}
      */
+    public function getItemsPerPage()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getItemsPerPage', []);
+
+        return parent::getItemsPerPage();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setItemsPerPage($items_per_page)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setItemsPerPage', [$items_per_page]);
+
+        return parent::setItemsPerPage($items_per_page);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getEntityDisplayName($format = 'html')
     {
 
@@ -560,6 +582,17 @@ class Entity extends \Concrete\Core\Entity\Express\Entity implements \Doctrine\O
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setForms', [$forms]);
 
         return parent::setForms($forms);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getForm($name)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getForm', [$name]);
+
+        return parent::getForm($name);
     }
 
     /**

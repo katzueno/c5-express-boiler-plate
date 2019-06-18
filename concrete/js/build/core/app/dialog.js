@@ -1,5 +1,5 @@
 /* jshint unused:vars, undef:true, browser:true, jquery:true */
-/* global NProgress, ccmi18n, ConcreteMenuManager */
+/* global NProgress, ccmi18n, ConcreteMenuManager, ConcreteAjaxRequest, ConcreteAlert */
 
 ;(function(global, $) {
     'use strict';
@@ -27,8 +27,9 @@
         // LEGACY SUPPORT
         return $(this).each(function() {
             $(this).unbind('click.make-dialog').bind('click.make-dialog', function(e) {
+                e.preventDefault();
                 if ($(this).hasClass('ccm-dialog-launching')) {
-                    return false;
+                    return;
                 }
     
                 $(this).addClass('ccm-dialog-launching');
@@ -60,7 +61,6 @@
                     launcher: $(this)
                 };
                 $.fn.dialog.open(obj);
-                return false;
             });
         });
     };
@@ -237,6 +237,10 @@
                     // the pages we load while having access to the jqdialog object.
                     // Ensure that the dialog is open prior to evaluating javascript.
                     $('<div />').jqdialog(finalSettings).html(r).jqdialog('open');
+                },
+                error: function(xhr, status, error) {
+                	$.fn.dialog.hideLoader();
+                	ConcreteAlert.dialog(ccmi18n.error, ConcreteAjaxRequest.renderErrorResponse(xhr, true));
                 }
             });
         }

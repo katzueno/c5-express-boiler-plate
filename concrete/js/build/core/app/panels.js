@@ -95,18 +95,7 @@
     
         this.toggle = function () {
             if (this.isOpen) {
-                if (this.options.pinable )
-                {
-                    if (!this.isPinned )
-                    {
-                        this.isPinned = true;
-                    }
-                    else
-                    {
-                        this.isPinned = false;
-                        this.hide();
-                    }
-                } else this.hide();
+                this.hide();
             } else {
                 this.show();
             }
@@ -383,7 +372,9 @@
                     var $content = $panel.find('.ccm-panel-content');
                     $accordion.removeClass('ccm-panel-header-accordion-dropdown-visible');
                     $title.html($(this).text());
+                    $.fn.dialog.showLoader();
                     $content.load(url + '?cID=' + CCM_CID + '&tab=' + $(this).attr('data-panel-accordion-tab'), function () {
+                        $.fn.dialog.hideLoader();
                         obj.onPanelLoad(this);
                     });
                 });

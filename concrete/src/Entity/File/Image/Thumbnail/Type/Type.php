@@ -39,7 +39,7 @@ class Type
 
     /**
      * Suffix for high DPI thumbnails (eg. Retina).
-     * 
+     *
      * @var string
      */
     const HIGHDPI_SUFFIX = '_2x';
@@ -110,6 +110,15 @@ class Type
     protected $ftTypeSizingMode = self::RESIZE_DEFAULT;
 
     /**
+     * Upscaling is enabled?
+     *
+     * @ORM\Column(type="boolean")
+     *
+     * @var bool
+     */
+    protected $ftUpscalingEnabled = false;
+
+    /**
      * Should the thumbnails be build for every file that ARE NOT in the file sets (false), or only for files that ARE in the specified file sets (true)?
      *
      * @ORM\Column(type="boolean", nullable=false)
@@ -127,6 +136,18 @@ class Type
      */
     protected $ftAssociatedFileSets;
 
+    /**
+     * Should we create animated thumbnails for animated images?
+     *
+     * @ORM\Column(type="boolean")
+     *
+     * @var bool
+     */
+    protected $ftKeepAnimations = false;
+
+    /**
+     * Initialize the instance.
+     */
     public function __construct()
     {
         $this->ftAssociatedFileSets = new ArrayCollection();
@@ -294,6 +315,26 @@ class Type
     }
 
     /**
+     * Upscaling is enabled?
+     *
+     * @return bool
+     */
+    public function isUpscalingEnabled()
+    {
+        return (bool) $this->ftUpscalingEnabled;
+    }
+
+    /**
+     * Upscaling is enabled?
+     *
+     * @param bool $value
+     */
+    public function setIsUpscalingEnabled($value)
+    {
+        $this->ftUpscalingEnabled = (bool) $value;
+    }
+
+    /**
      * Get the display name of the thumbnail sizing mode.
      *
      * @return string
@@ -340,6 +381,30 @@ class Type
     public function getAssociatedFileSets()
     {
         return $this->ftAssociatedFileSets;
+    }
+
+    /**
+     * Should we create animated thumbnails for animated images?
+     *
+     * @param bool $value
+     *
+     * @return $this
+     */
+    public function setKeepAnimations($value)
+    {
+        $this->ftKeepAnimations = (bool) $value;
+
+        return $this;
+    }
+
+    /**
+     * Should we create animated thumbnails for animated images?
+     *
+     * @return bool
+     */
+    public function isKeepAnimations()
+    {
+        return (bool) $this->ftKeepAnimations;
     }
 
     /**
@@ -409,6 +474,7 @@ class Type
                 $filesetIDs[] = $afs->getFileSetID();
             }
         }
-        return new Version($handle . $suffix, $handle . $suffix, $this->getName(), $width, $height, $doubled, $this->getSizingMode(), $limitedToFileSets, $filesetIDs);
+
+        return new Version($handle . $suffix, $handle . $suffix, $this->getName(), $width, $height, $doubled, $this->getSizingMode(), $limitedToFileSets, $filesetIDs, $this->isUpscalingEnabled(), $this->isKeepAnimations());
     }
 }

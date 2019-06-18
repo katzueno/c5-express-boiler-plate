@@ -1,13 +1,13 @@
--- MySQL dump 10.16  Distrib 10.2.14-MariaDB, for osx10.13 (x86_64)
+-- MySQL dump 10.17  Distrib 10.3.12-MariaDB, for osx10.14 (x86_64)
 --
 -- Host: 127.0.0.1    Database: c5demo_express
 -- ------------------------------------------------------
--- Server version	10.2.14-MariaDB
+-- Server version	10.3.12-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -32,7 +32,7 @@ CREATE TABLE `AreaLayoutColumns` (
   KEY `arLayoutID` (`arLayoutID`,`arLayoutColumnIndex`),
   KEY `arID` (`arID`),
   KEY `arLayoutColumnDisplayID` (`arLayoutColumnDisplayID`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -54,9 +54,9 @@ DROP TABLE IF EXISTS `AreaLayoutCustomColumns`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `AreaLayoutCustomColumns` (
   `arLayoutColumnID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `arLayoutColumnWidth` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `arLayoutColumnWidth` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`arLayoutColumnID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -78,11 +78,11 @@ DROP TABLE IF EXISTS `AreaLayoutPresets`;
 CREATE TABLE `AreaLayoutPresets` (
   `arLayoutPresetID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `arLayoutID` int(10) unsigned NOT NULL DEFAULT 0,
-  `arLayoutPresetName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `arLayoutPresetName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`arLayoutPresetID`),
   KEY `arLayoutID` (`arLayoutID`),
   KEY `arLayoutPresetName` (`arLayoutPresetName`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -106,7 +106,7 @@ CREATE TABLE `AreaLayoutThemeGridColumns` (
   `arLayoutColumnSpan` int(10) unsigned DEFAULT 0,
   `arLayoutColumnOffset` int(10) unsigned DEFAULT 0,
   PRIMARY KEY (`arLayoutColumnID`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -134,7 +134,7 @@ CREATE TABLE `AreaLayouts` (
   `arLayoutMaxColumns` int(10) unsigned NOT NULL DEFAULT 0,
   `arLayoutUsesThemeGridFramework` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`arLayoutID`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -156,10 +156,10 @@ DROP TABLE IF EXISTS `AreaLayoutsUsingPresets`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `AreaLayoutsUsingPresets` (
   `arLayoutID` int(10) unsigned NOT NULL,
-  `preset` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `preset` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`arLayoutID`),
   CONSTRAINT `FK_7A9049A1385521EA` FOREIGN KEY (`arLayoutID`) REFERENCES `AreaLayouts` (`arLayoutID`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -180,13 +180,13 @@ DROP TABLE IF EXISTS `AreaPermissionAssignments`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `AreaPermissionAssignments` (
   `cID` int(10) unsigned NOT NULL DEFAULT 0,
-  `arHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `arHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pkID` int(10) unsigned NOT NULL DEFAULT 0,
   `paID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`cID`,`arHandle`,`pkID`,`paID`),
   KEY `paID` (`paID`),
   KEY `pkID` (`pkID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -208,10 +208,10 @@ DROP TABLE IF EXISTS `AreaPermissionBlockTypeAccessList`;
 CREATE TABLE `AreaPermissionBlockTypeAccessList` (
   `paID` int(10) unsigned NOT NULL DEFAULT 0,
   `peID` int(10) unsigned NOT NULL DEFAULT 0,
-  `permission` varchar(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
+  `permission` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
   PRIMARY KEY (`paID`,`peID`),
   KEY `peID` (`peID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -237,7 +237,7 @@ CREATE TABLE `AreaPermissionBlockTypeAccessListCustom` (
   PRIMARY KEY (`paID`,`peID`,`btID`),
   KEY `peID` (`peID`),
   KEY `btID` (`btID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -259,7 +259,7 @@ DROP TABLE IF EXISTS `Areas`;
 CREATE TABLE `Areas` (
   `arID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `cID` int(10) unsigned NOT NULL DEFAULT 0,
-  `arHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `arHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `arOverrideCollectionPermissions` tinyint(1) NOT NULL DEFAULT 0,
   `arInheritPermissionsFromAreaOnCID` int(10) unsigned NOT NULL DEFAULT 0,
   `arIsGlobal` tinyint(1) NOT NULL DEFAULT 0,
@@ -269,7 +269,7 @@ CREATE TABLE `Areas` (
   KEY `cID` (`cID`),
   KEY `arHandle` (`arHandle`),
   KEY `arParentID` (`arParentID`)
-) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -291,7 +291,7 @@ DROP TABLE IF EXISTS `AttributeKeyCategories`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `AttributeKeyCategories` (
   `akCategoryID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `akCategoryHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `akCategoryHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `akCategoryAllowSets` int(11) NOT NULL,
   `pkgID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`akCategoryID`),
@@ -300,7 +300,7 @@ CREATE TABLE `AttributeKeyCategories` (
   KEY `pkgID` (`pkgID`,`akCategoryID`),
   KEY `akCategoryHandle` (`akCategoryHandle`),
   CONSTRAINT `FK_A2A0CC67CE45CBB0` FOREIGN KEY (`pkgID`) REFERENCES `Packages` (`pkgID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -322,15 +322,15 @@ DROP TABLE IF EXISTS `AttributeKeys`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `AttributeKeys` (
   `akID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `akHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `akName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `akHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `akName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `akIsSearchable` tinyint(1) NOT NULL,
   `akIsInternal` tinyint(1) NOT NULL,
   `akIsSearchableIndexed` tinyint(1) NOT NULL,
   `atID` int(10) unsigned DEFAULT NULL,
   `akCategoryID` int(10) unsigned DEFAULT NULL,
   `pkgID` int(10) unsigned DEFAULT NULL,
-  `akCategory` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `akCategory` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`akID`),
   KEY `IDX_DCA32C62A12CFE33` (`atID`),
   KEY `IDX_DCA32C62B059B76B` (`akCategoryID`),
@@ -338,7 +338,7 @@ CREATE TABLE `AttributeKeys` (
   CONSTRAINT `FK_DCA32C62A12CFE33` FOREIGN KEY (`atID`) REFERENCES `AttributeTypes` (`atID`),
   CONSTRAINT `FK_DCA32C62B059B76B` FOREIGN KEY (`akCategoryID`) REFERENCES `AttributeKeyCategories` (`akCategoryID`),
   CONSTRAINT `FK_DCA32C62CE45CBB0` FOREIGN KEY (`pkgID`) REFERENCES `Packages` (`pkgID`)
-) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -367,7 +367,7 @@ CREATE TABLE `AttributeSetKeys` (
   KEY `IDX_222F72D8A463E8B6` (`asID`),
   CONSTRAINT `FK_222F72D8A463E8B6` FOREIGN KEY (`asID`) REFERENCES `AttributeSets` (`asID`),
   CONSTRAINT `FK_222F72D8B6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -389,8 +389,8 @@ DROP TABLE IF EXISTS `AttributeSets`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `AttributeSets` (
   `asID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `asHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `asName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `asHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `asName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `asDisplayOrder` int(10) unsigned NOT NULL,
   `asIsLocked` tinyint(1) NOT NULL,
   `akCategoryID` int(10) unsigned DEFAULT NULL,
@@ -401,7 +401,7 @@ CREATE TABLE `AttributeSets` (
   KEY `pkgID` (`pkgID`),
   CONSTRAINT `FK_FCA02D5FB059B76B` FOREIGN KEY (`akCategoryID`) REFERENCES `AttributeKeyCategories` (`akCategoryID`),
   CONSTRAINT `FK_FCA02D5FCE45CBB0` FOREIGN KEY (`pkgID`) REFERENCES `Packages` (`pkgID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -429,7 +429,7 @@ CREATE TABLE `AttributeTypeCategories` (
   KEY `IDX_49A9CABEA12CFE33` (`atID`),
   CONSTRAINT `FK_49A9CABEA12CFE33` FOREIGN KEY (`atID`) REFERENCES `AttributeTypes` (`atID`),
   CONSTRAINT `FK_49A9CABEB059B76B` FOREIGN KEY (`akCategoryID`) REFERENCES `AttributeKeyCategories` (`akCategoryID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -438,7 +438,7 @@ CREATE TABLE `AttributeTypeCategories` (
 
 LOCK TABLES `AttributeTypeCategories` WRITE;
 /*!40000 ALTER TABLE `AttributeTypeCategories` DISABLE KEYS */;
-INSERT INTO `AttributeTypeCategories` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,9),(1,10),(1,11),(1,12),(1,13),(1,15),(1,16),(1,17),(2,1),(2,2),(2,3),(2,4),(2,6),(2,7),(2,8),(2,9),(2,10),(2,11),(2,13),(2,14),(2,17),(3,1),(3,2),(3,3),(3,4),(3,6),(3,7),(3,9),(3,10),(3,11),(3,12),(3,13),(3,17),(4,1),(4,2),(4,3),(4,4),(4,5),(4,6),(4,7),(4,8),(4,9),(4,10),(4,11),(4,13),(4,15),(4,17),(5,1),(5,2),(5,3),(5,4),(5,5),(5,6),(5,7),(5,8),(5,9),(5,10),(5,11),(5,13);
+INSERT INTO `AttributeTypeCategories` VALUES (1,1),(1,2),(1,3),(1,4),(1,5),(1,6),(1,7),(1,9),(1,10),(1,11),(1,12),(1,13),(1,15),(1,16),(1,17),(1,18),(1,19),(2,1),(2,2),(2,3),(2,4),(2,6),(2,7),(2,8),(2,9),(2,10),(2,11),(2,13),(2,14),(2,17),(2,19),(3,1),(3,2),(3,3),(3,4),(3,6),(3,7),(3,9),(3,10),(3,11),(3,12),(3,13),(3,17),(3,19),(4,1),(4,2),(4,3),(4,4),(4,5),(4,6),(4,7),(4,8),(4,9),(4,10),(4,11),(4,13),(4,15),(4,17),(4,18),(4,19),(5,1),(5,2),(5,3),(5,4),(5,5),(5,6),(5,7),(5,8),(5,9),(5,10),(5,11),(5,13),(5,19);
 /*!40000 ALTER TABLE `AttributeTypeCategories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -451,15 +451,15 @@ DROP TABLE IF EXISTS `AttributeTypes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `AttributeTypes` (
   `atID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `atHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `atName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `atHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `atName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pkgID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`atID`),
   UNIQUE KEY `UNIQ_53580A7F46AA0F38` (`atHandle`),
   KEY `IDX_53580A7FCE45CBB0` (`pkgID`),
   KEY `pkgID` (`pkgID`,`atID`),
   CONSTRAINT `FK_53580A7FCE45CBB0` FOREIGN KEY (`pkgID`) REFERENCES `Packages` (`pkgID`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -468,7 +468,7 @@ CREATE TABLE `AttributeTypes` (
 
 LOCK TABLES `AttributeTypes` WRITE;
 /*!40000 ALTER TABLE `AttributeTypes` DISABLE KEYS */;
-INSERT INTO `AttributeTypes` VALUES (1,'text','Text',NULL),(2,'textarea','Text Area',NULL),(3,'boolean','Checkbox',NULL),(4,'date_time','Date/Time',NULL),(5,'image_file','Image/File',NULL),(6,'number','Number',NULL),(7,'select','Option List',NULL),(8,'address','Address',NULL),(9,'telephone','Phone Number',NULL),(10,'url','URL',NULL),(11,'email','Email',NULL),(12,'rating','Rating',NULL),(13,'topics','Topics',NULL),(14,'social_links','Social Links',NULL),(15,'calendar','Calendar',NULL),(16,'calendar_event','Calendar Event',NULL),(17,'express','Express Entity',NULL);
+INSERT INTO `AttributeTypes` VALUES (1,'text','Text',NULL),(2,'textarea','Text Area',NULL),(3,'boolean','Checkbox',NULL),(4,'date_time','Date/Time',NULL),(5,'image_file','Image/File',NULL),(6,'number','Number',NULL),(7,'select','Option List',NULL),(8,'address','Address',NULL),(9,'telephone','Phone Number',NULL),(10,'url','URL',NULL),(11,'email','Email',NULL),(12,'rating','Rating',NULL),(13,'topics','Topics',NULL),(14,'social_links','Social Links',NULL),(15,'calendar','Calendar',NULL),(16,'calendar_event','Calendar Event',NULL),(17,'express','Express Entity',NULL),(18,'page_selector','Page Selector',NULL),(19,'user_selector','User Selector',NULL);
 /*!40000 ALTER TABLE `AttributeTypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -485,7 +485,7 @@ CREATE TABLE `AttributeValues` (
   PRIMARY KEY (`avID`),
   KEY `IDX_DCCE7864B6561A7E` (`akID`),
   CONSTRAINT `FK_DCCE7864B6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=303 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=313 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -494,7 +494,7 @@ CREATE TABLE `AttributeValues` (
 
 LOCK TABLES `AttributeValues` WRITE;
 /*!40000 ALTER TABLE `AttributeValues` DISABLE KEYS */;
-INSERT INTO `AttributeValues` VALUES (212,1),(223,1),(230,1),(237,1),(213,2),(224,2),(231,2),(238,2),(2,3),(3,3),(4,3),(5,3),(6,3),(7,3),(8,3),(10,3),(11,3),(12,3),(13,3),(14,3),(15,3),(17,3),(19,3),(20,3),(21,3),(22,3),(23,3),(26,3),(27,3),(28,3),(29,3),(38,3),(39,3),(40,3),(46,3),(49,3),(50,3),(51,3),(52,3),(53,3),(54,3),(56,3),(57,3),(58,3),(59,3),(60,3),(61,3),(62,3),(63,3),(64,3),(65,3),(67,3),(68,3),(71,3),(84,3),(85,3),(86,3),(87,3),(88,3),(89,3),(90,3),(91,3),(92,3),(94,3),(95,3),(96,3),(97,3),(98,3),(99,3),(100,3),(101,3),(102,3),(103,3),(105,3),(106,3),(107,3),(108,3),(109,3),(110,3),(111,3),(112,3),(113,3),(114,3),(115,3),(116,3),(117,3),(118,3),(119,3),(120,3),(121,3),(122,3),(123,3),(124,3),(125,3),(127,3),(128,3),(129,3),(130,3),(131,3),(132,3),(133,3),(214,3),(225,3),(232,3),(239,3),(134,4),(141,4),(135,5),(142,5),(1,6),(45,6),(137,6),(138,6),(139,6),(140,6),(9,7),(16,7),(18,7),(24,7),(30,7),(31,7),(32,7),(33,7),(34,7),(35,7),(36,7),(37,7),(41,7),(43,7),(47,7),(55,7),(66,7),(69,7),(72,7),(74,7),(76,7),(78,7),(80,7),(82,7),(93,7),(104,7),(136,7),(143,7),(176,7),(226,7),(229,7),(244,7),(215,9),(227,9),(233,9),(240,9),(178,11),(189,11),(195,11),(25,12),(42,12),(44,12),(48,12),(70,12),(73,12),(75,12),(77,12),(79,12),(81,12),(83,12),(126,12),(216,13),(228,13),(234,13),(241,13),(144,16),(146,16),(148,16),(150,16),(152,16),(154,16),(156,16),(158,16),(160,16),(162,16),(164,16),(166,16),(168,16),(170,16),(172,16),(174,16),(247,16),(253,16),(259,16),(145,17),(147,17),(149,17),(151,17),(153,17),(155,17),(157,17),(159,17),(161,17),(163,17),(165,17),(167,17),(169,17),(171,17),(173,17),(175,17),(248,17),(254,17),(260,17),(235,20),(242,20),(236,21),(243,21),(177,22),(211,22),(179,23),(184,23),(190,23),(196,23),(201,23),(206,23),(217,23),(219,23),(221,23),(218,24),(220,24),(222,24),(180,25),(185,25),(191,25),(197,25),(202,25),(207,25),(181,27),(186,27),(192,27),(198,27),(203,27),(208,27),(182,28),(187,28),(193,28),(199,28),(204,28),(209,28),(183,29),(188,29),(194,29),(200,29),(205,29),(210,29),(255,35),(261,35),(280,35),(256,36),(262,36),(281,36),(257,37),(263,37),(282,37),(258,39),(264,39),(283,39),(265,40),(270,40),(275,40),(292,40),(266,41),(271,41),(276,41),(293,41),(268,42),(273,42),(278,42),(295,42),(269,43),(274,43),(279,43),(296,43),(284,44),(267,45),(272,45),(277,45),(294,45);
+INSERT INTO `AttributeValues` VALUES (212,1),(223,1),(230,1),(237,1),(213,2),(224,2),(231,2),(238,2),(2,3),(3,3),(4,3),(5,3),(6,3),(7,3),(8,3),(10,3),(11,3),(12,3),(13,3),(14,3),(15,3),(17,3),(19,3),(20,3),(21,3),(22,3),(23,3),(26,3),(27,3),(28,3),(29,3),(38,3),(39,3),(40,3),(46,3),(49,3),(50,3),(51,3),(52,3),(53,3),(54,3),(56,3),(57,3),(58,3),(59,3),(60,3),(61,3),(62,3),(63,3),(64,3),(65,3),(67,3),(68,3),(71,3),(84,3),(85,3),(86,3),(87,3),(88,3),(89,3),(90,3),(91,3),(92,3),(94,3),(95,3),(96,3),(97,3),(98,3),(99,3),(101,3),(102,3),(103,3),(105,3),(106,3),(107,3),(109,3),(110,3),(111,3),(112,3),(113,3),(114,3),(115,3),(116,3),(117,3),(118,3),(119,3),(120,3),(121,3),(122,3),(123,3),(124,3),(125,3),(127,3),(128,3),(129,3),(130,3),(131,3),(132,3),(133,3),(214,3),(225,3),(232,3),(239,3),(307,3),(308,3),(309,3),(310,3),(311,3),(312,3),(134,4),(141,4),(135,5),(142,5),(1,6),(45,6),(137,6),(138,6),(139,6),(140,6),(9,7),(16,7),(18,7),(24,7),(30,7),(31,7),(32,7),(33,7),(34,7),(35,7),(36,7),(37,7),(41,7),(43,7),(47,7),(55,7),(66,7),(69,7),(74,7),(76,7),(78,7),(80,7),(82,7),(93,7),(104,7),(136,7),(143,7),(176,7),(226,7),(229,7),(244,7),(303,7),(305,7),(215,9),(227,9),(233,9),(240,9),(178,11),(189,11),(195,11),(25,12),(42,12),(44,12),(48,12),(70,12),(75,12),(77,12),(79,12),(81,12),(83,12),(126,12),(304,12),(306,12),(216,13),(228,13),(234,13),(241,13),(144,16),(146,16),(148,16),(150,16),(152,16),(154,16),(156,16),(158,16),(160,16),(162,16),(164,16),(166,16),(168,16),(170,16),(172,16),(174,16),(247,16),(253,16),(259,16),(145,17),(147,17),(149,17),(151,17),(153,17),(155,17),(157,17),(159,17),(161,17),(163,17),(165,17),(167,17),(169,17),(171,17),(173,17),(175,17),(248,17),(254,17),(260,17),(235,20),(242,20),(236,21),(243,21),(177,22),(211,22),(179,23),(184,23),(190,23),(196,23),(201,23),(206,23),(217,23),(219,23),(221,23),(218,24),(220,24),(222,24),(180,25),(185,25),(191,25),(197,25),(202,25),(207,25),(181,27),(186,27),(192,27),(198,27),(203,27),(208,27),(182,28),(187,28),(193,28),(199,28),(204,28),(209,28),(183,29),(188,29),(194,29),(200,29),(205,29),(210,29),(255,35),(261,35),(280,35),(256,36),(262,36),(281,36),(257,37),(263,37),(282,37),(258,39),(264,39),(283,39),(265,40),(270,40),(275,40),(292,40),(266,41),(271,41),(276,41),(293,41),(268,42),(273,42),(278,42),(295,42),(269,43),(274,43),(279,43),(296,43),(284,44),(267,45),(272,45),(277,45),(294,45);
 /*!40000 ALTER TABLE `AttributeValues` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -507,15 +507,15 @@ DROP TABLE IF EXISTS `AuthenticationTypes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `AuthenticationTypes` (
   `authTypeID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `authTypeHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `authTypeName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `authTypeHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `authTypeName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `authTypeIsEnabled` tinyint(1) NOT NULL,
   `authTypeDisplayOrder` int(10) unsigned DEFAULT NULL,
   `pkgID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`authTypeID`),
   UNIQUE KEY `authTypeHandle` (`authTypeHandle`),
   KEY `pkgID` (`pkgID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -524,7 +524,7 @@ CREATE TABLE `AuthenticationTypes` (
 
 LOCK TABLES `AuthenticationTypes` WRITE;
 /*!40000 ALTER TABLE `AuthenticationTypes` DISABLE KEYS */;
-INSERT INTO `AuthenticationTypes` VALUES (1,'concrete','Standard',1,0,0),(2,'community','concrete5.org',0,0,0),(3,'facebook','Facebook',0,0,0),(4,'twitter','Twitter',0,0,0),(5,'google','Google',0,0,0);
+INSERT INTO `AuthenticationTypes` VALUES (1,'concrete','Standard',1,0,0),(2,'community','concrete5.org',0,0,0),(3,'facebook','Facebook',0,0,0),(4,'twitter','Twitter',0,0,0),(5,'google','Google',0,0,0),(6,'external_concrete5','External concrete5',0,0,0);
 /*!40000 ALTER TABLE `AuthenticationTypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -537,9 +537,9 @@ DROP TABLE IF EXISTS `BannedWords`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `BannedWords` (
   `bwID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `bannedWord` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `bannedWord` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`bwID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -566,7 +566,7 @@ CREATE TABLE `BasicWorkflowPermissionAssignments` (
   PRIMARY KEY (`wfID`,`pkID`,`paID`),
   KEY `pkID` (`pkID`),
   KEY `paID` (`paID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -593,7 +593,7 @@ CREATE TABLE `BasicWorkflowProgressData` (
   PRIMARY KEY (`wpID`),
   KEY `uIDStarted` (`uIDStarted`),
   KEY `uIDCompleted` (`uIDCompleted`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -620,7 +620,7 @@ CREATE TABLE `BlockFeatureAssignments` (
   PRIMARY KEY (`cID`,`cvID`,`bID`,`faID`),
   KEY `faID` (`faID`,`cID`,`cvID`),
   KEY `bID` (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -650,7 +650,7 @@ CREATE TABLE `BlockPermissionAssignments` (
   KEY `bID` (`bID`),
   KEY `pkID` (`pkID`),
   KEY `paID` (`paID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -672,10 +672,10 @@ DROP TABLE IF EXISTS `BlockTypePermissionBlockTypeAccessList`;
 CREATE TABLE `BlockTypePermissionBlockTypeAccessList` (
   `paID` int(10) unsigned NOT NULL DEFAULT 0,
   `peID` int(10) unsigned NOT NULL DEFAULT 0,
-  `permission` varchar(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
+  `permission` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
   PRIMARY KEY (`paID`,`peID`),
   KEY `peID` (`peID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -701,7 +701,7 @@ CREATE TABLE `BlockTypePermissionBlockTypeAccessListCustom` (
   PRIMARY KEY (`paID`,`peID`,`btID`),
   KEY `peID` (`peID`),
   KEY `btID` (`btID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -726,7 +726,7 @@ CREATE TABLE `BlockTypeSetBlockTypes` (
   `displayOrder` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`btID`,`btsID`),
   KEY `btsID` (`btsID`,`displayOrder`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -735,7 +735,7 @@ CREATE TABLE `BlockTypeSetBlockTypes` (
 
 LOCK TABLES `BlockTypeSetBlockTypes` WRITE;
 /*!40000 ALTER TABLE `BlockTypeSetBlockTypes` DISABLE KEYS */;
-INSERT INTO `BlockTypeSetBlockTypes` VALUES (14,1,0),(31,1,1),(33,1,2),(18,1,3),(32,1,4),(25,1,5),(13,2,0),(24,2,1),(34,2,2),(36,2,3),(35,2,4),(15,2,5),(42,2,6),(26,2,7),(37,2,8),(41,2,9),(22,3,0),(38,3,1),(17,3,2),(20,4,0),(21,4,1),(40,5,0),(5,5,1),(27,5,2),(28,5,3),(29,5,4),(45,6,0),(46,6,1),(47,6,2),(19,7,0),(39,7,1),(43,7,2),(16,7,3),(44,7,4),(30,7,5),(6,8,0),(8,8,1),(9,8,2),(10,8,3),(11,8,4),(12,8,5),(7,8,6);
+INSERT INTO `BlockTypeSetBlockTypes` VALUES (14,1,0),(31,1,1),(33,1,2),(18,1,3),(32,1,4),(25,1,5),(13,2,0),(24,2,1),(34,2,2),(36,2,3),(35,2,4),(15,2,5),(42,2,6),(26,2,7),(37,2,8),(41,2,9),(22,3,0),(38,3,1),(17,3,2),(20,4,0),(21,4,1),(40,5,0),(5,5,1),(27,5,2),(28,5,3),(29,5,4),(45,6,0),(46,6,1),(47,6,2),(19,7,0),(39,7,1),(43,7,2),(16,7,3),(44,7,4),(30,7,5),(6,8,0),(8,8,1),(9,8,2),(10,8,3),(11,8,4),(12,8,5),(7,8,6),(48,8,7);
 /*!40000 ALTER TABLE `BlockTypeSetBlockTypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -748,15 +748,15 @@ DROP TABLE IF EXISTS `BlockTypeSets`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `BlockTypeSets` (
   `btsID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `btsName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `btsHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `btsName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `btsHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pkgID` int(10) unsigned NOT NULL DEFAULT 0,
   `btsDisplayOrder` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`btsID`),
   UNIQUE KEY `btsHandle` (`btsHandle`),
   KEY `btsDisplayOrder` (`btsDisplayOrder`),
   KEY `pkgID` (`pkgID`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -779,9 +779,9 @@ DROP TABLE IF EXISTS `BlockTypes`;
 CREATE TABLE `BlockTypes` (
   `btIgnorePageThemeGridFrameworkContainer` tinyint(1) NOT NULL,
   `btID` int(11) NOT NULL AUTO_INCREMENT,
-  `btHandle` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  `btName` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  `btDescription` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `btHandle` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `btName` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `btDescription` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `btCopyWhenPropagate` tinyint(1) NOT NULL,
   `btIncludeAll` tinyint(1) NOT NULL,
   `btIsInternal` tinyint(1) NOT NULL,
@@ -792,7 +792,7 @@ CREATE TABLE `BlockTypes` (
   `btInterfaceWidth` int(11) NOT NULL,
   `pkgID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`btID`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -801,7 +801,7 @@ CREATE TABLE `BlockTypes` (
 
 LOCK TABLES `BlockTypes` WRITE;
 /*!40000 ALTER TABLE `BlockTypes` DISABLE KEYS */;
-INSERT INTO `BlockTypes` VALUES (0,1,'core_area_layout','Area Layout','Proxy block for area layouts.',0,0,1,1,1,0,400,400,0),(0,2,'core_page_type_composer_control_output','Composer Control','Proxy block for blocks that need to be output through composer.',0,0,1,0,0,0,400,400,0),(0,3,'core_scrapbook_display','Scrapbook Display','Proxy block for blocks pasted through the scrapbook.',0,0,1,0,0,0,400,400,0),(0,4,'core_stack_display','Stack Display','Proxy block for stacks added through the UI.',0,0,1,0,0,0,400,400,0),(0,5,'core_conversation','Conversation','Displays conversations on a page.',1,0,0,0,0,0,400,450,0),(0,6,'desktop_app_status','concrete5 Status Messages','Displays alerts about your concrete5 site and package updates.',0,0,0,0,0,0,400,400,0),(0,7,'desktop_newsflow_latest','Dashboard Newsflow Latest','Grabs the latest newsflow data from concrete5.org.',0,0,0,0,0,0,400,400,0),(0,8,'desktop_site_activity','Site Activity','Displays a graph of recent activity on your site.',0,0,0,0,0,0,560,450,0),(0,9,'desktop_featured_addon','Dashboard Featured Add-On','Features an add-on from concrete5.org.',0,0,0,0,0,0,100,300,0),(0,10,'desktop_featured_theme','Dashboard Featured Theme','Features a theme from concrete5.org.',0,0,0,0,0,0,100,300,0),(0,11,'desktop_latest_form','Latest Form','Shows the latest form submission.',0,0,0,0,0,0,400,400,0),(0,12,'desktop_waiting_for_me','Waiting for Me','Displays workflow actions waiting for you.',0,0,0,0,0,0,560,450,0),(0,13,'autonav','Auto-Nav','Creates navigation trees and sitemaps.',0,0,0,0,0,0,525,700,0),(0,14,'content','Content','HTML/WYSIWYG Editor Content.',0,0,0,1,1,0,465,600,0),(0,15,'date_navigation','Date Navigation','Displays a list of months to filter a page list by.',0,0,0,0,0,0,450,400,0),(0,16,'document_library','Document Library','Add a searchable document library to a page.',0,0,0,0,0,0,400,640,0),(0,17,'external_form','External Form','Include external forms in the filesystem and place them on pages.',0,0,0,0,0,0,175,420,0),(0,18,'file','File','Link to files stored in the asset library.',0,0,0,0,0,0,320,300,0),(0,19,'page_attribute_display','Page Attribute Display','Displays the value of a page attribute for the current page.',0,0,0,0,0,0,365,500,0),(0,20,'express_entry_list','Express Entry List','Add a searchable Express entry list to a page.',0,0,0,0,0,0,400,640,0),(0,21,'express_entry_detail','Express Entry Detail','Add an Express entry detail display to a page.',0,0,0,0,0,0,400,640,0),(0,22,'express_form','Form','Build simple forms and surveys.',0,0,0,0,0,0,700,640,0),(0,23,'form','Legacy Form','Build simple forms and surveys.',1,0,0,0,0,0,430,420,0),(0,24,'page_title','Page Title','Displays a Page\'s Title',0,0,0,0,0,0,500,470,0),(0,25,'feature','Feature','Displays an icon, a title, and a short paragraph description.',0,0,0,0,0,0,520,400,0),(0,26,'topic_list','Topic List','Displays a list of your site\'s topics, allowing you to click on them to filter a page list.',0,0,0,0,0,0,400,400,0),(0,27,'social_links','Social Links','Allows users to add social icons to their website',0,0,0,0,0,0,400,400,0),(0,28,'testimonial','Testimonial','Displays a quote or paragraph next to biographical information and a person\'s picture.',0,0,0,0,0,0,560,450,0),(0,29,'share_this_page','Share This Page','Allows users to share this page with social networks.',0,0,0,0,0,0,400,400,0),(0,30,'google_map','Google Map','Enter an address and a Google Map of that location will be placed in your page.',0,0,0,0,0,0,550,475,0),(1,31,'html','HTML','For adding HTML by hand.',0,0,0,0,0,0,500,600,0),(1,32,'horizontal_rule','Horizontal Rule','Adds a thin hairline horizontal divider to the page.',0,0,0,0,0,0,400,400,0),(0,33,'image','Image','Adds images and onstates from the library to pages.',0,0,0,0,0,0,550,400,0),(0,34,'faq','FAQ','Frequently Asked Questions Block',0,0,0,0,0,0,465,600,0),(0,35,'next_previous','Next & Previous Nav','Navigate through sibling pages.',0,0,0,0,0,0,400,430,0),(0,36,'page_list','Page List','List pages based on type, area.',0,0,0,0,0,0,525,700,0),(0,37,'rss_displayer','RSS Displayer','Fetch, parse and display the contents of an RSS or Atom feed.',0,0,0,0,0,0,550,400,0),(0,38,'search','Search','Add a search box to your site.',0,0,0,0,0,0,420,400,0),(1,39,'image_slider','Image Slider','Display your images and captions in an attractive slideshow format.',0,0,0,0,0,0,550,600,0),(0,40,'survey','Survey','Provide a simple survey, along with results in a pie chart format.',0,0,0,0,0,0,500,500,0),(0,41,'switch_language','Switch Language','Adds a front-end language switcher to your website.',0,0,0,0,0,0,150,500,0),(0,42,'tags','Tags','List pages based on type, area.',0,0,0,0,0,0,439,450,0),(0,43,'video','Video Player','Embeds uploaded video into a web page. Supports WebM, Ogg, and Quicktime/MPEG4 formats.',0,0,0,0,0,0,440,450,0),(0,44,'youtube','YouTube Video','Embeds a YouTube Video in your web page.',0,0,0,0,0,0,490,400,0),(0,45,'calendar','Calendar','Displays a month view calendar on a page.',0,0,0,0,0,0,475,500,0),(0,46,'event_list','Event List','Displays a list of events from a calendar.',0,0,0,0,0,0,340,500,0),(0,47,'calendar_event','Calendar Event','Displays a calendar event on a page.',0,0,0,0,0,0,400,550,0);
+INSERT INTO `BlockTypes` VALUES (0,1,'core_area_layout','Area Layout','Proxy block for area layouts.',0,0,1,1,1,0,400,400,0),(0,2,'core_page_type_composer_control_output','Composer Control','Proxy block for blocks that need to be output through composer.',0,0,1,0,0,0,400,400,0),(0,3,'core_scrapbook_display','Scrapbook Display','Proxy block for blocks pasted through the scrapbook.',0,0,1,0,0,0,400,400,0),(0,4,'core_stack_display','Stack Display','Proxy block for stacks added through the UI.',0,0,1,0,0,0,400,400,0),(0,5,'core_conversation','Conversation','Displays conversations on a page.',1,0,0,0,0,0,400,450,0),(0,6,'desktop_app_status','concrete5 Status Messages','Displays alerts about your concrete5 site and package updates.',0,0,0,0,0,0,400,400,0),(0,7,'desktop_newsflow_latest','Dashboard Newsflow Latest','Grabs the latest newsflow data from concrete5.org.',0,0,0,0,0,0,400,400,0),(0,8,'desktop_site_activity','Site Activity','Displays a graph of recent activity on your site.',0,0,0,0,0,0,560,450,0),(0,9,'desktop_featured_addon','Dashboard Featured Add-On','Features an add-on from concrete5.org.',0,0,0,0,0,0,100,300,0),(0,10,'desktop_featured_theme','Dashboard Featured Theme','Features a theme from concrete5.org.',0,0,0,0,0,0,100,300,0),(0,11,'desktop_latest_form','Latest Form','Shows the latest form submission.',0,0,0,0,0,0,400,400,0),(0,12,'desktop_waiting_for_me','Waiting for Me','Displays workflow actions waiting for you.',0,0,0,0,0,0,560,450,0),(0,13,'autonav','Auto-Nav','Creates navigation trees and sitemaps.',0,0,0,0,0,0,525,700,0),(0,14,'content','Content','HTML/WYSIWYG Editor Content.',0,0,0,1,1,0,465,600,0),(0,15,'date_navigation','Date Navigation','Displays a list of months to filter a page list by.',0,0,0,0,0,0,450,400,0),(0,16,'document_library','Document Library','Add a searchable document library to a page.',0,0,0,0,0,0,400,640,0),(0,17,'external_form','External Form','Include external forms in the filesystem and place them on pages.',0,0,0,0,0,0,175,420,0),(0,18,'file','File','Link to files stored in the asset library.',0,0,0,0,0,0,320,300,0),(0,19,'page_attribute_display','Page Attribute Display','Displays the value of a page attribute for the current page.',0,0,0,0,0,0,365,500,0),(0,20,'express_entry_list','Express Entry List','Add a searchable Express entry list to a page.',0,0,0,0,0,0,400,640,0),(0,21,'express_entry_detail','Express Entry Detail','Add an Express entry detail display to a page.',0,0,0,0,0,0,400,640,0),(0,22,'express_form','Form','Build simple forms and surveys.',0,0,0,0,0,0,700,640,0),(0,23,'form','Legacy Form','Build simple forms and surveys.',1,0,0,0,0,0,430,420,0),(0,24,'page_title','Page Title','Displays a Page\'s Title',0,0,0,0,0,0,500,470,0),(0,25,'feature','Feature','Displays an icon, a title, and a short paragraph description.',0,0,0,0,0,0,520,400,0),(0,26,'topic_list','Topic List','Displays a list of your site\'s topics, allowing you to click on them to filter a page list.',0,0,0,0,0,0,400,400,0),(0,27,'social_links','Social Links','Allows users to add social icons to their website',0,0,0,0,0,0,400,400,0),(0,28,'testimonial','Testimonial','Displays a quote or paragraph next to biographical information and a person\'s picture.',0,0,0,0,0,0,560,450,0),(0,29,'share_this_page','Share This Page','Allows users to share this page with social networks.',0,0,0,0,0,0,400,400,0),(0,30,'google_map','Google Map','Enter an address and a Google Map of that location will be placed in your page.',0,0,0,0,0,0,550,475,0),(1,31,'html','HTML','For adding HTML by hand.',0,0,0,0,0,0,500,600,0),(1,32,'horizontal_rule','Horizontal Rule','Adds a thin hairline horizontal divider to the page.',0,0,0,0,0,0,400,400,0),(0,33,'image','Image','Adds images and onstates from the library to pages.',0,0,0,0,0,0,550,400,0),(0,34,'faq','FAQ','Frequently Asked Questions Block',0,0,0,0,0,0,465,600,0),(0,35,'next_previous','Next & Previous Nav','Navigate through sibling pages.',0,0,0,0,0,0,400,430,0),(0,36,'page_list','Page List','List pages based on type, area.',0,0,0,0,0,0,525,700,0),(0,37,'rss_displayer','RSS Displayer','Fetch, parse and display the contents of an RSS or Atom feed.',0,0,0,0,0,0,550,400,0),(0,38,'search','Search','Add a search box to your site.',0,0,0,0,0,0,420,400,0),(1,39,'image_slider','Image Slider','Display your images and captions in an attractive slideshow format.',0,0,0,0,0,0,550,600,0),(0,40,'survey','Survey','Provide a simple survey, along with results in a pie chart format.',0,0,0,0,0,0,500,500,0),(0,41,'switch_language','Switch Language','Adds a front-end language switcher to your website.',0,0,0,0,0,0,150,500,0),(0,42,'tags','Tags','List pages based on type, area.',0,0,0,0,0,0,439,450,0),(0,43,'video','Video Player','Embeds uploaded video into a web page. Supports WebM, Ogg, and Quicktime/MPEG4 formats.',0,0,0,0,0,0,440,450,0),(0,44,'youtube','YouTube Video','Embeds a YouTube Video in your web page.',0,0,0,0,0,0,490,400,0),(0,45,'calendar','Calendar','Displays a month view calendar on a page.',0,0,0,0,0,0,475,500,0),(0,46,'event_list','Event List','Displays a list of events from a calendar.',0,0,0,0,0,0,340,500,0),(0,47,'calendar_event','Calendar Event','Displays a calendar event on a page.',0,0,0,0,0,0,400,550,0),(0,48,'desktop_draft_list','Draft List','Displays a list of all drafts.',0,0,0,0,0,0,400,400,0);
 /*!40000 ALTER TABLE `BlockTypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -814,18 +814,18 @@ DROP TABLE IF EXISTS `Blocks`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Blocks` (
   `bID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `bName` varchar(60) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `bName` varchar(60) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `bDateAdded` datetime NOT NULL DEFAULT '1000-01-01 00:00:00',
   `bDateModified` datetime NOT NULL DEFAULT '1000-01-01 00:00:00',
-  `bFilename` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `bIsActive` varchar(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
+  `bFilename` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bIsActive` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
   `btID` int(10) unsigned NOT NULL DEFAULT 0,
   `uID` int(10) unsigned DEFAULT NULL,
-  `btCachedBlockRecord` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `btCachedBlockRecord` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`bID`),
   KEY `btID` (`btID`),
   KEY `uID` (`uID`)
-) ENGINE=InnoDB AUTO_INCREMENT=182 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=184 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -834,7 +834,7 @@ CREATE TABLE `Blocks` (
 
 LOCK TABLES `Blocks` WRITE;
 /*!40000 ALTER TABLE `Blocks` DISABLE KEYS */;
-INSERT INTO `Blocks` VALUES (1,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',6,1,NULL),(2,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',1,1,NULL),(3,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',11,1,NULL),(4,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',9,1,NULL),(5,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',8,1,NULL),(6,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',1,1,NULL),(7,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',37,1,NULL),(8,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',10,1,NULL),(9,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',1,1,NULL),(10,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',7,1,NULL),(11,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',7,1,NULL),(12,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',7,1,NULL),(13,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',37,1,NULL),(14,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',12,1,NULL),(15,'','2018-04-21 09:49:39','2018-04-21 09:49:39',NULL,'0',12,1,NULL),(16,'','2018-04-21 09:49:44','2018-04-21 09:49:44','byline.php','0',24,1,NULL),(17,'','2018-04-21 09:49:44','2018-04-21 09:49:44',NULL,'0',2,1,NULL),(18,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',35,1,NULL),(19,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',29,1,NULL),(20,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',26,1,NULL),(21,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',36,1,NULL),(22,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',32,1,NULL),(23,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',5,1,NULL),(24,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',24,1,NULL),(25,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',36,1,NULL),(26,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',14,1,NULL),(27,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',14,1,NULL),(28,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',19,1,NULL),(29,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',14,1,NULL),(30,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',19,1,NULL),(31,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',14,1,NULL),(32,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',2,1,NULL),(33,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',14,1,NULL),(34,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',24,1,NULL),(35,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',2,1,NULL),(36,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',19,1,NULL),(37,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',19,1,NULL),(38,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',19,1,NULL),(39,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',2,1,NULL),(40,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',32,1,NULL),(41,'','2018-04-21 09:49:45','2018-04-21 09:49:45','thumbnail_grid','0',36,1,NULL),(42,'','2018-04-21 09:49:45','2018-04-21 09:49:45','archive.php','0',24,1,NULL),(43,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',1,1,NULL),(44,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',36,1,NULL),(45,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',26,1,NULL),(46,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',15,1,NULL),(47,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',24,1,NULL),(48,'','2018-04-21 09:49:45','2018-04-21 09:49:45','flat_filter.php','0',26,1,NULL),(49,'','2018-04-21 09:49:45','2018-04-21 09:49:45','thumbnail_grid','0',36,1,NULL),(50,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',14,1,NULL),(51,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',14,1,NULL),(52,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',14,1,NULL),(53,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',14,1,NULL),(54,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',27,1,NULL),(55,'','2018-04-21 09:49:45','2018-04-21 09:49:45','responsive_header_navigation','0',13,1,NULL),(56,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',38,1,NULL),(57,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',14,1,NULL),(58,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',39,1,NULL),(59,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',1,1,NULL),(60,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',25,1,NULL),(61,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',25,1,NULL),(62,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',25,1,NULL),(63,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',32,1,NULL),(64,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',14,1,NULL),(65,'','2018-04-21 09:49:45','2018-04-21 09:49:45','thumbnail_grid','0',36,1,NULL),(66,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',32,1,NULL),(67,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',1,1,NULL),(68,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',14,1,NULL),(69,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',14,1,NULL),(70,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',1,1,NULL),(71,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',36,1,NULL),(72,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',36,1,NULL),(73,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',14,1,NULL),(74,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',14,1,NULL),(75,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',24,1,NULL),(76,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',1,1,NULL),(77,'','2018-04-21 09:49:46','2018-04-21 09:49:46','hover_description','0',25,1,NULL),(78,'','2018-04-21 09:49:46','2018-04-21 09:49:46','hover_description','0',25,1,NULL),(79,'','2018-04-21 09:49:46','2018-04-21 09:49:46','hover_description','0',25,1,NULL),(80,'','2018-04-21 09:49:46','2018-04-21 09:49:46','hover_description','0',25,1,NULL),(81,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',32,1,NULL),(82,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',1,1,NULL),(83,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',14,1,NULL),(84,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',14,1,NULL),(85,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',14,1,NULL),(86,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',1,1,NULL),(87,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',28,1,NULL),(88,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',28,1,NULL),(89,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',28,1,NULL),(90,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',28,1,NULL),(91,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',39,1,NULL),(92,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',14,1,NULL),(93,'','2018-04-21 09:49:47','2018-04-21 09:49:47',NULL,'0',39,1,NULL),(94,'','2018-04-21 09:49:47','2018-04-21 09:49:47',NULL,'0',14,1,NULL),(95,'','2018-04-21 09:49:47','2018-04-21 09:49:47',NULL,'0',39,1,NULL),(96,'','2018-04-21 09:49:47','2018-04-21 09:49:47',NULL,'0',14,1,NULL),(97,'','2018-04-21 09:49:47','2018-04-21 09:49:47',NULL,'0',39,1,NULL),(98,'','2018-04-21 09:49:47','2018-04-21 09:49:47',NULL,'0',14,1,NULL),(99,'','2018-04-21 09:49:47','2018-04-21 09:49:47',NULL,'0',39,1,NULL),(100,'','2018-04-21 09:49:47','2018-04-21 09:49:47',NULL,'0',14,1,NULL),(101,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',39,1,NULL),(102,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',14,1,NULL),(103,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',24,1,NULL),(104,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',1,1,NULL),(105,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',28,1,NULL),(106,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',28,1,NULL),(107,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',32,1,NULL),(108,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',1,1,NULL),(109,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',28,1,NULL),(110,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',28,1,NULL),(111,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',28,1,NULL),(112,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',28,1,NULL),(113,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',28,1,NULL),(114,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',28,1,NULL),(115,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',32,1,NULL),(116,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',1,1,NULL),(117,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',33,1,NULL),(118,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',14,1,NULL),(119,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',5,1,NULL),(120,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',14,1,NULL),(121,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',5,1,NULL),(122,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',14,1,NULL),(123,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',5,1,NULL),(124,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',14,1,NULL),(125,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',38,1,NULL),(126,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',24,1,NULL),(127,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',1,1,NULL),(128,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',30,1,NULL),(129,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',14,1,NULL),(130,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',32,1,NULL),(131,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',1,1,NULL),(132,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',33,1,NULL),(133,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',14,1,NULL),(134,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',14,1,NULL),(135,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',22,1,NULL),(136,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',14,1,NULL),(137,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',24,1,NULL),(138,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',1,1,NULL),(139,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',33,1,NULL),(140,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',14,1,NULL),(141,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',14,1,NULL),(142,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',32,1,NULL),(143,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',1,1,NULL),(144,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',14,1,NULL),(145,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',14,1,NULL),(146,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',33,1,NULL),(147,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',14,1,NULL),(148,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',32,1,NULL),(149,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',1,1,NULL),(150,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',33,1,NULL),(151,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',14,1,NULL),(152,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',24,1,NULL),(153,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',33,1,NULL),(154,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',31,1,NULL),(155,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',1,1,NULL),(156,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',25,1,NULL),(157,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',25,1,NULL),(158,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',25,1,NULL),(159,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',25,1,NULL),(160,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',25,1,NULL),(161,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',25,1,NULL),(162,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',32,1,NULL),(163,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',1,1,NULL),(164,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',14,1,NULL),(165,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',36,1,NULL),(166,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',14,1,NULL),(167,'','2018-04-21 09:49:51','2018-04-21 09:49:51',NULL,'0',14,1,NULL),(168,'','2018-04-21 09:49:51','2018-04-21 09:49:51',NULL,'0',24,1,NULL),(169,'','2018-04-21 09:49:51','2018-04-21 09:49:51',NULL,'0',34,1,NULL),(172,'','2018-04-21 11:22:00','2018-04-21 11:22:00',NULL,'0',20,1,NULL),(173,'','2018-04-21 11:23:00','2018-04-21 11:23:00',NULL,'0',21,1,NULL),(175,'','2018-04-21 12:39:53','2018-04-21 12:39:53','curry_store_detail.php','1',21,1,NULL),(176,'','2018-04-21 12:47:17','2018-04-21 12:47:17','','1',21,1,NULL),(179,'','2018-04-21 15:38:13','2018-04-21 15:38:13','curry_store_list.php','1',20,1,NULL),(180,'','2018-04-21 15:38:52','2018-04-21 15:38:52','curry_store_detail.php','1',21,1,NULL),(181,'','2018-05-28 21:39:51','2018-05-28 21:39:57','','1',20,1,NULL);
+INSERT INTO `Blocks` VALUES (1,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',6,1,NULL),(2,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',1,1,NULL),(3,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',11,1,NULL),(4,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',9,1,NULL),(5,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',8,1,NULL),(6,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',1,1,NULL),(7,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',37,1,NULL),(8,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',10,1,NULL),(9,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',1,1,NULL),(10,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',7,1,NULL),(11,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',7,1,NULL),(12,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',7,1,NULL),(13,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',37,1,NULL),(14,'','2018-04-21 09:49:38','2018-04-21 09:49:38',NULL,'0',12,1,NULL),(15,'','2018-04-21 09:49:39','2018-04-21 09:49:39',NULL,'0',12,1,NULL),(16,'','2018-04-21 09:49:44','2018-04-21 09:49:44','byline.php','0',24,1,NULL),(17,'','2018-04-21 09:49:44','2018-04-21 09:49:44',NULL,'0',2,1,NULL),(18,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',35,1,NULL),(19,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',29,1,NULL),(20,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',26,1,NULL),(21,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',36,1,NULL),(22,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',32,1,NULL),(23,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',5,1,NULL),(24,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',24,1,NULL),(25,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',36,1,NULL),(26,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',14,1,NULL),(27,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',14,1,NULL),(28,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',19,1,NULL),(29,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',14,1,NULL),(30,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',19,1,NULL),(31,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',14,1,NULL),(32,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',2,1,NULL),(33,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',14,1,NULL),(34,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',24,1,NULL),(35,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',2,1,NULL),(36,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',19,1,NULL),(37,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',19,1,NULL),(38,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',19,1,NULL),(39,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',2,1,NULL),(40,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',32,1,NULL),(41,'','2018-04-21 09:49:45','2018-04-21 09:49:45','thumbnail_grid','0',36,1,NULL),(42,'','2018-04-21 09:49:45','2018-04-21 09:49:45','archive.php','0',24,1,NULL),(43,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',1,1,NULL),(44,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',36,1,NULL),(45,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',26,1,NULL),(46,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',15,1,NULL),(47,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',24,1,NULL),(48,'','2018-04-21 09:49:45','2018-04-21 09:49:45','flat_filter.php','0',26,1,NULL),(49,'','2018-04-21 09:49:45','2018-04-21 09:49:45','thumbnail_grid','0',36,1,NULL),(50,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',14,1,NULL),(51,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',14,1,NULL),(52,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',14,1,NULL),(53,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',14,1,NULL),(54,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',27,1,NULL),(55,'','2018-04-21 09:49:45','2018-04-21 09:49:45','responsive_header_navigation','0',13,1,NULL),(56,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',38,1,NULL),(57,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',14,1,NULL),(58,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',39,1,NULL),(59,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',1,1,NULL),(60,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',25,1,NULL),(61,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',25,1,NULL),(62,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',25,1,NULL),(63,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',32,1,NULL),(64,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',14,1,NULL),(65,'','2018-04-21 09:49:45','2018-04-21 09:49:45','thumbnail_grid','0',36,1,NULL),(66,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',32,1,NULL),(67,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',1,1,NULL),(68,'','2018-04-21 09:49:45','2018-04-21 09:49:45',NULL,'0',14,1,NULL),(69,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',14,1,NULL),(70,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',1,1,NULL),(71,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',36,1,NULL),(72,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',36,1,NULL),(73,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',14,1,NULL),(74,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',14,1,NULL),(75,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',24,1,NULL),(76,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',1,1,NULL),(77,'','2018-04-21 09:49:46','2018-04-21 09:49:46','hover_description','0',25,1,NULL),(78,'','2018-04-21 09:49:46','2018-04-21 09:49:46','hover_description','0',25,1,NULL),(79,'','2018-04-21 09:49:46','2018-04-21 09:49:46','hover_description','0',25,1,NULL),(80,'','2018-04-21 09:49:46','2018-04-21 09:49:46','hover_description','0',25,1,NULL),(81,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',32,1,NULL),(82,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',1,1,NULL),(83,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',14,1,NULL),(84,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',14,1,NULL),(85,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',14,1,NULL),(86,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',1,1,NULL),(87,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',28,1,NULL),(88,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',28,1,NULL),(89,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',28,1,NULL),(90,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',28,1,NULL),(91,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',39,1,NULL),(92,'','2018-04-21 09:49:46','2018-04-21 09:49:46',NULL,'0',14,1,NULL),(93,'','2018-04-21 09:49:47','2018-04-21 09:49:47',NULL,'0',39,1,NULL),(94,'','2018-04-21 09:49:47','2018-04-21 09:49:47',NULL,'0',14,1,NULL),(95,'','2018-04-21 09:49:47','2018-04-21 09:49:47',NULL,'0',39,1,NULL),(96,'','2018-04-21 09:49:47','2018-04-21 09:49:47',NULL,'0',14,1,NULL),(97,'','2018-04-21 09:49:47','2018-04-21 09:49:47',NULL,'0',39,1,NULL),(98,'','2018-04-21 09:49:47','2018-04-21 09:49:47',NULL,'0',14,1,NULL),(99,'','2018-04-21 09:49:47','2018-04-21 09:49:47',NULL,'0',39,1,NULL),(100,'','2018-04-21 09:49:47','2018-04-21 09:49:47',NULL,'0',14,1,NULL),(101,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',39,1,NULL),(102,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',14,1,NULL),(103,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',24,1,NULL),(104,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',1,1,NULL),(105,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',28,1,NULL),(106,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',28,1,NULL),(107,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',32,1,NULL),(108,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',1,1,NULL),(109,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',28,1,NULL),(110,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',28,1,NULL),(111,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',28,1,NULL),(112,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',28,1,NULL),(113,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',28,1,NULL),(114,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',28,1,NULL),(115,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',32,1,NULL),(116,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',1,1,NULL),(117,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',33,1,NULL),(118,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',14,1,NULL),(119,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',5,1,NULL),(120,'','2018-04-21 09:49:48','2018-04-21 09:49:48',NULL,'0',14,1,NULL),(121,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',5,1,NULL),(122,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',14,1,NULL),(123,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',5,1,NULL),(124,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',14,1,NULL),(125,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',38,1,NULL),(126,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',24,1,NULL),(127,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',1,1,NULL),(128,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',30,1,NULL),(129,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',14,1,NULL),(130,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',32,1,NULL),(131,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',1,1,NULL),(132,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',33,1,NULL),(133,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',14,1,NULL),(134,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',14,1,NULL),(135,'','2018-04-21 09:49:49','2018-04-21 09:49:49',NULL,'0',22,1,NULL),(136,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',14,1,NULL),(137,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',24,1,NULL),(138,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',1,1,NULL),(139,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',33,1,NULL),(140,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',14,1,NULL),(141,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',14,1,NULL),(142,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',32,1,NULL),(143,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',1,1,NULL),(144,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',14,1,NULL),(145,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',14,1,NULL),(146,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',33,1,NULL),(147,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',14,1,NULL),(148,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',32,1,NULL),(149,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',1,1,NULL),(150,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',33,1,NULL),(151,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',14,1,NULL),(152,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',24,1,NULL),(153,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',33,1,NULL),(154,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',31,1,NULL),(155,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',1,1,NULL),(156,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',25,1,NULL),(157,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',25,1,NULL),(158,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',25,1,NULL),(159,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',25,1,NULL),(160,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',25,1,NULL),(161,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',25,1,NULL),(162,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',32,1,NULL),(163,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',1,1,NULL),(164,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',14,1,NULL),(165,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',36,1,NULL),(166,'','2018-04-21 09:49:50','2018-04-21 09:49:50',NULL,'0',14,1,NULL),(167,'','2018-04-21 09:49:51','2018-04-21 09:49:51',NULL,'0',14,1,NULL),(168,'','2018-04-21 09:49:51','2018-04-21 09:49:51',NULL,'0',24,1,NULL),(169,'','2018-04-21 09:49:51','2018-04-21 09:49:51',NULL,'0',34,1,NULL),(172,'','2018-04-21 11:22:00','2018-04-21 11:22:00',NULL,'0',20,1,NULL),(173,'','2018-04-21 11:23:00','2018-04-21 11:23:00',NULL,'0',21,1,NULL),(175,'','2018-04-21 12:39:53','2018-04-21 12:39:53','curry_store_detail.php','1',21,1,NULL),(176,'','2018-04-21 12:47:17','2018-04-21 12:47:17','','1',21,1,NULL),(179,'','2018-04-21 15:38:13','2018-04-21 15:38:13','curry_store_list.php','1',20,1,NULL),(180,'','2018-04-21 15:38:52','2018-04-21 15:38:52','curry_store_detail.php','1',21,1,NULL),(181,'','2018-05-28 21:39:51','2018-05-28 21:39:57','','1',20,1,NULL),(182,'','2018-07-08 17:09:03','2018-07-08 17:09:03',NULL,'0',22,1,NULL),(183,'','2018-10-24 21:12:32','2018-10-24 21:12:32','curry_store_list.php','1',20,1,NULL);
 /*!40000 ALTER TABLE `Blocks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -849,7 +849,7 @@ CREATE TABLE `CalendarEventAttributeKeys` (
   `akID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`akID`),
   CONSTRAINT `FK_27F477CCB6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -879,7 +879,7 @@ CREATE TABLE `CalendarEventOccurrences` (
   KEY `IDX_7DD686EC31391E00` (`repetitionID`),
   KEY `eventdates` (`occurrenceID`,`startTime`,`endTime`),
   CONSTRAINT `FK_7DD686EC31391E00` FOREIGN KEY (`repetitionID`) REFERENCES `CalendarEventRepetitions` (`repetitionID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -900,9 +900,9 @@ DROP TABLE IF EXISTS `CalendarEventRepetitions`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `CalendarEventRepetitions` (
   `repetitionID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `repetitionObject` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:object)',
+  `repetitionObject` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:object)',
   PRIMARY KEY (`repetitionID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -923,9 +923,9 @@ DROP TABLE IF EXISTS `CalendarEventSearchIndexAttributes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `CalendarEventSearchIndexAttributes` (
   `eventID` int(10) unsigned NOT NULL DEFAULT 0,
-  `ak_event_categories` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ak_event_categories` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`eventID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -955,7 +955,7 @@ CREATE TABLE `CalendarEventVersionAttributeValues` (
   CONSTRAINT `FK_8C835B05403F5D6` FOREIGN KEY (`eventVersionID`) REFERENCES `CalendarEventVersions` (`eventVersionID`),
   CONSTRAINT `FK_8C835B05A2A82A5D` FOREIGN KEY (`avID`) REFERENCES `AttributeValues` (`avID`),
   CONSTRAINT `FK_8C835B05B6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -983,7 +983,7 @@ CREATE TABLE `CalendarEventVersionOccurrences` (
   KEY `IDX_60310489B4FDDC0F` (`occurrenceID`),
   CONSTRAINT `FK_60310489403F5D6` FOREIGN KEY (`eventVersionID`) REFERENCES `CalendarEventVersions` (`eventVersionID`),
   CONSTRAINT `FK_60310489B4FDDC0F` FOREIGN KEY (`occurrenceID`) REFERENCES `CalendarEventOccurrences` (`occurrenceID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1011,7 +1011,7 @@ CREATE TABLE `CalendarEventVersionRepetitions` (
   KEY `IDX_C1C3D3DB31391E00` (`repetitionID`),
   CONSTRAINT `FK_C1C3D3DB31391E00` FOREIGN KEY (`repetitionID`) REFERENCES `CalendarEventRepetitions` (`repetitionID`),
   CONSTRAINT `FK_C1C3D3DB403F5D6` FOREIGN KEY (`eventVersionID`) REFERENCES `CalendarEventVersions` (`eventVersionID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1035,9 +1035,9 @@ CREATE TABLE `CalendarEventVersions` (
   `evDateAdded` datetime NOT NULL,
   `evActivateDateTime` datetime DEFAULT NULL,
   `evIsApproved` tinyint(1) NOT NULL,
-  `evDescription` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `evName` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `evRelatedPageRelationType` varchar(1) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `evDescription` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `evName` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `evRelatedPageRelationType` varchar(1) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cID` int(10) unsigned NOT NULL DEFAULT 0,
   `eventID` int(10) unsigned DEFAULT NULL,
   `uID` int(10) unsigned DEFAULT NULL,
@@ -1046,7 +1046,7 @@ CREATE TABLE `CalendarEventVersions` (
   KEY `IDX_8E260274FD71026C` (`uID`),
   CONSTRAINT `FK_8E26027410409BA4` FOREIGN KEY (`eventID`) REFERENCES `CalendarEvents` (`eventID`),
   CONSTRAINT `FK_8E260274FD71026C` FOREIGN KEY (`uID`) REFERENCES `Users` (`uID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1072,7 +1072,7 @@ CREATE TABLE `CalendarEventWorkflowProgress` (
   KEY `IDX_C5EAACF910409BA4` (`eventID`),
   KEY `wpID` (`wpID`),
   CONSTRAINT `FK_C5EAACF910409BA4` FOREIGN KEY (`eventID`) REFERENCES `CalendarEvents` (`eventID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1097,7 +1097,7 @@ CREATE TABLE `CalendarEvents` (
   PRIMARY KEY (`eventID`),
   KEY `IDX_7F23C55611C85723` (`caID`),
   CONSTRAINT `FK_7F23C55611C85723` FOREIGN KEY (`caID`) REFERENCES `Calendars` (`caID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1125,7 +1125,7 @@ CREATE TABLE `CalendarPermissionAssignments` (
   KEY `paID` (`paID`),
   KEY `pkID` (`pkID`),
   CONSTRAINT `FK_5AD546AA11C85723` FOREIGN KEY (`caID`) REFERENCES `Calendars` (`caID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1147,12 +1147,12 @@ DROP TABLE IF EXISTS `CalendarRelatedEvents`;
 CREATE TABLE `CalendarRelatedEvents` (
   `relatedEventID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `relationID` int(10) unsigned NOT NULL,
-  `relationType` varchar(1) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `relationType` varchar(1) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `eventID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`relatedEventID`),
   KEY `IDX_310130E910409BA4` (`eventID`),
   CONSTRAINT `FK_310130E910409BA4` FOREIGN KEY (`eventID`) REFERENCES `CalendarEvents` (`eventID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1173,10 +1173,10 @@ DROP TABLE IF EXISTS `Calendars`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Calendars` (
   `caID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `caName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `caName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `caOverridePermissions` tinyint(1) NOT NULL DEFAULT 0,
-  `eventPageAttributeKeyHandle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `enableMoreDetails` varchar(1) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `eventPageAttributeKeyHandle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `enableMoreDetails` varchar(1) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `eventPageParentID` int(10) unsigned DEFAULT 0,
   `eventPageTypeID` int(10) unsigned DEFAULT 0,
   `eventPageAssociatedID` int(10) unsigned DEFAULT 0,
@@ -1184,7 +1184,7 @@ CREATE TABLE `Calendars` (
   PRIMARY KEY (`caID`),
   KEY `IDX_62E00AC521D8435` (`siteID`),
   CONSTRAINT `FK_62E00AC521D8435` FOREIGN KEY (`siteID`) REFERENCES `Sites` (`siteID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1207,7 +1207,7 @@ CREATE TABLE `CollectionAttributeKeys` (
   `akID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`akID`),
   CONSTRAINT `FK_1E3E5B79B6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1237,7 +1237,7 @@ CREATE TABLE `CollectionAttributeValues` (
   KEY `IDX_BB9995FCA2A82A5D` (`avID`),
   CONSTRAINT `FK_BB9995FCA2A82A5D` FOREIGN KEY (`avID`) REFERENCES `AttributeValues` (`avID`),
   CONSTRAINT `FK_BB9995FCB6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1246,7 +1246,7 @@ CREATE TABLE `CollectionAttributeValues` (
 
 LOCK TABLES `CollectionAttributeValues` WRITE;
 /*!40000 ALTER TABLE `CollectionAttributeValues` DISABLE KEYS */;
-INSERT INTO `CollectionAttributeValues` VALUES (2,1,6,1),(3,1,3,2),(4,1,3,3),(5,1,3,4),(6,1,3,5),(8,1,3,6),(9,1,3,7),(10,1,3,8),(11,1,7,9),(11,1,3,10),(12,1,3,11),(13,1,3,12),(14,1,3,13),(15,1,3,14),(16,1,3,15),(16,1,7,16),(17,1,3,17),(17,1,7,18),(19,1,3,19),(20,1,3,20),(22,1,3,21),(25,1,3,22),(26,1,3,23),(27,1,7,24),(27,1,12,25),(28,1,3,26),(29,1,3,27),(31,1,3,28),(32,1,3,29),(32,1,7,30),(34,1,7,31),(35,1,7,32),(36,1,7,33),(37,1,7,34),(38,1,7,35),(39,1,7,36),(41,1,7,37),(42,1,3,38),(43,1,3,39),(44,1,3,40),(47,1,7,41),(47,1,12,42),(49,1,7,43),(49,1,12,44),(52,1,6,45),(54,1,3,46),(56,1,7,47),(56,1,12,48),(56,1,3,49),(57,1,3,50),(58,1,3,51),(59,1,3,52),(60,1,3,53),(61,1,3,54),(61,1,7,55),(62,1,3,56),(63,1,3,57),(64,1,3,58),(66,1,3,59),(67,1,3,60),(68,1,3,61),(69,1,3,62),(70,1,3,63),(71,1,3,64),(72,1,3,65),(72,1,7,66),(73,1,3,67),(74,1,3,68),(74,1,7,69),(74,1,12,70),(75,1,3,71),(77,1,7,72),(77,1,12,73),(78,1,7,74),(78,1,12,75),(79,1,7,76),(79,1,12,77),(80,1,7,78),(80,1,12,79),(81,1,7,80),(81,1,12,81),(82,1,7,82),(82,1,12,83),(84,1,3,84),(90,1,3,85),(91,1,3,86),(92,1,3,87),(93,1,3,88),(94,1,3,89),(96,1,3,90),(97,1,3,91),(98,1,3,92),(99,1,7,93),(99,1,3,94),(100,1,3,95),(101,1,3,96),(103,1,3,97),(104,1,3,98),(105,1,3,99),(106,1,3,100),(108,1,3,101),(109,1,3,102),(113,1,3,103),(114,1,7,104),(115,1,3,105),(116,1,3,106),(117,1,3,107),(119,1,3,108),(120,1,3,109),(121,1,3,110),(122,1,3,111),(123,1,3,112),(125,1,3,113),(126,1,3,114),(127,1,3,115),(128,1,3,116),(129,1,3,117),(135,1,3,118),(136,1,3,119),(137,1,3,120),(138,1,3,121),(140,1,3,122),(141,1,3,123),(142,1,3,124),(143,1,3,125),(145,1,12,126),(146,1,3,127),(147,1,3,128),(148,1,3,129),(149,1,3,130),(150,1,3,131),(151,1,3,132),(153,1,3,133),(154,1,4,134),(154,1,5,135),(154,1,7,136),(156,1,6,137),(158,1,6,138),(161,1,6,139),(167,1,6,140),(168,1,4,141),(168,1,5,142),(168,1,7,143),(1,1,7,176),(1,2,7,176),(180,1,22,177),(188,1,11,178),(188,1,23,179),(188,1,25,180),(188,1,27,181),(188,1,28,182),(188,1,29,183),(189,1,23,184),(189,1,25,185),(189,1,27,186),(189,1,28,187),(189,1,29,188),(190,1,11,189),(190,1,23,190),(190,1,25,191),(190,1,27,192),(190,1,28,193),(190,1,29,194),(191,1,11,195),(191,1,23,196),(191,1,25,197),(191,1,27,198),(191,1,28,199),(191,1,29,200),(192,1,23,201),(192,1,25,202),(192,1,27,203),(192,1,28,204),(192,1,29,205),(193,1,23,206),(193,1,25,207),(193,1,27,208),(193,1,28,209),(193,1,29,210),(183,1,22,211),(195,1,1,212),(195,1,2,213),(195,1,3,214),(195,1,9,215),(195,1,13,216),(195,1,23,217),(195,1,24,218),(196,1,23,219),(196,1,24,220),(197,1,23,221),(197,1,24,222),(184,1,1,223),(184,1,2,224),(184,1,3,225),(184,1,7,226),(184,1,9,227),(184,1,13,228),(186,1,7,229),(202,1,1,230),(202,1,2,231),(202,1,3,232),(202,1,9,233),(202,1,13,234),(202,1,20,235),(202,1,21,236),(203,1,1,237),(203,1,2,238),(203,1,3,239),(203,1,9,240),(203,1,13,241),(203,1,20,242),(203,1,21,243),(208,2,7,244),(208,3,7,244),(208,4,7,244),(208,5,7,244),(208,6,7,244);
+INSERT INTO `CollectionAttributeValues` VALUES (2,1,6,1),(3,1,3,2),(4,1,3,3),(5,1,3,4),(6,1,3,5),(8,1,3,6),(9,1,3,7),(10,1,3,8),(11,1,7,9),(11,1,3,10),(12,1,3,11),(13,1,3,12),(14,1,3,13),(15,1,3,14),(16,1,3,15),(16,1,7,16),(17,1,3,17),(17,1,7,18),(19,1,3,19),(20,1,3,20),(22,1,3,21),(25,1,3,22),(26,1,3,23),(27,1,7,24),(27,1,12,25),(28,1,3,26),(29,1,3,27),(31,1,3,28),(32,1,3,29),(32,1,7,30),(34,1,7,31),(35,1,7,32),(36,1,7,33),(37,1,7,34),(38,1,7,35),(39,1,7,36),(41,1,7,37),(42,1,3,38),(43,1,3,39),(44,1,3,40),(47,1,7,41),(47,1,12,42),(49,1,7,43),(49,1,12,44),(52,1,6,45),(54,1,3,46),(56,1,7,47),(56,1,12,48),(56,1,3,49),(57,1,3,50),(58,1,3,51),(59,1,3,52),(60,1,3,53),(61,1,3,54),(61,1,7,55),(62,1,3,56),(63,1,3,57),(64,1,3,58),(66,1,3,59),(67,1,3,60),(68,1,3,61),(69,1,3,62),(70,1,3,63),(71,1,3,64),(72,1,3,65),(72,1,7,66),(73,1,3,67),(74,1,3,68),(74,1,7,69),(74,1,12,70),(75,1,3,71),(78,1,7,74),(78,1,12,75),(79,1,7,76),(79,1,12,77),(80,1,7,78),(80,1,12,79),(81,1,7,80),(81,1,12,81),(82,1,7,82),(82,1,12,83),(84,1,3,84),(90,1,3,85),(91,1,3,86),(92,1,3,87),(93,1,3,88),(94,1,3,89),(96,1,3,90),(97,1,3,91),(98,1,3,92),(99,1,7,93),(99,1,3,94),(100,1,3,95),(101,1,3,96),(103,1,3,97),(104,1,3,98),(105,1,3,99),(108,1,3,101),(109,1,3,102),(113,1,3,103),(114,1,7,104),(115,1,3,105),(116,1,3,106),(117,1,3,107),(120,1,3,109),(121,1,3,110),(122,1,3,111),(123,1,3,112),(125,1,3,113),(126,1,3,114),(127,1,3,115),(128,1,3,116),(129,1,3,117),(135,1,3,118),(136,1,3,119),(137,1,3,120),(138,1,3,121),(140,1,3,122),(141,1,3,123),(142,1,3,124),(143,1,3,125),(145,1,12,126),(146,1,3,127),(147,1,3,128),(148,1,3,129),(149,1,3,130),(150,1,3,131),(151,1,3,132),(153,1,3,133),(154,1,4,134),(154,1,5,135),(154,1,7,136),(156,1,6,137),(158,1,6,138),(161,1,6,139),(167,1,6,140),(168,1,4,141),(168,1,5,142),(168,1,7,143),(1,1,7,176),(1,2,7,176),(1,3,7,176),(180,1,22,177),(188,1,11,178),(188,1,23,179),(188,1,25,180),(188,1,27,181),(188,1,28,182),(188,1,29,183),(189,1,23,184),(189,1,25,185),(189,1,27,186),(189,1,28,187),(189,1,29,188),(190,1,11,189),(190,1,23,190),(190,1,25,191),(190,1,27,192),(190,1,28,193),(190,1,29,194),(191,1,11,195),(191,1,23,196),(191,1,25,197),(191,1,27,198),(191,1,28,199),(191,1,29,200),(192,1,23,201),(192,1,25,202),(192,1,27,203),(192,1,28,204),(192,1,29,205),(193,1,23,206),(193,1,25,207),(193,1,27,208),(193,1,28,209),(193,1,29,210),(183,1,22,211),(195,1,1,212),(195,1,2,213),(195,1,3,214),(195,1,9,215),(195,1,13,216),(195,1,23,217),(195,1,24,218),(196,1,23,219),(196,1,24,220),(197,1,23,221),(197,1,24,222),(184,1,1,223),(184,1,2,224),(184,1,3,225),(184,1,7,226),(184,1,9,227),(184,1,13,228),(186,1,7,229),(202,1,1,230),(202,1,2,231),(202,1,3,232),(202,1,9,233),(202,1,13,234),(202,1,20,235),(202,1,21,236),(203,1,1,237),(203,1,2,238),(203,1,3,239),(203,1,9,240),(203,1,13,241),(203,1,20,242),(203,1,21,243),(208,2,7,244),(208,3,7,244),(208,4,7,244),(208,5,7,244),(208,6,7,244),(212,1,7,303),(212,1,12,304),(77,1,7,305),(77,1,12,306),(213,1,3,307),(214,1,3,308),(215,1,3,309),(216,1,3,310),(217,1,3,311),(119,1,3,312);
 /*!40000 ALTER TABLE `CollectionAttributeValues` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1258,31 +1258,32 @@ DROP TABLE IF EXISTS `CollectionSearchIndexAttributes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `CollectionSearchIndexAttributes` (
-  `cID` int(10) unsigned NOT NULL DEFAULT 0,
-  `ak_meta_title` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ak_meta_description` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ak_meta_keywords` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cID` int(10) unsigned NOT NULL,
+  `ak_meta_title` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ak_meta_description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ak_meta_keywords` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ak_desktop_priority` decimal(14,4) DEFAULT 0.0000,
   `ak_is_desktop` tinyint(1) DEFAULT 0,
-  `ak_icon_dashboard` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ak_icon_dashboard` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ak_exclude_nav` tinyint(1) DEFAULT 0,
   `ak_exclude_page_list` tinyint(1) DEFAULT 0,
-  `ak_header_extra_content` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ak_tags` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ak_header_extra_content` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ak_tags` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ak_is_featured` tinyint(1) DEFAULT 0,
   `ak_exclude_search_index` tinyint(1) DEFAULT 0,
   `ak_exclude_sitemapxml` tinyint(1) DEFAULT 0,
-  `ak_job_posting_department` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ak_job_location` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ak_job_posting_department` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ak_job_location` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ak_exclude_subpages_from_nav` tinyint(1) DEFAULT 0,
   `ak_thumbnail` int(11) DEFAULT 0,
-  `ak_blog_entry_topics` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ak_project_topics` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ak_project_client` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ak_project_tasks` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ak_project_skills` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`cID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `ak_blog_entry_topics` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ak_project_topics` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ak_project_client` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ak_project_tasks` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ak_project_skills` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`cID`),
+  CONSTRAINT `FK_FD84E56FE5DADDAE` FOREIGN KEY (`cID`) REFERENCES `Collections` (`cID`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1291,7 +1292,7 @@ CREATE TABLE `CollectionSearchIndexAttributes` (
 
 LOCK TABLES `CollectionSearchIndexAttributes` WRITE;
 /*!40000 ALTER TABLE `CollectionSearchIndexAttributes` DISABLE KEYS */;
-INSERT INTO `CollectionSearchIndexAttributes` VALUES (1,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(2,NULL,NULL,NULL,0.0000,0,'fa fa-th-large',0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(3,NULL,NULL,'pages, add page, delete page, copy, move, alias',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(4,NULL,NULL,'pages, add page, delete page, copy, move, alias',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(5,NULL,NULL,'pages, add page, delete page, copy, move, alias, bulk',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(6,NULL,NULL,'find page, search page, search, find, pages, sitemap',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(8,NULL,NULL,'add file, delete file, copy, move, alias, resize, crop, rename, images, title, attribute',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(9,NULL,NULL,'file, file attributes, title, attribute, description, rename',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(10,NULL,NULL,'files, category, categories',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(11,NULL,NULL,'new file set',0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(12,NULL,NULL,'users, groups, people, find, delete user, remove user, change password, password',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(13,NULL,NULL,'find, search, people, delete user, remove user, change password, password',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(14,NULL,NULL,'user, group, people, permissions, expire, badges',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(15,NULL,NULL,'user attributes, user data, gather data, registration data',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(16,NULL,NULL,'new user, create',0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(17,NULL,NULL,'new user group, new group, group, create',0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(19,NULL,NULL,'group set',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(20,NULL,NULL,'community, points, karma',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(22,NULL,NULL,'action, community actions',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(25,NULL,NULL,'forms, log, error, email, mysql, exception, survey',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(26,NULL,NULL,'forms, questions, response, data',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(27,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,1,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(28,NULL,NULL,'questions, quiz, response',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(29,NULL,NULL,'forms, log, error, email, mysql, exception, survey, history',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(31,NULL,NULL,'new theme, theme, active theme, change theme, template, css',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(32,NULL,NULL,'page types',0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(34,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(35,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(36,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(37,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(38,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(39,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(41,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(42,NULL,NULL,'page attributes, custom',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(43,NULL,NULL,'single, page, custom, application',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(44,NULL,NULL,'atom, rss, feed, syndication',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(47,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,1,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(49,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,1,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(52,NULL,NULL,NULL,0.0000,0,'icon-bullhorn',0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(54,NULL,NULL,'stacks, global areas, reusable content, scrapbook, copy, paste, paste block, copy block, site name, logo',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(56,NULL,NULL,'edit stacks, view stacks, all stacks',0.0000,0,NULL,1,0,NULL,NULL,0,1,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(57,NULL,NULL,'block, refresh, custom',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(58,NULL,NULL,'add-on, addon, add on, package, app, ecommerce, discussions, forums, themes, templates, blocks',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(59,NULL,NULL,'add-on, addon, ecommerce, install, discussions, forums, themes, templates, blocks',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(60,NULL,NULL,'update, upgrade',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(61,NULL,NULL,'concrete5.org, my account, marketplace',0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(62,NULL,NULL,'buy theme, new theme, marketplace, template',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(63,NULL,NULL,'buy addon, buy add on, buy add-on, purchase addon, purchase add on, purchase add-on, find addon, new addon, marketplace',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(64,NULL,NULL,'dashboard, configuration',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(66,NULL,NULL,'website name, title',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(67,NULL,NULL,'accessibility, easy mode',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(68,NULL,NULL,'sharing, facebook, twitter',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(69,NULL,NULL,'logo, favicon, iphone, icon, bookmark',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(70,NULL,NULL,'tinymce, content block, fonts, editor, content, overlay',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(71,NULL,NULL,'translate, translation, internationalization, multilingual',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(72,NULL,NULL,'languages, update, gettext, translation, translate',0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(73,NULL,NULL,'timezone, profile, locale',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(74,NULL,NULL,'site attributes',0.0000,0,NULL,1,0,NULL,NULL,0,1,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(75,NULL,NULL,'checkin, check-in, check, force',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(77,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,1,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(78,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,1,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(79,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,1,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(80,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,1,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(81,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,1,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(82,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,1,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(84,NULL,NULL,'multilingual, localization, internationalization, i18n',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(90,NULL,NULL,'vanity, pretty url, redirection, hostname, canonical, seo, pageview, view',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(91,NULL,NULL,'bulk, seo, change keywords, engine, optimization, search',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(92,NULL,NULL,'traffic, statistics, google analytics, quant, pageviews, hits',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(93,NULL,NULL,'pretty, slug',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(94,NULL,NULL,'configure search, site search, search option',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(96,NULL,NULL,'security, files, media, extension, manager, upload',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(97,NULL,NULL,'file options, file manager, upload, modify',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(98,NULL,NULL,'images, picture, responsive, retina',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(99,NULL,NULL,'thumbnail, format, png, jpg, jpeg, quality, compression, gd, imagick, imagemagick, transparency',0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(100,NULL,NULL,'uploading, upload, images, image, resizing, manager, exif, rotation, rotate, quality, compression, png, jpg, jpeg',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(101,NULL,NULL,'security, alternate storage, hide files',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(103,NULL,NULL,'cache option, change cache, override, turn on cache, turn off cache, no cache, page cache, caching',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(104,NULL,NULL,'cache option, turn off cache, no cache, page cache, caching',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(105,NULL,NULL,'index search, reindex search, build sitemap, sitemap.xml, clear old versions, page versions, remove old',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(106,NULL,NULL,'queries, database, mysql',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(108,NULL,NULL,'editors, hide site, offline, private, public, access',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(109,NULL,NULL,'security, actions, administrator, admin, package, marketplace, search',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(113,NULL,NULL,'security, lock ip, lock out, block ip, address, restrict, access',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(114,NULL,NULL,NULL,0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(115,NULL,NULL,'security, registration',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(116,NULL,NULL,'antispam, block spam, security',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(117,NULL,NULL,'lock site, under construction, hide, hidden',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(119,NULL,NULL,'signup, new user, community, public registration, public, registration',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(120,NULL,NULL,'profile, login, redirect, specific, dashboard, administrators',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(121,NULL,NULL,'member profile, member page, community, forums, social, avatar',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(122,NULL,NULL,'auth, authentication, types, oauth, facebook, login, registration',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(123,NULL,NULL,'global, password, reset, change password, force, sign out',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(125,NULL,NULL,'smtp, mail settings',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(126,NULL,NULL,'email server, mail settings, mail configuration, external, internal',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(127,NULL,NULL,'test smtp, test mail',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(128,NULL,NULL,'email server, mail settings, mail configuration, private message, message system, import, email, message',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(129,NULL,NULL,'mail settings, mail configuration, email, sender',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(135,NULL,NULL,'conversations',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(136,NULL,NULL,'conversations',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(137,NULL,NULL,'conversations ratings, ratings, community, community points',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(138,NULL,NULL,'conversations bad words, banned words, banned, bad words, bad, words, list',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(140,NULL,NULL,'attribute configuration',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(141,NULL,NULL,'attributes, types',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(142,NULL,NULL,'attributes, sets',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(143,NULL,NULL,'topics, tags, taxonomy',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(145,NULL,NULL,NULL,0.0000,0,NULL,0,0,NULL,NULL,0,1,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(146,NULL,NULL,'overrides, system info, debug, support, help',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(147,NULL,NULL,'errors, exceptions, develop, support, help',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(148,NULL,NULL,'email, logging, logs, smtp, pop, errors, mysql, log',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(149,NULL,NULL,'network, proxy server',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(150,NULL,NULL,'database, entities, doctrine, orm',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(151,NULL,NULL,'geolocation, ip, address, country, nation, place, locate',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(153,NULL,NULL,'upgrade, new version, update',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(154,NULL,NULL,NULL,2.0000,1,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(156,NULL,NULL,NULL,0.0000,0,'fa fa-th',0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(158,NULL,NULL,NULL,0.0000,0,'fa fa-trash-o',0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(161,NULL,NULL,NULL,0.0000,0,'fa fa-briefcase',0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(167,NULL,NULL,NULL,0.0000,0,'fa fa-edit',0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(168,NULL,NULL,NULL,1.0000,1,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(180,NULL,NULL,NULL,0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,1,0,NULL,NULL,NULL,NULL,NULL),(183,NULL,NULL,NULL,0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,1,0,NULL,NULL,NULL,NULL,NULL),(184,'','','',0.0000,0,NULL,1,0,'',NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(186,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(188,NULL,NULL,NULL,0.0000,0,NULL,0,0,NULL,NULL,1,0,0,NULL,NULL,0,2,NULL,'||/Homework||','Test Client','\nArchitecture\nDesign\nProduction\n','\nHTML\nJavaScript\nPHP\n'),(189,NULL,NULL,NULL,0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,1,NULL,'||/Activities||','Test Client','\nArchitecture\n','\nPHP\n'),(190,NULL,NULL,NULL,0.0000,0,NULL,0,0,NULL,NULL,1,0,0,NULL,NULL,0,16,NULL,'||/Homework||','Test Client 2','\nMultimedia\nProduction\nDevelopment\n','\nPHP\nHTML\nCSS\nJavaScript\n'),(191,NULL,NULL,NULL,0.0000,0,NULL,0,0,NULL,NULL,1,0,0,NULL,NULL,0,13,NULL,'||/Homework||','Test Client 2','\nDesign\n','\nPhotoshop\n'),(192,NULL,NULL,NULL,0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,10,NULL,'||/Homework||','Test Client 2','\nDesign\n','\nPhotoshop\n'),(193,NULL,NULL,NULL,0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,11,NULL,'||/Homework||','Test Client 2','\nDesign\n','\nPhotoshop\n'),(195,'','','',0.0000,0,NULL,0,0,'',NULL,0,0,0,NULL,NULL,0,8,'||/Projects||',NULL,NULL,NULL,NULL),(196,NULL,NULL,NULL,0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,15,'||/Humor||',NULL,NULL,NULL,NULL),(197,NULL,NULL,NULL,0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,5,'||/Projects||',NULL,NULL,NULL,NULL),(202,'','','',0.0000,0,NULL,0,0,'',NULL,0,0,0,'\nTechnical and Operations\n','\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla massa lacus, vehicula eu interdum convallis, laoreet id lectus. Nunc turpis elit, aliquam sit amet aliquam tincidunt, dapibus vel tellus. ',0,0,NULL,NULL,NULL,NULL,NULL),(203,'','','',0.0000,0,NULL,0,0,'',NULL,0,0,0,'\nMarketing and Sales\n','\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla massa lacus, vehicula eu interdum convallis, laoreet id lectus. Nunc turpis elit, aliquam sit amet aliquam tincidunt, dapibus vel tellus. ',0,0,NULL,NULL,NULL,NULL,NULL),(208,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `CollectionSearchIndexAttributes` VALUES (1,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(2,NULL,NULL,NULL,0.0000,0,'fa fa-th-large',0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(3,NULL,NULL,'pages, add page, delete page, copy, move, alias',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(4,NULL,NULL,'pages, add page, delete page, copy, move, alias',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(5,NULL,NULL,'pages, add page, delete page, copy, move, alias, bulk',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(6,NULL,NULL,'find page, search page, search, find, pages, sitemap',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(8,NULL,NULL,'add file, delete file, copy, move, alias, resize, crop, rename, images, title, attribute',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(9,NULL,NULL,'file, file attributes, title, attribute, description, rename',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(10,NULL,NULL,'files, category, categories',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(11,NULL,NULL,'new file set',0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(12,NULL,NULL,'users, groups, people, find, delete user, remove user, change password, password',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(13,NULL,NULL,'find, search, people, delete user, remove user, change password, password',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(14,NULL,NULL,'user, group, people, permissions, expire, badges',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(15,NULL,NULL,'user attributes, user data, gather data, registration data',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(16,NULL,NULL,'new user, create',0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(17,NULL,NULL,'new user group, new group, group, create',0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(19,NULL,NULL,'group set',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(20,NULL,NULL,'community, points, karma',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(22,NULL,NULL,'action, community actions',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(25,NULL,NULL,'forms, log, error, email, mysql, exception, survey',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(26,NULL,NULL,'forms, questions, response, data',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(27,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,1,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(28,NULL,NULL,'questions, quiz, response',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(29,NULL,NULL,'forms, log, error, email, mysql, exception, survey, history',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(31,NULL,NULL,'new theme, theme, active theme, change theme, template, css',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(32,NULL,NULL,'page types',0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(34,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(35,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(36,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(37,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(38,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(39,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(41,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(42,NULL,NULL,'page attributes, custom',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(43,NULL,NULL,'single, page, custom, application',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(44,NULL,NULL,'atom, rss, feed, syndication',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(47,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,1,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(49,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,1,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(52,NULL,NULL,NULL,0.0000,0,'icon-bullhorn',0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(54,NULL,NULL,'stacks, global areas, reusable content, scrapbook, copy, paste, paste block, copy block, site name, logo',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(56,NULL,NULL,'edit stacks, view stacks, all stacks',0.0000,0,NULL,1,0,NULL,NULL,0,1,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(57,NULL,NULL,'block, refresh, custom',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(58,NULL,NULL,'add-on, addon, add on, package, app, ecommerce, discussions, forums, themes, templates, blocks',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(59,NULL,NULL,'add-on, addon, ecommerce, install, discussions, forums, themes, templates, blocks',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(60,NULL,NULL,'update, upgrade',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(61,NULL,NULL,'concrete5.org, my account, marketplace',0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(62,NULL,NULL,'buy theme, new theme, marketplace, template',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(63,NULL,NULL,'buy addon, buy add on, buy add-on, purchase addon, purchase add on, purchase add-on, find addon, new addon, marketplace',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(64,NULL,NULL,'dashboard, configuration',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(66,NULL,NULL,'website name, title',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(67,NULL,NULL,'accessibility, easy mode',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(68,NULL,NULL,'sharing, facebook, twitter',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(69,NULL,NULL,'logo, favicon, iphone, icon, bookmark',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(70,NULL,NULL,'tinymce, content block, fonts, editor, content, overlay',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(71,NULL,NULL,'translate, translation, internationalization, multilingual',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(72,NULL,NULL,'languages, update, gettext, translation, translate',0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(73,NULL,NULL,'timezone, profile, locale',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(74,NULL,NULL,'site attributes',0.0000,0,NULL,1,0,NULL,NULL,0,1,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(75,NULL,NULL,'checkin, check-in, check, force',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(77,NULL,NULL,NULL,0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(78,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,1,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(79,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,1,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(80,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,1,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(81,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,1,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(82,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,1,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(84,NULL,NULL,'multilingual, localization, internationalization, i18n',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(90,NULL,NULL,'vanity, pretty url, redirection, hostname, canonical, seo, pageview, view',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(91,NULL,NULL,'bulk, seo, change keywords, engine, optimization, search',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(92,NULL,NULL,'traffic, statistics, google analytics, quant, pageviews, hits',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(93,NULL,NULL,'pretty, slug',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(94,NULL,NULL,'configure search, site search, search option',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(96,NULL,NULL,'security, files, media, extension, manager, upload',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(97,NULL,NULL,'file options, file manager, upload, modify',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(98,NULL,NULL,'images, picture, responsive, retina',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(99,NULL,NULL,'thumbnail, format, png, jpg, jpeg, quality, compression, gd, imagick, imagemagick, transparency',0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(100,NULL,NULL,'uploading, upload, images, image, resizing, manager, exif, rotation, rotate, quality, compression, png, jpg, jpeg',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(101,NULL,NULL,'security, alternate storage, hide files',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(103,NULL,NULL,'cache option, change cache, override, turn on cache, turn off cache, no cache, page cache, caching',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(104,NULL,NULL,'cache option, turn off cache, no cache, page cache, caching',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(105,NULL,NULL,'index search, reindex search, build sitemap, sitemap.xml, clear old versions, page versions, remove old',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(108,NULL,NULL,'editors, hide site, offline, private, public, access',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(109,NULL,NULL,'security, actions, administrator, admin, package, marketplace, search',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(113,NULL,NULL,'security, lock ip, lock out, block ip, address, restrict, access',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(114,NULL,NULL,NULL,0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(115,NULL,NULL,'security, registration',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(116,NULL,NULL,'antispam, block spam, security',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(117,NULL,NULL,'lock site, under construction, hide, hidden',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(119,NULL,NULL,'signup, new user, community, public registration, public, registration',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(120,NULL,NULL,'profile, login, redirect, specific, dashboard, administrators',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(121,NULL,NULL,'member profile, member page, community, forums, social, avatar',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(122,NULL,NULL,'auth, authentication, types, oauth, facebook, login, registration',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(123,NULL,NULL,'global, password, reset, change password, force, sign out',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(125,NULL,NULL,'smtp, mail settings',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(126,NULL,NULL,'email server, mail settings, mail configuration, external, internal',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(127,NULL,NULL,'test smtp, test mail',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(128,NULL,NULL,'email server, mail settings, mail configuration, private message, message system, import, email, message',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(129,NULL,NULL,'mail settings, mail configuration, email, sender',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(135,NULL,NULL,'conversations',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(136,NULL,NULL,'conversations',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(137,NULL,NULL,'conversations ratings, ratings, community, community points',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(138,NULL,NULL,'conversations bad words, banned words, banned, bad words, bad, words, list',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(140,NULL,NULL,'attribute configuration',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(141,NULL,NULL,'attributes, types',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(142,NULL,NULL,'attributes, sets',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(143,NULL,NULL,'topics, tags, taxonomy',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(145,NULL,NULL,NULL,0.0000,0,NULL,0,0,NULL,NULL,0,1,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(146,NULL,NULL,'overrides, system info, debug, support, help',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(147,NULL,NULL,'errors, exceptions, develop, support, help',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(148,NULL,NULL,'email, logging, logs, smtp, pop, errors, mysql, log',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(149,NULL,NULL,'network, proxy server',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(150,NULL,NULL,'database, entities, doctrine, orm',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(151,NULL,NULL,'geolocation, ip, address, country, nation, place, locate',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(153,NULL,NULL,'upgrade, new version, update',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(154,NULL,NULL,NULL,2.0000,1,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(156,NULL,NULL,NULL,0.0000,0,'fa fa-th',0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(158,NULL,NULL,NULL,0.0000,0,'fa fa-trash-o',0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(161,NULL,NULL,NULL,0.0000,0,'fa fa-briefcase',0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(167,NULL,NULL,NULL,0.0000,0,'fa fa-edit',0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(168,NULL,NULL,NULL,1.0000,1,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(180,NULL,NULL,NULL,0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,1,0,NULL,NULL,NULL,NULL,NULL),(183,NULL,NULL,NULL,0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,1,0,NULL,NULL,NULL,NULL,NULL),(184,'','','',0.0000,0,NULL,1,0,'',NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(186,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(188,NULL,NULL,NULL,0.0000,0,NULL,0,0,NULL,NULL,1,0,0,NULL,NULL,0,2,NULL,'||/Homework||','Test Client','\nArchitecture\nDesign\nProduction\n','\nHTML\nJavaScript\nPHP\n'),(189,NULL,NULL,NULL,0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,1,NULL,'||/Activities||','Test Client','\nArchitecture\n','\nPHP\n'),(190,NULL,NULL,NULL,0.0000,0,NULL,0,0,NULL,NULL,1,0,0,NULL,NULL,0,16,NULL,'||/Homework||','Test Client 2','\nMultimedia\nProduction\nDevelopment\n','\nPHP\nHTML\nCSS\nJavaScript\n'),(191,NULL,NULL,NULL,0.0000,0,NULL,0,0,NULL,NULL,1,0,0,NULL,NULL,0,13,NULL,'||/Homework||','Test Client 2','\nDesign\n','\nPhotoshop\n'),(192,NULL,NULL,NULL,0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,10,NULL,'||/Homework||','Test Client 2','\nDesign\n','\nPhotoshop\n'),(193,NULL,NULL,NULL,0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,11,NULL,'||/Homework||','Test Client 2','\nDesign\n','\nPhotoshop\n'),(195,'','','',0.0000,0,NULL,0,0,'',NULL,0,0,0,NULL,NULL,0,8,'||/Projects||',NULL,NULL,NULL,NULL),(196,NULL,NULL,NULL,0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,15,'||/Humor||',NULL,NULL,NULL,NULL),(197,NULL,NULL,NULL,0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,5,'||/Projects||',NULL,NULL,NULL,NULL),(202,'','','',0.0000,0,NULL,0,0,'',NULL,0,0,0,'\nTechnical and Operations\n','\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla massa lacus, vehicula eu interdum convallis, laoreet id lectus. Nunc turpis elit, aliquam sit amet aliquam tincidunt, dapibus vel tellus. ',0,0,NULL,NULL,NULL,NULL,NULL),(203,'','','',0.0000,0,NULL,0,0,'',NULL,0,0,0,'\nMarketing and Sales\n','\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla massa lacus, vehicula eu interdum convallis, laoreet id lectus. Nunc turpis elit, aliquam sit amet aliquam tincidunt, dapibus vel tellus. ',0,0,NULL,NULL,NULL,NULL,NULL),(208,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(212,NULL,NULL,NULL,0.0000,0,NULL,1,0,NULL,NULL,0,1,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(213,NULL,NULL,'trusted, proxy, proxies, ip, cloudflare',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(214,NULL,NULL,'login, logout, user, agent, ip, change, security, session, invalidation, invalid',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(215,NULL,NULL,'changes, csv, report',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(216,NULL,NULL,'files, export, csv, bom, encoding',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL),(217,NULL,NULL,'password, requirements, code, key, login, registration, security, nist',0.0000,0,NULL,0,0,NULL,NULL,0,0,0,NULL,NULL,0,0,NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `CollectionSearchIndexAttributes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1305,11 +1306,11 @@ DROP TABLE IF EXISTS `CollectionVersionAreaStyles`;
 CREATE TABLE `CollectionVersionAreaStyles` (
   `cID` int(10) unsigned NOT NULL DEFAULT 0,
   `cvID` int(10) unsigned NOT NULL DEFAULT 0,
-  `arHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `arHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `issID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`cID`,`cvID`,`arHandle`),
   KEY `issID` (`issID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1318,7 +1319,7 @@ CREATE TABLE `CollectionVersionAreaStyles` (
 
 LOCK TABLES `CollectionVersionAreaStyles` WRITE;
 /*!40000 ALTER TABLE `CollectionVersionAreaStyles` DISABLE KEYS */;
-INSERT INTO `CollectionVersionAreaStyles` VALUES (1,1,'Page Footer',15),(1,2,'Page Footer',15),(178,1,'Page Footer',16);
+INSERT INTO `CollectionVersionAreaStyles` VALUES (1,1,'Page Footer',15),(1,2,'Page Footer',15),(1,3,'Page Footer',15),(178,1,'Page Footer',16);
 /*!40000 ALTER TABLE `CollectionVersionAreaStyles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1333,12 +1334,12 @@ CREATE TABLE `CollectionVersionBlockStyles` (
   `cID` int(10) unsigned NOT NULL DEFAULT 0,
   `cvID` int(10) unsigned NOT NULL DEFAULT 0,
   `bID` int(10) unsigned NOT NULL DEFAULT 0,
-  `arHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `arHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `issID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`cID`,`cvID`,`bID`,`arHandle`),
   KEY `bID` (`bID`,`issID`),
   KEY `issID` (`issID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1347,7 +1348,7 @@ CREATE TABLE `CollectionVersionBlockStyles` (
 
 LOCK TABLES `CollectionVersionBlockStyles` WRITE;
 /*!40000 ALTER TABLE `CollectionVersionBlockStyles` DISABLE KEYS */;
-INSERT INTO `CollectionVersionBlockStyles` VALUES (154,1,13,'Main',1),(194,1,18,'Sidebar',2),(195,1,18,'Sidebar',2),(196,1,18,'Sidebar',2),(197,1,18,'Sidebar',2),(194,1,19,'Sidebar',3),(195,1,19,'Sidebar',3),(196,1,19,'Sidebar',3),(197,1,19,'Sidebar',3),(201,1,25,'Sidebar',4),(202,1,25,'Sidebar',4),(203,1,25,'Sidebar',4),(182,1,44,'Main : 9',5),(183,1,44,'Main : 9',5),(182,1,45,'Main : 10',6),(183,1,45,'Main : 10',6),(182,1,46,'Main : 10',7),(183,1,46,'Main : 10',7),(179,1,48,'Main',8),(180,1,48,'Main',8),(1,1,60,'Main : 11',9),(1,2,60,'Main : 11',9),(1,1,61,'Main : 12',10),(1,2,61,'Main : 12',10),(1,1,62,'Main : 13',11),(1,2,62,'Main : 13',11),(1,1,64,'Main',12),(1,2,64,'Main',12),(1,1,71,'Main : 16',13),(1,2,71,'Main : 16',13),(1,1,72,'Main : 17',14),(1,2,72,'Main : 17',14),(181,1,105,'Main : 27',17),(181,1,106,'Main : 28',18),(181,1,109,'Main : 29',19),(181,1,110,'Main : 29',20),(181,1,111,'Main : 30',21),(181,1,112,'Main : 30',22),(181,1,113,'Main : 31',23),(181,1,114,'Main : 31',24),(181,1,117,'Main : 32',25),(185,1,132,'Main : 36',26),(198,1,150,'Main : 43',27),(199,1,165,'Main : 49',28);
+INSERT INTO `CollectionVersionBlockStyles` VALUES (154,1,13,'Main',1),(194,1,18,'Sidebar',2),(195,1,18,'Sidebar',2),(196,1,18,'Sidebar',2),(197,1,18,'Sidebar',2),(194,1,19,'Sidebar',3),(195,1,19,'Sidebar',3),(196,1,19,'Sidebar',3),(197,1,19,'Sidebar',3),(201,1,25,'Sidebar',4),(202,1,25,'Sidebar',4),(203,1,25,'Sidebar',4),(182,1,44,'Main : 9',5),(183,1,44,'Main : 9',5),(182,1,45,'Main : 10',6),(183,1,45,'Main : 10',6),(182,1,46,'Main : 10',7),(183,1,46,'Main : 10',7),(179,1,48,'Main',8),(180,1,48,'Main',8),(1,1,60,'Main : 11',9),(1,2,60,'Main : 11',9),(1,3,60,'Main : 11',9),(1,1,61,'Main : 12',10),(1,2,61,'Main : 12',10),(1,3,61,'Main : 12',10),(1,1,62,'Main : 13',11),(1,2,62,'Main : 13',11),(1,3,62,'Main : 13',11),(1,1,64,'Main',12),(1,2,64,'Main',12),(1,3,64,'Main',12),(1,1,71,'Main : 16',13),(1,2,71,'Main : 16',13),(1,3,71,'Main : 16',13),(1,1,72,'Main : 17',14),(1,2,72,'Main : 17',14),(1,3,72,'Main : 17',14),(181,1,105,'Main : 27',17),(181,1,106,'Main : 28',18),(181,1,109,'Main : 29',19),(181,1,110,'Main : 29',20),(181,1,111,'Main : 30',21),(181,1,112,'Main : 30',22),(181,1,113,'Main : 31',23),(181,1,114,'Main : 31',24),(181,1,117,'Main : 32',25),(185,1,132,'Main : 36',26),(198,1,150,'Main : 43',27),(199,1,165,'Main : 49',28);
 /*!40000 ALTER TABLE `CollectionVersionBlockStyles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1362,7 +1363,7 @@ CREATE TABLE `CollectionVersionBlocks` (
   `cID` int(10) unsigned NOT NULL DEFAULT 0,
   `cvID` int(10) unsigned NOT NULL DEFAULT 1,
   `bID` int(10) unsigned NOT NULL DEFAULT 0,
-  `arHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `arHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cbRelationID` int(10) unsigned DEFAULT 0,
   `cbDisplayOrder` int(10) unsigned NOT NULL DEFAULT 0,
   `isOriginal` tinyint(1) NOT NULL DEFAULT 0,
@@ -1374,7 +1375,7 @@ CREATE TABLE `CollectionVersionBlocks` (
   PRIMARY KEY (`cID`,`cvID`,`bID`,`arHandle`),
   KEY `bID` (`bID`,`cID`),
   KEY `cbRelationID` (`cbRelationID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1383,7 +1384,7 @@ CREATE TABLE `CollectionVersionBlocks` (
 
 LOCK TABLES `CollectionVersionBlocks` WRITE;
 /*!40000 ALTER TABLE `CollectionVersionBlocks` DISABLE KEYS */;
-INSERT INTO `CollectionVersionBlocks` VALUES (1,1,58,'Main',58,0,1,0,0,0,0,0),(1,1,59,'Main',59,1,1,0,0,0,0,0),(1,1,60,'Main : 11',60,0,1,0,0,0,0,0),(1,1,61,'Main : 12',61,0,1,0,0,0,0,0),(1,1,62,'Main : 13',62,0,1,0,0,0,0,0),(1,1,63,'Main',63,2,1,0,0,0,0,0),(1,1,64,'Main',64,3,1,0,0,0,0,0),(1,1,65,'Main',65,4,1,0,0,0,0,0),(1,1,66,'Main',66,5,1,0,0,0,0,0),(1,1,67,'Main',67,6,1,0,0,0,0,0),(1,1,68,'Main : 14',68,0,1,0,0,0,0,0),(1,1,69,'Main : 15',69,0,1,0,0,0,0,0),(1,1,70,'Main',70,7,1,0,0,0,0,0),(1,1,71,'Main : 16',71,0,1,0,0,0,0,0),(1,1,72,'Main : 17',72,0,1,0,0,0,0,0),(1,1,73,'Main : 18',73,0,1,0,0,0,0,0),(1,1,74,'Page Footer',74,0,1,0,0,0,0,0),(1,2,58,'Main',58,0,0,0,0,0,0,0),(1,2,59,'Main',59,1,0,0,0,0,0,0),(1,2,60,'Main : 11',60,0,0,0,0,0,0,0),(1,2,61,'Main : 12',61,0,0,0,0,0,0,0),(1,2,62,'Main : 13',62,0,0,0,0,0,0,0),(1,2,63,'Main',63,2,0,0,0,0,0,0),(1,2,64,'Main',64,3,0,0,0,0,0,0),(1,2,66,'Main',66,4,0,0,0,0,0,0),(1,2,67,'Main',67,5,0,0,0,0,0,0),(1,2,68,'Main : 14',68,0,0,0,0,0,0,0),(1,2,69,'Main : 15',69,0,0,0,0,0,0,0),(1,2,70,'Main',70,6,0,0,0,0,0,0),(1,2,71,'Main : 16',71,0,0,0,0,0,0,0),(1,2,72,'Main : 17',72,0,0,0,0,0,0,0),(1,2,73,'Main : 18',73,0,0,0,0,0,0,0),(1,2,74,'Page Footer',74,0,0,0,0,0,0,0),(154,1,1,'Main',1,0,1,0,0,0,0,0),(154,1,2,'Main',2,1,1,0,0,0,0,0),(154,1,3,'Main : 1',3,0,1,0,0,0,0,0),(154,1,4,'Main : 2',4,0,1,0,0,0,0,0),(154,1,5,'Main : 3',5,0,1,0,0,0,0,0),(154,1,6,'Main',6,2,1,0,0,0,0,0),(154,1,7,'Main : 4',7,0,1,0,0,0,0,0),(154,1,8,'Main : 5',8,0,1,0,0,0,0,0),(154,1,9,'Main',9,3,1,0,0,0,0,0),(154,1,10,'Main : 6',10,0,1,0,0,0,0,0),(154,1,11,'Main : 7',11,0,1,0,0,0,0,0),(154,1,12,'Main : 8',12,0,1,0,0,0,0,0),(154,1,13,'Main',13,4,1,0,0,0,0,0),(155,1,14,'Main',14,0,1,0,0,0,0,0),(168,1,15,'Main',15,0,1,0,0,0,0,0),(169,1,50,'Main',50,0,1,0,0,0,0,0),(170,1,51,'Main',51,0,1,0,0,0,0,0),(171,1,52,'Main',52,0,1,0,0,0,0,0),(172,1,53,'Main',53,0,1,0,0,0,0,0),(173,1,54,'Main',54,0,1,0,0,0,0,0),(174,1,55,'Main',55,0,1,0,0,1,0,0),(175,1,56,'Main',56,0,1,0,0,0,0,0),(176,1,57,'Main',57,0,1,0,0,0,0,0),(178,1,75,'Main',75,0,1,0,0,0,0,0),(178,1,76,'Main',76,1,1,0,0,0,0,0),(178,1,77,'Main : 19',77,0,1,0,0,0,0,0),(178,1,78,'Main : 20',78,0,1,0,0,0,0,0),(178,1,79,'Main : 21',79,0,1,0,0,0,0,0),(178,1,80,'Main : 22',80,0,1,0,0,0,0,0),(178,1,81,'Main',81,2,1,0,0,0,0,0),(178,1,82,'Main',82,3,1,0,0,0,0,0),(178,1,83,'Main : 23',83,0,1,0,0,0,0,0),(178,1,84,'Main : 24',84,0,1,0,0,0,0,0),(178,1,85,'Page Footer',85,0,1,0,0,0,0,0),(178,1,86,'Page Footer',86,1,1,0,0,0,0,0),(178,1,87,'Page Footer : 25',87,0,1,0,0,0,0,0),(178,1,88,'Page Footer : 25',88,1,1,0,0,0,0,0),(178,1,89,'Page Footer : 26',89,0,1,0,0,0,0,0),(178,1,90,'Page Footer : 26',90,1,1,0,0,0,0,0),(179,1,47,'Main',47,0,1,0,0,0,0,0),(179,1,48,'Main',48,1,1,0,0,0,0,0),(179,1,49,'Main',49,2,1,0,0,0,0,0),(180,1,47,'Main',47,0,0,0,0,0,0,0),(180,1,48,'Main',48,1,0,0,0,0,0,0),(180,1,49,'Main',49,2,0,0,0,0,0,0),(181,1,103,'Main',103,0,1,0,0,0,0,0),(181,1,104,'Main',104,1,1,0,0,0,0,0),(181,1,105,'Main : 27',105,0,1,0,0,0,0,0),(181,1,106,'Main : 28',106,0,1,0,0,0,0,0),(181,1,107,'Main',107,2,1,0,0,0,0,0),(181,1,108,'Main',108,3,1,0,0,0,0,0),(181,1,109,'Main : 29',109,0,1,0,0,0,0,0),(181,1,110,'Main : 29',110,1,1,0,0,0,0,0),(181,1,111,'Main : 30',111,0,1,0,0,0,0,0),(181,1,112,'Main : 30',112,1,1,0,0,0,0,0),(181,1,113,'Main : 31',113,0,1,0,0,0,0,0),(181,1,114,'Main : 31',114,1,1,0,0,0,0,0),(181,1,115,'Main',115,4,1,0,0,0,0,0),(181,1,116,'Main',116,5,1,0,0,0,0,0),(181,1,117,'Main : 32',117,0,1,0,0,0,0,0),(181,1,118,'Main : 33',118,0,1,0,0,0,0,0),(182,1,42,'Main',42,0,1,0,0,0,0,0),(182,1,43,'Main',43,1,1,0,0,0,0,0),(182,1,44,'Main : 9',44,0,1,0,0,0,0,0),(182,1,45,'Main : 10',45,0,1,0,0,0,0,0),(182,1,46,'Main : 10',46,1,1,0,0,0,0,0),(183,1,42,'Main',42,0,0,0,0,0,0,0),(183,1,43,'Main',43,1,0,0,0,0,0,0),(183,1,44,'Main : 9',44,0,0,0,0,0,0,0),(183,1,45,'Main : 10',45,0,0,0,0,0,0,0),(183,1,46,'Main : 10',46,1,0,0,0,0,0,0),(184,1,125,'Main',125,0,1,0,0,0,0,0),(185,1,126,'Main',126,0,1,0,0,0,0,0),(185,1,127,'Main',127,1,1,0,0,0,0,0),(185,1,128,'Main : 34',128,0,1,0,0,0,0,0),(185,1,129,'Main : 35',129,0,1,0,0,0,0,0),(185,1,130,'Main',130,2,1,0,0,0,0,0),(185,1,131,'Main',131,3,1,0,0,0,0,0),(185,1,132,'Main : 36',132,0,1,0,0,0,0,0),(185,1,133,'Main : 37',133,0,1,0,0,0,0,0),(185,1,134,'Main : 38',134,0,1,0,0,0,0,0),(185,1,135,'Main : 38',135,1,1,0,0,0,0,0),(186,1,136,'Main',136,0,1,0,0,0,0,0),(187,1,34,'Page Header',34,0,1,0,0,0,0,0),(187,1,35,'Page Header',35,1,1,0,0,0,0,0),(187,1,36,'Sidebar',36,0,1,0,0,0,0,0),(187,1,37,'Sidebar',37,1,1,0,0,0,0,0),(187,1,38,'Sidebar',38,2,1,0,0,0,0,0),(187,1,39,'Main',39,0,1,0,0,0,0,0),(187,1,40,'Page Footer',40,0,1,0,0,0,0,0),(187,1,41,'Page Footer',41,1,1,0,0,0,0,0),(188,1,34,'Page Header',34,0,0,0,0,0,0,0),(188,1,36,'Sidebar',36,0,0,0,0,0,0,0),(188,1,37,'Sidebar',37,1,0,0,0,0,0,0),(188,1,38,'Sidebar',38,2,0,0,0,0,0,0),(188,1,40,'Page Footer',40,0,0,0,0,0,0,0),(188,1,41,'Page Footer',41,1,0,0,0,0,0,0),(188,1,91,'Page Header',91,1,1,0,0,0,0,0),(188,1,92,'Main',92,0,1,0,0,0,0,0),(189,1,34,'Page Header',34,0,0,0,0,0,0,0),(189,1,36,'Sidebar',36,0,0,0,0,0,0,0),(189,1,37,'Sidebar',37,1,0,0,0,0,0,0),(189,1,38,'Sidebar',38,2,0,0,0,0,0,0),(189,1,40,'Page Footer',40,0,0,0,0,0,0,0),(189,1,41,'Page Footer',41,1,0,0,0,0,0,0),(189,1,93,'Page Header',93,1,1,0,0,0,0,0),(189,1,94,'Main',94,0,1,0,0,0,0,0),(190,1,34,'Page Header',34,0,0,0,0,0,0,0),(190,1,36,'Sidebar',36,0,0,0,0,0,0,0),(190,1,37,'Sidebar',37,1,0,0,0,0,0,0),(190,1,38,'Sidebar',38,2,0,0,0,0,0,0),(190,1,40,'Page Footer',40,0,0,0,0,0,0,0),(190,1,41,'Page Footer',41,1,0,0,0,0,0,0),(190,1,95,'Page Header',95,1,1,0,0,0,0,0),(190,1,96,'Main',96,0,1,0,0,0,0,0),(191,1,34,'Page Header',34,0,0,0,0,0,0,0),(191,1,36,'Sidebar',36,0,0,0,0,0,0,0),(191,1,37,'Sidebar',37,1,0,0,0,0,0,0),(191,1,38,'Sidebar',38,2,0,0,0,0,0,0),(191,1,40,'Page Footer',40,0,0,0,0,0,0,0),(191,1,41,'Page Footer',41,1,0,0,0,0,0,0),(191,1,97,'Page Header',97,1,1,0,0,0,0,0),(191,1,98,'Main',98,0,1,0,0,0,0,0),(192,1,34,'Page Header',34,0,0,0,0,0,0,0),(192,1,36,'Sidebar',36,0,0,0,0,0,0,0),(192,1,37,'Sidebar',37,1,0,0,0,0,0,0),(192,1,38,'Sidebar',38,2,0,0,0,0,0,0),(192,1,40,'Page Footer',40,0,0,0,0,0,0,0),(192,1,41,'Page Footer',41,1,0,0,0,0,0,0),(192,1,99,'Page Header',99,1,1,0,0,0,0,0),(192,1,100,'Main',100,0,1,0,0,0,0,0),(193,1,34,'Page Header',34,0,0,0,0,0,0,0),(193,1,36,'Sidebar',36,0,0,0,0,0,0,0),(193,1,37,'Sidebar',37,1,0,0,0,0,0,0),(193,1,38,'Sidebar',38,2,0,0,0,0,0,0),(193,1,40,'Page Footer',40,0,0,0,0,0,0,0),(193,1,41,'Page Footer',41,1,0,0,0,0,0,0),(193,1,101,'Page Header',101,1,1,0,0,0,0,0),(193,1,102,'Main',102,0,1,0,0,0,0,0),(194,1,16,'Main',16,0,1,0,0,0,0,0),(194,1,17,'Main',17,1,1,0,0,0,0,0),(194,1,18,'Sidebar',18,0,1,0,0,0,0,0),(194,1,19,'Sidebar',19,1,1,0,0,0,0,0),(194,1,20,'Sidebar',20,2,1,0,0,0,0,0),(194,1,21,'Sidebar',21,3,1,0,0,0,0,0),(194,1,22,'Page Footer',22,0,1,0,0,0,0,0),(194,1,23,'Page Footer',23,1,1,0,0,0,0,0),(195,1,16,'Main',16,0,0,0,0,0,0,0),(195,1,18,'Sidebar',18,0,0,0,0,0,0,0),(195,1,19,'Sidebar',19,1,0,0,0,0,0,0),(195,1,20,'Sidebar',20,2,0,0,0,0,0,0),(195,1,21,'Sidebar',21,3,0,0,0,0,0,0),(195,1,22,'Page Footer',22,0,0,0,0,0,0,0),(195,1,119,'Page Footer',119,1,1,0,0,0,0,0),(195,1,120,'Main',120,1,1,0,0,0,0,0),(196,1,16,'Main',16,0,0,0,0,0,0,0),(196,1,18,'Sidebar',18,0,0,0,0,0,0,0),(196,1,19,'Sidebar',19,1,0,0,0,0,0,0),(196,1,20,'Sidebar',20,2,0,0,0,0,0,0),(196,1,21,'Sidebar',21,3,0,0,0,0,0,0),(196,1,22,'Page Footer',22,0,0,0,0,0,0,0),(196,1,121,'Page Footer',121,1,1,0,0,0,0,0),(196,1,122,'Main',122,1,1,0,0,0,0,0),(197,1,16,'Main',16,0,0,0,0,0,0,0),(197,1,18,'Sidebar',18,0,0,0,0,0,0,0),(197,1,19,'Sidebar',19,1,0,0,0,0,0,0),(197,1,20,'Sidebar',20,2,0,0,0,0,0,0),(197,1,21,'Sidebar',21,3,0,0,0,0,0,0),(197,1,22,'Page Footer',22,0,0,0,0,0,0,0),(197,1,123,'Page Footer',123,1,1,0,0,0,0,0),(197,1,124,'Main',124,1,1,0,0,0,0,0),(198,1,137,'Main',137,0,1,0,0,0,0,0),(198,1,138,'Main',138,1,1,0,0,0,0,0),(198,1,139,'Main : 39',139,0,1,0,0,0,0,0),(198,1,140,'Main : 40',140,0,1,0,0,0,0,0),(198,1,141,'Main : 40',141,1,1,0,0,0,0,0),(198,1,142,'Main',142,2,1,0,0,0,0,0),(198,1,143,'Main',143,3,1,0,0,0,0,0),(198,1,144,'Main : 41',144,0,1,0,0,0,0,0),(198,1,145,'Main : 42',145,0,1,0,0,0,0,0),(198,1,146,'Main : 42',146,1,1,0,0,0,0,0),(198,1,147,'Main : 42',147,2,1,0,0,0,0,0),(198,1,148,'Main',148,4,1,0,0,0,0,0),(198,1,149,'Main',149,5,1,0,0,0,0,0),(198,1,150,'Main : 43',150,0,1,0,0,0,0,0),(198,1,151,'Main : 44',151,0,1,0,0,0,0,0),(199,1,152,'Main',152,0,1,0,0,0,0,0),(199,1,153,'Main',153,1,1,0,0,0,0,0),(199,1,154,'Main',154,2,1,0,0,0,0,0),(199,1,155,'Main',155,3,1,0,0,0,0,0),(199,1,156,'Main : 45',156,0,1,0,0,0,0,0),(199,1,157,'Main : 45',157,1,1,0,0,0,0,0),(199,1,158,'Main : 46',158,0,1,0,0,0,0,0),(199,1,159,'Main : 46',159,1,1,0,0,0,0,0),(199,1,160,'Main : 47',160,0,1,0,0,0,0,0),(199,1,161,'Main : 47',161,1,1,0,0,0,0,0),(199,1,162,'Main',162,4,1,0,0,0,0,0),(199,1,163,'Main',163,5,1,0,0,0,0,0),(199,1,164,'Main : 48',164,0,1,0,0,0,0,0),(199,1,165,'Main : 49',165,0,1,0,0,0,0,0),(200,1,168,'Main',168,0,1,0,0,0,0,0),(200,1,169,'Main',169,1,1,0,0,0,0,0),(201,1,24,'Page Header',24,0,1,0,0,0,0,0),(201,1,25,'Sidebar',25,0,1,0,0,0,0,0),(201,1,26,'Main',26,0,1,0,0,0,0,0),(201,1,27,'Main',27,1,1,0,0,0,0,0),(201,1,28,'Main',28,2,1,0,0,0,0,0),(201,1,29,'Main',29,3,1,0,0,0,0,0),(201,1,30,'Main',30,4,1,0,0,0,0,0),(201,1,31,'Main',31,5,1,0,0,0,0,0),(201,1,32,'Main',32,6,1,0,0,0,0,0),(201,1,33,'Main',33,7,1,0,0,0,0,0),(202,1,24,'Page Header',24,0,0,0,0,0,0,0),(202,1,25,'Sidebar',25,0,0,0,0,0,0,0),(202,1,26,'Main',26,0,0,0,0,0,0,0),(202,1,27,'Main',27,1,0,0,0,0,0,0),(202,1,28,'Main',28,2,0,0,0,0,0,0),(202,1,29,'Main',29,3,0,0,0,0,0,0),(202,1,30,'Main',30,4,0,0,0,0,0,0),(202,1,31,'Main',31,5,0,0,0,0,0,0),(202,1,33,'Main',33,7,0,0,0,0,0,0),(202,1,166,'Main',166,6,1,0,0,0,0,0),(203,1,24,'Page Header',24,0,0,0,0,0,0,0),(203,1,25,'Sidebar',25,0,0,0,0,0,0,0),(203,1,26,'Main',26,0,0,0,0,0,0,0),(203,1,27,'Main',27,1,0,0,0,0,0,0),(203,1,28,'Main',28,2,0,0,0,0,0,0),(203,1,29,'Main',29,3,0,0,0,0,0,0),(203,1,30,'Main',30,4,0,0,0,0,0,0),(203,1,31,'Main',31,5,0,0,0,0,0,0),(203,1,33,'Main',33,7,0,0,0,0,0,0),(203,1,167,'Main',167,6,1,0,0,0,0,0),(207,3,172,'Main',170,0,1,0,0,0,0,0),(207,4,179,'Main',170,0,1,0,0,0,0,0),(207,5,181,'Main',170,0,1,0,0,0,0,0),(208,3,173,'Main',171,0,1,0,0,0,0,0),(208,4,175,'Main',171,0,1,0,0,0,0,0),(208,5,176,'Main',171,0,1,0,0,0,0,0),(208,6,180,'Main',171,0,1,0,0,0,0,0);
+INSERT INTO `CollectionVersionBlocks` VALUES (1,1,58,'Main',58,0,1,0,0,0,0,0),(1,1,59,'Main',59,1,1,0,0,0,0,0),(1,1,60,'Main : 11',60,0,1,0,0,0,0,0),(1,1,61,'Main : 12',61,0,1,0,0,0,0,0),(1,1,62,'Main : 13',62,0,1,0,0,0,0,0),(1,1,63,'Main',63,2,1,0,0,0,0,0),(1,1,64,'Main',64,3,1,0,0,0,0,0),(1,1,65,'Main',65,4,1,0,0,0,0,0),(1,1,66,'Main',66,5,1,0,0,0,0,0),(1,1,67,'Main',67,6,1,0,0,0,0,0),(1,1,68,'Main : 14',68,0,1,0,0,0,0,0),(1,1,69,'Main : 15',69,0,1,0,0,0,0,0),(1,1,70,'Main',70,7,1,0,0,0,0,0),(1,1,71,'Main : 16',71,0,1,0,0,0,0,0),(1,1,72,'Main : 17',72,0,1,0,0,0,0,0),(1,1,73,'Main : 18',73,0,1,0,0,0,0,0),(1,1,74,'Page Footer',74,0,1,0,0,0,0,0),(1,2,58,'Main',58,0,0,0,0,0,0,0),(1,2,59,'Main',59,1,0,0,0,0,0,0),(1,2,60,'Main : 11',60,0,0,0,0,0,0,0),(1,2,61,'Main : 12',61,0,0,0,0,0,0,0),(1,2,62,'Main : 13',62,0,0,0,0,0,0,0),(1,2,63,'Main',63,2,0,0,0,0,0,0),(1,2,64,'Main',64,3,0,0,0,0,0,0),(1,2,66,'Main',66,4,0,0,0,0,0,0),(1,2,67,'Main',67,5,0,0,0,0,0,0),(1,2,68,'Main : 14',68,0,0,0,0,0,0,0),(1,2,69,'Main : 15',69,0,0,0,0,0,0,0),(1,2,70,'Main',70,6,0,0,0,0,0,0),(1,2,71,'Main : 16',71,0,0,0,0,0,0,0),(1,2,72,'Main : 17',72,0,0,0,0,0,0,0),(1,2,73,'Main : 18',73,0,0,0,0,0,0,0),(1,2,74,'Page Footer',74,0,0,0,0,0,0,0),(1,3,58,'Main',58,0,0,0,0,0,0,0),(1,3,59,'Main',59,2,0,0,0,0,0,0),(1,3,60,'Main : 11',60,0,0,0,0,0,0,0),(1,3,61,'Main : 12',61,0,0,0,0,0,0,0),(1,3,62,'Main : 13',62,0,0,0,0,0,0,0),(1,3,63,'Main',63,3,0,0,0,0,0,0),(1,3,64,'Main',64,4,0,0,0,0,0,0),(1,3,66,'Main',66,5,0,0,0,0,0,0),(1,3,67,'Main',67,6,0,0,0,0,0,0),(1,3,68,'Main : 14',68,0,0,0,0,0,0,0),(1,3,69,'Main : 15',69,0,0,0,0,0,0,0),(1,3,70,'Main',70,7,0,0,0,0,0,0),(1,3,71,'Main : 16',71,0,0,0,0,0,0,0),(1,3,72,'Main : 17',72,0,0,0,0,0,0,0),(1,3,73,'Main : 18',73,0,0,0,0,0,0,0),(1,3,74,'Page Footer',74,0,0,0,0,0,0,0),(1,3,182,'Main',172,1,1,0,0,0,0,0),(154,1,1,'Main',1,0,1,0,0,0,0,0),(154,1,2,'Main',2,1,1,0,0,0,0,0),(154,1,3,'Main : 1',3,0,1,0,0,0,0,0),(154,1,4,'Main : 2',4,0,1,0,0,0,0,0),(154,1,5,'Main : 3',5,0,1,0,0,0,0,0),(154,1,6,'Main',6,2,1,0,0,0,0,0),(154,1,7,'Main : 4',7,0,1,0,0,0,0,0),(154,1,8,'Main : 5',8,0,1,0,0,0,0,0),(154,1,9,'Main',9,3,1,0,0,0,0,0),(154,1,10,'Main : 6',10,0,1,0,0,0,0,0),(154,1,11,'Main : 7',11,0,1,0,0,0,0,0),(154,1,12,'Main : 8',12,0,1,0,0,0,0,0),(154,1,13,'Main',13,4,1,0,0,0,0,0),(155,1,14,'Main',14,0,1,0,0,0,0,0),(168,1,15,'Main',15,0,1,0,0,0,0,0),(169,1,50,'Main',50,0,1,0,0,0,0,0),(170,1,51,'Main',51,0,1,0,0,0,0,0),(171,1,52,'Main',52,0,1,0,0,0,0,0),(172,1,53,'Main',53,0,1,0,0,0,0,0),(173,1,54,'Main',54,0,1,0,0,0,0,0),(174,1,55,'Main',55,0,1,0,0,1,0,0),(175,1,56,'Main',56,0,1,0,0,0,0,0),(176,1,57,'Main',57,0,1,0,0,0,0,0),(178,1,75,'Main',75,0,1,0,0,0,0,0),(178,1,76,'Main',76,1,1,0,0,0,0,0),(178,1,77,'Main : 19',77,0,1,0,0,0,0,0),(178,1,78,'Main : 20',78,0,1,0,0,0,0,0),(178,1,79,'Main : 21',79,0,1,0,0,0,0,0),(178,1,80,'Main : 22',80,0,1,0,0,0,0,0),(178,1,81,'Main',81,2,1,0,0,0,0,0),(178,1,82,'Main',82,3,1,0,0,0,0,0),(178,1,83,'Main : 23',83,0,1,0,0,0,0,0),(178,1,84,'Main : 24',84,0,1,0,0,0,0,0),(178,1,85,'Page Footer',85,0,1,0,0,0,0,0),(178,1,86,'Page Footer',86,1,1,0,0,0,0,0),(178,1,87,'Page Footer : 25',87,0,1,0,0,0,0,0),(178,1,88,'Page Footer : 25',88,1,1,0,0,0,0,0),(178,1,89,'Page Footer : 26',89,0,1,0,0,0,0,0),(178,1,90,'Page Footer : 26',90,1,1,0,0,0,0,0),(179,1,47,'Main',47,0,1,0,0,0,0,0),(179,1,48,'Main',48,1,1,0,0,0,0,0),(179,1,49,'Main',49,2,1,0,0,0,0,0),(180,1,47,'Main',47,0,0,0,0,0,0,0),(180,1,48,'Main',48,1,0,0,0,0,0,0),(180,1,49,'Main',49,2,0,0,0,0,0,0),(181,1,103,'Main',103,0,1,0,0,0,0,0),(181,1,104,'Main',104,1,1,0,0,0,0,0),(181,1,105,'Main : 27',105,0,1,0,0,0,0,0),(181,1,106,'Main : 28',106,0,1,0,0,0,0,0),(181,1,107,'Main',107,2,1,0,0,0,0,0),(181,1,108,'Main',108,3,1,0,0,0,0,0),(181,1,109,'Main : 29',109,0,1,0,0,0,0,0),(181,1,110,'Main : 29',110,1,1,0,0,0,0,0),(181,1,111,'Main : 30',111,0,1,0,0,0,0,0),(181,1,112,'Main : 30',112,1,1,0,0,0,0,0),(181,1,113,'Main : 31',113,0,1,0,0,0,0,0),(181,1,114,'Main : 31',114,1,1,0,0,0,0,0),(181,1,115,'Main',115,4,1,0,0,0,0,0),(181,1,116,'Main',116,5,1,0,0,0,0,0),(181,1,117,'Main : 32',117,0,1,0,0,0,0,0),(181,1,118,'Main : 33',118,0,1,0,0,0,0,0),(182,1,42,'Main',42,0,1,0,0,0,0,0),(182,1,43,'Main',43,1,1,0,0,0,0,0),(182,1,44,'Main : 9',44,0,1,0,0,0,0,0),(182,1,45,'Main : 10',45,0,1,0,0,0,0,0),(182,1,46,'Main : 10',46,1,1,0,0,0,0,0),(183,1,42,'Main',42,0,0,0,0,0,0,0),(183,1,43,'Main',43,1,0,0,0,0,0,0),(183,1,44,'Main : 9',44,0,0,0,0,0,0,0),(183,1,45,'Main : 10',45,0,0,0,0,0,0,0),(183,1,46,'Main : 10',46,1,0,0,0,0,0,0),(184,1,125,'Main',125,0,1,0,0,0,0,0),(185,1,126,'Main',126,0,1,0,0,0,0,0),(185,1,127,'Main',127,1,1,0,0,0,0,0),(185,1,128,'Main : 34',128,0,1,0,0,0,0,0),(185,1,129,'Main : 35',129,0,1,0,0,0,0,0),(185,1,130,'Main',130,2,1,0,0,0,0,0),(185,1,131,'Main',131,3,1,0,0,0,0,0),(185,1,132,'Main : 36',132,0,1,0,0,0,0,0),(185,1,133,'Main : 37',133,0,1,0,0,0,0,0),(185,1,134,'Main : 38',134,0,1,0,0,0,0,0),(185,1,135,'Main : 38',135,1,1,0,0,0,0,0),(186,1,136,'Main',136,0,1,0,0,0,0,0),(187,1,34,'Page Header',34,0,1,0,0,0,0,0),(187,1,35,'Page Header',35,1,1,0,0,0,0,0),(187,1,36,'Sidebar',36,0,1,0,0,0,0,0),(187,1,37,'Sidebar',37,1,1,0,0,0,0,0),(187,1,38,'Sidebar',38,2,1,0,0,0,0,0),(187,1,39,'Main',39,0,1,0,0,0,0,0),(187,1,40,'Page Footer',40,0,1,0,0,0,0,0),(187,1,41,'Page Footer',41,1,1,0,0,0,0,0),(188,1,34,'Page Header',34,0,0,0,0,0,0,0),(188,1,36,'Sidebar',36,0,0,0,0,0,0,0),(188,1,37,'Sidebar',37,1,0,0,0,0,0,0),(188,1,38,'Sidebar',38,2,0,0,0,0,0,0),(188,1,40,'Page Footer',40,0,0,0,0,0,0,0),(188,1,41,'Page Footer',41,1,0,0,0,0,0,0),(188,1,91,'Page Header',91,1,1,0,0,0,0,0),(188,1,92,'Main',92,0,1,0,0,0,0,0),(189,1,34,'Page Header',34,0,0,0,0,0,0,0),(189,1,36,'Sidebar',36,0,0,0,0,0,0,0),(189,1,37,'Sidebar',37,1,0,0,0,0,0,0),(189,1,38,'Sidebar',38,2,0,0,0,0,0,0),(189,1,40,'Page Footer',40,0,0,0,0,0,0,0),(189,1,41,'Page Footer',41,1,0,0,0,0,0,0),(189,1,93,'Page Header',93,1,1,0,0,0,0,0),(189,1,94,'Main',94,0,1,0,0,0,0,0),(190,1,34,'Page Header',34,0,0,0,0,0,0,0),(190,1,36,'Sidebar',36,0,0,0,0,0,0,0),(190,1,37,'Sidebar',37,1,0,0,0,0,0,0),(190,1,38,'Sidebar',38,2,0,0,0,0,0,0),(190,1,40,'Page Footer',40,0,0,0,0,0,0,0),(190,1,41,'Page Footer',41,1,0,0,0,0,0,0),(190,1,95,'Page Header',95,1,1,0,0,0,0,0),(190,1,96,'Main',96,0,1,0,0,0,0,0),(191,1,34,'Page Header',34,0,0,0,0,0,0,0),(191,1,36,'Sidebar',36,0,0,0,0,0,0,0),(191,1,37,'Sidebar',37,1,0,0,0,0,0,0),(191,1,38,'Sidebar',38,2,0,0,0,0,0,0),(191,1,40,'Page Footer',40,0,0,0,0,0,0,0),(191,1,41,'Page Footer',41,1,0,0,0,0,0,0),(191,1,97,'Page Header',97,1,1,0,0,0,0,0),(191,1,98,'Main',98,0,1,0,0,0,0,0),(192,1,34,'Page Header',34,0,0,0,0,0,0,0),(192,1,36,'Sidebar',36,0,0,0,0,0,0,0),(192,1,37,'Sidebar',37,1,0,0,0,0,0,0),(192,1,38,'Sidebar',38,2,0,0,0,0,0,0),(192,1,40,'Page Footer',40,0,0,0,0,0,0,0),(192,1,41,'Page Footer',41,1,0,0,0,0,0,0),(192,1,99,'Page Header',99,1,1,0,0,0,0,0),(192,1,100,'Main',100,0,1,0,0,0,0,0),(193,1,34,'Page Header',34,0,0,0,0,0,0,0),(193,1,36,'Sidebar',36,0,0,0,0,0,0,0),(193,1,37,'Sidebar',37,1,0,0,0,0,0,0),(193,1,38,'Sidebar',38,2,0,0,0,0,0,0),(193,1,40,'Page Footer',40,0,0,0,0,0,0,0),(193,1,41,'Page Footer',41,1,0,0,0,0,0,0),(193,1,101,'Page Header',101,1,1,0,0,0,0,0),(193,1,102,'Main',102,0,1,0,0,0,0,0),(194,1,16,'Main',16,0,1,0,0,0,0,0),(194,1,17,'Main',17,1,1,0,0,0,0,0),(194,1,18,'Sidebar',18,0,1,0,0,0,0,0),(194,1,19,'Sidebar',19,1,1,0,0,0,0,0),(194,1,20,'Sidebar',20,2,1,0,0,0,0,0),(194,1,21,'Sidebar',21,3,1,0,0,0,0,0),(194,1,22,'Page Footer',22,0,1,0,0,0,0,0),(194,1,23,'Page Footer',23,1,1,0,0,0,0,0),(195,1,16,'Main',16,0,0,0,0,0,0,0),(195,1,18,'Sidebar',18,0,0,0,0,0,0,0),(195,1,19,'Sidebar',19,1,0,0,0,0,0,0),(195,1,20,'Sidebar',20,2,0,0,0,0,0,0),(195,1,21,'Sidebar',21,3,0,0,0,0,0,0),(195,1,22,'Page Footer',22,0,0,0,0,0,0,0),(195,1,119,'Page Footer',119,1,1,0,0,0,0,0),(195,1,120,'Main',120,1,1,0,0,0,0,0),(196,1,16,'Main',16,0,0,0,0,0,0,0),(196,1,18,'Sidebar',18,0,0,0,0,0,0,0),(196,1,19,'Sidebar',19,1,0,0,0,0,0,0),(196,1,20,'Sidebar',20,2,0,0,0,0,0,0),(196,1,21,'Sidebar',21,3,0,0,0,0,0,0),(196,1,22,'Page Footer',22,0,0,0,0,0,0,0),(196,1,121,'Page Footer',121,1,1,0,0,0,0,0),(196,1,122,'Main',122,1,1,0,0,0,0,0),(197,1,16,'Main',16,0,0,0,0,0,0,0),(197,1,18,'Sidebar',18,0,0,0,0,0,0,0),(197,1,19,'Sidebar',19,1,0,0,0,0,0,0),(197,1,20,'Sidebar',20,2,0,0,0,0,0,0),(197,1,21,'Sidebar',21,3,0,0,0,0,0,0),(197,1,22,'Page Footer',22,0,0,0,0,0,0,0),(197,1,123,'Page Footer',123,1,1,0,0,0,0,0),(197,1,124,'Main',124,1,1,0,0,0,0,0),(198,1,137,'Main',137,0,1,0,0,0,0,0),(198,1,138,'Main',138,1,1,0,0,0,0,0),(198,1,139,'Main : 39',139,0,1,0,0,0,0,0),(198,1,140,'Main : 40',140,0,1,0,0,0,0,0),(198,1,141,'Main : 40',141,1,1,0,0,0,0,0),(198,1,142,'Main',142,2,1,0,0,0,0,0),(198,1,143,'Main',143,3,1,0,0,0,0,0),(198,1,144,'Main : 41',144,0,1,0,0,0,0,0),(198,1,145,'Main : 42',145,0,1,0,0,0,0,0),(198,1,146,'Main : 42',146,1,1,0,0,0,0,0),(198,1,147,'Main : 42',147,2,1,0,0,0,0,0),(198,1,148,'Main',148,4,1,0,0,0,0,0),(198,1,149,'Main',149,5,1,0,0,0,0,0),(198,1,150,'Main : 43',150,0,1,0,0,0,0,0),(198,1,151,'Main : 44',151,0,1,0,0,0,0,0),(199,1,152,'Main',152,0,1,0,0,0,0,0),(199,1,153,'Main',153,1,1,0,0,0,0,0),(199,1,154,'Main',154,2,1,0,0,0,0,0),(199,1,155,'Main',155,3,1,0,0,0,0,0),(199,1,156,'Main : 45',156,0,1,0,0,0,0,0),(199,1,157,'Main : 45',157,1,1,0,0,0,0,0),(199,1,158,'Main : 46',158,0,1,0,0,0,0,0),(199,1,159,'Main : 46',159,1,1,0,0,0,0,0),(199,1,160,'Main : 47',160,0,1,0,0,0,0,0),(199,1,161,'Main : 47',161,1,1,0,0,0,0,0),(199,1,162,'Main',162,4,1,0,0,0,0,0),(199,1,163,'Main',163,5,1,0,0,0,0,0),(199,1,164,'Main : 48',164,0,1,0,0,0,0,0),(199,1,165,'Main : 49',165,0,1,0,0,0,0,0),(200,1,168,'Main',168,0,1,0,0,0,0,0),(200,1,169,'Main',169,1,1,0,0,0,0,0),(201,1,24,'Page Header',24,0,1,0,0,0,0,0),(201,1,25,'Sidebar',25,0,1,0,0,0,0,0),(201,1,26,'Main',26,0,1,0,0,0,0,0),(201,1,27,'Main',27,1,1,0,0,0,0,0),(201,1,28,'Main',28,2,1,0,0,0,0,0),(201,1,29,'Main',29,3,1,0,0,0,0,0),(201,1,30,'Main',30,4,1,0,0,0,0,0),(201,1,31,'Main',31,5,1,0,0,0,0,0),(201,1,32,'Main',32,6,1,0,0,0,0,0),(201,1,33,'Main',33,7,1,0,0,0,0,0),(202,1,24,'Page Header',24,0,0,0,0,0,0,0),(202,1,25,'Sidebar',25,0,0,0,0,0,0,0),(202,1,26,'Main',26,0,0,0,0,0,0,0),(202,1,27,'Main',27,1,0,0,0,0,0,0),(202,1,28,'Main',28,2,0,0,0,0,0,0),(202,1,29,'Main',29,3,0,0,0,0,0,0),(202,1,30,'Main',30,4,0,0,0,0,0,0),(202,1,31,'Main',31,5,0,0,0,0,0,0),(202,1,33,'Main',33,7,0,0,0,0,0,0),(202,1,166,'Main',166,6,1,0,0,0,0,0),(203,1,24,'Page Header',24,0,0,0,0,0,0,0),(203,1,25,'Sidebar',25,0,0,0,0,0,0,0),(203,1,26,'Main',26,0,0,0,0,0,0,0),(203,1,27,'Main',27,1,0,0,0,0,0,0),(203,1,28,'Main',28,2,0,0,0,0,0,0),(203,1,29,'Main',29,3,0,0,0,0,0,0),(203,1,30,'Main',30,4,0,0,0,0,0,0),(203,1,31,'Main',31,5,0,0,0,0,0,0),(203,1,33,'Main',33,7,0,0,0,0,0,0),(203,1,167,'Main',167,6,1,0,0,0,0,0),(207,3,172,'Main',170,0,1,0,0,0,0,0),(207,4,179,'Main',170,0,1,0,0,0,0,0),(207,5,181,'Main',170,0,1,0,0,0,0,0),(207,6,183,'Main',170,0,1,0,0,0,0,0),(208,3,173,'Main',171,0,1,0,0,0,0,0),(208,4,175,'Main',171,0,1,0,0,0,0,0),(208,5,176,'Main',171,0,1,0,0,0,0,0),(208,6,180,'Main',171,0,1,0,0,0,0,0);
 /*!40000 ALTER TABLE `CollectionVersionBlocks` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1398,14 +1399,14 @@ CREATE TABLE `CollectionVersionBlocksCacheSettings` (
   `cID` int(10) unsigned NOT NULL DEFAULT 0,
   `cvID` int(10) unsigned NOT NULL DEFAULT 1,
   `bID` int(10) unsigned NOT NULL DEFAULT 0,
-  `arHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `arHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `btCacheBlockOutput` tinyint(1) NOT NULL DEFAULT 0,
   `btCacheBlockOutputOnPost` tinyint(1) NOT NULL DEFAULT 0,
   `btCacheBlockOutputForRegisteredUsers` tinyint(1) NOT NULL DEFAULT 0,
   `btCacheBlockOutputLifetime` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`cID`,`cvID`,`bID`,`arHandle`),
   KEY `bID` (`bID`,`cID`,`cvID`,`arHandle`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1429,12 +1430,12 @@ CREATE TABLE `CollectionVersionBlocksOutputCache` (
   `cID` int(10) unsigned NOT NULL DEFAULT 0,
   `cvID` int(10) unsigned NOT NULL DEFAULT 1,
   `bID` int(10) unsigned NOT NULL DEFAULT 0,
-  `arHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `btCachedBlockOutput` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `arHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `btCachedBlockOutput` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `btCachedBlockOutputExpires` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`cID`,`cvID`,`bID`,`arHandle`),
   KEY `bID` (`bID`,`cID`,`cvID`,`arHandle`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1459,7 +1460,7 @@ CREATE TABLE `CollectionVersionFeatureAssignments` (
   `faID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`cID`,`cvID`,`faID`),
   KEY `faID` (`faID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1485,7 +1486,7 @@ CREATE TABLE `CollectionVersionRelatedEdits` (
   `cRelationID` int(10) unsigned NOT NULL DEFAULT 0,
   `cvRelationID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`cID`,`cvID`,`cRelationID`,`cvRelationID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1509,13 +1510,13 @@ CREATE TABLE `CollectionVersionThemeCustomStyles` (
   `cvID` int(10) unsigned NOT NULL DEFAULT 1,
   `pThemeID` int(10) unsigned NOT NULL DEFAULT 0,
   `scvlID` int(10) unsigned DEFAULT 0,
-  `preset` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `preset` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `sccRecordID` int(10) unsigned DEFAULT 0,
   PRIMARY KEY (`cID`,`cvID`,`pThemeID`),
   KEY `pThemeID` (`pThemeID`),
   KEY `scvlID` (`scvlID`),
   KEY `sccRecordID` (`sccRecordID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1537,12 +1538,12 @@ DROP TABLE IF EXISTS `CollectionVersions`;
 CREATE TABLE `CollectionVersions` (
   `cID` int(10) unsigned NOT NULL DEFAULT 0,
   `cvID` int(10) unsigned NOT NULL DEFAULT 1,
-  `cvName` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `cvHandle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `cvDescription` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cvName` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cvHandle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cvDescription` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cvDatePublic` datetime DEFAULT NULL,
   `cvDateCreated` datetime NOT NULL DEFAULT '1000-01-01 00:00:00',
-  `cvComments` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cvComments` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cvIsApproved` tinyint(1) NOT NULL DEFAULT 0,
   `cvIsNew` tinyint(1) NOT NULL DEFAULT 0,
   `cvAuthorUID` int(10) unsigned DEFAULT NULL,
@@ -1552,13 +1553,14 @@ CREATE TABLE `CollectionVersions` (
   `cvActivateDatetime` datetime DEFAULT NULL,
   `cvPublishDate` datetime DEFAULT NULL,
   `cvPublishEndDate` datetime DEFAULT NULL,
+  `cvDateApproved` datetime DEFAULT NULL,
   PRIMARY KEY (`cID`,`cvID`),
   KEY `cvIsApproved` (`cvIsApproved`),
   KEY `cvAuthorUID` (`cvAuthorUID`),
   KEY `cvApproverUID` (`cvApproverUID`),
   KEY `pThemeID` (`pThemeID`),
   KEY `pTemplateID` (`pTemplateID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1567,7 +1569,7 @@ CREATE TABLE `CollectionVersions` (
 
 LOCK TABLES `CollectionVersions` WRITE;
 /*!40000 ALTER TABLE `CollectionVersions` DISABLE KEYS */;
-INSERT INTO `CollectionVersions` VALUES (1,1,'Home','',NULL,'2018-04-21 09:48:46','2018-04-21 09:48:46','Initial Version',0,0,1,NULL,0,5,NULL,NULL,NULL),(1,2,'Home','',NULL,'2018-04-21 09:48:46','2018-04-21 10:29:33','Version 2',1,0,1,1,0,5,NULL,NULL,NULL),(2,1,'Dashboard','dashboard','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(3,1,'Sitemap','sitemap','Whole world at a glance.','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(4,1,'Full Sitemap','full','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(5,1,'Flat View','explore','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(6,1,'Page Search','search','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(7,1,'Files','files','All documents and images.','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(8,1,'File Manager','search','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(9,1,'Attributes','attributes','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(10,1,'File Sets','sets','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(11,1,'Add File Set','add_set','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(12,1,'Members','users','Add and manage the user accounts and groups on your website.','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(13,1,'Search Users','search','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(14,1,'User Groups','groups','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(15,1,'Attributes','attributes','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(16,1,'Add User','add','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(17,1,'Add Group','add_group','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(18,1,'Move Multiple Groups','bulkupdate','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(19,1,'Group Sets','group_sets','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(20,1,'Community Points','points',NULL,'2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(21,1,'Assign Points','assign',NULL,'2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(22,1,'Actions','actions',NULL,'2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(23,1,'Express','express','Express Data Objects','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(24,1,'View Entries','entries','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(25,1,'Reports','reports','Get data from forms and logs.','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(26,1,'Form Results','forms','Get submission data.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(27,1,'Form Results','legacy','Get submission data.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(28,1,'Surveys','surveys','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(29,1,'Logs','logs','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(30,1,'Pages & Themes','pages','Reskin your site.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(31,1,'Themes','themes','Reskin your site.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(32,1,'Inspect','inspect','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(33,1,'Page Types','types','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(34,1,'Organize Page Type Order','organize','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(35,1,'Add Page Type','add','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(36,1,'Compose Form','form','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(37,1,'Defaults and Output','output','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(38,1,'Page Type Attributes','attributes','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(39,1,'Page Type Permissions','permissions','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(40,1,'Page Templates','templates','Form factors for pages in your site.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(41,1,'Add Page Template','add','Add page templates to your site.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(42,1,'Attributes','attributes','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(43,1,'Single Pages','single','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(44,1,'RSS Feeds','feeds','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(45,1,'Calendar & Events','calendar','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(46,1,'View Calendar','events','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(47,1,'Event List','event_list','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(48,1,'Add Calendar','add','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(49,1,'Permissions','permissions','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(50,1,'Attributes','attributes','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(51,1,'Conversations','conversations','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(52,1,'Messages','messages','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(53,1,'Stacks & Blocks','blocks','Manage sitewide content and administer block types.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(54,1,'Stacks & Global Areas','stacks','Share content across your site.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(55,1,'Block & Stack Permissions','permissions','Control who can add blocks and stacks on your site.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(56,1,'Stack List','list','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(57,1,'Block Types','types','Manage the installed block types in your site.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(58,1,'Extend concrete5','extend','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(59,1,'Add Functionality','install','Install add-ons & themes.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(60,1,'Update Add-Ons','update','Update your installed packages.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(61,1,'Connect to the Community','connect','Connect to the concrete5 community.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(62,1,'Get More Themes','themes','Download themes from concrete5.org.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(63,1,'Get More Add-Ons','addons','Download add-ons from concrete5.org.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(64,1,'System & Settings','system','Secure and setup your site.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(65,1,'Basics','basics','Basic information about your website.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(66,1,'Name & Attributes','name','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(67,1,'Accessibility','accessibility','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(68,1,'Social Links','social','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(69,1,'Bookmark Icons','icons','Bookmark icon and mobile home screen icon setup.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(70,1,'Rich Text Editor','editor','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(71,1,'Languages','multilingual','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(72,1,'Update Languages','update','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(73,1,'Time Zone','timezone','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(74,1,'Custom Attributes','attributes','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(75,1,'Reset Edit Mode','reset_edit_mode','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(76,1,'Express','express','Express','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(77,1,'Data Objects','entities','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(78,1,'Attributes','attributes','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(79,1,'Associations','associations','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(80,1,'Forms','forms','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(81,1,'Customize Search','customize_search','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(82,1,'Customize Search','order_entries','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(83,1,'Custom Entry Locations','entries','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(84,1,'Multilingual','multilingual','Run your site in multiple languages.','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(85,1,'Multilingual Setup','setup','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(86,1,'Copy Languages','copy','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(87,1,'Page Report','page_report','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(88,1,'Translate Site Interface','translate_interface','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(89,1,'SEO & Statistics','seo','Enable pretty URLs and tracking codes.','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(90,1,'URLs and Redirection','urls','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(91,1,'Bulk SEO Updater','bulk','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(92,1,'Tracking Codes','codes','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(93,1,'Excluded URL Word List','excluded','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(94,1,'Search Index','searchindex','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(95,1,'Files','files','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(96,1,'Allowed File Types','filetypes','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(97,1,'File Manager Permissions','permissions','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(98,1,'Thumbnails','thumbnails','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(99,1,'Thumbnail Options','options','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(100,1,'Image Options','image_uploading','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(101,1,'File Storage Locations','storage','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(102,1,'Optimization','optimization','Keep your site running well.','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(103,1,'Cache & Speed Settings','cache','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(104,1,'Clear Cache','clearcache','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(105,1,'Automated Jobs','jobs','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(106,1,'Database Query Log','query_log','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(107,1,'Permissions & Access','permissions','Control who sees and edits your site.','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(108,1,'Site Access','site','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(109,1,'Task Permissions','tasks','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(110,1,'User Permissions','users','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(111,1,'Advanced Permissions','advanced','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(112,1,'Workflows','workflows','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(113,1,'IP Blacklist','blacklist','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(114,1,'IP Range','range','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(115,1,'Captcha Setup','captcha','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(116,1,'Spam Control','antispam','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(117,1,'Maintenance Mode','maintenance','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(118,1,'Login & Registration','registration','Change login behaviors and setup public profiles.','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(119,1,'Public Registration','open','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(120,1,'Login Destination','postlogin','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(121,1,'Public Profiles','profiles','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(122,1,'Authentication Types','authentication','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(123,1,'Global Password Reset','global_password_reset','Signs out all users, resets all passwords and forces users to choose a new one','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(124,1,'Notification Settings','notification','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(125,1,'Email','mail','Control how your site send and processes mail.','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(126,1,'SMTP Method','method','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(127,1,'Test Mail Settings','test','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(128,1,'Email Importers','importers','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(129,1,'System Email Addresses','addresses','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(130,1,'Calendar','calendar','Manage your calendar settings','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(131,1,'General Settings','settings','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(132,1,'Color Settings','colors','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(133,1,'Permissions','permissions','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(134,1,'Import Calendar Data','import','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(135,1,'Conversations','conversations','Manage your conversations settings','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(136,1,'Settings','settings','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(137,1,'Community Points','points','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(138,1,'Banned Words','bannedwords','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(139,1,'Conversation Permissions','permissions','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(140,1,'Attributes','attributes','Setup attributes for pages, users, files and more.','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(141,1,'Types','types','Choose which attribute types are available for different items.','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(142,1,'Sets','sets','Group attributes into sets for easier organization','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(143,1,'Topics','topics','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(144,1,'Add Topic Tree','add','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(145,1,'Environment','environment','Advanced settings for web developers.','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(146,1,'Environment Information','info','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(147,1,'Debug Settings','debug','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(148,1,'Logging Settings','logging','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(149,1,'Proxy Server','proxy','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(150,1,'Database Entities','entities','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(151,1,'Geolocation','geolocation','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(152,1,'Update concrete5','update','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(153,1,'Apply Update','update','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(154,1,'Welcome','welcome','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(155,1,'Waiting for Me','me',NULL,'2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,2,NULL,NULL,NULL),(156,1,'Stacks','!stacks','','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(157,1,'Page Not Found','page_not_found','','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(158,1,'Trash','!trash','','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(159,1,'Login','login','','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(160,1,'Register','register','','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(161,1,'My Account','account','','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(162,1,'Edit Profile','edit_profile','Edit your user profile and change password.','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(163,1,'Profile Picture','avatar','Specify a new image attached to posts or edits.','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(164,1,'Private Messages','messages','Inbox for site-specific messages.','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(165,1,'Page Forbidden','page_forbidden','','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(166,1,'Download File','download_file','','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(167,1,'Drafts','!drafts','','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(168,1,'Welcome Back','desktop','','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL),(169,1,'Footer Contact','footer-contact',NULL,'2018-04-21 09:49:43','2018-04-21 09:49:43','Initial Version',1,0,1,NULL,1,0,NULL,NULL,NULL),(170,1,'Footer Legal','footer-legal',NULL,'2018-04-21 09:49:43','2018-04-21 09:49:43','Initial Version',1,0,1,NULL,1,0,NULL,NULL,NULL),(171,1,'Footer Navigation','footer-navigation',NULL,'2018-04-21 09:49:43','2018-04-21 09:49:43','Initial Version',1,0,1,NULL,1,0,NULL,NULL,NULL),(172,1,'Footer Site Title','footer-site-title',NULL,'2018-04-21 09:49:43','2018-04-21 09:49:43','Initial Version',1,0,1,NULL,1,0,NULL,NULL,NULL),(173,1,'Footer Social','footer-social',NULL,'2018-04-21 09:49:43','2018-04-21 09:49:43','Initial Version',1,0,1,NULL,1,0,NULL,NULL,NULL),(174,1,'Header Navigation','header-navigation',NULL,'2018-04-21 09:49:43','2018-04-21 09:49:43','Initial Version',1,0,1,NULL,1,0,NULL,NULL,NULL),(175,1,'Header Search','header-search',NULL,'2018-04-21 09:49:43','2018-04-21 09:49:43','Initial Version',1,0,1,NULL,1,0,NULL,NULL,NULL),(176,1,'Header Site Title','header-site-title',NULL,'2018-04-21 09:49:43','2018-04-21 09:49:43','Initial Version',1,0,1,NULL,1,0,NULL,NULL,NULL),(177,1,'',NULL,NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,NULL,NULL,0,5,NULL,NULL,NULL),(178,1,'Services','services',NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,5,NULL,NULL,NULL),(179,1,'',NULL,NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,NULL,NULL,0,5,NULL,NULL,NULL),(180,1,'Portfolio','portfolio',NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,5,NULL,NULL,NULL),(181,1,'Team','team',NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,5,NULL,NULL,NULL),(182,1,'',NULL,NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,NULL,NULL,0,5,NULL,NULL,NULL),(183,1,'Blog','blog',NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,5,NULL,NULL,NULL),(184,1,'Search','search',NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,5,NULL,NULL,NULL),(185,1,'Contact','contact',NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,5,NULL,NULL,NULL),(186,1,'Blank Page','blank-page',NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,4,NULL,NULL,NULL),(187,1,'',NULL,NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,NULL,NULL,0,6,NULL,NULL,NULL),(188,1,'Project Title','project-title','Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing.','2014-08-06 15:30:00','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,6,NULL,NULL,NULL),(189,1,'Project Title 2','project-title-2','Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing.','2014-08-06 15:20:00','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,6,NULL,NULL,NULL),(190,1,'Project Title 3','project-title-3','Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing.','2014-08-06 15:10:00','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,6,NULL,NULL,NULL),(191,1,'Project Title 4','project-title-4','Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing.','2014-08-06 15:00:00','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,6,NULL,NULL,NULL),(192,1,'Project Title 5','project-title-5','Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing.','2014-08-06 14:30:00','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,6,NULL,NULL,NULL),(193,1,'Project Title 6','project-title-6','Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing.','2014-08-06 14:20:00','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,6,NULL,NULL,NULL),(194,1,'',NULL,NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,NULL,NULL,0,7,NULL,NULL,NULL),(195,1,'Hello World!','hello-world','Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. Quisque dignissim neque a ipsum sodales, mattis aliquam ante dictum.','2014-07-01 12:00:00','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,7,NULL,NULL,NULL),(196,1,'Another Blog Post','another-blog-post','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus. Vestibulum neque lectus, egestas non cursus vitae, aliquam at magna.','2014-07-04 15:00:00','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,7,NULL,NULL,NULL),(197,1,'A Beautiful Site Deserves a Beautiful Blog','a-beautiful-blog','Donec blandit lectus nec neque ullamcorper rhoncus. Sed adipiscing tempus sem eu molestie. Aenean laoreet pretium ante vitae ultrices. Aenean eu gravida magna, vel aliquet magna. In auctor convallis gravida. Phasellus est erat.','2014-08-01 16:30:00','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,7,NULL,NULL,NULL),(198,1,'About','about',NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,5,NULL,NULL,NULL),(199,1,'Careers','careers',NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,5,NULL,NULL,NULL),(200,1,'Frequently Asked Questions','faq',NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,5,NULL,NULL,NULL),(201,1,'',NULL,NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,NULL,NULL,0,6,NULL,NULL,NULL),(202,1,'Web Developer','web-developer','Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Sed consequat eleifend metus, vitae malesuada eros elementum sed. Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus.','2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,6,NULL,NULL,NULL),(203,1,'Sales Associate','sales-associate','Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Sed consequat eleifend metus, vitae malesuada eros elementum sed. Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus.','2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,6,NULL,NULL,NULL),(204,1,'',NULL,NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,NULL,NULL,0,4,NULL,NULL,NULL),(205,1,'',NULL,NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,NULL,NULL,0,6,NULL,NULL,NULL),(206,1,'',NULL,NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,NULL,NULL,0,7,NULL,NULL,NULL),(207,1,'神田カレー店舗','stores','神田カレー店舗一覧','2018-04-21 10:30:26','2018-04-21 10:30:26','最初のバージョン',0,0,1,1,1,5,NULL,NULL,NULL),(207,2,'神田カレー','stores','神田カレー店舗一覧','2018-04-21 10:30:00','2018-04-21 10:30:47','新バージョン 2',0,0,1,1,1,5,NULL,NULL,NULL),(207,3,'神田カレー','stores','神田カレー店舗一覧','2018-04-21 10:30:00','2018-04-21 11:22:00','Version 3',0,0,1,1,1,5,NULL,NULL,NULL),(207,4,'神田カレー','stores','神田カレー店舗一覧','2018-04-21 10:30:00','2018-04-21 15:38:13','Version 4',0,0,1,1,1,5,NULL,NULL,NULL),(207,5,'神田カレー','stores','神田カレー店舗一覧','2018-04-21 10:30:00','2018-05-28 21:39:51','Version 5',1,0,1,1,1,5,NULL,NULL,NULL),(208,1,'カレー店舗詳細','detail','カレー店舗詳細','2018-04-21 10:34:40','2018-04-21 10:34:40','最初のバージョン',0,0,1,1,1,5,NULL,NULL,NULL),(208,2,'カレー店舗詳細','detail','カレー店舗詳細','2018-04-21 10:34:00','2018-04-21 10:51:32','新バージョン 2',0,0,1,1,1,5,NULL,NULL,NULL),(208,3,'カレー店舗詳細','detail','カレー店舗詳細','2018-04-21 10:34:00','2018-04-21 11:23:00','Version 3',0,0,1,1,1,5,NULL,NULL,NULL),(208,4,'カレー店舗詳細','detail','カレー店舗詳細','2018-04-21 10:34:00','2018-04-21 12:39:53','新バージョン 4',0,0,1,1,1,5,NULL,NULL,NULL),(208,5,'カレー店舗詳細','detail','カレー店舗詳細','2018-04-21 10:34:00','2018-04-21 12:47:17','Version 5',0,0,1,1,1,5,NULL,NULL,NULL),(208,6,'カレー店舗詳細','detail','カレー店舗詳細','2018-04-21 10:34:00','2018-04-21 15:38:52','Version 6',1,0,1,1,1,5,NULL,NULL,NULL);
+INSERT INTO `CollectionVersions` VALUES (1,1,'Home','',NULL,'2018-04-21 09:48:46','2018-04-21 09:48:46','Initial Version',0,0,1,NULL,0,5,NULL,NULL,NULL,NULL),(1,2,'Home','',NULL,'2018-04-21 09:48:46','2018-04-21 10:29:33','Version 2',0,0,1,1,0,5,NULL,NULL,NULL,NULL),(1,3,'Home','',NULL,'2018-04-21 09:48:46','2018-07-08 17:09:03','Version 3',1,0,1,1,0,5,NULL,NULL,NULL,NULL),(2,1,'Dashboard','dashboard','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(3,1,'Sitemap','sitemap','Whole world at a glance.','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(4,1,'Full Sitemap','full','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(5,1,'Flat View','explore','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(6,1,'Page Search','search','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(7,1,'Files','files','All documents and images.','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(8,1,'File Manager','search','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(9,1,'Attributes','attributes','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(10,1,'File Sets','sets','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(11,1,'Add File Set','add_set','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(12,1,'Members','users','Add and manage the user accounts and groups on your website.','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(13,1,'Search Users','search','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(14,1,'User Groups','groups','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(15,1,'Attributes','attributes','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(16,1,'Add User','add','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(17,1,'Add Group','add_group','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(18,1,'Move Multiple Groups','bulkupdate','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(19,1,'Group Sets','group_sets','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(20,1,'Community Points','points',NULL,'2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(21,1,'Assign Points','assign',NULL,'2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(22,1,'Actions','actions',NULL,'2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(23,1,'Express','express','Express Data Objects','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(24,1,'View Entries','entries','','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(25,1,'Reports','reports','Get data from forms and logs.','2018-04-21 09:49:32','2018-04-21 09:49:32','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(26,1,'Form Results','forms','Get submission data.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(27,1,'Form Results','legacy','Get submission data.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(28,1,'Surveys','surveys','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(29,1,'Logs','logs','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(30,1,'Pages & Themes','pages','Reskin your site.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(31,1,'Themes','themes','Reskin your site.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(32,1,'Inspect','inspect','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(33,1,'Page Types','types','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(34,1,'Organize Page Type Order','organize','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(35,1,'Add Page Type','add','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(36,1,'Compose Form','form','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(37,1,'Defaults and Output','output','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(38,1,'Page Type Attributes','attributes','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(39,1,'Page Type Permissions','permissions','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(40,1,'Page Templates','templates','Form factors for pages in your site.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(41,1,'Add Page Template','add','Add page templates to your site.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(42,1,'Attributes','attributes','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(43,1,'Single Pages','single','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(44,1,'RSS Feeds','feeds','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(45,1,'Calendar & Events','calendar','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(46,1,'View Calendar','events','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(47,1,'Event List','event_list','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(48,1,'Add Calendar','add','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(49,1,'Permissions','permissions','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(50,1,'Attributes','attributes','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(51,1,'Conversations','conversations','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(52,1,'Messages','messages','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(53,1,'Stacks & Blocks','blocks','Manage sitewide content and administer block types.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(54,1,'Stacks & Global Areas','stacks','Share content across your site.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(55,1,'Block & Stack Permissions','permissions','Control who can add blocks and stacks on your site.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(56,1,'Stack List','list','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(57,1,'Block Types','types','Manage the installed block types in your site.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(58,1,'Extend concrete5','extend','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(59,1,'Add Functionality','install','Install add-ons & themes.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(60,1,'Update Add-Ons','update','Update your installed packages.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(61,1,'Connect to the Community','connect','Connect to the concrete5 community.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(62,1,'Get More Themes','themes','Download themes from concrete5.org.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(63,1,'Get More Add-Ons','addons','Download add-ons from concrete5.org.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(64,1,'System & Settings','system','Secure and setup your site.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(65,1,'Basics','basics','Basic information about your website.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(66,1,'Name & Attributes','name','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(67,1,'Accessibility','accessibility','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(68,1,'Social Links','social','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(69,1,'Bookmark Icons','icons','Bookmark icon and mobile home screen icon setup.','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(70,1,'Rich Text Editor','editor','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(71,1,'Languages','multilingual','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(72,1,'Update Languages','update','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(73,1,'Time Zone','timezone','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(74,1,'Custom Attributes','attributes','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(75,1,'Reset Edit Mode','reset_edit_mode','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(76,1,'Express','express','Express','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(77,1,'Data Objects','entities','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(78,1,'Attributes','attributes','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(79,1,'Associations','associations','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(80,1,'Forms','forms','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(81,1,'Customize Search','customize_search','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(82,1,'Customize Search','order_entries','','2018-04-21 09:49:33','2018-04-21 09:49:33','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(83,1,'Custom Entry Locations','entries','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(84,1,'Multilingual','multilingual','Run your site in multiple languages.','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(85,1,'Multilingual Setup','setup','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(86,1,'Copy Languages','copy','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(87,1,'Page Report','page_report','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(88,1,'Translate Site Interface','translate_interface','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(89,1,'SEO & Statistics','seo','Enable pretty URLs and tracking codes.','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(90,1,'URLs and Redirection','urls','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(91,1,'Bulk SEO Updater','bulk','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(92,1,'Tracking Codes','codes','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(93,1,'Excluded URL Word List','excluded','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(94,1,'Search Index','searchindex','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(95,1,'Files','files','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(96,1,'Allowed File Types','filetypes','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(97,1,'File Manager Permissions','permissions','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(98,1,'Thumbnails','thumbnails','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(99,1,'Thumbnail Options','options','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(100,1,'Image Options','image_uploading','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(101,1,'File Storage Locations','storage','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(102,1,'Optimization','optimization','Keep your site running well.','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(103,1,'Cache & Speed Settings','cache','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(104,1,'Clear Cache','clearcache','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(105,1,'Automated Jobs','jobs','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(107,1,'Permissions & Access','permissions','Control who sees and edits your site.','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(108,1,'Site Access','site','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(109,1,'Task Permissions','tasks','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(110,1,'User Permissions','users','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(111,1,'Advanced Permissions','advanced','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(112,1,'Workflows','workflows','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(113,1,'IP Blacklist','blacklist','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(114,1,'IP Range','range','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(115,1,'Captcha Setup','captcha','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(116,1,'Spam Control','antispam','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(117,1,'Maintenance Mode','maintenance','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(118,1,'Login & Registration','registration','Change login behaviors and setup public profiles.','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(119,1,'Account Options','open','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(120,1,'Login Destination','postlogin','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(121,1,'Public Profiles','profiles','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(122,1,'Authentication Types','authentication','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(123,1,'Global Password Reset','global_password_reset','Signs out all users, resets all passwords and forces users to choose a new one','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(124,1,'Notification Settings','notification','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(125,1,'Email','mail','Control how your site send and processes mail.','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(126,1,'SMTP Method','method','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(127,1,'Test Mail Settings','test','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(128,1,'Email Importers','importers','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(129,1,'System Email Addresses','addresses','','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(130,1,'Calendar','calendar','Manage your calendar settings','2018-04-21 09:49:34','2018-04-21 09:49:34','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(131,1,'General Settings','settings','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(132,1,'Color Settings','colors','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(133,1,'Permissions','permissions','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(134,1,'Import Calendar Data','import','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(135,1,'Conversations','conversations','Manage your conversations settings','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(136,1,'Settings','settings','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(137,1,'Community Points','points','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(138,1,'Banned Words','bannedwords','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(139,1,'Conversation Permissions','permissions','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(140,1,'Attributes','attributes','Setup attributes for pages, users, files and more.','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(141,1,'Types','types','Choose which attribute types are available for different items.','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(142,1,'Sets','sets','Group attributes into sets for easier organization','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(143,1,'Topics','topics','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(144,1,'Add Topic Tree','add','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(145,1,'Environment','environment','Advanced settings for web developers.','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(146,1,'Environment Information','info','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(147,1,'Debug Settings','debug','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(148,1,'Logging Settings','logging','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(149,1,'Proxy Server','proxy','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(150,1,'Database Entities','entities','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(151,1,'Geolocation','geolocation','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(152,1,'Update concrete5','update','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(153,1,'Apply Update','update','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(154,1,'Welcome','welcome','','2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(155,1,'Waiting for Me','me',NULL,'2018-04-21 09:49:35','2018-04-21 09:49:35','Initial Version',1,0,1,NULL,0,2,NULL,NULL,NULL,NULL),(156,1,'Stacks','!stacks','','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(157,1,'Page Not Found','page_not_found','','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(158,1,'Trash','!trash','','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(159,1,'Login','login','','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(160,1,'Register','register','','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(161,1,'My Account','account','','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(162,1,'Edit Profile','edit_profile','Edit your user profile and change password.','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(163,1,'Profile Picture','avatar','Specify a new image attached to posts or edits.','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(164,1,'Private Messages','messages','Inbox for site-specific messages.','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(165,1,'Page Forbidden','page_forbidden','','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(166,1,'Download File','download_file','','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(167,1,'Drafts','!drafts','','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(168,1,'Welcome Back','desktop','','2018-04-21 09:49:39','2018-04-21 09:49:39','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(169,1,'Footer Contact','footer-contact',NULL,'2018-04-21 09:49:43','2018-04-21 09:49:43','Initial Version',1,0,1,NULL,1,0,NULL,NULL,NULL,NULL),(170,1,'Footer Legal','footer-legal',NULL,'2018-04-21 09:49:43','2018-04-21 09:49:43','Initial Version',1,0,1,NULL,1,0,NULL,NULL,NULL,NULL),(171,1,'Footer Navigation','footer-navigation',NULL,'2018-04-21 09:49:43','2018-04-21 09:49:43','Initial Version',1,0,1,NULL,1,0,NULL,NULL,NULL,NULL),(172,1,'Footer Site Title','footer-site-title',NULL,'2018-04-21 09:49:43','2018-04-21 09:49:43','Initial Version',1,0,1,NULL,1,0,NULL,NULL,NULL,NULL),(173,1,'Footer Social','footer-social',NULL,'2018-04-21 09:49:43','2018-04-21 09:49:43','Initial Version',1,0,1,NULL,1,0,NULL,NULL,NULL,NULL),(174,1,'Header Navigation','header-navigation',NULL,'2018-04-21 09:49:43','2018-04-21 09:49:43','Initial Version',1,0,1,NULL,1,0,NULL,NULL,NULL,NULL),(175,1,'Header Search','header-search',NULL,'2018-04-21 09:49:43','2018-04-21 09:49:43','Initial Version',1,0,1,NULL,1,0,NULL,NULL,NULL,NULL),(176,1,'Header Site Title','header-site-title',NULL,'2018-04-21 09:49:43','2018-04-21 09:49:43','Initial Version',1,0,1,NULL,1,0,NULL,NULL,NULL,NULL),(177,1,'',NULL,NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,NULL,NULL,0,5,NULL,NULL,NULL,NULL),(178,1,'Services','services',NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,5,NULL,NULL,NULL,NULL),(179,1,'',NULL,NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,NULL,NULL,0,5,NULL,NULL,NULL,NULL),(180,1,'Portfolio','portfolio',NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,5,NULL,NULL,NULL,NULL),(181,1,'Team','team',NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,5,NULL,NULL,NULL,NULL),(182,1,'',NULL,NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,NULL,NULL,0,5,NULL,NULL,NULL,NULL),(183,1,'Blog','blog',NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,5,NULL,NULL,NULL,NULL),(184,1,'Search','search',NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,5,NULL,NULL,NULL,NULL),(185,1,'Contact','contact',NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,5,NULL,NULL,NULL,NULL),(186,1,'Blank Page','blank-page',NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,4,NULL,NULL,NULL,NULL),(187,1,'',NULL,NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,NULL,NULL,0,6,NULL,NULL,NULL,NULL),(188,1,'Project Title','project-title','Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing.','2014-08-06 15:30:00','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,6,NULL,NULL,NULL,NULL),(189,1,'Project Title 2','project-title-2','Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing.','2014-08-06 15:20:00','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,6,NULL,NULL,NULL,NULL),(190,1,'Project Title 3','project-title-3','Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing.','2014-08-06 15:10:00','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,6,NULL,NULL,NULL,NULL),(191,1,'Project Title 4','project-title-4','Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing.','2014-08-06 15:00:00','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,6,NULL,NULL,NULL,NULL),(192,1,'Project Title 5','project-title-5','Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing.','2014-08-06 14:30:00','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,6,NULL,NULL,NULL,NULL),(193,1,'Project Title 6','project-title-6','Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing.','2014-08-06 14:20:00','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,6,NULL,NULL,NULL,NULL),(194,1,'',NULL,NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,NULL,NULL,0,7,NULL,NULL,NULL,NULL),(195,1,'Hello World!','hello-world','Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. Quisque dignissim neque a ipsum sodales, mattis aliquam ante dictum.','2014-07-01 12:00:00','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,7,NULL,NULL,NULL,NULL),(196,1,'Another Blog Post','another-blog-post','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus. Vestibulum neque lectus, egestas non cursus vitae, aliquam at magna.','2014-07-04 15:00:00','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,7,NULL,NULL,NULL,NULL),(197,1,'A Beautiful Site Deserves a Beautiful Blog','a-beautiful-blog','Donec blandit lectus nec neque ullamcorper rhoncus. Sed adipiscing tempus sem eu molestie. Aenean laoreet pretium ante vitae ultrices. Aenean eu gravida magna, vel aliquet magna. In auctor convallis gravida. Phasellus est erat.','2014-08-01 16:30:00','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,7,NULL,NULL,NULL,NULL),(198,1,'About','about',NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,5,NULL,NULL,NULL,NULL),(199,1,'Careers','careers',NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,5,NULL,NULL,NULL,NULL),(200,1,'Frequently Asked Questions','faq',NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,5,NULL,NULL,NULL,NULL),(201,1,'',NULL,NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,NULL,NULL,0,6,NULL,NULL,NULL,NULL),(202,1,'Web Developer','web-developer','Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Sed consequat eleifend metus, vitae malesuada eros elementum sed. Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus.','2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,6,NULL,NULL,NULL,NULL),(203,1,'Sales Associate','sales-associate','Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Sed consequat eleifend metus, vitae malesuada eros elementum sed. Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus.','2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,1,NULL,1,6,NULL,NULL,NULL,NULL),(204,1,'',NULL,NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,NULL,NULL,0,4,NULL,NULL,NULL,NULL),(205,1,'',NULL,NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,NULL,NULL,0,6,NULL,NULL,NULL,NULL),(206,1,'',NULL,NULL,'2018-04-21 09:49:44','2018-04-21 09:49:44','Initial Version',1,0,NULL,NULL,0,7,NULL,NULL,NULL,NULL),(207,1,'神田カレー店舗','stores','神田カレー店舗一覧','2018-04-21 10:30:26','2018-04-21 10:30:26','最初のバージョン',0,0,1,1,1,5,NULL,NULL,NULL,NULL),(207,2,'神田カレー','stores','神田カレー店舗一覧','2018-04-21 10:30:00','2018-04-21 10:30:47','新バージョン 2',0,0,1,1,1,5,NULL,NULL,NULL,NULL),(207,3,'神田カレー','stores','神田カレー店舗一覧','2018-04-21 10:30:00','2018-04-21 11:22:00','Version 3',0,0,1,1,1,5,NULL,NULL,NULL,NULL),(207,4,'神田カレー','stores','神田カレー店舗一覧','2018-04-21 10:30:00','2018-04-21 15:38:13','Version 4',0,0,1,1,1,5,NULL,NULL,NULL,NULL),(207,5,'神田カレー','stores','神田カレー店舗一覧','2018-04-21 10:30:00','2018-05-28 21:39:51','Version 5',0,0,1,1,1,5,NULL,NULL,NULL,NULL),(207,6,'神田カレー','stores','神田カレー店舗一覧','2018-04-21 10:30:00','2018-10-24 21:12:32','Version 6',1,0,1,1,1,5,NULL,NULL,NULL,NULL),(208,1,'カレー店舗詳細','detail','カレー店舗詳細','2018-04-21 10:34:40','2018-04-21 10:34:40','最初のバージョン',0,0,1,1,1,5,NULL,NULL,NULL,NULL),(208,2,'カレー店舗詳細','detail','カレー店舗詳細','2018-04-21 10:34:00','2018-04-21 10:51:32','新バージョン 2',0,0,1,1,1,5,NULL,NULL,NULL,NULL),(208,3,'カレー店舗詳細','detail','カレー店舗詳細','2018-04-21 10:34:00','2018-04-21 11:23:00','Version 3',0,0,1,1,1,5,NULL,NULL,NULL,NULL),(208,4,'カレー店舗詳細','detail','カレー店舗詳細','2018-04-21 10:34:00','2018-04-21 12:39:53','新バージョン 4',0,0,1,1,1,5,NULL,NULL,NULL,NULL),(208,5,'カレー店舗詳細','detail','カレー店舗詳細','2018-04-21 10:34:00','2018-04-21 12:47:17','Version 5',0,0,1,1,1,5,NULL,NULL,NULL,NULL),(208,6,'カレー店舗詳細','detail','カレー店舗詳細','2018-04-21 10:34:00','2018-04-21 15:38:52','Version 6',1,0,1,1,1,5,NULL,NULL,NULL,NULL),(209,1,'User Deactivation Settings','deactivation',NULL,'2019-06-17 16:47:00','2019-06-17 16:47:00','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(210,1,'API','api',NULL,'2019-06-17 16:47:06','2019-06-17 16:47:06','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(211,1,'API Settings','settings',NULL,'2019-06-17 16:47:06','2019-06-17 16:47:06','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(212,1,'API Integrations','integrations',NULL,'2019-06-17 16:47:06','2019-06-17 16:47:06','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(213,1,'Trusted Proxies','trusted_proxies',NULL,'2019-06-17 16:47:11','2019-06-17 16:47:11','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(214,1,'Automated Logout','automated_logout',NULL,'2019-06-17 16:47:22','2019-06-17 16:47:22','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(215,1,'Page Changes','page_changes',NULL,'2019-06-17 16:47:27','2019-06-17 16:47:27','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(216,1,'Export Options','export_options',NULL,'2019-06-17 16:47:27','2019-06-17 16:47:27','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL),(217,1,'Password Requirements','password_requirements',NULL,'2019-06-17 16:47:27','2019-06-17 16:47:27','Initial Version',1,0,1,NULL,0,0,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `CollectionVersions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1582,12 +1584,12 @@ CREATE TABLE `Collections` (
   `cID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `cDateAdded` datetime NOT NULL DEFAULT '1000-01-01 00:00:00',
   `cDateModified` datetime NOT NULL DEFAULT '1000-01-01 00:00:00',
-  `cHandle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cHandle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`cID`),
   KEY `cIDDateModified` (`cID`,`cDateModified`),
   KEY `cDateModified` (`cDateModified`),
   KEY `cDateAdded` (`cDateAdded`)
-) ENGINE=InnoDB AUTO_INCREMENT=209 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=218 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1596,7 +1598,7 @@ CREATE TABLE `Collections` (
 
 LOCK TABLES `Collections` WRITE;
 /*!40000 ALTER TABLE `Collections` DISABLE KEYS */;
-INSERT INTO `Collections` VALUES (1,'2018-04-21 09:48:46','2018-04-21 10:29:37',NULL),(2,'2018-04-21 09:49:32','2018-04-21 09:49:32','dashboard'),(3,'2018-04-21 09:49:32','2018-04-21 09:49:32','sitemap'),(4,'2018-04-21 09:49:32','2018-04-21 09:49:32','full'),(5,'2018-04-21 09:49:32','2018-04-21 09:49:32','explore'),(6,'2018-04-21 09:49:32','2018-04-21 09:49:32','search'),(7,'2018-04-21 09:49:32','2018-04-21 09:49:32','files'),(8,'2018-04-21 09:49:32','2018-04-21 09:49:32','search'),(9,'2018-04-21 09:49:32','2018-04-21 09:49:32','attributes'),(10,'2018-04-21 09:49:32','2018-04-21 09:49:32','sets'),(11,'2018-04-21 09:49:32','2018-04-21 09:49:32','add_set'),(12,'2018-04-21 09:49:32','2018-04-21 09:49:32','users'),(13,'2018-04-21 09:49:32','2018-04-21 09:49:32','search'),(14,'2018-04-21 09:49:32','2018-04-21 09:49:32','groups'),(15,'2018-04-21 09:49:32','2018-04-21 09:49:32','attributes'),(16,'2018-04-21 09:49:32','2018-04-21 09:49:32','add'),(17,'2018-04-21 09:49:32','2018-04-21 09:49:32','add_group'),(18,'2018-04-21 09:49:32','2018-04-21 09:49:32','bulkupdate'),(19,'2018-04-21 09:49:32','2018-04-21 09:49:32','group_sets'),(20,'2018-04-21 09:49:32','2018-04-21 09:49:32','points'),(21,'2018-04-21 09:49:32','2018-04-21 09:49:32','assign'),(22,'2018-04-21 09:49:32','2018-04-21 09:49:32','actions'),(23,'2018-04-21 09:49:32','2018-04-21 09:49:32','express'),(24,'2018-04-21 09:49:32','2018-04-21 09:49:32','entries'),(25,'2018-04-21 09:49:32','2018-04-21 09:49:32','reports'),(26,'2018-04-21 09:49:33','2018-04-21 09:49:33','forms'),(27,'2018-04-21 09:49:33','2018-04-21 09:49:33','legacy'),(28,'2018-04-21 09:49:33','2018-04-21 09:49:33','surveys'),(29,'2018-04-21 09:49:33','2018-04-21 09:49:33','logs'),(30,'2018-04-21 09:49:33','2018-04-21 09:49:33','pages'),(31,'2018-04-21 09:49:33','2018-04-21 09:49:33','themes'),(32,'2018-04-21 09:49:33','2018-04-21 09:49:33','inspect'),(33,'2018-04-21 09:49:33','2018-04-21 09:49:33','types'),(34,'2018-04-21 09:49:33','2018-04-21 09:49:33','organize'),(35,'2018-04-21 09:49:33','2018-04-21 09:49:33','add'),(36,'2018-04-21 09:49:33','2018-04-21 09:49:33','form'),(37,'2018-04-21 09:49:33','2018-04-21 09:49:33','output'),(38,'2018-04-21 09:49:33','2018-04-21 09:49:33','attributes'),(39,'2018-04-21 09:49:33','2018-04-21 09:49:33','permissions'),(40,'2018-04-21 09:49:33','2018-04-21 09:49:33','templates'),(41,'2018-04-21 09:49:33','2018-04-21 09:49:33','add'),(42,'2018-04-21 09:49:33','2018-04-21 09:49:33','attributes'),(43,'2018-04-21 09:49:33','2018-04-21 09:49:33','single'),(44,'2018-04-21 09:49:33','2018-04-21 09:49:33','feeds'),(45,'2018-04-21 09:49:33','2018-04-21 09:49:33','calendar'),(46,'2018-04-21 09:49:33','2018-04-21 09:49:33','events'),(47,'2018-04-21 09:49:33','2018-04-21 09:49:33','event_list'),(48,'2018-04-21 09:49:33','2018-04-21 09:49:33','add'),(49,'2018-04-21 09:49:33','2018-04-21 09:49:33','permissions'),(50,'2018-04-21 09:49:33','2018-04-21 09:49:33','attributes'),(51,'2018-04-21 09:49:33','2018-04-21 09:49:33','conversations'),(52,'2018-04-21 09:49:33','2018-04-21 09:49:33','messages'),(53,'2018-04-21 09:49:33','2018-04-21 09:49:33','blocks'),(54,'2018-04-21 09:49:33','2018-04-21 09:49:33','stacks'),(55,'2018-04-21 09:49:33','2018-04-21 09:49:33','permissions'),(56,'2018-04-21 09:49:33','2018-04-21 09:49:33','list'),(57,'2018-04-21 09:49:33','2018-04-21 09:49:33','types'),(58,'2018-04-21 09:49:33','2018-04-21 09:49:33','extend'),(59,'2018-04-21 09:49:33','2018-04-21 09:49:33','install'),(60,'2018-04-21 09:49:33','2018-04-21 09:49:33','update'),(61,'2018-04-21 09:49:33','2018-04-21 09:49:33','connect'),(62,'2018-04-21 09:49:33','2018-04-21 09:49:33','themes'),(63,'2018-04-21 09:49:33','2018-04-21 09:49:33','addons'),(64,'2018-04-21 09:49:33','2018-04-21 09:49:33','system'),(65,'2018-04-21 09:49:33','2018-04-21 09:49:33','basics'),(66,'2018-04-21 09:49:33','2018-04-21 09:49:33','name'),(67,'2018-04-21 09:49:33','2018-04-21 09:49:33','accessibility'),(68,'2018-04-21 09:49:33','2018-04-21 09:49:33','social'),(69,'2018-04-21 09:49:33','2018-04-21 09:49:33','icons'),(70,'2018-04-21 09:49:33','2018-04-21 09:49:33','editor'),(71,'2018-04-21 09:49:33','2018-04-21 09:49:33','multilingual'),(72,'2018-04-21 09:49:33','2018-04-21 09:49:33','update'),(73,'2018-04-21 09:49:33','2018-04-21 09:49:33','timezone'),(74,'2018-04-21 09:49:33','2018-04-21 09:49:33','attributes'),(75,'2018-04-21 09:49:33','2018-04-21 09:49:33','reset_edit_mode'),(76,'2018-04-21 09:49:33','2018-04-21 09:49:33','express'),(77,'2018-04-21 09:49:33','2018-04-21 09:49:33','entities'),(78,'2018-04-21 09:49:33','2018-04-21 09:49:33','attributes'),(79,'2018-04-21 09:49:33','2018-04-21 09:49:33','associations'),(80,'2018-04-21 09:49:33','2018-04-21 09:49:33','forms'),(81,'2018-04-21 09:49:33','2018-04-21 09:49:33','customize_search'),(82,'2018-04-21 09:49:33','2018-04-21 09:49:33','order_entries'),(83,'2018-04-21 09:49:34','2018-04-21 09:49:34','entries'),(84,'2018-04-21 09:49:34','2018-04-21 09:49:34','multilingual'),(85,'2018-04-21 09:49:34','2018-04-21 09:49:34','setup'),(86,'2018-04-21 09:49:34','2018-04-21 09:49:34','copy'),(87,'2018-04-21 09:49:34','2018-04-21 09:49:34','page_report'),(88,'2018-04-21 09:49:34','2018-04-21 09:49:34','translate_interface'),(89,'2018-04-21 09:49:34','2018-04-21 09:49:34','seo'),(90,'2018-04-21 09:49:34','2018-04-21 09:49:34','urls'),(91,'2018-04-21 09:49:34','2018-04-21 09:49:34','bulk'),(92,'2018-04-21 09:49:34','2018-04-21 09:49:34','codes'),(93,'2018-04-21 09:49:34','2018-04-21 09:49:34','excluded'),(94,'2018-04-21 09:49:34','2018-04-21 09:49:34','searchindex'),(95,'2018-04-21 09:49:34','2018-04-21 09:49:34','files'),(96,'2018-04-21 09:49:34','2018-04-21 09:49:34','filetypes'),(97,'2018-04-21 09:49:34','2018-04-21 09:49:34','permissions'),(98,'2018-04-21 09:49:34','2018-04-21 09:49:34','thumbnails'),(99,'2018-04-21 09:49:34','2018-04-21 09:49:34','options'),(100,'2018-04-21 09:49:34','2018-04-21 09:49:34','image_uploading'),(101,'2018-04-21 09:49:34','2018-04-21 09:49:34','storage'),(102,'2018-04-21 09:49:34','2018-04-21 09:49:34','optimization'),(103,'2018-04-21 09:49:34','2018-04-21 09:49:34','cache'),(104,'2018-04-21 09:49:34','2018-04-21 09:49:34','clearcache'),(105,'2018-04-21 09:49:34','2018-04-21 09:49:34','jobs'),(106,'2018-04-21 09:49:34','2018-04-21 09:49:34','query_log'),(107,'2018-04-21 09:49:34','2018-04-21 09:49:34','permissions'),(108,'2018-04-21 09:49:34','2018-04-21 09:49:34','site'),(109,'2018-04-21 09:49:34','2018-04-21 09:49:34','tasks'),(110,'2018-04-21 09:49:34','2018-04-21 09:49:34','users'),(111,'2018-04-21 09:49:34','2018-04-21 09:49:34','advanced'),(112,'2018-04-21 09:49:34','2018-04-21 09:49:34','workflows'),(113,'2018-04-21 09:49:34','2018-04-21 09:49:34','blacklist'),(114,'2018-04-21 09:49:34','2018-04-21 09:49:34','range'),(115,'2018-04-21 09:49:34','2018-04-21 09:49:34','captcha'),(116,'2018-04-21 09:49:34','2018-04-21 09:49:34','antispam'),(117,'2018-04-21 09:49:34','2018-04-21 09:49:34','maintenance'),(118,'2018-04-21 09:49:34','2018-04-21 09:49:34','registration'),(119,'2018-04-21 09:49:34','2018-04-21 09:49:34','open'),(120,'2018-04-21 09:49:34','2018-04-21 09:49:34','postlogin'),(121,'2018-04-21 09:49:34','2018-04-21 09:49:34','profiles'),(122,'2018-04-21 09:49:34','2018-04-21 09:49:34','authentication'),(123,'2018-04-21 09:49:34','2018-04-21 09:49:34','global_password_reset'),(124,'2018-04-21 09:49:34','2018-04-21 09:49:34','notification'),(125,'2018-04-21 09:49:34','2018-04-21 09:49:34','mail'),(126,'2018-04-21 09:49:34','2018-04-21 09:49:34','method'),(127,'2018-04-21 09:49:34','2018-04-21 09:49:34','test'),(128,'2018-04-21 09:49:34','2018-04-21 09:49:34','importers'),(129,'2018-04-21 09:49:34','2018-04-21 09:49:34','addresses'),(130,'2018-04-21 09:49:34','2018-04-21 09:49:35','calendar'),(131,'2018-04-21 09:49:35','2018-04-21 09:49:35','settings'),(132,'2018-04-21 09:49:35','2018-04-21 09:49:35','colors'),(133,'2018-04-21 09:49:35','2018-04-21 09:49:35','permissions'),(134,'2018-04-21 09:49:35','2018-04-21 09:49:35','import'),(135,'2018-04-21 09:49:35','2018-04-21 09:49:35','conversations'),(136,'2018-04-21 09:49:35','2018-04-21 09:49:35','settings'),(137,'2018-04-21 09:49:35','2018-04-21 09:49:35','points'),(138,'2018-04-21 09:49:35','2018-04-21 09:49:35','bannedwords'),(139,'2018-04-21 09:49:35','2018-04-21 09:49:35','permissions'),(140,'2018-04-21 09:49:35','2018-04-21 09:49:35','attributes'),(141,'2018-04-21 09:49:35','2018-04-21 09:49:35','types'),(142,'2018-04-21 09:49:35','2018-04-21 09:49:35','sets'),(143,'2018-04-21 09:49:35','2018-04-21 09:49:35','topics'),(144,'2018-04-21 09:49:35','2018-04-21 09:49:35','add'),(145,'2018-04-21 09:49:35','2018-04-21 09:49:35','environment'),(146,'2018-04-21 09:49:35','2018-04-21 09:49:35','info'),(147,'2018-04-21 09:49:35','2018-04-21 09:49:35','debug'),(148,'2018-04-21 09:49:35','2018-04-21 09:49:35','logging'),(149,'2018-04-21 09:49:35','2018-04-21 09:49:35','proxy'),(150,'2018-04-21 09:49:35','2018-04-21 09:49:35','entities'),(151,'2018-04-21 09:49:35','2018-04-21 09:49:35','geolocation'),(152,'2018-04-21 09:49:35','2018-04-21 09:49:35','update'),(153,'2018-04-21 09:49:35','2018-04-21 09:49:35','update'),(154,'2018-04-21 09:49:35','2018-04-21 09:49:35','welcome'),(155,'2018-04-21 09:49:35','2018-04-21 09:49:35','me'),(156,'2018-04-21 09:49:39','2018-04-21 09:49:39','!stacks'),(157,'2018-04-21 09:49:39','2018-04-21 09:49:39','page_not_found'),(158,'2018-04-21 09:49:39','2018-04-21 09:49:39','!trash'),(159,'2018-04-21 09:49:39','2018-04-21 09:49:39','login'),(160,'2018-04-21 09:49:39','2018-04-21 09:49:39','register'),(161,'2018-04-21 09:49:39','2018-04-21 09:49:39','account'),(162,'2018-04-21 09:49:39','2018-04-21 09:49:39','edit_profile'),(163,'2018-04-21 09:49:39','2018-04-21 09:49:39','avatar'),(164,'2018-04-21 09:49:39','2018-04-21 09:49:39','messages'),(165,'2018-04-21 09:49:39','2018-04-21 09:49:39','page_forbidden'),(166,'2018-04-21 09:49:39','2018-04-21 09:49:39','download_file'),(167,'2018-04-21 09:49:39','2018-04-21 09:49:39','!drafts'),(168,'2018-04-21 09:49:39','2018-04-21 09:49:39','desktop'),(169,'2018-04-21 09:49:43','2018-04-21 09:49:43','footer-contact'),(170,'2018-04-21 09:49:43','2018-04-21 09:49:43','footer-legal'),(171,'2018-04-21 09:49:43','2018-04-21 09:49:43','footer-navigation'),(172,'2018-04-21 09:49:43','2018-04-21 09:49:43','footer-site-title'),(173,'2018-04-21 09:49:43','2018-04-21 09:49:43','footer-social'),(174,'2018-04-21 09:49:43','2018-04-21 09:49:43','header-navigation'),(175,'2018-04-21 09:49:43','2018-04-21 09:49:43','header-search'),(176,'2018-04-21 09:49:43','2018-04-21 09:49:43','header-site-title'),(177,'2018-04-21 09:49:44','2018-04-21 09:49:44',NULL),(178,'2018-04-21 09:49:44','2018-04-21 09:49:44','services'),(179,'2018-04-21 09:49:44','2018-04-21 09:49:44',NULL),(180,'2018-04-21 09:49:44','2018-04-21 10:29:19','portfolio'),(181,'2018-04-21 09:49:44','2018-04-21 09:49:44','team'),(182,'2018-04-21 09:49:44','2018-04-21 09:49:44',NULL),(183,'2018-04-21 09:49:44','2018-04-21 09:49:44','blog'),(184,'2018-04-21 09:49:44','2018-04-21 09:49:44','search'),(185,'2018-04-21 09:49:44','2018-04-21 09:49:44','contact'),(186,'2018-04-21 09:49:44','2018-04-21 09:49:44','blank-page'),(187,'2018-04-21 09:49:44','2018-04-21 09:49:44',NULL),(188,'2018-04-21 09:49:44','2018-04-21 09:49:44','project-title'),(189,'2018-04-21 09:49:44','2018-04-21 09:49:44','project-title-2'),(190,'2018-04-21 09:49:44','2018-04-21 09:49:44','project-title-3'),(191,'2018-04-21 09:49:44','2018-04-21 09:49:44','project-title-4'),(192,'2018-04-21 09:49:44','2018-04-21 09:49:44','project-title-5'),(193,'2018-04-21 09:49:44','2018-04-21 09:49:44','project-title-6'),(194,'2018-04-21 09:49:44','2018-04-21 09:49:44',NULL),(195,'2018-04-21 09:49:44','2018-04-21 09:49:44','hello-world'),(196,'2018-04-21 09:49:44','2018-04-21 09:49:44','another-blog-post'),(197,'2018-04-21 09:49:44','2018-04-21 09:49:44','a-beautiful-blog'),(198,'2018-04-21 09:49:44','2018-04-21 09:49:44','about'),(199,'2018-04-21 09:49:44','2018-04-21 09:49:44','careers'),(200,'2018-04-21 09:49:44','2018-04-21 09:49:44','faq'),(201,'2018-04-21 09:49:44','2018-04-21 09:49:44',NULL),(202,'2018-04-21 09:49:44','2018-04-21 09:49:44','web-developer'),(203,'2018-04-21 09:49:44','2018-04-21 09:49:44','sales-associate'),(204,'2018-04-21 09:49:44','2018-04-21 09:49:44',NULL),(205,'2018-04-21 09:49:44','2018-04-21 09:49:44',NULL),(206,'2018-04-21 09:49:44','2018-04-21 09:49:44',NULL),(207,'2018-04-21 10:30:26','2018-05-28 21:40:00',''),(208,'2018-04-21 10:34:40','2018-04-21 15:38:54','');
+INSERT INTO `Collections` VALUES (1,'2018-04-21 09:48:46','2018-07-08 17:09:17',NULL),(2,'2018-04-21 09:49:32','2018-04-21 09:49:32','dashboard'),(3,'2018-04-21 09:49:32','2018-04-21 09:49:32','sitemap'),(4,'2018-04-21 09:49:32','2018-04-21 09:49:32','full'),(5,'2018-04-21 09:49:32','2018-04-21 09:49:32','explore'),(6,'2018-04-21 09:49:32','2018-04-21 09:49:32','search'),(7,'2018-04-21 09:49:32','2018-04-21 09:49:32','files'),(8,'2018-04-21 09:49:32','2018-04-21 09:49:32','search'),(9,'2018-04-21 09:49:32','2018-04-21 09:49:32','attributes'),(10,'2018-04-21 09:49:32','2018-04-21 09:49:32','sets'),(11,'2018-04-21 09:49:32','2018-04-21 09:49:32','add_set'),(12,'2018-04-21 09:49:32','2018-04-21 09:49:32','users'),(13,'2018-04-21 09:49:32','2018-04-21 09:49:32','search'),(14,'2018-04-21 09:49:32','2018-04-21 09:49:32','groups'),(15,'2018-04-21 09:49:32','2018-04-21 09:49:32','attributes'),(16,'2018-04-21 09:49:32','2018-04-21 09:49:32','add'),(17,'2018-04-21 09:49:32','2018-04-21 09:49:32','add_group'),(18,'2018-04-21 09:49:32','2018-04-21 09:49:32','bulkupdate'),(19,'2018-04-21 09:49:32','2018-04-21 09:49:32','group_sets'),(20,'2018-04-21 09:49:32','2018-04-21 09:49:32','points'),(21,'2018-04-21 09:49:32','2018-04-21 09:49:32','assign'),(22,'2018-04-21 09:49:32','2018-04-21 09:49:32','actions'),(23,'2018-04-21 09:49:32','2018-04-21 09:49:32','express'),(24,'2018-04-21 09:49:32','2018-04-21 09:49:32','entries'),(25,'2018-04-21 09:49:32','2018-04-21 09:49:32','reports'),(26,'2018-04-21 09:49:33','2018-04-21 09:49:33','forms'),(27,'2018-04-21 09:49:33','2018-04-21 09:49:33','legacy'),(28,'2018-04-21 09:49:33','2018-04-21 09:49:33','surveys'),(29,'2018-04-21 09:49:33','2018-04-21 09:49:33','logs'),(30,'2018-04-21 09:49:33','2018-04-21 09:49:33','pages'),(31,'2018-04-21 09:49:33','2018-04-21 09:49:33','themes'),(32,'2018-04-21 09:49:33','2018-04-21 09:49:33','inspect'),(33,'2018-04-21 09:49:33','2018-04-21 09:49:33','types'),(34,'2018-04-21 09:49:33','2018-04-21 09:49:33','organize'),(35,'2018-04-21 09:49:33','2018-04-21 09:49:33','add'),(36,'2018-04-21 09:49:33','2018-04-21 09:49:33','form'),(37,'2018-04-21 09:49:33','2018-04-21 09:49:33','output'),(38,'2018-04-21 09:49:33','2018-04-21 09:49:33','attributes'),(39,'2018-04-21 09:49:33','2018-04-21 09:49:33','permissions'),(40,'2018-04-21 09:49:33','2018-04-21 09:49:33','templates'),(41,'2018-04-21 09:49:33','2018-04-21 09:49:33','add'),(42,'2018-04-21 09:49:33','2018-04-21 09:49:33','attributes'),(43,'2018-04-21 09:49:33','2018-04-21 09:49:33','single'),(44,'2018-04-21 09:49:33','2018-04-21 09:49:33','feeds'),(45,'2018-04-21 09:49:33','2018-04-21 09:49:33','calendar'),(46,'2018-04-21 09:49:33','2018-04-21 09:49:33','events'),(47,'2018-04-21 09:49:33','2018-04-21 09:49:33','event_list'),(48,'2018-04-21 09:49:33','2018-04-21 09:49:33','add'),(49,'2018-04-21 09:49:33','2018-04-21 09:49:33','permissions'),(50,'2018-04-21 09:49:33','2018-04-21 09:49:33','attributes'),(51,'2018-04-21 09:49:33','2018-04-21 09:49:33','conversations'),(52,'2018-04-21 09:49:33','2018-04-21 09:49:33','messages'),(53,'2018-04-21 09:49:33','2018-04-21 09:49:33','blocks'),(54,'2018-04-21 09:49:33','2018-04-21 09:49:33','stacks'),(55,'2018-04-21 09:49:33','2018-04-21 09:49:33','permissions'),(56,'2018-04-21 09:49:33','2018-04-21 09:49:33','list'),(57,'2018-04-21 09:49:33','2018-04-21 09:49:33','types'),(58,'2018-04-21 09:49:33','2018-04-21 09:49:33','extend'),(59,'2018-04-21 09:49:33','2018-04-21 09:49:33','install'),(60,'2018-04-21 09:49:33','2018-04-21 09:49:33','update'),(61,'2018-04-21 09:49:33','2018-04-21 09:49:33','connect'),(62,'2018-04-21 09:49:33','2018-04-21 09:49:33','themes'),(63,'2018-04-21 09:49:33','2018-04-21 09:49:33','addons'),(64,'2018-04-21 09:49:33','2018-04-21 09:49:33','system'),(65,'2018-04-21 09:49:33','2018-04-21 09:49:33','basics'),(66,'2018-04-21 09:49:33','2018-04-21 09:49:33','name'),(67,'2018-04-21 09:49:33','2018-04-21 09:49:33','accessibility'),(68,'2018-04-21 09:49:33','2018-04-21 09:49:33','social'),(69,'2018-04-21 09:49:33','2018-04-21 09:49:33','icons'),(70,'2018-04-21 09:49:33','2018-04-21 09:49:33','editor'),(71,'2018-04-21 09:49:33','2018-04-21 09:49:33','multilingual'),(72,'2018-04-21 09:49:33','2018-04-21 09:49:33','update'),(73,'2018-04-21 09:49:33','2018-04-21 09:49:33','timezone'),(74,'2018-04-21 09:49:33','2018-04-21 09:49:33','attributes'),(75,'2018-04-21 09:49:33','2018-04-21 09:49:33','reset_edit_mode'),(76,'2018-04-21 09:49:33','2018-04-21 09:49:33','express'),(77,'2018-04-21 09:49:33','2018-04-21 09:49:33','entities'),(78,'2018-04-21 09:49:33','2018-04-21 09:49:33','attributes'),(79,'2018-04-21 09:49:33','2018-04-21 09:49:33','associations'),(80,'2018-04-21 09:49:33','2018-04-21 09:49:33','forms'),(81,'2018-04-21 09:49:33','2018-04-21 09:49:33','customize_search'),(82,'2018-04-21 09:49:33','2018-04-21 09:49:33','order_entries'),(83,'2018-04-21 09:49:34','2018-04-21 09:49:34','entries'),(84,'2018-04-21 09:49:34','2018-04-21 09:49:34','multilingual'),(85,'2018-04-21 09:49:34','2018-04-21 09:49:34','setup'),(86,'2018-04-21 09:49:34','2018-04-21 09:49:34','copy'),(87,'2018-04-21 09:49:34','2018-04-21 09:49:34','page_report'),(88,'2018-04-21 09:49:34','2018-04-21 09:49:34','translate_interface'),(89,'2018-04-21 09:49:34','2018-04-21 09:49:34','seo'),(90,'2018-04-21 09:49:34','2018-04-21 09:49:34','urls'),(91,'2018-04-21 09:49:34','2018-04-21 09:49:34','bulk'),(92,'2018-04-21 09:49:34','2018-04-21 09:49:34','codes'),(93,'2018-04-21 09:49:34','2018-04-21 09:49:34','excluded'),(94,'2018-04-21 09:49:34','2018-04-21 09:49:34','searchindex'),(95,'2018-04-21 09:49:34','2018-04-21 09:49:34','files'),(96,'2018-04-21 09:49:34','2018-04-21 09:49:34','filetypes'),(97,'2018-04-21 09:49:34','2018-04-21 09:49:34','permissions'),(98,'2018-04-21 09:49:34','2018-04-21 09:49:34','thumbnails'),(99,'2018-04-21 09:49:34','2018-04-21 09:49:34','options'),(100,'2018-04-21 09:49:34','2018-04-21 09:49:34','image_uploading'),(101,'2018-04-21 09:49:34','2018-04-21 09:49:34','storage'),(102,'2018-04-21 09:49:34','2018-04-21 09:49:34','optimization'),(103,'2018-04-21 09:49:34','2018-04-21 09:49:34','cache'),(104,'2018-04-21 09:49:34','2018-04-21 09:49:34','clearcache'),(105,'2018-04-21 09:49:34','2018-04-21 09:49:34','jobs'),(107,'2018-04-21 09:49:34','2018-04-21 09:49:34','permissions'),(108,'2018-04-21 09:49:34','2018-04-21 09:49:34','site'),(109,'2018-04-21 09:49:34','2018-04-21 09:49:34','tasks'),(110,'2018-04-21 09:49:34','2018-04-21 09:49:34','users'),(111,'2018-04-21 09:49:34','2018-04-21 09:49:34','advanced'),(112,'2018-04-21 09:49:34','2018-04-21 09:49:34','workflows'),(113,'2018-04-21 09:49:34','2018-04-21 09:49:34','blacklist'),(114,'2018-04-21 09:49:34','2018-04-21 09:49:34','range'),(115,'2018-04-21 09:49:34','2018-04-21 09:49:34','captcha'),(116,'2018-04-21 09:49:34','2018-04-21 09:49:34','antispam'),(117,'2018-04-21 09:49:34','2018-04-21 09:49:34','maintenance'),(118,'2018-04-21 09:49:34','2018-04-21 09:49:34','registration'),(119,'2018-04-21 09:49:34','2019-06-17 16:47:28','open'),(120,'2018-04-21 09:49:34','2018-04-21 09:49:34','postlogin'),(121,'2018-04-21 09:49:34','2018-04-21 09:49:34','profiles'),(122,'2018-04-21 09:49:34','2018-04-21 09:49:34','authentication'),(123,'2018-04-21 09:49:34','2018-04-21 09:49:34','global_password_reset'),(124,'2018-04-21 09:49:34','2018-04-21 09:49:34','notification'),(125,'2018-04-21 09:49:34','2018-04-21 09:49:34','mail'),(126,'2018-04-21 09:49:34','2018-04-21 09:49:34','method'),(127,'2018-04-21 09:49:34','2018-04-21 09:49:34','test'),(128,'2018-04-21 09:49:34','2018-04-21 09:49:34','importers'),(129,'2018-04-21 09:49:34','2018-04-21 09:49:34','addresses'),(130,'2018-04-21 09:49:34','2018-04-21 09:49:35','calendar'),(131,'2018-04-21 09:49:35','2018-04-21 09:49:35','settings'),(132,'2018-04-21 09:49:35','2018-04-21 09:49:35','colors'),(133,'2018-04-21 09:49:35','2018-04-21 09:49:35','permissions'),(134,'2018-04-21 09:49:35','2018-04-21 09:49:35','import'),(135,'2018-04-21 09:49:35','2018-04-21 09:49:35','conversations'),(136,'2018-04-21 09:49:35','2018-04-21 09:49:35','settings'),(137,'2018-04-21 09:49:35','2018-04-21 09:49:35','points'),(138,'2018-04-21 09:49:35','2018-04-21 09:49:35','bannedwords'),(139,'2018-04-21 09:49:35','2018-04-21 09:49:35','permissions'),(140,'2018-04-21 09:49:35','2018-04-21 09:49:35','attributes'),(141,'2018-04-21 09:49:35','2018-04-21 09:49:35','types'),(142,'2018-04-21 09:49:35','2018-04-21 09:49:35','sets'),(143,'2018-04-21 09:49:35','2018-04-21 09:49:35','topics'),(144,'2018-04-21 09:49:35','2018-04-21 09:49:35','add'),(145,'2018-04-21 09:49:35','2018-04-21 09:49:35','environment'),(146,'2018-04-21 09:49:35','2018-04-21 09:49:35','info'),(147,'2018-04-21 09:49:35','2018-04-21 09:49:35','debug'),(148,'2018-04-21 09:49:35','2018-04-21 09:49:35','logging'),(149,'2018-04-21 09:49:35','2018-04-21 09:49:35','proxy'),(150,'2018-04-21 09:49:35','2018-04-21 09:49:35','entities'),(151,'2018-04-21 09:49:35','2018-04-21 09:49:35','geolocation'),(152,'2018-04-21 09:49:35','2018-04-21 09:49:35','update'),(153,'2018-04-21 09:49:35','2018-04-21 09:49:35','update'),(154,'2018-04-21 09:49:35','2018-04-21 09:49:35','welcome'),(155,'2018-04-21 09:49:35','2018-04-21 09:49:35','me'),(156,'2018-04-21 09:49:39','2018-04-21 09:49:39','!stacks'),(157,'2018-04-21 09:49:39','2018-04-21 09:49:39','page_not_found'),(158,'2018-04-21 09:49:39','2018-04-21 09:49:39','!trash'),(159,'2018-04-21 09:49:39','2018-04-21 09:49:39','login'),(160,'2018-04-21 09:49:39','2018-04-21 09:49:39','register'),(161,'2018-04-21 09:49:39','2018-04-21 09:49:39','account'),(162,'2018-04-21 09:49:39','2018-04-21 09:49:39','edit_profile'),(163,'2018-04-21 09:49:39','2018-04-21 09:49:39','avatar'),(164,'2018-04-21 09:49:39','2018-04-21 09:49:39','messages'),(165,'2018-04-21 09:49:39','2018-04-21 09:49:39','page_forbidden'),(166,'2018-04-21 09:49:39','2018-04-21 09:49:39','download_file'),(167,'2018-04-21 09:49:39','2018-04-21 09:49:39','!drafts'),(168,'2018-04-21 09:49:39','2018-04-21 09:49:39','desktop'),(169,'2018-04-21 09:49:43','2018-04-21 09:49:43','footer-contact'),(170,'2018-04-21 09:49:43','2018-04-21 09:49:43','footer-legal'),(171,'2018-04-21 09:49:43','2018-04-21 09:49:43','footer-navigation'),(172,'2018-04-21 09:49:43','2018-04-21 09:49:43','footer-site-title'),(173,'2018-04-21 09:49:43','2018-04-21 09:49:43','footer-social'),(174,'2018-04-21 09:49:43','2018-04-21 09:49:43','header-navigation'),(175,'2018-04-21 09:49:43','2018-04-21 09:49:43','header-search'),(176,'2018-04-21 09:49:43','2018-04-21 09:49:43','header-site-title'),(177,'2018-04-21 09:49:44','2018-04-21 09:49:44',NULL),(178,'2018-04-21 09:49:44','2018-04-21 09:49:44','services'),(179,'2018-04-21 09:49:44','2018-04-21 09:49:44',NULL),(180,'2018-04-21 09:49:44','2018-04-21 10:29:19','portfolio'),(181,'2018-04-21 09:49:44','2018-04-21 09:49:44','team'),(182,'2018-04-21 09:49:44','2018-04-21 09:49:44',NULL),(183,'2018-04-21 09:49:44','2018-04-21 09:49:44','blog'),(184,'2018-04-21 09:49:44','2018-04-21 09:49:44','search'),(185,'2018-04-21 09:49:44','2018-04-21 09:49:44','contact'),(186,'2018-04-21 09:49:44','2018-04-21 09:49:44','blank-page'),(187,'2018-04-21 09:49:44','2018-04-21 09:49:44',NULL),(188,'2018-04-21 09:49:44','2018-04-21 09:49:44','project-title'),(189,'2018-04-21 09:49:44','2018-04-21 09:49:44','project-title-2'),(190,'2018-04-21 09:49:44','2018-04-21 09:49:44','project-title-3'),(191,'2018-04-21 09:49:44','2018-04-21 09:49:44','project-title-4'),(192,'2018-04-21 09:49:44','2018-04-21 09:49:44','project-title-5'),(193,'2018-04-21 09:49:44','2018-04-21 09:49:44','project-title-6'),(194,'2018-04-21 09:49:44','2018-04-21 09:49:44',NULL),(195,'2018-04-21 09:49:44','2018-04-21 09:49:44','hello-world'),(196,'2018-04-21 09:49:44','2018-04-21 09:49:44','another-blog-post'),(197,'2018-04-21 09:49:44','2018-04-21 09:49:44','a-beautiful-blog'),(198,'2018-04-21 09:49:44','2018-04-21 09:49:44','about'),(199,'2018-04-21 09:49:44','2018-04-21 09:49:44','careers'),(200,'2018-04-21 09:49:44','2018-04-21 09:49:44','faq'),(201,'2018-04-21 09:49:44','2018-04-21 09:49:44',NULL),(202,'2018-04-21 09:49:44','2018-04-21 09:49:44','web-developer'),(203,'2018-04-21 09:49:44','2018-04-21 09:49:44','sales-associate'),(204,'2018-04-21 09:49:44','2018-04-21 09:49:44',NULL),(205,'2018-04-21 09:49:44','2018-04-21 09:49:44',NULL),(206,'2018-04-21 09:49:44','2018-04-21 09:49:44',NULL),(207,'2018-04-21 10:30:26','2018-10-24 21:12:35',''),(208,'2018-04-21 10:34:40','2018-04-21 15:38:54',''),(209,'2019-06-17 16:47:00','2019-06-17 16:47:00','deactivation'),(210,'2019-06-17 16:47:06','2019-06-17 16:47:06','api'),(211,'2019-06-17 16:47:06','2019-06-17 16:47:06','settings'),(212,'2019-06-17 16:47:06','2019-06-17 16:47:06','integrations'),(213,'2019-06-17 16:47:11','2019-06-17 16:47:11','trusted_proxies'),(214,'2019-06-17 16:47:22','2019-06-17 16:47:22','automated_logout'),(215,'2019-06-17 16:47:27','2019-06-17 16:47:27','page_changes'),(216,'2019-06-17 16:47:27','2019-06-17 16:47:27','export_options'),(217,'2019-06-17 16:47:27','2019-06-17 16:47:27','password_requirements');
 /*!40000 ALTER TABLE `Collections` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1608,13 +1610,13 @@ DROP TABLE IF EXISTS `Config`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Config` (
-  `configNamespace` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `configGroup` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `configItem` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `configValue` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `configNamespace` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `configGroup` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `configItem` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `configValue` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`configNamespace`,`configGroup`,`configItem`),
   KEY `configGroup` (`configGroup`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1635,15 +1637,15 @@ DROP TABLE IF EXISTS `ConfigStore`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ConfigStore` (
-  `cfKey` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `cfKey` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
-  `cfValue` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cfValue` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `uID` int(10) unsigned NOT NULL DEFAULT 0,
   `pkgID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`cfKey`,`uID`),
   KEY `uID` (`uID`,`cfKey`),
   KEY `pkgID` (`pkgID`,`cfKey`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1669,7 +1671,7 @@ CREATE TABLE `ConversationDiscussions` (
   `cID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`cnvDiscussionID`),
   KEY `cID` (`cID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1690,13 +1692,13 @@ DROP TABLE IF EXISTS `ConversationEditors`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ConversationEditors` (
   `cnvEditorID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `cnvEditorHandle` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `cnvEditorName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cnvEditorHandle` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cnvEditorName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cnvEditorIsActive` tinyint(1) NOT NULL DEFAULT 0,
   `pkgID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`cnvEditorID`),
   KEY `pkgID` (`pkgID`,`cnvEditorHandle`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1705,7 +1707,7 @@ CREATE TABLE `ConversationEditors` (
 
 LOCK TABLES `ConversationEditors` WRITE;
 /*!40000 ALTER TABLE `ConversationEditors` DISABLE KEYS */;
-INSERT INTO `ConversationEditors` VALUES (1,'plain_text','Plain Text',1,0),(2,'markdown','Markdown',0,0),(3,'redactor','Redactor',0,0);
+INSERT INTO `ConversationEditors` VALUES (1,'plain_text','Plain Text',1,0),(2,'markdown','Markdown',0,0),(3,'rich_text','Rich Text',0,0);
 /*!40000 ALTER TABLE `ConversationEditors` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1721,7 +1723,7 @@ CREATE TABLE `ConversationFeatureDetailAssignments` (
   `cnvID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`faID`),
   KEY `cnvID` (`cnvID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1743,10 +1745,10 @@ DROP TABLE IF EXISTS `ConversationFlaggedMessageTypes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ConversationFlaggedMessageTypes` (
   `cnvMessageFlagTypeID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `cnvMessageFlagTypeHandle` varchar(64) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cnvMessageFlagTypeHandle` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`cnvMessageFlagTypeID`),
   UNIQUE KEY `cnvMessageFlagTypeHandle` (`cnvMessageFlagTypeHandle`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1771,7 +1773,7 @@ CREATE TABLE `ConversationFlaggedMessages` (
   `cnvMessageFlagTypeID` int(11) DEFAULT NULL,
   PRIMARY KEY (`cnvMessageID`),
   KEY `cnvMessageFlagTypeID` (`cnvMessageFlagTypeID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1797,7 +1799,7 @@ CREATE TABLE `ConversationMessageAttachments` (
   PRIMARY KEY (`cnvMessageAttachmentID`),
   KEY `cnvMessageID` (`cnvMessageID`),
   KEY `fID` (`fID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1821,7 +1823,7 @@ CREATE TABLE `ConversationMessageNotifications` (
   `nID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`nID`),
   CONSTRAINT `FK_559DE1CBED024EFD` FOREIGN KEY (`nID`) REFERENCES `Notifications` (`nID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1851,7 +1853,7 @@ CREATE TABLE `ConversationMessageRatings` (
   KEY `cnvMessageID` (`cnvMessageID`,`cnvRatingTypeID`),
   KEY `cnvRatingTypeID` (`cnvRatingTypeID`),
   KEY `uID` (`uID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1876,16 +1878,16 @@ CREATE TABLE `ConversationMessages` (
   `cnvMessageReview` int(10) unsigned NOT NULL DEFAULT 0,
   `uID` int(10) unsigned NOT NULL DEFAULT 0,
   `cnvEditorID` int(10) unsigned NOT NULL DEFAULT 0,
-  `cnvMessageAuthorName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `cnvMessageAuthorEmail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `cnvMessageAuthorWebsite` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cnvMessageAuthorName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cnvMessageAuthorEmail` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cnvMessageAuthorWebsite` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cnvMessageSubmitIP` tinyblob DEFAULT NULL,
-  `cnvMessageSubmitUserAgent` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cnvMessageSubmitUserAgent` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cnvMessageLevel` int(10) unsigned NOT NULL DEFAULT 0,
   `cnvMessageParentID` int(10) unsigned NOT NULL DEFAULT 0,
   `cnvMessageDateCreated` datetime DEFAULT NULL,
-  `cnvMessageSubject` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `cnvMessageBody` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cnvMessageSubject` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cnvMessageBody` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cnvIsMessageDeleted` tinyint(1) NOT NULL DEFAULT 0,
   `cnvIsMessageApproved` tinyint(1) NOT NULL DEFAULT 0,
   `cnvMessageTotalRatingScore` bigint(20) DEFAULT 0,
@@ -1893,7 +1895,7 @@ CREATE TABLE `ConversationMessages` (
   KEY `cnvID` (`cnvID`),
   KEY `cnvMessageParentID` (`cnvMessageParentID`),
   KEY `uID` (`uID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1915,10 +1917,10 @@ DROP TABLE IF EXISTS `ConversationPermissionAddMessageAccessList`;
 CREATE TABLE `ConversationPermissionAddMessageAccessList` (
   `paID` int(10) unsigned NOT NULL DEFAULT 0,
   `peID` int(10) unsigned NOT NULL DEFAULT 0,
-  `permission` varchar(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'A',
+  `permission` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'A',
   PRIMARY KEY (`paID`,`peID`),
   KEY `peID` (`peID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1944,7 +1946,7 @@ CREATE TABLE `ConversationPermissionAssignments` (
   PRIMARY KEY (`cnvID`,`pkID`,`paID`),
   KEY `paID` (`paID`),
   KEY `pkID` (`pkID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1966,14 +1968,14 @@ DROP TABLE IF EXISTS `ConversationRatingTypes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ConversationRatingTypes` (
   `cnvRatingTypeID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `cnvRatingTypeHandle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `cnvRatingTypeName` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cnvRatingTypeHandle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cnvRatingTypeName` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cnvRatingTypeCommunityPoints` int(11) DEFAULT NULL,
   `pkgID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`cnvRatingTypeID`),
   UNIQUE KEY `cnvRatingTypeHandle` (`cnvRatingTypeHandle`),
   KEY `pkgID` (`pkgID`,`cnvRatingTypeHandle`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1996,11 +1998,11 @@ DROP TABLE IF EXISTS `ConversationSubscriptions`;
 CREATE TABLE `ConversationSubscriptions` (
   `cnvID` int(10) unsigned NOT NULL DEFAULT 0,
   `uID` int(10) unsigned NOT NULL DEFAULT 0,
-  `type` varchar(1) COLLATE utf8_unicode_ci DEFAULT 'S',
+  `type` varchar(1) COLLATE utf8mb4_unicode_ci DEFAULT 'S',
   PRIMARY KEY (`cnvID`,`uID`),
   KEY `cnvID` (`cnvID`),
   KEY `uID` (`uID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2034,13 +2036,13 @@ CREATE TABLE `Conversations` (
   `cnvMaxFilesRegistered` int(11) DEFAULT 0,
   `cnvMaxFileSizeGuest` int(11) DEFAULT 0,
   `cnvMaxFileSizeRegistered` int(11) DEFAULT 0,
-  `cnvFileExtensions` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cnvFileExtensions` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cnvNotificationOverridesEnabled` tinyint(1) NOT NULL DEFAULT 0,
   `cnvEnableSubscription` tinyint(1) DEFAULT 0,
   PRIMARY KEY (`cnvID`),
   KEY `cID` (`cID`),
   KEY `cnvParentMessageID` (`cnvParentMessageID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2061,14 +2063,15 @@ DROP TABLE IF EXISTS `CurryMenuExpressSearchIndexAttributes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `CurryMenuExpressSearchIndexAttributes` (
-  `exEntryID` int(10) unsigned NOT NULL DEFAULT 0,
-  `ak_curry_name` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ak_curry_description` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `exEntryID` int(11) NOT NULL,
+  `ak_curry_name` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ak_curry_description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ak_curry_photo` int(11) DEFAULT 0,
   `ak_curry_rating` decimal(14,4) DEFAULT 0.0000,
   `ak_curry_price` decimal(14,4) DEFAULT 0.0000,
-  PRIMARY KEY (`exEntryID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  PRIMARY KEY (`exEntryID`),
+  CONSTRAINT `FK_1F8F69E56DCB6296` FOREIGN KEY (`exEntryID`) REFERENCES `ExpressEntityEntries` (`exEntryID`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2089,20 +2092,21 @@ DROP TABLE IF EXISTS `CurryStoreExpressSearchIndexAttributes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `CurryStoreExpressSearchIndexAttributes` (
-  `exEntryID` int(10) unsigned NOT NULL DEFAULT 0,
-  `ak_store_name` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ak_store_address_address1` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
-  `ak_store_address_address2` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
-  `ak_store_address_city` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
-  `ak_store_address_state_province` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
-  `ak_store_address_country` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
-  `ak_store_address_postal_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
+  `exEntryID` int(11) NOT NULL,
+  `ak_store_name` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ak_store_address_address1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `ak_store_address_address2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `ak_store_address_city` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `ak_store_address_state_province` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `ak_store_address_country` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `ak_store_address_postal_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '',
   `ak_store_photo` int(11) DEFAULT 0,
-  `ak_store_phone` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ak_store_tel` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ak_store_category` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`exEntryID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `ak_store_phone` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ak_store_tel` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ak_store_category` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`exEntryID`),
+  CONSTRAINT `FK_802719346DCB6296` FOREIGN KEY (`exEntryID`) REFERENCES `ExpressEntityEntries` (`exEntryID`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2135,7 +2139,7 @@ CREATE TABLE `DownloadStatistics` (
   KEY `uID` (`uID`),
   KEY `rcID` (`rcID`),
   KEY `timestamp` (`timestamp`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2144,7 +2148,7 @@ CREATE TABLE `DownloadStatistics` (
 
 LOCK TABLES `DownloadStatistics` WRITE;
 /*!40000 ALTER TABLE `DownloadStatistics` DISABLE KEYS */;
-INSERT INTO `DownloadStatistics` VALUES (1,20,1,1,207,'2018-04-21 02:22:15');
+INSERT INTO `DownloadStatistics` VALUES (1,20,1,1,207,'2018-04-21 02:22:15'),(2,20,1,0,207,'2018-10-24 12:11:55');
 /*!40000 ALTER TABLE `DownloadStatistics` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2156,13 +2160,13 @@ DROP TABLE IF EXISTS `ExpressAttributeKeys`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ExpressAttributeKeys` (
-  `entity_id` char(36) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
+  `entity_id` char(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
   `akID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`akID`),
   KEY `IDX_8C881F181257D5D` (`entity_id`),
   CONSTRAINT `FK_8C881F181257D5D` FOREIGN KEY (`entity_id`) REFERENCES `ExpressEntities` (`id`),
   CONSTRAINT `FK_8C881F1B6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2183,20 +2187,21 @@ DROP TABLE IF EXISTS `ExpressEntities`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ExpressEntities` (
-  `id` char(36) COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
-  `default_view_form_id` char(36) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
-  `default_edit_form_id` char(36) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `handle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `plural_handle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `label_mask` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
+  `default_view_form_id` char(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
+  `default_edit_form_id` char(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `handle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `plural_handle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `label_mask` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `supports_custom_display_order` tinyint(1) NOT NULL,
-  `description` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `result_column_set` longtext COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '(DC2Type:object)',
+  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `result_column_set` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '(DC2Type:object)',
   `include_in_public_list` tinyint(1) NOT NULL,
   `entity_results_node_id` int(11) NOT NULL,
   `created_date` datetime NOT NULL,
   `pkgID` int(10) unsigned DEFAULT NULL,
+  `items_per_page` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_BC772AA6918020D9` (`handle`),
   UNIQUE KEY `UNIQ_BC772AA6547D6B2D` (`default_view_form_id`),
@@ -2205,7 +2210,7 @@ CREATE TABLE `ExpressEntities` (
   CONSTRAINT `FK_BC772AA6547D6B2D` FOREIGN KEY (`default_view_form_id`) REFERENCES `ExpressForms` (`id`),
   CONSTRAINT `FK_BC772AA6C7DEC56D` FOREIGN KEY (`default_edit_form_id`) REFERENCES `ExpressForms` (`id`),
   CONSTRAINT `FK_BC772AA6CE45CBB0` FOREIGN KEY (`pkgID`) REFERENCES `Packages` (`pkgID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2214,36 +2219,38 @@ CREATE TABLE `ExpressEntities` (
 
 LOCK TABLES `ExpressEntities` WRITE;
 /*!40000 ALTER TABLE `ExpressEntities` DISABLE KEYS */;
-INSERT INTO `ExpressEntities` VALUES ('61fac1c2-4504-11e8-8c0e-9801a7b087ef','61fad022-4504-11e8-8c0e-9801a7b087ef','61fad022-4504-11e8-8c0e-9801a7b087ef','カレー店舗','curry_store','curry_stores','%store_name%',0,'','N;',1,44,'2018-04-21 10:37:10',NULL),('83ae65b1-79e8-4ded-bbca-e419bfd19bb6','881b6bde-220f-4482-b8f9-ace40b5d169b','881b6bde-220f-4482-b8f9-ace40b5d169b','Contact','express_form_170','',NULL,0,'','N;',0,43,'2018-04-21 09:49:43',NULL),('f68b23ea-4504-11e8-8c0e-9801a7b087ef','f68b2dea-4504-11e8-8c0e-9801a7b087ef','f68b2dea-4504-11e8-8c0e-9801a7b087ef','カレーメニュー','curry_menu','curry_menus','%curry_name%',0,'','O:48:\"Concrete\\Core\\Express\\Search\\ColumnSet\\ColumnSet\":2:{s:10:\"\0*\0columns\";a:3:{i:0;O:34:\"Concrete\\Core\\Search\\Column\\Column\":5:{s:9:\"columnKey\";s:20:\"e.exEntryDateCreated\";s:10:\"columnName\";s:9:\"登録日\";s:13:\"sortDirection\";s:4:\"desc\";s:10:\"isSortable\";b:1;s:8:\"callback\";a:2:{i:0;s:50:\"\\Concrete\\Core\\Express\\Search\\ColumnSet\\DefaultSet\";i:1;s:12:\"getDateAdded\";}}i:1;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";O:35:\"Concrete\\Core\\Entity\\Express\\Entity\":18:{s:5:\"\0*\0id\";s:36:\"f68b23ea-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";s:21:\"カレーメニュー\";s:9:\"\0*\0handle\";s:10:\"curry_menu\";s:16:\"\0*\0plural_handle\";s:11:\"curry_menus\";s:13:\"\0*\0label_mask\";s:12:\"%curry_name%\";s:32:\"\0*\0supports_custom_display_order\";b:0;s:14:\"\0*\0description\";s:0:\"\";s:20:\"\0*\0result_column_set\";r:1;s:25:\"\0*\0include_in_public_list\";b:1;s:25:\"\0*\0entity_results_node_id\";i:45;s:13:\"\0*\0attributes\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:15:\"\0*\0associations\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:1:{i:0;O:49:\"Concrete\\Core\\Entity\\Express\\ManyToOneAssociation\":9:{s:5:\"\0*\0id\";s:36:\"90516c3c-4505-11e8-8c0e-9801a7b087ef\";s:16:\"\0*\0source_entity\";r:13;s:16:\"\0*\0target_entity\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Express\\Entity\":19:{s:17:\"__isInitialized__\";b:0;s:5:\"\0*\0id\";s:36:\"61fac1c2-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";N;s:9:\"\0*\0handle\";N;s:16:\"\0*\0plural_handle\";N;s:13:\"\0*\0label_mask\";N;s:32:\"\0*\0supports_custom_display_order\";b:0;s:14:\"\0*\0description\";N;s:20:\"\0*\0result_column_set\";N;s:25:\"\0*\0include_in_public_list\";b:1;s:25:\"\0*\0entity_results_node_id\";N;s:13:\"\0*\0attributes\";N;s:15:\"\0*\0associations\";N;s:8:\"\0*\0forms\";N;s:20:\"\0*\0default_view_form\";N;s:20:\"\0*\0default_edit_form\";N;s:10:\"\0*\0entries\";N;s:15:\"\0*\0created_date\";N;s:10:\"\0*\0package\";N;}s:26:\"\0*\0is_owned_by_association\";b:0;s:24:\"\0*\0is_owning_association\";b:0;s:8:\"\0*\0entry\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:11:\"\0*\0controls\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:23:\"\0*\0target_property_name\";s:11:\"curry_store\";s:28:\"\0*\0inversed_by_property_name\";s:11:\"curry_menus\";}}}s:14:\"\0*\0initialized\";b:1;}s:8:\"\0*\0forms\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:20:\"\0*\0default_view_form\";O:56:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Express\\Form\":5:{s:17:\"__isInitialized__\";b:0;s:5:\"\0*\0id\";s:36:\"f68b2dea-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";N;s:13:\"\0*\0field_sets\";N;s:9:\"\0*\0entity\";N;}s:20:\"\0*\0default_edit_form\";r:71;s:10:\"\0*\0entries\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:15:\"\0*\0created_date\";O:8:\"DateTime\":3:{s:4:\"date\";s:26:\"2018-04-21 10:41:19.000000\";s:13:\"timezone_type\";i:3;s:8:\"timezone\";s:10:\"Asia/Tokyo\";}s:10:\"\0*\0package\";N;}s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:40;s:11:\"\0*\0akHandle\";s:10:\"curry_name\";s:9:\"\0*\0akName\";s:15:\"メニュー名\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:1;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:13:\"ak_curry_name\";s:10:\"columnName\";s:15:\"メニュー名\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:2;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:13;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:41;s:11:\"\0*\0akHandle\";s:17:\"curry_description\";s:9:\"\0*\0akName\";s:18:\"メニュー説明\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:2;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:20:\"ak_curry_description\";s:10:\"columnName\";s:18:\"メニュー説明\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}}s:20:\"\0*\0defaultSortColumn\";r:3;}',1,45,'2018-04-21 10:41:19',NULL);
+INSERT INTO `ExpressEntities` VALUES ('61fac1c2-4504-11e8-8c0e-9801a7b087ef','61fad022-4504-11e8-8c0e-9801a7b087ef','61fad022-4504-11e8-8c0e-9801a7b087ef','カレー店舗','curry_store','curry_stores','%store_name%',0,'','N;',1,44,'2018-04-21 10:37:10',NULL,0),('83ae65b1-79e8-4ded-bbca-e419bfd19bb6','881b6bde-220f-4482-b8f9-ace40b5d169b','881b6bde-220f-4482-b8f9-ace40b5d169b','Contact','express_form_170','',NULL,0,'','N;',0,43,'2018-04-21 09:49:43',NULL,0),('f68b23ea-4504-11e8-8c0e-9801a7b087ef','f68b2dea-4504-11e8-8c0e-9801a7b087ef','f68b2dea-4504-11e8-8c0e-9801a7b087ef','カレーメニュー','curry_menu','curry_menus','%curry_name%',0,'','O:48:\"Concrete\\Core\\Express\\Search\\ColumnSet\\ColumnSet\":2:{s:10:\"\0*\0columns\";a:3:{i:0;O:34:\"Concrete\\Core\\Search\\Column\\Column\":5:{s:9:\"columnKey\";s:20:\"e.exEntryDateCreated\";s:10:\"columnName\";s:9:\"登録日\";s:13:\"sortDirection\";s:4:\"desc\";s:10:\"isSortable\";b:1;s:8:\"callback\";a:2:{i:0;s:50:\"\\Concrete\\Core\\Express\\Search\\ColumnSet\\DefaultSet\";i:1;s:12:\"getDateAdded\";}}i:1;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";O:35:\"Concrete\\Core\\Entity\\Express\\Entity\":18:{s:5:\"\0*\0id\";s:36:\"f68b23ea-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";s:21:\"カレーメニュー\";s:9:\"\0*\0handle\";s:10:\"curry_menu\";s:16:\"\0*\0plural_handle\";s:11:\"curry_menus\";s:13:\"\0*\0label_mask\";s:12:\"%curry_name%\";s:32:\"\0*\0supports_custom_display_order\";b:0;s:14:\"\0*\0description\";s:0:\"\";s:20:\"\0*\0result_column_set\";r:1;s:25:\"\0*\0include_in_public_list\";b:1;s:25:\"\0*\0entity_results_node_id\";i:45;s:13:\"\0*\0attributes\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:15:\"\0*\0associations\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:1:{i:0;O:49:\"Concrete\\Core\\Entity\\Express\\ManyToOneAssociation\":9:{s:5:\"\0*\0id\";s:36:\"90516c3c-4505-11e8-8c0e-9801a7b087ef\";s:16:\"\0*\0source_entity\";r:13;s:16:\"\0*\0target_entity\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Express\\Entity\":19:{s:17:\"__isInitialized__\";b:0;s:5:\"\0*\0id\";s:36:\"61fac1c2-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";N;s:9:\"\0*\0handle\";N;s:16:\"\0*\0plural_handle\";N;s:13:\"\0*\0label_mask\";N;s:32:\"\0*\0supports_custom_display_order\";b:0;s:14:\"\0*\0description\";N;s:20:\"\0*\0result_column_set\";N;s:25:\"\0*\0include_in_public_list\";b:1;s:25:\"\0*\0entity_results_node_id\";N;s:13:\"\0*\0attributes\";N;s:15:\"\0*\0associations\";N;s:8:\"\0*\0forms\";N;s:20:\"\0*\0default_view_form\";N;s:20:\"\0*\0default_edit_form\";N;s:10:\"\0*\0entries\";N;s:15:\"\0*\0created_date\";N;s:10:\"\0*\0package\";N;}s:26:\"\0*\0is_owned_by_association\";b:0;s:24:\"\0*\0is_owning_association\";b:0;s:8:\"\0*\0entry\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:11:\"\0*\0controls\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:23:\"\0*\0target_property_name\";s:11:\"curry_store\";s:28:\"\0*\0inversed_by_property_name\";s:11:\"curry_menus\";}}}s:14:\"\0*\0initialized\";b:1;}s:8:\"\0*\0forms\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:20:\"\0*\0default_view_form\";O:56:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Express\\Form\":5:{s:17:\"__isInitialized__\";b:0;s:5:\"\0*\0id\";s:36:\"f68b2dea-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";N;s:13:\"\0*\0field_sets\";N;s:9:\"\0*\0entity\";N;}s:20:\"\0*\0default_edit_form\";r:71;s:10:\"\0*\0entries\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:15:\"\0*\0created_date\";O:8:\"DateTime\":3:{s:4:\"date\";s:26:\"2018-04-21 10:41:19.000000\";s:13:\"timezone_type\";i:3;s:8:\"timezone\";s:10:\"Asia/Tokyo\";}s:10:\"\0*\0package\";N;}s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:40;s:11:\"\0*\0akHandle\";s:10:\"curry_name\";s:9:\"\0*\0akName\";s:15:\"メニュー名\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:1;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:13:\"ak_curry_name\";s:10:\"columnName\";s:15:\"メニュー名\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:2;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:13;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:41;s:11:\"\0*\0akHandle\";s:17:\"curry_description\";s:9:\"\0*\0akName\";s:18:\"メニュー説明\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:2;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:20:\"ak_curry_description\";s:10:\"columnName\";s:18:\"メニュー説明\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}}s:20:\"\0*\0defaultSortColumn\";r:3;}',1,45,'2018-04-21 10:41:19',NULL,0);
 /*!40000 ALTER TABLE `ExpressEntities` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Table structure for table `ExpressEntityAssociationSelectedEntries`
+-- Table structure for table `ExpressEntityAssociationEntries`
 --
 
-DROP TABLE IF EXISTS `ExpressEntityAssociationSelectedEntries`;
+DROP TABLE IF EXISTS `ExpressEntityAssociationEntries`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `ExpressEntityAssociationSelectedEntries` (
-  `id` int(11) NOT NULL,
-  `exSelectedEntryID` int(11) NOT NULL,
-  PRIMARY KEY (`id`,`exSelectedEntryID`),
-  KEY `IDX_1F9C570CBF396750` (`id`),
-  KEY `IDX_1F9C570CC7B1F65C` (`exSelectedEntryID`),
-  CONSTRAINT `FK_1F9C570CBF396750` FOREIGN KEY (`id`) REFERENCES `ExpressEntityEntryAssociations` (`id`),
-  CONSTRAINT `FK_1F9C570CC7B1F65C` FOREIGN KEY (`exSelectedEntryID`) REFERENCES `ExpressEntityEntries` (`exEntryID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+CREATE TABLE `ExpressEntityAssociationEntries` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `association_id` int(11) DEFAULT NULL,
+  `displayOrder` int(10) unsigned NOT NULL DEFAULT 0,
+  `exEntryID` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_9C2BB76C6DCB6296` (`exEntryID`),
+  KEY `IDX_9C2BB76CEFB9C8A5` (`association_id`),
+  CONSTRAINT `FK_9C2BB76C6DCB6296` FOREIGN KEY (`exEntryID`) REFERENCES `ExpressEntityEntries` (`exEntryID`),
+  CONSTRAINT `FK_9C2BB76CEFB9C8A5` FOREIGN KEY (`association_id`) REFERENCES `ExpressEntityEntryAssociations` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `ExpressEntityAssociationSelectedEntries`
+-- Dumping data for table `ExpressEntityAssociationEntries`
 --
 
-LOCK TABLES `ExpressEntityAssociationSelectedEntries` WRITE;
-/*!40000 ALTER TABLE `ExpressEntityAssociationSelectedEntries` DISABLE KEYS */;
-INSERT INTO `ExpressEntityAssociationSelectedEntries` VALUES (1,4),(1,5),(1,6),(1,7),(2,1),(3,1),(4,1),(5,1);
-/*!40000 ALTER TABLE `ExpressEntityAssociationSelectedEntries` ENABLE KEYS */;
+LOCK TABLES `ExpressEntityAssociationEntries` WRITE;
+/*!40000 ALTER TABLE `ExpressEntityAssociationEntries` DISABLE KEYS */;
+INSERT INTO `ExpressEntityAssociationEntries` VALUES (1,1,0,4),(2,1,0,5),(3,1,0,6),(4,1,0,7),(5,2,0,1),(6,3,0,1),(7,4,0,1),(8,5,0,1);
+/*!40000 ALTER TABLE `ExpressEntityAssociationEntries` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -2254,21 +2261,21 @@ DROP TABLE IF EXISTS `ExpressEntityAssociations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ExpressEntityAssociations` (
-  `id` char(36) COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
-  `source_entity_id` char(36) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
-  `target_entity_id` char(36) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
+  `source_entity_id` char(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
+  `target_entity_id` char(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
   `is_owned_by_association` tinyint(1) NOT NULL,
   `is_owning_association` tinyint(1) NOT NULL,
-  `target_property_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `inversed_by_property_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `association_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `target_property_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `inversed_by_property_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `association_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_98A0F796E9BBEE93` (`source_entity_id`),
   KEY `IDX_98A0F796B5910F71` (`target_entity_id`),
   CONSTRAINT `FK_98A0F796B5910F71` FOREIGN KEY (`target_entity_id`) REFERENCES `ExpressEntities` (`id`),
   CONSTRAINT `FK_98A0F796E9BBEE93` FOREIGN KEY (`source_entity_id`) REFERENCES `ExpressEntities` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2292,11 +2299,15 @@ CREATE TABLE `ExpressEntityEntries` (
   `exEntryID` int(11) NOT NULL AUTO_INCREMENT,
   `exEntryDisplayOrder` int(11) NOT NULL,
   `exEntryDateCreated` datetime NOT NULL,
-  `exEntryEntityID` char(36) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
+  `exEntryEntityID` char(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
+  `exEntryDateModified` datetime DEFAULT NULL,
+  `uID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`exEntryID`),
   KEY `IDX_B8AE3531AFC87D03` (`exEntryEntityID`),
-  CONSTRAINT `FK_B8AE3531AFC87D03` FOREIGN KEY (`exEntryEntityID`) REFERENCES `ExpressEntities` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  KEY `IDX_B8AE3531FD71026C` (`uID`),
+  CONSTRAINT `FK_B8AE3531AFC87D03` FOREIGN KEY (`exEntryEntityID`) REFERENCES `ExpressEntities` (`id`),
+  CONSTRAINT `FK_B8AE3531FD71026C` FOREIGN KEY (`uID`) REFERENCES `Users` (`uID`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2305,7 +2316,7 @@ CREATE TABLE `ExpressEntityEntries` (
 
 LOCK TABLES `ExpressEntityEntries` WRITE;
 /*!40000 ALTER TABLE `ExpressEntityEntries` DISABLE KEYS */;
-INSERT INTO `ExpressEntityEntries` VALUES (1,0,'2018-04-21 10:59:50','61fac1c2-4504-11e8-8c0e-9801a7b087ef'),(2,0,'2018-04-21 11:05:37','61fac1c2-4504-11e8-8c0e-9801a7b087ef'),(3,0,'2018-04-21 11:08:45','61fac1c2-4504-11e8-8c0e-9801a7b087ef'),(4,0,'2018-04-21 11:09:44','f68b23ea-4504-11e8-8c0e-9801a7b087ef'),(5,0,'2018-04-21 11:13:41','f68b23ea-4504-11e8-8c0e-9801a7b087ef'),(6,0,'2018-04-21 11:14:23','f68b23ea-4504-11e8-8c0e-9801a7b087ef'),(7,0,'2018-04-21 11:18:41','f68b23ea-4504-11e8-8c0e-9801a7b087ef');
+INSERT INTO `ExpressEntityEntries` VALUES (1,0,'2018-04-21 10:59:50','61fac1c2-4504-11e8-8c0e-9801a7b087ef',NULL,NULL),(2,0,'2018-04-21 11:05:37','61fac1c2-4504-11e8-8c0e-9801a7b087ef',NULL,NULL),(3,0,'2018-04-21 11:08:45','61fac1c2-4504-11e8-8c0e-9801a7b087ef',NULL,NULL),(4,0,'2018-04-21 11:09:44','f68b23ea-4504-11e8-8c0e-9801a7b087ef',NULL,NULL),(5,0,'2018-04-21 11:13:41','f68b23ea-4504-11e8-8c0e-9801a7b087ef',NULL,NULL),(6,0,'2018-04-21 11:14:23','f68b23ea-4504-11e8-8c0e-9801a7b087ef',NULL,NULL),(7,0,'2018-04-21 11:18:41','f68b23ea-4504-11e8-8c0e-9801a7b087ef',NULL,NULL);
 /*!40000 ALTER TABLE `ExpressEntityEntries` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2318,15 +2329,15 @@ DROP TABLE IF EXISTS `ExpressEntityEntryAssociations`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ExpressEntityEntryAssociations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `association_id` char(36) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
+  `association_id` char(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
   `exEntryID` int(11) DEFAULT NULL,
-  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_25B3A0826DCB6296` (`exEntryID`),
   KEY `IDX_25B3A082EFB9C8A5` (`association_id`),
   CONSTRAINT `FK_25B3A0826DCB6296` FOREIGN KEY (`exEntryID`) REFERENCES `ExpressEntityEntries` (`exEntryID`),
   CONSTRAINT `FK_25B3A082EFB9C8A5` FOREIGN KEY (`association_id`) REFERENCES `ExpressEntityAssociations` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2357,7 +2368,7 @@ CREATE TABLE `ExpressEntityEntryAttributeValues` (
   CONSTRAINT `FK_6DB641546DCB6296` FOREIGN KEY (`exEntryID`) REFERENCES `ExpressEntityEntries` (`exEntryID`),
   CONSTRAINT `FK_6DB64154A2A82A5D` FOREIGN KEY (`avID`) REFERENCES `AttributeValues` (`avID`),
   CONSTRAINT `FK_6DB64154B6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2378,14 +2389,15 @@ DROP TABLE IF EXISTS `ExpressForm170ExpressSearchIndexAttributes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ExpressForm170ExpressSearchIndexAttributes` (
-  `exEntryID` int(10) unsigned NOT NULL DEFAULT 0,
-  `ak_contact_question_first_name` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ak_contact_question_last_name` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ak_contact_question_email_address` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ak_contact_question_subject` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ak_contact_question_message` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`exEntryID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `exEntryID` int(11) NOT NULL,
+  `ak_contact_question_first_name` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ak_contact_question_last_name` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ak_contact_question_email_address` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ak_contact_question_subject` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ak_contact_question_message` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`exEntryID`),
+  CONSTRAINT `FK_722F0F0E6DCB6296` FOREIGN KEY (`exEntryID`) REFERENCES `ExpressEntityEntries` (`exEntryID`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2405,14 +2417,16 @@ DROP TABLE IF EXISTS `ExpressFormFieldSetAssociationControls`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ExpressFormFieldSetAssociationControls` (
-  `id` char(36) COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
-  `association_id` char(36) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
-  `association_entity_label_mask` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
+  `association_id` char(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
+  `association_entity_label_mask` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `entry_selector_mode` int(10) unsigned NOT NULL DEFAULT 0,
+  `enable_entry_reordering` tinyint(1) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_E6DF21BBEFB9C8A5` (`association_id`),
   CONSTRAINT `FK_E6DF21BBBF396750` FOREIGN KEY (`id`) REFERENCES `ExpressFormFieldSetControls` (`id`) ON DELETE CASCADE,
   CONSTRAINT `FK_E6DF21BBEFB9C8A5` FOREIGN KEY (`association_id`) REFERENCES `ExpressEntityAssociations` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2421,7 +2435,7 @@ CREATE TABLE `ExpressFormFieldSetAssociationControls` (
 
 LOCK TABLES `ExpressFormFieldSetAssociationControls` WRITE;
 /*!40000 ALTER TABLE `ExpressFormFieldSetAssociationControls` DISABLE KEYS */;
-INSERT INTO `ExpressFormFieldSetAssociationControls` VALUES ('a2af7144-4505-11e8-8c0e-9801a7b087ef','90515134-4505-11e8-8c0e-9801a7b087ef',NULL),('c942deaa-4509-11e8-8c0e-9801a7b087ef','90516c3c-4505-11e8-8c0e-9801a7b087ef',NULL);
+INSERT INTO `ExpressFormFieldSetAssociationControls` VALUES ('a2af7144-4505-11e8-8c0e-9801a7b087ef','90515134-4505-11e8-8c0e-9801a7b087ef',NULL,0,0),('c942deaa-4509-11e8-8c0e-9801a7b087ef','90516c3c-4505-11e8-8c0e-9801a7b087ef',NULL,0,0);
 /*!40000 ALTER TABLE `ExpressFormFieldSetAssociationControls` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2433,13 +2447,13 @@ DROP TABLE IF EXISTS `ExpressFormFieldSetAttributeKeyControls`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ExpressFormFieldSetAttributeKeyControls` (
-  `id` char(36) COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
   `akID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_8481F9D1B6561A7E` (`akID`),
   CONSTRAINT `FK_8481F9D1B6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`),
   CONSTRAINT `FK_8481F9D1BF396750` FOREIGN KEY (`id`) REFERENCES `ExpressFormFieldSetControls` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2453,6 +2467,29 @@ INSERT INTO `ExpressFormFieldSetAttributeKeyControls` VALUES ('f68175ca-634c-11e
 UNLOCK TABLES;
 
 --
+-- Table structure for table `ExpressFormFieldSetAuthorControls`
+--
+
+DROP TABLE IF EXISTS `ExpressFormFieldSetAuthorControls`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `ExpressFormFieldSetAuthorControls` (
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
+  PRIMARY KEY (`id`),
+  CONSTRAINT `FK_CF378786BF396750` FOREIGN KEY (`id`) REFERENCES `ExpressFormFieldSetControls` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `ExpressFormFieldSetAuthorControls`
+--
+
+LOCK TABLES `ExpressFormFieldSetAuthorControls` WRITE;
+/*!40000 ALTER TABLE `ExpressFormFieldSetAuthorControls` DISABLE KEYS */;
+/*!40000 ALTER TABLE `ExpressFormFieldSetAuthorControls` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `ExpressFormFieldSetControls`
 --
 
@@ -2460,16 +2497,16 @@ DROP TABLE IF EXISTS `ExpressFormFieldSetControls`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ExpressFormFieldSetControls` (
-  `id` char(36) COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
   `field_set_id` int(11) DEFAULT NULL,
   `is_required` tinyint(1) NOT NULL,
   `position` int(11) NOT NULL,
-  `custom_label` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `custom_label` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_E42868A43ABF811A` (`field_set_id`),
   CONSTRAINT `FK_E42868A43ABF811A` FOREIGN KEY (`field_set_id`) REFERENCES `ExpressFormFieldSets` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2490,12 +2527,12 @@ DROP TABLE IF EXISTS `ExpressFormFieldSetTextControls`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ExpressFormFieldSetTextControls` (
-  `id` char(36) COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
-  `headline` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `body` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
+  `headline` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `body` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   CONSTRAINT `FK_DB5A209ABF396750` FOREIGN KEY (`id`) REFERENCES `ExpressFormFieldSetControls` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2517,14 +2554,14 @@ DROP TABLE IF EXISTS `ExpressFormFieldSets`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ExpressFormFieldSets` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `form_id` char(36) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
+  `form_id` char(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
   `position` int(11) NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `description` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_A33BBBEC5FF69B7D` (`form_id`),
   CONSTRAINT `FK_A33BBBEC5FF69B7D` FOREIGN KEY (`form_id`) REFERENCES `ExpressForms` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2545,13 +2582,13 @@ DROP TABLE IF EXISTS `ExpressForms`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `ExpressForms` (
-  `id` char(36) COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
-  `entity_id` char(36) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
-  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
+  `entity_id` char(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_8D09031A81257D5D` (`entity_id`),
   CONSTRAINT `FK_8D09031A81257D5D` FOREIGN KEY (`entity_id`) REFERENCES `ExpressEntities` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2573,10 +2610,10 @@ DROP TABLE IF EXISTS `FailedLoginAttempts`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `FailedLoginAttempts` (
   `lcirID` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Record identifier',
-  `flaIp` varchar(40) COLLATE utf8_unicode_ci NOT NULL COMMENT 'IP address of the failed login attempt',
+  `flaIp` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'IP address of the failed login attempt',
   `flaTimestamp` timestamp NOT NULL DEFAULT current_timestamp() COMMENT 'Timestamp of the failed login attempt',
   PRIMARY KEY (`lcirID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Records failed login attempts';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Records failed login attempts';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2599,11 +2636,11 @@ CREATE TABLE `FeatureAssignments` (
   `faID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `feID` int(10) unsigned DEFAULT NULL,
   `fcID` int(10) unsigned DEFAULT NULL,
-  `fdObject` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fdObject` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`faID`),
   KEY `feID` (`feID`),
   KEY `fcID` (`fcID`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2625,12 +2662,12 @@ DROP TABLE IF EXISTS `FeatureCategories`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `FeatureCategories` (
   `fcID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `fcHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `fcHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pkgID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`fcID`),
   UNIQUE KEY `fcHandle` (`fcHandle`),
   KEY `pkgID` (`pkgID`,`fcID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2652,14 +2689,14 @@ DROP TABLE IF EXISTS `Features`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Features` (
   `feID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `feHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `feHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `feScore` int(11) NOT NULL DEFAULT 1,
   `feHasCustomClass` tinyint(1) NOT NULL DEFAULT 0,
   `pkgID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`feID`),
   UNIQUE KEY `feHandle` (`feHandle`),
   KEY `pkgID` (`pkgID`,`feID`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2683,7 +2720,7 @@ CREATE TABLE `FileAttributeKeys` (
   `akID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`akID`),
   CONSTRAINT `FK_BC5C7BBB6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2713,7 +2750,7 @@ CREATE TABLE `FileAttributeValues` (
   KEY `IDX_BBECEAA4A2A82A5D` (`avID`),
   CONSTRAINT `FK_BBECEAA4A2A82A5D` FOREIGN KEY (`avID`) REFERENCES `AttributeValues` (`avID`),
   CONSTRAINT `FK_BBECEAA4B6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2736,15 +2773,16 @@ DROP TABLE IF EXISTS `FileImageThumbnailPaths`;
 CREATE TABLE `FileImageThumbnailPaths` (
   `fileID` int(10) unsigned NOT NULL,
   `fileVersionID` int(10) unsigned NOT NULL,
-  `thumbnailTypeHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `thumbnailTypeHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `storageLocationID` int(10) unsigned NOT NULL,
-  `thumbnailFormat` varchar(5) COLLATE utf8_unicode_ci NOT NULL,
-  `path` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `thumbnailFormat` varchar(5) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `path` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `isBuilt` tinyint(1) NOT NULL,
-  `lockID` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lockID` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `lockExpires` datetime DEFAULT NULL,
-  PRIMARY KEY (`fileID`,`fileVersionID`,`thumbnailTypeHandle`,`storageLocationID`,`thumbnailFormat`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  PRIMARY KEY (`fileID`,`fileVersionID`,`thumbnailTypeHandle`,`storageLocationID`,`thumbnailFormat`),
+  KEY `thumbnailPathIsBuilt` (`isBuilt`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2753,6 +2791,7 @@ CREATE TABLE `FileImageThumbnailPaths` (
 
 LOCK TABLES `FileImageThumbnailPaths` WRITE;
 /*!40000 ALTER TABLE `FileImageThumbnailPaths` DISABLE KEYS */;
+INSERT INTO `FileImageThumbnailPaths` VALUES (5,1,'large',1,'jpeg','/thumbnails/large/1234/1234/5678/plants.jpg',1,NULL,NULL),(5,1,'medium',1,'jpeg','/thumbnails/medium/1234/1234/5678/plants.jpg',1,NULL,NULL),(5,1,'small',1,'jpeg','/thumbnails/small/1234/1234/5678/plants.jpg',1,NULL,NULL),(18,1,'file_manager_detail',1,'jpeg','/thumbnails/file_manager_detail/6315/2427/5947/bondy_otemachi.jpg',1,NULL,NULL),(18,1,'small',1,'jpeg','/thumbnails/small/6315/2427/5947/bondy_otemachi.jpg',1,NULL,NULL),(19,1,'file_manager_detail',1,'jpeg','/thumbnails/file_manager_detail/5515/2427/6312/hinoya_kandanishi.jpg',1,NULL,NULL),(19,1,'small',1,'jpeg','/thumbnails/small/5515/2427/6312/hinoya_kandanishi.jpg',1,NULL,NULL),(20,1,'file_manager_detail',1,'jpeg','/thumbnails/file_manager_detail/5515/2427/6502/cozy.jpg',1,NULL,NULL),(20,1,'small',1,'jpeg','/thumbnails/small/5515/2427/6502/cozy.jpg',1,NULL,NULL);
 /*!40000 ALTER TABLE `FileImageThumbnailPaths` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2769,7 +2808,7 @@ CREATE TABLE `FileImageThumbnailTypeFileSets` (
   PRIMARY KEY (`ftfsThumbnailType`,`ftfsFileSetID`),
   KEY `IDX_BD75F88D480660E5` (`ftfsThumbnailType`),
   CONSTRAINT `FK_BD75F88D480660E5` FOREIGN KEY (`ftfsThumbnailType`) REFERENCES `FileImageThumbnailTypes` (`ftTypeID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2790,15 +2829,17 @@ DROP TABLE IF EXISTS `FileImageThumbnailTypes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `FileImageThumbnailTypes` (
   `ftTypeID` int(11) NOT NULL AUTO_INCREMENT,
-  `ftTypeHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `ftTypeName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `ftTypeHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ftTypeName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ftTypeWidth` int(11) DEFAULT NULL,
   `ftTypeHeight` int(11) DEFAULT NULL,
   `ftTypeIsRequired` tinyint(1) NOT NULL,
-  `ftTypeSizingMode` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `ftTypeSizingMode` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ftLimitedToFileSets` tinyint(1) NOT NULL,
+  `ftUpscalingEnabled` tinyint(1) NOT NULL,
+  `ftKeepAnimations` tinyint(1) NOT NULL,
   PRIMARY KEY (`ftTypeID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2807,7 +2848,7 @@ CREATE TABLE `FileImageThumbnailTypes` (
 
 LOCK TABLES `FileImageThumbnailTypes` WRITE;
 /*!40000 ALTER TABLE `FileImageThumbnailTypes` DISABLE KEYS */;
-INSERT INTO `FileImageThumbnailTypes` VALUES (1,'small','Small Image',740,NULL,0,'proportional',0),(2,'medium','Medium Image',940,NULL,0,'proportional',0),(3,'large','Large Image',1140,NULL,0,'proportional',0),(4,'file_manager_listing','File Manager Thumbnails',60,60,1,'exact',0),(5,'file_manager_detail','File Manager Detail Thumbnails',400,400,1,'exact',0);
+INSERT INTO `FileImageThumbnailTypes` VALUES (1,'small','Small Image',740,NULL,0,'proportional',0,0,0),(2,'medium','Medium Image',940,NULL,0,'proportional',0,0,0),(3,'large','Large Image',1140,NULL,0,'proportional',0,0,0),(4,'file_manager_listing','File Manager Thumbnails',60,60,1,'exact',0,1,0),(5,'file_manager_detail','File Manager Detail Thumbnails',400,400,1,'exact',0,0,0);
 /*!40000 ALTER TABLE `FileImageThumbnailTypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -2825,7 +2866,7 @@ CREATE TABLE `FilePermissionAssignments` (
   PRIMARY KEY (`fID`,`pkID`,`paID`),
   KEY `pkID` (`pkID`),
   KEY `paID` (`paID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2847,10 +2888,10 @@ DROP TABLE IF EXISTS `FilePermissionFileTypeAccessList`;
 CREATE TABLE `FilePermissionFileTypeAccessList` (
   `paID` int(10) unsigned NOT NULL DEFAULT 0,
   `peID` int(10) unsigned NOT NULL DEFAULT 0,
-  `permission` varchar(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
+  `permission` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
   PRIMARY KEY (`paID`,`peID`),
   KEY `peID` (`peID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2870,12 +2911,12 @@ DROP TABLE IF EXISTS `FilePermissionFileTypeAccessListCustom`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `FilePermissionFileTypeAccessListCustom` (
-  `extension` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `extension` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `paID` int(10) unsigned NOT NULL DEFAULT 0,
   `peID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`paID`,`peID`,`extension`),
   KEY `peID` (`peID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2895,14 +2936,14 @@ DROP TABLE IF EXISTS `FilePermissionFileTypes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `FilePermissionFileTypes` (
-  `extension` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `extension` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
   `fsID` int(10) unsigned NOT NULL DEFAULT 0,
   `gID` int(10) unsigned NOT NULL DEFAULT 0,
   `uID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`fsID`,`gID`,`uID`,`extension`),
   KEY `gID` (`gID`),
   KEY `uID` (`uID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2922,12 +2963,13 @@ DROP TABLE IF EXISTS `FileSearchIndexAttributes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `FileSearchIndexAttributes` (
-  `fID` int(10) unsigned NOT NULL DEFAULT 0,
+  `fID` int(10) unsigned NOT NULL,
   `ak_width` decimal(14,4) DEFAULT 0.0000,
   `ak_height` decimal(14,4) DEFAULT 0.0000,
   `ak_duration` decimal(14,4) DEFAULT 0.0000,
-  PRIMARY KEY (`fID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  PRIMARY KEY (`fID`),
+  CONSTRAINT `FK_3A3A4845E3111F45` FOREIGN KEY (`fID`) REFERENCES `Files` (`fID`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2956,7 +2998,7 @@ CREATE TABLE `FileSetFiles` (
   PRIMARY KEY (`fsfID`),
   KEY `fID` (`fID`),
   KEY `fsID` (`fsID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2977,10 +3019,10 @@ DROP TABLE IF EXISTS `FileSetSavedSearches`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `FileSetSavedSearches` (
   `fsID` int(10) unsigned NOT NULL DEFAULT 0,
-  `fsSearchRequest` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fsResultColumns` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fsSearchRequest` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fsResultColumns` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`fsID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3001,7 +3043,7 @@ DROP TABLE IF EXISTS `FileSets`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `FileSets` (
   `fsID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `fsName` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `fsName` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `uID` int(10) unsigned NOT NULL DEFAULT 0,
   `fsType` smallint(6) NOT NULL,
   `fsOverrideGlobalPermissions` smallint(6) DEFAULT NULL,
@@ -3009,7 +3051,7 @@ CREATE TABLE `FileSets` (
   KEY `uID` (`uID`,`fsType`,`fsName`),
   KEY `fsName` (`fsName`),
   KEY `fsType` (`fsType`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3029,12 +3071,12 @@ DROP TABLE IF EXISTS `FileStorageLocationTypes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `FileStorageLocationTypes` (
-  `fslTypeHandle` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `fslTypeName` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `fslTypeHandle` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fslTypeName` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `fslTypeID` int(11) NOT NULL AUTO_INCREMENT,
   `pkgID` int(11) NOT NULL,
   PRIMARY KEY (`fslTypeID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3055,12 +3097,12 @@ DROP TABLE IF EXISTS `FileStorageLocations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `FileStorageLocations` (
-  `fslName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `fslConfiguration` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:object)',
+  `fslName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fslConfiguration` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:object)',
   `fslID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `fslIsDefault` tinyint(1) NOT NULL,
   PRIMARY KEY (`fslID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3088,7 +3130,7 @@ CREATE TABLE `FileUsageRecord` (
   PRIMARY KEY (`file_id`,`block_id`,`collection_id`,`collection_version_id`),
   KEY `block` (`block_id`),
   KEY `collection_version` (`collection_id`,`collection_version_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3116,7 +3158,7 @@ CREATE TABLE `FileVersionLog` (
   `fvUpdateTypeAttributeID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`fvlID`),
   KEY `fvID` (`fID`,`fvID`,`fvlID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3137,18 +3179,18 @@ DROP TABLE IF EXISTS `FileVersions`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `FileVersions` (
   `fvID` int(11) NOT NULL,
-  `fvFilename` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `fvPrefix` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fvFilename` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `fvPrefix` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `fvDateAdded` datetime NOT NULL,
   `fvActivateDateTime` datetime NOT NULL,
   `fvIsApproved` tinyint(1) NOT NULL,
   `fvAuthorUID` int(11) NOT NULL,
   `fvApproverUID` int(11) NOT NULL,
   `fvSize` bigint(20) NOT NULL,
-  `fvTitle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fvDescription` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fvExtension` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `fvTags` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fvTitle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fvDescription` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fvExtension` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `fvTags` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `fvType` int(11) NOT NULL,
   `fvHasListingThumbnail` tinyint(1) NOT NULL,
   `fvHasDetailThumbnail` tinyint(1) NOT NULL,
@@ -3159,7 +3201,7 @@ CREATE TABLE `FileVersions` (
   KEY `fvExtension` (`fvExtension`),
   KEY `fvType` (`fvType`),
   CONSTRAINT `FK_D7B5A13AE3111F45` FOREIGN KEY (`fID`) REFERENCES `Files` (`fID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3182,7 +3224,7 @@ DROP TABLE IF EXISTS `Files`;
 CREATE TABLE `Files` (
   `fID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `fDateAdded` datetime NOT NULL,
-  `fPassword` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fPassword` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `fOverrideSetPermissions` tinyint(1) NOT NULL,
   `ocID` int(10) unsigned NOT NULL,
   `folderTreeNodeID` int(10) unsigned NOT NULL,
@@ -3195,7 +3237,7 @@ CREATE TABLE `Files` (
   KEY `fOverrideSetPermissions` (`fOverrideSetPermissions`),
   CONSTRAINT `FK_C7F46F5DB81D3903` FOREIGN KEY (`fslID`) REFERENCES `FileStorageLocations` (`fslID`),
   CONSTRAINT `FK_C7F46F5DFD71026C` FOREIGN KEY (`uID`) REFERENCES `Users` (`uID`) ON DELETE SET NULL
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3222,7 +3264,7 @@ CREATE TABLE `FormSubmissionNotifications` (
   KEY `IDX_E7B6BE406DCB6296` (`exEntryID`),
   CONSTRAINT `FK_E7B6BE406DCB6296` FOREIGN KEY (`exEntryID`) REFERENCES `ExpressEntityEntries` (`exEntryID`) ON DELETE CASCADE,
   CONSTRAINT `FK_E7B6BE40ED024EFD` FOREIGN KEY (`nID`) REFERENCES `Notifications` (`nID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3245,11 +3287,11 @@ CREATE TABLE `GatheringConfiguredDataSources` (
   `gcsID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `gaID` int(10) unsigned DEFAULT NULL,
   `gasID` int(10) unsigned DEFAULT NULL,
-  `gcdObject` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `gcdObject` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`gcsID`),
   KEY `gaID` (`gaID`),
   KEY `gasID` (`gasID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3270,14 +3312,14 @@ DROP TABLE IF EXISTS `GatheringDataSources`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `GatheringDataSources` (
   `gasID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `gasName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `gasHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `gasName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gasHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pkgID` int(10) unsigned NOT NULL DEFAULT 0,
   `gasDisplayOrder` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`gasID`),
   UNIQUE KEY `gasHandle` (`gasHandle`),
   KEY `pkgID` (`pkgID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3304,7 +3346,7 @@ CREATE TABLE `GatheringItemFeatureAssignments` (
   PRIMARY KEY (`gafaID`),
   KEY `gaiID` (`gaiID`,`faID`),
   KEY `faID` (`faID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3331,7 +3373,7 @@ CREATE TABLE `GatheringItemSelectedTemplates` (
   UNIQUE KEY `gatUniqueKey` (`gaiID`,`gatTypeID`),
   KEY `gatTypeID` (`gatTypeID`),
   KEY `gatID` (`gatID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3357,7 +3399,7 @@ CREATE TABLE `GatheringItemTemplateFeatures` (
   PRIMARY KEY (`gfeID`),
   KEY `gatID` (`gatID`),
   KEY `feID` (`feID`,`gatID`)
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3379,12 +3421,12 @@ DROP TABLE IF EXISTS `GatheringItemTemplateTypes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `GatheringItemTemplateTypes` (
   `gatTypeID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `gatTypeHandle` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `gatTypeHandle` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pkgID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`gatTypeID`),
   UNIQUE KEY `gatTypeHandle` (`gatTypeHandle`),
   KEY `pkgID` (`pkgID`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3406,8 +3448,8 @@ DROP TABLE IF EXISTS `GatheringItemTemplates`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `GatheringItemTemplates` (
   `gatID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `gatHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `gatName` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `gatHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gatName` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `gatHasCustomClass` tinyint(1) NOT NULL DEFAULT 0,
   `gatFixedSlotWidth` int(10) unsigned DEFAULT 0,
   `gatFixedSlotHeight` int(10) unsigned DEFAULT 0,
@@ -3418,7 +3460,7 @@ CREATE TABLE `GatheringItemTemplates` (
   UNIQUE KEY `gatHandle` (`gatHandle`,`gatTypeID`),
   KEY `gatTypeID` (`gatTypeID`),
   KEY `pkgID` (`pkgID`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3444,10 +3486,10 @@ CREATE TABLE `GatheringItems` (
   `gasID` int(10) unsigned DEFAULT NULL,
   `gaiDateTimeCreated` datetime NOT NULL,
   `gaiPublicDateTime` datetime NOT NULL,
-  `gaiTitle` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `gaiTitle` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `gaiSlotWidth` int(10) unsigned DEFAULT 1,
   `gaiSlotHeight` int(10) unsigned DEFAULT 1,
-  `gaiKey` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `gaiKey` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `gaiBatchDisplayOrder` int(10) unsigned NOT NULL DEFAULT 0,
   `gaiBatchTimestamp` int(10) unsigned NOT NULL DEFAULT 0,
   `gaiIsDeleted` tinyint(1) DEFAULT 0,
@@ -3455,7 +3497,7 @@ CREATE TABLE `GatheringItems` (
   UNIQUE KEY `gaiUniqueKey` (`gaiKey`,`gasID`,`gaID`),
   KEY `gaID` (`gaID`,`gaiBatchTimestamp`),
   KEY `gasID` (`gasID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3481,7 +3523,7 @@ CREATE TABLE `GatheringPermissionAssignments` (
   PRIMARY KEY (`gaID`,`pkID`,`paID`),
   KEY `pkID` (`pkID`),
   KEY `paID` (`paID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3506,7 +3548,7 @@ CREATE TABLE `Gatherings` (
   `gaDateLastUpdated` datetime NOT NULL,
   PRIMARY KEY (`gaID`),
   KEY `gaDateLastUpdated` (`gaDateLastUpdated`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3527,17 +3569,17 @@ DROP TABLE IF EXISTS `Geolocators`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Geolocators` (
   `glID` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Geolocator ID',
-  `glHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Geolocator handle',
-  `glName` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Geolocator name',
-  `glDescription` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT 'Geolocator description',
-  `glConfiguration` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT 'Geolocator configuration options(DC2Type:json_array)',
+  `glHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Geolocator handle',
+  `glName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Geolocator name',
+  `glDescription` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Geolocator description',
+  `glConfiguration` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Geolocator configuration options(DC2Type:json_array)',
   `glActive` tinyint(1) NOT NULL COMMENT 'Is this Geolocator the active one?',
   `glPackage` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`glID`),
   UNIQUE KEY `UNIQ_83BB1614D4F4D416` (`glHandle`),
   KEY `IDX_83BB1614D5F6CC40` (`glPackage`),
   CONSTRAINT `FK_83BB1614D5F6CC40` FOREIGN KEY (`glPackage`) REFERENCES `Packages` (`pkgID`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='List of all the installed Geolocator services';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='List of all the installed Geolocator services';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3562,7 +3604,7 @@ CREATE TABLE `GroupSetGroups` (
   `gsID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`gID`,`gsID`),
   KEY `gsID` (`gsID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3583,12 +3625,12 @@ DROP TABLE IF EXISTS `GroupSets`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `GroupSets` (
   `gsID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `gsName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `gsName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pkgID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`gsID`),
   KEY `gsName` (`gsName`),
   KEY `pkgID` (`pkgID`,`gsID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3609,29 +3651,29 @@ DROP TABLE IF EXISTS `Groups`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Groups` (
   `gID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `gName` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
-  `gDescription` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `gName` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `gDescription` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `gUserExpirationIsEnabled` tinyint(1) NOT NULL DEFAULT 0,
-  `gUserExpirationMethod` varchar(12) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `gUserExpirationMethod` varchar(12) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `gUserExpirationSetDateTime` datetime DEFAULT NULL,
   `gUserExpirationInterval` int(10) unsigned NOT NULL DEFAULT 0,
-  `gUserExpirationAction` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `gUserExpirationAction` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `gIsBadge` tinyint(1) NOT NULL DEFAULT 0,
   `gBadgeFID` int(10) unsigned NOT NULL DEFAULT 0,
-  `gBadgeDescription` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `gBadgeDescription` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `gBadgeCommunityPointValue` int(11) NOT NULL DEFAULT 0,
   `gIsAutomated` tinyint(1) NOT NULL DEFAULT 0,
   `gCheckAutomationOnRegister` tinyint(1) NOT NULL DEFAULT 0,
   `gCheckAutomationOnLogin` tinyint(1) NOT NULL DEFAULT 0,
   `gCheckAutomationOnJobRun` tinyint(1) NOT NULL DEFAULT 0,
-  `gPath` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `gPath` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pkgID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`gID`),
   KEY `gName` (`gName`),
   KEY `gBadgeFID` (`gBadgeFID`),
   KEY `pkgID` (`pkgID`),
   KEY `gPath` (`gPath`(255))
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3657,7 +3699,7 @@ CREATE TABLE `JobSetJobs` (
   `jRunOrder` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`jsID`,`jID`),
   KEY `jID` (`jID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3666,7 +3708,7 @@ CREATE TABLE `JobSetJobs` (
 
 LOCK TABLES `JobSetJobs` WRITE;
 /*!40000 ALTER TABLE `JobSetJobs` DISABLE KEYS */;
-INSERT INTO `JobSetJobs` VALUES (1,1,0),(1,4,0),(1,5,0),(1,6,0),(1,7,0),(1,9,0);
+INSERT INTO `JobSetJobs` VALUES (1,1,0),(1,4,0),(1,5,0),(1,6,0),(1,7,0),(1,9,0),(1,10,0);
 /*!40000 ALTER TABLE `JobSetJobs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3679,16 +3721,16 @@ DROP TABLE IF EXISTS `JobSets`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `JobSets` (
   `jsID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `jsName` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `jsName` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pkgID` int(10) unsigned NOT NULL DEFAULT 0,
   `jDateLastRun` datetime DEFAULT NULL,
   `isScheduled` smallint(6) NOT NULL DEFAULT 0,
-  `scheduledInterval` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'days',
+  `scheduledInterval` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'days',
   `scheduledValue` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`jsID`),
   KEY `pkgID` (`pkgID`),
   KEY `jsName` (`jsName`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3710,25 +3752,25 @@ DROP TABLE IF EXISTS `Jobs`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Jobs` (
   `jID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `jName` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
-  `jDescription` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `jName` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jDescription` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jDateInstalled` datetime DEFAULT NULL,
   `jDateLastRun` datetime DEFAULT NULL,
   `pkgID` int(10) unsigned NOT NULL DEFAULT 0,
-  `jLastStatusText` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `jLastStatusText` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `jLastStatusCode` smallint(6) NOT NULL DEFAULT 0,
-  `jStatus` varchar(14) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'ENABLED',
-  `jHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `jStatus` varchar(14) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'ENABLED',
+  `jHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jNotUninstallable` smallint(6) NOT NULL DEFAULT 0,
   `isScheduled` smallint(6) NOT NULL DEFAULT 0,
-  `scheduledInterval` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'days',
+  `scheduledInterval` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'days',
   `scheduledValue` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`jID`),
   UNIQUE KEY `jHandle` (`jHandle`),
   KEY `pkgID` (`pkgID`),
   KEY `isScheduled` (`isScheduled`,`jDateLastRun`,`jID`),
   KEY `jDateLastRun` (`jDateLastRun`,`jID`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3737,7 +3779,7 @@ CREATE TABLE `Jobs` (
 
 LOCK TABLES `Jobs` WRITE;
 /*!40000 ALTER TABLE `Jobs` DISABLE KEYS */;
-INSERT INTO `Jobs` VALUES (1,'Index Search Engine - Updates','Index the site to allow searching to work quickly and accurately','2018-04-21 09:49:32',NULL,0,NULL,0,'ENABLED','index_search',1,0,'days',0),(2,'Index Search Engine - All','Empties the page search index and reindexes all pages.','2018-04-21 09:49:32','2018-05-28 21:41:01',0,'次の索引が実行されました: 189 ページ、1 ユーザー、19 ファイル、1 サイト',0,'ENABLED','index_search_all',1,0,'days',0),(3,'Check Automated Groups','Automatically add users to groups and assign badges.','2018-04-21 09:49:32',NULL,0,NULL,0,'ENABLED','check_automated_groups',0,0,'days',0),(4,'Generate the sitemap.xml file','Generate the sitemap.xml file that search engines use to crawl your site.','2018-04-21 09:49:32',NULL,0,NULL,0,'ENABLED','generate_sitemap',0,0,'days',0),(5,'Process Email Posts','Polls an email account and grabs private messages/postings that are sent there..','2018-04-21 09:49:32',NULL,0,NULL,0,'ENABLED','process_email',0,0,'days',0),(6,'Remove Old Page Versions','Removes all except the 10 most recent page versions for each page.','2018-04-21 09:49:32',NULL,0,NULL,0,'ENABLED','remove_old_page_versions',0,0,'days',0),(7,'Update Gatherings','Loads new items into gatherings.','2018-04-21 09:49:32',NULL,0,NULL,0,'ENABLED','update_gatherings',0,0,'days',0),(8,'Update Statistics Trackers','Scan the sitemap for file usage and stack usage to update statistics trackers','2018-04-21 09:49:32',NULL,0,NULL,0,'ENABLED','update_statistics',0,0,'days',0),(9,'Fill thumbnail database table','Re-populate the thumbnail path database table.','2018-04-21 09:49:32',NULL,0,NULL,0,'ENABLED','fill_thumbnails_table',0,0,'days',0);
+INSERT INTO `Jobs` VALUES (1,'Index Search Engine - Updates','Index the site to allow searching to work quickly and accurately','2018-04-21 09:49:32',NULL,0,NULL,0,'ENABLED','index_search',1,0,'days',0),(2,'Index Search Engine - All','Empties the page search index and reindexes all pages.','2018-04-21 09:49:32','2018-05-28 21:41:01',0,'次の索引が実行されました: 189 ページ、1 ユーザー、19 ファイル、1 サイト',0,'ENABLED','index_search_all',1,0,'days',0),(3,'Check Automated Groups','Automatically add users to groups and assign badges.','2018-04-21 09:49:32',NULL,0,NULL,0,'ENABLED','check_automated_groups',0,0,'days',0),(4,'Generate the sitemap.xml file','Generate the sitemap.xml file that search engines use to crawl your site.','2018-04-21 09:49:32',NULL,0,NULL,0,'ENABLED','generate_sitemap',0,0,'days',0),(5,'Process Email Posts','Polls an email account and grabs private messages/postings that are sent there..','2018-04-21 09:49:32',NULL,0,NULL,0,'ENABLED','process_email',0,0,'days',0),(6,'Remove Old Page Versions','Removes all except the 10 most recent page versions for each page.','2018-04-21 09:49:32',NULL,0,NULL,0,'ENABLED','remove_old_page_versions',0,0,'days',0),(7,'Update Gatherings','Loads new items into gatherings.','2018-04-21 09:49:32',NULL,0,NULL,0,'ENABLED','update_gatherings',0,0,'days',0),(8,'Update Statistics Trackers','Scan the sitemap for file usage and stack usage to update statistics trackers','2018-04-21 09:49:32',NULL,0,NULL,0,'ENABLED','update_statistics',0,0,'days',0),(9,'Fill thumbnail database table','Re-populate the thumbnail path database table.','2018-04-21 09:49:32',NULL,0,NULL,0,'ENABLED','fill_thumbnails_table',0,0,'days',0),(10,'Deactivate Users','Deactivates users who haven\'t logged in recently, if automatic user deactivation is active.','2019-06-17 16:47:00',NULL,0,NULL,0,'ENABLED','deactivate_users',0,0,'days',0);
 /*!40000 ALTER TABLE `Jobs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3751,12 +3793,12 @@ DROP TABLE IF EXISTS `JobsLog`;
 CREATE TABLE `JobsLog` (
   `jlID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `jID` int(10) unsigned NOT NULL,
-  `jlMessage` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `jlMessage` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `jlTimestamp` timestamp NOT NULL DEFAULT current_timestamp(),
   `jlError` int(11) NOT NULL DEFAULT 0,
   PRIMARY KEY (`jlID`),
   KEY `jID` (`jID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3780,7 +3822,7 @@ CREATE TABLE `LegacyAttributeKeys` (
   `akID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`akID`),
   CONSTRAINT `FK_740BA2BBB6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3801,13 +3843,13 @@ DROP TABLE IF EXISTS `LoginControlIpRanges`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `LoginControlIpRanges` (
   `lcirID` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'Record identifier',
-  `lcirIpFrom` varchar(40) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Start of the range',
-  `lcirIpTo` varchar(40) COLLATE utf8_unicode_ci NOT NULL COMMENT 'End of the range',
+  `lcirIpFrom` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Start of the range',
+  `lcirIpTo` varchar(40) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'End of the range',
   `lcirType` smallint(5) unsigned NOT NULL COMMENT 'Type of the record',
   `lcirExpires` datetime DEFAULT NULL COMMENT 'Record end-of-life timestamp',
   PRIMARY KEY (`lcirID`),
   KEY `IX_LoginControlIpRanges_Search` (`lcirIpFrom`,`lcirIpTo`,`lcirExpires`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='IP ranges used to control login attempts';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='IP ranges used to control login attempts';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3828,15 +3870,15 @@ DROP TABLE IF EXISTS `Logs`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Logs` (
   `logID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `channel` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `channel` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `time` int(10) unsigned NOT NULL,
-  `message` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `message` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `uID` int(10) unsigned DEFAULT NULL,
   `level` int(11) NOT NULL,
   PRIMARY KEY (`logID`),
   KEY `channel` (`channel`),
   KEY `uID` (`uID`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=58 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3845,7 +3887,7 @@ CREATE TABLE `Logs` (
 
 LOCK TABLES `Logs` WRITE;
 /*!40000 ALTER TABLE `Logs` DISABLE KEYS */;
-INSERT INTO `Logs` VALUES (1,'application',1524271797,'CacheClearer::flush() でキャッシュをクリア中。',1,250),(2,'application',1524274159,'ページ「Portfolio」（パス /portfolio ）をゴミ箱に移動しました',1,100),(3,'application',1524275465,'CacheClearer::flush() でキャッシュをクリア中。',1,250),(4,'exceptions',1524275932,'Exception Occurred: /Users/katz/Sites/c58express/concrete/vendor/imagine/imagine/lib/Imagine/Gd/Image.php:602 Allowed memory size of 134217728 bytes exhausted (tried to allocate 16384 bytes) (1)\n',1,600),(5,'exceptions',1524277235,'Exception Occurred: /Users/katz/Sites/c58express/concrete/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:90 An exception occurred while executing \'SELECT count(distinct e.exEntryID) FROM ExpressEntityEntries e LEFT JOIN CurryStoreExpressSearchIndexAttributes ea ON e.exEntryID = ea.exEntryID WHERE (ak_store_name like ?) AND (()) AND (e.exEntryEntityID = ?) LIMIT 1\' with params [\"%%\", \"61fac1c2-4504-11e8-8c0e-9801a7b087ef\"]:\n\nSQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near \')) AND (e.exEntryEntityID = \'61fac1c2-4504-11e8-8c0e-9801a7b087ef\') LIMIT 1\' at line 1 (0)\n',1,600),(6,'exceptions',1524277237,'Exception Occurred: /Users/katz/Sites/c58express/concrete/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:90 An exception occurred while executing \'SELECT count(distinct e.exEntryID) FROM ExpressEntityEntries e LEFT JOIN CurryStoreExpressSearchIndexAttributes ea ON e.exEntryID = ea.exEntryID WHERE (ak_store_name like ?) AND (()) AND (e.exEntryEntityID = ?) LIMIT 1\' with params [\"%%\", \"61fac1c2-4504-11e8-8c0e-9801a7b087ef\"]:\n\nSQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near \')) AND (e.exEntryEntityID = \'61fac1c2-4504-11e8-8c0e-9801a7b087ef\') LIMIT 1\' at line 1 (0)\n',1,600),(7,'exceptions',1524279007,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:98 syntax error, unexpected \'else\' (T_ELSE) (0)\n',1,600),(8,'exceptions',1524279010,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:98 syntax error, unexpected \'else\' (T_ELSE) (0)\n',1,600),(9,'exceptions',1524279197,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:51 syntax error, unexpected \'else\' (T_ELSE) (0)\n',1,600),(10,'exceptions',1524279246,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:45 syntax error, unexpected \'else\' (T_ELSE) (0)\n',1,600),(11,'exceptions',1524279300,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:49 syntax error, unexpected end of file (0)\n',1,600),(12,'exceptions',1524279331,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:46 syntax error, unexpected end of file (0)\n',1,600),(13,'exceptions',1524279445,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:46 syntax error, unexpected end of file (0)\n',1,600),(14,'exceptions',1524279462,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:45 syntax error, unexpected end of file (0)\n',1,600),(15,'exceptions',1524279476,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:43 syntax error, unexpected end of file (0)\n',1,600),(16,'exceptions',1524279505,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:42 syntax error, unexpected end of file (0)\n',1,600),(17,'exceptions',1524279527,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:43 syntax error, unexpected end of file (0)\n',1,600),(18,'exceptions',1524279556,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:45 syntax error, unexpected end of file (0)\n',1,600),(19,'exceptions',1524279569,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:42 syntax error, unexpected end of file (0)\n',1,600),(20,'exceptions',1524279591,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:42 syntax error, unexpected end of file (0)\n',1,600),(21,'exceptions',1524279604,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:45 syntax error, unexpected end of file (0)\n',1,600),(22,'exceptions',1524279628,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:43 syntax error, unexpected end of file (0)\n',1,600),(23,'exceptions',1524279751,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:44 syntax error, unexpected end of file (0)\n',1,600),(24,'exceptions',1524280452,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:44 syntax error, unexpected end of file (0)\n',1,600),(25,'exceptions',1524280470,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:36 syntax error, unexpected end of file (0)\n',1,600),(26,'exceptions',1524280480,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:41 syntax error, unexpected end of file (0)\n',1,600),(27,'exceptions',1524280499,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:43 syntax error, unexpected end of file (0)\n',1,600),(28,'exceptions',1524280508,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:33 syntax error, unexpected end of file (0)\n',1,600),(29,'exceptions',1524280574,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:44 syntax error, unexpected end of file (0)\n',1,600),(30,'exceptions',1524280596,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:21 syntax error, unexpected end of file (0)\n',1,600),(31,'exceptions',1524280612,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:18 syntax error, unexpected end of file (0)\n',1,600),(32,'exceptions',1524280647,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:44 syntax error, unexpected end of file (0)\n',1,600),(33,'exceptions',1524280670,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:43 syntax error, unexpected end of file (0)\n',1,600),(34,'exceptions',1524280675,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:43 syntax error, unexpected end of file (0)\n',1,600),(35,'exceptions',1524280703,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:40 syntax error, unexpected end of file (0)\n',1,600),(36,'exceptions',1524280713,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:40 syntax error, unexpected end of file (0)\n',1,600),(37,'exceptions',1524280721,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:39 syntax error, unexpected end of file (0)\n',1,600),(38,'exceptions',1524280738,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:41 syntax error, unexpected end of file (0)\n',1,600),(39,'exceptions',1524280743,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:41 syntax error, unexpected end of file (0)\n',1,600),(40,'exceptions',1524280767,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:41 syntax error, unexpected end of file (0)\n',1,600),(41,'exceptions',1524280835,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:41 syntax error, unexpected end of file (0)\n',1,600),(42,'exceptions',1524281856,'Exception Occurred: /Users/katz/Sites/c58express/concrete/blocks/express_entry_detail/view.php:8 syntax error, unexpected \'$storeID\' (T_VARIABLE) (0)\n',1,600),(43,'exceptions',1524281994,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_detail/templates/curry_store_detail.php:20 syntax error, unexpected \'?>\' (0)\n',1,600),(44,'exceptions',1524281999,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_detail/templates/curry_store_detail.php:20 syntax error, unexpected \'?>\' (0)\n',1,600),(45,'exceptions',1524282024,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_detail/templates/curry_store_detail.php:55 syntax error, unexpected \'count\' (T_STRING), expecting \'(\' (0)\n',1,600),(46,'exceptions',1524282040,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_detail/templates/curry_store_detail.php:85 syntax error, unexpected \'<\' (0)\n',1,600),(47,'exceptions',1524282213,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_detail/templates/curry_store_detail.php:47 Call to a member function getDisplayValue() on array (0)\n',1,600),(48,'exceptions',1524282235,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_detail/templates/curry_store_detail.php:47 Call to undefined method Concrete\\Core\\Tree\\Node\\Type\\Topic::getDisplayValue() (0)\n',1,600),(49,'exceptions',1524282247,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_detail/templates/curry_store_detail.php:47 Call to undefined method Concrete\\Core\\Tree\\Node\\Type\\Topic::getValue() (0)\n',1,600),(50,'exceptions',1524290277,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_detail/templates/curry_store_detail.php:48 Call to a member function getTreeNodeDisplayName() on null (0)\n',1,600),(51,'exceptions',1524452080,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_detail/templates/curry_store_detail.php:48 Call to a member function getTreeNodeDisplayName() on null (0)\n',1,600),(52,'exceptions',1524452172,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_detail/templates/curry_store_detail.php:20 syntax error, unexpected \';\' (0)\n',1,600),(53,'exceptions',1524788180,'Exception Occurred: /Users/katz/Sites/c58express/concrete/vendor/tedivm/stash/src/Stash/Driver/FileSystem.php:326 unlink(/Users/katz/Sites/c58express/application/files/cache/overrides/1952a01898073d1e/561b9b4f2e42cbd7/38a865804f8fdcb6/57cd99682e939275/261327d2b99c991d/77a2f0e45747352d.php): No such file or directory (2)\n',0,600),(54,'application',1528851313,'Clearing cache with CacheClearer::flush().',0,250);
+INSERT INTO `Logs` VALUES (1,'application',1524271797,'CacheClearer::flush() でキャッシュをクリア中。',1,250),(2,'application',1524274159,'ページ「Portfolio」（パス /portfolio ）をゴミ箱に移動しました',1,100),(3,'application',1524275465,'CacheClearer::flush() でキャッシュをクリア中。',1,250),(4,'exceptions',1524275932,'Exception Occurred: /Users/katz/Sites/c58express/concrete/vendor/imagine/imagine/lib/Imagine/Gd/Image.php:602 Allowed memory size of 134217728 bytes exhausted (tried to allocate 16384 bytes) (1)\n',1,600),(5,'exceptions',1524277235,'Exception Occurred: /Users/katz/Sites/c58express/concrete/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:90 An exception occurred while executing \'SELECT count(distinct e.exEntryID) FROM ExpressEntityEntries e LEFT JOIN CurryStoreExpressSearchIndexAttributes ea ON e.exEntryID = ea.exEntryID WHERE (ak_store_name like ?) AND (()) AND (e.exEntryEntityID = ?) LIMIT 1\' with params [\"%%\", \"61fac1c2-4504-11e8-8c0e-9801a7b087ef\"]:\n\nSQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near \')) AND (e.exEntryEntityID = \'61fac1c2-4504-11e8-8c0e-9801a7b087ef\') LIMIT 1\' at line 1 (0)\n',1,600),(6,'exceptions',1524277237,'Exception Occurred: /Users/katz/Sites/c58express/concrete/vendor/doctrine/dbal/lib/Doctrine/DBAL/Driver/AbstractMySQLDriver.php:90 An exception occurred while executing \'SELECT count(distinct e.exEntryID) FROM ExpressEntityEntries e LEFT JOIN CurryStoreExpressSearchIndexAttributes ea ON e.exEntryID = ea.exEntryID WHERE (ak_store_name like ?) AND (()) AND (e.exEntryEntityID = ?) LIMIT 1\' with params [\"%%\", \"61fac1c2-4504-11e8-8c0e-9801a7b087ef\"]:\n\nSQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near \')) AND (e.exEntryEntityID = \'61fac1c2-4504-11e8-8c0e-9801a7b087ef\') LIMIT 1\' at line 1 (0)\n',1,600),(7,'exceptions',1524279007,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:98 syntax error, unexpected \'else\' (T_ELSE) (0)\n',1,600),(8,'exceptions',1524279010,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:98 syntax error, unexpected \'else\' (T_ELSE) (0)\n',1,600),(9,'exceptions',1524279197,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:51 syntax error, unexpected \'else\' (T_ELSE) (0)\n',1,600),(10,'exceptions',1524279246,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:45 syntax error, unexpected \'else\' (T_ELSE) (0)\n',1,600),(11,'exceptions',1524279300,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:49 syntax error, unexpected end of file (0)\n',1,600),(12,'exceptions',1524279331,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:46 syntax error, unexpected end of file (0)\n',1,600),(13,'exceptions',1524279445,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:46 syntax error, unexpected end of file (0)\n',1,600),(14,'exceptions',1524279462,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:45 syntax error, unexpected end of file (0)\n',1,600),(15,'exceptions',1524279476,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:43 syntax error, unexpected end of file (0)\n',1,600),(16,'exceptions',1524279505,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:42 syntax error, unexpected end of file (0)\n',1,600),(17,'exceptions',1524279527,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:43 syntax error, unexpected end of file (0)\n',1,600),(18,'exceptions',1524279556,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:45 syntax error, unexpected end of file (0)\n',1,600),(19,'exceptions',1524279569,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:42 syntax error, unexpected end of file (0)\n',1,600),(20,'exceptions',1524279591,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:42 syntax error, unexpected end of file (0)\n',1,600),(21,'exceptions',1524279604,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:45 syntax error, unexpected end of file (0)\n',1,600),(22,'exceptions',1524279628,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:43 syntax error, unexpected end of file (0)\n',1,600),(23,'exceptions',1524279751,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:44 syntax error, unexpected end of file (0)\n',1,600),(24,'exceptions',1524280452,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:44 syntax error, unexpected end of file (0)\n',1,600),(25,'exceptions',1524280470,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:36 syntax error, unexpected end of file (0)\n',1,600),(26,'exceptions',1524280480,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:41 syntax error, unexpected end of file (0)\n',1,600),(27,'exceptions',1524280499,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:43 syntax error, unexpected end of file (0)\n',1,600),(28,'exceptions',1524280508,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:33 syntax error, unexpected end of file (0)\n',1,600),(29,'exceptions',1524280574,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:44 syntax error, unexpected end of file (0)\n',1,600),(30,'exceptions',1524280596,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:21 syntax error, unexpected end of file (0)\n',1,600),(31,'exceptions',1524280612,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:18 syntax error, unexpected end of file (0)\n',1,600),(32,'exceptions',1524280647,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:44 syntax error, unexpected end of file (0)\n',1,600),(33,'exceptions',1524280670,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:43 syntax error, unexpected end of file (0)\n',1,600),(34,'exceptions',1524280675,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:43 syntax error, unexpected end of file (0)\n',1,600),(35,'exceptions',1524280703,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:40 syntax error, unexpected end of file (0)\n',1,600),(36,'exceptions',1524280713,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:40 syntax error, unexpected end of file (0)\n',1,600),(37,'exceptions',1524280721,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:39 syntax error, unexpected end of file (0)\n',1,600),(38,'exceptions',1524280738,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:41 syntax error, unexpected end of file (0)\n',1,600),(39,'exceptions',1524280743,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:41 syntax error, unexpected end of file (0)\n',1,600),(40,'exceptions',1524280767,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:41 syntax error, unexpected end of file (0)\n',1,600),(41,'exceptions',1524280835,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_list/templates/curry_store_list.php:41 syntax error, unexpected end of file (0)\n',1,600),(42,'exceptions',1524281856,'Exception Occurred: /Users/katz/Sites/c58express/concrete/blocks/express_entry_detail/view.php:8 syntax error, unexpected \'$storeID\' (T_VARIABLE) (0)\n',1,600),(43,'exceptions',1524281994,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_detail/templates/curry_store_detail.php:20 syntax error, unexpected \'?>\' (0)\n',1,600),(44,'exceptions',1524281999,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_detail/templates/curry_store_detail.php:20 syntax error, unexpected \'?>\' (0)\n',1,600),(45,'exceptions',1524282024,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_detail/templates/curry_store_detail.php:55 syntax error, unexpected \'count\' (T_STRING), expecting \'(\' (0)\n',1,600),(46,'exceptions',1524282040,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_detail/templates/curry_store_detail.php:85 syntax error, unexpected \'<\' (0)\n',1,600),(47,'exceptions',1524282213,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_detail/templates/curry_store_detail.php:47 Call to a member function getDisplayValue() on array (0)\n',1,600),(48,'exceptions',1524282235,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_detail/templates/curry_store_detail.php:47 Call to undefined method Concrete\\Core\\Tree\\Node\\Type\\Topic::getDisplayValue() (0)\n',1,600),(49,'exceptions',1524282247,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_detail/templates/curry_store_detail.php:47 Call to undefined method Concrete\\Core\\Tree\\Node\\Type\\Topic::getValue() (0)\n',1,600),(50,'exceptions',1524290277,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_detail/templates/curry_store_detail.php:48 Call to a member function getTreeNodeDisplayName() on null (0)\n',1,600),(51,'exceptions',1524452080,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_detail/templates/curry_store_detail.php:48 Call to a member function getTreeNodeDisplayName() on null (0)\n',1,600),(52,'exceptions',1524452172,'Exception Occurred: /Users/katz/Sites/c58express/application/blocks/express_entry_detail/templates/curry_store_detail.php:20 syntax error, unexpected \';\' (0)\n',1,600),(53,'exceptions',1524788180,'Exception Occurred: /Users/katz/Sites/c58express/concrete/vendor/tedivm/stash/src/Stash/Driver/FileSystem.php:326 unlink(/Users/katz/Sites/c58express/application/files/cache/overrides/1952a01898073d1e/561b9b4f2e42cbd7/38a865804f8fdcb6/57cd99682e939275/261327d2b99c991d/77a2f0e45747352d.php): No such file or directory (2)\n',0,600),(54,'application',1528851313,'Clearing cache with CacheClearer::flush().',0,250),(55,'application',1528851445,'Clearing cache with CacheClearer::flush().',0,250),(56,'operations',1560757611,'Clearing cache with CacheClearer::flush().',0,250),(57,'site_organization',1560757647,'Page \"Database Query Log\" at path \"/dashboard/system/optimization/query_log\" deleted',0,250);
 /*!40000 ALTER TABLE `Logs` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -3858,20 +3900,20 @@ DROP TABLE IF EXISTS `MailImporters`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `MailImporters` (
   `miID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `miHandle` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `miServer` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `miUsername` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `miPassword` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `miEncryption` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `miHandle` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `miServer` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `miUsername` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `miPassword` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `miEncryption` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `miIsEnabled` tinyint(1) NOT NULL DEFAULT 0,
-  `miEmail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `miEmail` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `miPort` int(10) unsigned NOT NULL DEFAULT 0,
   `pkgID` int(10) unsigned DEFAULT NULL,
-  `miConnectionMethod` varchar(8) COLLATE utf8_unicode_ci DEFAULT 'POP',
+  `miConnectionMethod` varchar(8) COLLATE utf8mb4_unicode_ci DEFAULT 'POP',
   PRIMARY KEY (`miID`),
   UNIQUE KEY `miHandle` (`miHandle`),
   KEY `pkgID` (`pkgID`,`miID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3894,15 +3936,15 @@ DROP TABLE IF EXISTS `MailValidationHashes`;
 CREATE TABLE `MailValidationHashes` (
   `mvhID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `miID` int(10) unsigned NOT NULL DEFAULT 0,
-  `email` varchar(254) COLLATE utf8_unicode_ci NOT NULL,
-  `mHash` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mHash` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
   `mDateGenerated` int(10) unsigned NOT NULL DEFAULT 0,
   `mDateRedeemed` int(10) unsigned NOT NULL DEFAULT 0,
-  `data` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `data` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`mvhID`),
   UNIQUE KEY `mHash` (`mHash`),
   KEY `miID` (`miID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3922,12 +3964,12 @@ DROP TABLE IF EXISTS `MultilingualPageRelations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `MultilingualPageRelations` (
-  `mpLocale` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  `mpLanguage` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mpLocale` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `mpLanguage` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `mpRelationID` int(10) unsigned NOT NULL,
   `cID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`mpRelationID`,`cID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3949,17 +3991,17 @@ DROP TABLE IF EXISTS `MultilingualTranslations`;
 CREATE TABLE `MultilingualTranslations` (
   `mtID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `mtSectionID` int(10) unsigned NOT NULL DEFAULT 0,
-  `msgid` text COLLATE utf8_unicode_ci NOT NULL,
-  `msgidPlural` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `msgstr` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `msgstrPlurals` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `context` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `comments` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `reference` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `flags` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `msgid` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `msgidPlural` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `msgstr` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `msgstrPlurals` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `context` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `comments` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `reference` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `flags` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `updated` datetime DEFAULT NULL,
   PRIMARY KEY (`mtID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3988,7 +4030,7 @@ CREATE TABLE `NotificationAlerts` (
   KEY `IDX_E11C7408ED024EFD` (`nID`),
   CONSTRAINT `FK_E11C7408ED024EFD` FOREIGN KEY (`nID`) REFERENCES `Notifications` (`nID`),
   CONSTRAINT `FK_E11C7408FD71026C` FOREIGN KEY (`uID`) REFERENCES `Users` (`uID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4010,10 +4052,10 @@ DROP TABLE IF EXISTS `NotificationPermissionSubscriptionList`;
 CREATE TABLE `NotificationPermissionSubscriptionList` (
   `paID` int(10) unsigned NOT NULL DEFAULT 0,
   `peID` int(10) unsigned NOT NULL DEFAULT 0,
-  `permission` varchar(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
+  `permission` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
   PRIMARY KEY (`paID`,`peID`),
   KEY `peID` (`peID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4035,11 +4077,11 @@ DROP TABLE IF EXISTS `NotificationPermissionSubscriptionListCustom`;
 CREATE TABLE `NotificationPermissionSubscriptionListCustom` (
   `paID` int(10) unsigned NOT NULL DEFAULT 0,
   `peID` int(10) unsigned NOT NULL DEFAULT 0,
-  `nSubscriptionIdentifier` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `nSubscriptionIdentifier` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`paID`,`peID`,`nSubscriptionIdentifier`),
   KEY `peID` (`peID`),
   KEY `nSubscriptionIdentifier` (`nSubscriptionIdentifier`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4061,9 +4103,9 @@ DROP TABLE IF EXISTS `Notifications`;
 CREATE TABLE `Notifications` (
   `nID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `nDate` datetime NOT NULL,
-  `type` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`nID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4076,6 +4118,140 @@ LOCK TABLES `Notifications` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `OAuth2AccessToken`
+--
+
+DROP TABLE IF EXISTS `OAuth2AccessToken`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `OAuth2AccessToken` (
+  `identifier` char(36) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
+  `client` char(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
+  `expiryDateTime` datetime NOT NULL,
+  `userIdentifier` int(10) unsigned DEFAULT NULL,
+  `scopes` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:json_array)',
+  PRIMARY KEY (`identifier`),
+  KEY `IDX_60D69F3FC7440455` (`client`),
+  CONSTRAINT `FK_60D69F3FC7440455` FOREIGN KEY (`client`) REFERENCES `OAuth2Client` (`identifier`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `OAuth2AccessToken`
+--
+
+LOCK TABLES `OAuth2AccessToken` WRITE;
+/*!40000 ALTER TABLE `OAuth2AccessToken` DISABLE KEYS */;
+/*!40000 ALTER TABLE `OAuth2AccessToken` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `OAuth2AuthCode`
+--
+
+DROP TABLE IF EXISTS `OAuth2AuthCode`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `OAuth2AuthCode` (
+  `identifier` char(36) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
+  `client` char(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
+  `scopes` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:json_array)',
+  `expiryDateTime` datetime NOT NULL,
+  `userIdentifier` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`identifier`),
+  KEY `IDX_29D07B5C7440455` (`client`),
+  CONSTRAINT `FK_29D07B5C7440455` FOREIGN KEY (`client`) REFERENCES `OAuth2Client` (`identifier`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `OAuth2AuthCode`
+--
+
+LOCK TABLES `OAuth2AuthCode` WRITE;
+/*!40000 ALTER TABLE `OAuth2AuthCode` DISABLE KEYS */;
+/*!40000 ALTER TABLE `OAuth2AuthCode` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `OAuth2Client`
+--
+
+DROP TABLE IF EXISTS `OAuth2Client`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `OAuth2Client` (
+  `identifier` char(36) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `redirectUri` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `clientKey` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `clientSecret` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `consentType` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`identifier`),
+  UNIQUE KEY `client_idx` (`clientKey`,`clientSecret`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `OAuth2Client`
+--
+
+LOCK TABLES `OAuth2Client` WRITE;
+/*!40000 ALTER TABLE `OAuth2Client` DISABLE KEYS */;
+/*!40000 ALTER TABLE `OAuth2Client` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `OAuth2RefreshToken`
+--
+
+DROP TABLE IF EXISTS `OAuth2RefreshToken`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `OAuth2RefreshToken` (
+  `identifier` char(36) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
+  `expiryDateTime` datetime NOT NULL,
+  `accessToken` char(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
+  PRIMARY KEY (`identifier`),
+  UNIQUE KEY `UNIQ_A205CB8350A9822` (`accessToken`),
+  CONSTRAINT `FK_A205CB8350A9822` FOREIGN KEY (`accessToken`) REFERENCES `OAuth2AccessToken` (`identifier`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `OAuth2RefreshToken`
+--
+
+LOCK TABLES `OAuth2RefreshToken` WRITE;
+/*!40000 ALTER TABLE `OAuth2RefreshToken` DISABLE KEYS */;
+/*!40000 ALTER TABLE `OAuth2RefreshToken` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `OAuth2Scope`
+--
+
+DROP TABLE IF EXISTS `OAuth2Scope`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `OAuth2Scope` (
+  `identifier` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`identifier`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `OAuth2Scope`
+--
+
+LOCK TABLES `OAuth2Scope` WRITE;
+/*!40000 ALTER TABLE `OAuth2Scope` DISABLE KEYS */;
+INSERT INTO `OAuth2Scope` VALUES ('account','General user account information'),('openid','User profile information for authentication'),('site','Site configuration'),('system','System configuration');
+/*!40000 ALTER TABLE `OAuth2Scope` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `OauthUserMap`
 --
 
@@ -4084,11 +4260,11 @@ DROP TABLE IF EXISTS `OauthUserMap`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `OauthUserMap` (
   `user_id` int(10) unsigned NOT NULL,
-  `namespace` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `binding` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `namespace` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `binding` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`user_id`,`namespace`),
   UNIQUE KEY `oauth_binding` (`binding`,`namespace`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4109,16 +4285,16 @@ DROP TABLE IF EXISTS `Packages`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Packages` (
   `pkgID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `pkgHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `pkgVersion` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `pkgHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pkgVersion` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pkgIsInstalled` tinyint(1) NOT NULL,
-  `pkgAvailableVersion` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `pkgDescription` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `pkgAvailableVersion` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pkgDescription` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `pkgDateInstalled` datetime NOT NULL,
-  `pkgName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `pkgName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`pkgID`),
   UNIQUE KEY `UNIQ_62C3A2F1F2D49DB1` (`pkgHandle`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4138,22 +4314,22 @@ DROP TABLE IF EXISTS `PageFeeds`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `PageFeeds` (
-  `customTopicAttributeKeyHandle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `customTopicAttributeKeyHandle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `customTopicTreeNodeID` int(10) unsigned NOT NULL,
   `iconFID` int(10) unsigned NOT NULL,
-  `pfDescription` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `pfHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `pfTitle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `pfDescription` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pfHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pfTitle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pfID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `cParentID` int(10) unsigned NOT NULL,
   `ptID` int(10) unsigned NOT NULL,
   `pfIncludeAllDescendents` tinyint(1) NOT NULL,
   `pfDisplayAliases` tinyint(1) NOT NULL,
-  `pfContentToDisplay` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `pfAreaHandleToDisplay` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `pfContentToDisplay` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pfAreaHandleToDisplay` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pfDisplayFeaturedOnly` tinyint(1) NOT NULL,
   PRIMARY KEY (`pfID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4174,7 +4350,7 @@ DROP TABLE IF EXISTS `PagePaths`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `PagePaths` (
-  `cPath` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `cPath` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `ppID` int(11) NOT NULL AUTO_INCREMENT,
   `cID` int(10) unsigned NOT NULL,
   `ppIsCanonical` tinyint(1) NOT NULL,
@@ -4183,7 +4359,7 @@ CREATE TABLE `PagePaths` (
   KEY `ppIsCanonical` (`ppIsCanonical`),
   KEY `cID` (`cID`),
   KEY `cPath` (`cPath`(255))
-) ENGINE=InnoDB AUTO_INCREMENT=199 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=208 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4192,7 +4368,7 @@ CREATE TABLE `PagePaths` (
 
 LOCK TABLES `PagePaths` WRITE;
 /*!40000 ALTER TABLE `PagePaths` DISABLE KEYS */;
-INSERT INTO `PagePaths` VALUES ('/dashboard',1,2,1,1),('/dashboard/sitemap',2,3,1,1),('/dashboard/sitemap/full',3,4,1,1),('/dashboard/sitemap/explore',4,5,1,1),('/dashboard/sitemap/search',5,6,1,1),('/dashboard/files',6,7,1,1),('/dashboard/files/search',7,8,1,1),('/dashboard/files/attributes',8,9,1,1),('/dashboard/files/sets',9,10,1,1),('/dashboard/files/add_set',10,11,1,1),('/dashboard/users',11,12,1,1),('/dashboard/users/search',12,13,1,1),('/dashboard/users/groups',13,14,1,1),('/dashboard/users/attributes',14,15,1,1),('/dashboard/users/add',15,16,1,1),('/dashboard/users/add_group',16,17,1,1),('/dashboard/users/groups/bulkupdate',17,18,1,1),('/dashboard/users/group_sets',18,19,1,1),('/dashboard/users/points',19,20,1,1),('/dashboard/users/points/assign',20,21,1,1),('/dashboard/users/points/actions',21,22,1,1),('/dashboard/express',22,23,1,1),('/dashboard/express/entries',23,24,1,1),('/dashboard/reports',24,25,1,1),('/dashboard/reports/forms',25,26,1,1),('/dashboard/reports/forms/legacy',26,27,1,1),('/dashboard/reports/surveys',27,28,1,1),('/dashboard/reports/logs',28,29,1,1),('/dashboard/pages',29,30,1,1),('/dashboard/pages/themes',30,31,1,1),('/dashboard/pages/themes/inspect',31,32,1,1),('/dashboard/pages/types',32,33,1,1),('/dashboard/pages/types/organize',33,34,1,1),('/dashboard/pages/types/add',34,35,1,1),('/dashboard/pages/types/form',35,36,1,1),('/dashboard/pages/types/output',36,37,1,1),('/dashboard/pages/types/attributes',37,38,1,1),('/dashboard/pages/types/permissions',38,39,1,1),('/dashboard/pages/templates',39,40,1,1),('/dashboard/pages/templates/add',40,41,1,1),('/dashboard/pages/attributes',41,42,1,1),('/dashboard/pages/single',42,43,1,1),('/dashboard/pages/feeds',43,44,1,1),('/dashboard/calendar',44,45,1,1),('/dashboard/calendar/events',45,46,1,1),('/dashboard/calendar/event_list',46,47,1,1),('/dashboard/calendar/add',47,48,1,1),('/dashboard/calendar/permissions',48,49,1,1),('/dashboard/calendar/attributes',49,50,1,1),('/dashboard/conversations',50,51,1,1),('/dashboard/conversations/messages',51,52,1,1),('/dashboard/blocks',52,53,1,1),('/dashboard/blocks/stacks',53,54,1,1),('/dashboard/blocks/permissions',54,55,1,1),('/dashboard/blocks/stacks/list',55,56,1,1),('/dashboard/blocks/types',56,57,1,1),('/dashboard/extend',57,58,1,1),('/dashboard/extend/install',58,59,1,1),('/dashboard/extend/update',59,60,1,1),('/dashboard/extend/connect',60,61,1,1),('/dashboard/extend/themes',61,62,1,1),('/dashboard/extend/addons',62,63,1,1),('/dashboard/system',63,64,1,1),('/dashboard/system/basics',64,65,1,1),('/dashboard/system/basics/name',65,66,1,1),('/dashboard/system/basics/accessibility',66,67,1,1),('/dashboard/system/basics/social',67,68,1,1),('/dashboard/system/basics/icons',68,69,1,1),('/dashboard/system/basics/editor',69,70,1,1),('/dashboard/system/basics/multilingual',70,71,1,1),('/dashboard/system/basics/multilingual/update',71,72,1,1),('/dashboard/system/basics/timezone',72,73,1,1),('/dashboard/system/basics/attributes',73,74,1,1),('/dashboard/system/basics/reset_edit_mode',74,75,1,1),('/dashboard/system/express',75,76,1,1),('/dashboard/system/express/entities',76,77,1,1),('/dashboard/system/express/entities/attributes',77,78,1,1),('/dashboard/system/express/entities/associations',78,79,1,1),('/dashboard/system/express/entities/forms',79,80,1,1),('/dashboard/system/express/entities/customize_search',80,81,1,1),('/dashboard/system/express/entities/order_entries',81,82,1,1),('/dashboard/system/express/entries',82,83,1,1),('/dashboard/system/multilingual',83,84,1,1),('/dashboard/system/multilingual/setup',84,85,1,1),('/dashboard/system/multilingual/copy',85,86,1,1),('/dashboard/system/multilingual/page_report',86,87,1,1),('/dashboard/system/multilingual/translate_interface',87,88,1,1),('/dashboard/system/seo',88,89,1,1),('/dashboard/system/seo/urls',89,90,1,1),('/dashboard/system/seo/bulk',90,91,1,1),('/dashboard/system/seo/codes',91,92,1,1),('/dashboard/system/seo/excluded',92,93,1,1),('/dashboard/system/seo/searchindex',93,94,1,1),('/dashboard/system/files',94,95,1,1),('/dashboard/system/files/filetypes',95,96,1,1),('/dashboard/system/files/permissions',96,97,1,1),('/dashboard/system/files/thumbnails',97,98,1,1),('/dashboard/system/files/thumbnails/options',98,99,1,1),('/dashboard/system/files/image_uploading',99,100,1,1),('/dashboard/system/files/storage',100,101,1,1),('/dashboard/system/optimization',101,102,1,1),('/dashboard/system/optimization/cache',102,103,1,1),('/dashboard/system/optimization/clearcache',103,104,1,1),('/dashboard/system/optimization/jobs',104,105,1,1),('/dashboard/system/optimization/query_log',105,106,1,1),('/dashboard/system/permissions',106,107,1,1),('/dashboard/system/permissions/site',107,108,1,1),('/dashboard/system/permissions/tasks',108,109,1,1),('/dashboard/system/permissions/users',109,110,1,1),('/dashboard/system/permissions/advanced',110,111,1,1),('/dashboard/system/permissions/workflows',111,112,1,1),('/dashboard/system/permissions/blacklist',112,113,1,1),('/dashboard/system/permissions/blacklist/range',113,114,1,1),('/dashboard/system/permissions/captcha',114,115,1,1),('/dashboard/system/permissions/antispam',115,116,1,1),('/dashboard/system/permissions/maintenance',116,117,1,1),('/dashboard/system/registration',117,118,1,1),('/dashboard/system/registration/open',118,119,1,1),('/dashboard/system/registration/postlogin',119,120,1,1),('/dashboard/system/registration/profiles',120,121,1,1),('/dashboard/system/registration/authentication',121,122,1,1),('/dashboard/system/registration/global_password_reset',122,123,1,1),('/dashboard/system/registration/notification',123,124,1,1),('/dashboard/system/mail',124,125,1,1),('/dashboard/system/mail/method',125,126,1,1),('/dashboard/system/mail/method/test',126,127,1,1),('/dashboard/system/mail/importers',127,128,1,1),('/dashboard/system/mail/addresses',128,129,1,1),('/dashboard/system/calendar',129,130,1,1),('/dashboard/system/calendar/settings',130,131,1,1),('/dashboard/system/calendar/colors',131,132,1,1),('/dashboard/system/calendar/permissions',132,133,1,1),('/dashboard/system/calendar/import',133,134,1,1),('/dashboard/system/conversations',134,135,1,1),('/dashboard/system/conversations/settings',135,136,1,1),('/dashboard/system/conversations/points',136,137,1,1),('/dashboard/system/conversations/bannedwords',137,138,1,1),('/dashboard/system/conversations/permissions',138,139,1,1),('/dashboard/system/attributes',139,140,1,1),('/dashboard/system/attributes/types',140,141,1,1),('/dashboard/system/attributes/sets',141,142,1,1),('/dashboard/system/attributes/topics',142,143,1,1),('/dashboard/system/attributes/topics/add',143,144,1,1),('/dashboard/system/environment',144,145,1,1),('/dashboard/system/environment/info',145,146,1,1),('/dashboard/system/environment/debug',146,147,1,1),('/dashboard/system/environment/logging',147,148,1,1),('/dashboard/system/environment/proxy',148,149,1,1),('/dashboard/system/environment/entities',149,150,1,1),('/dashboard/system/environment/geolocation',150,151,1,1),('/dashboard/system/update',151,152,1,1),('/dashboard/system/update/update',152,153,1,1),('/dashboard/welcome',153,154,1,1),('/dashboard/welcome/me',154,155,1,1),('/!stacks',155,156,1,1),('/page_not_found',156,157,1,1),('/!trash',157,158,1,1),('/login',158,159,1,1),('/register',159,160,1,1),('/account',160,161,1,1),('/account/edit_profile',161,162,1,1),('/account/avatar',162,163,1,1),('/account/messages',163,164,1,1),('/page_forbidden',164,165,1,1),('/download_file',165,166,1,1),('/!drafts',166,167,1,1),('/account/welcome',167,168,1,0),('/!stacks/footer-contact',168,169,1,1),('/!stacks/footer-legal',169,170,1,1),('/!stacks/footer-navigation',170,171,1,1),('/!stacks/footer-site-title',171,172,1,1),('/!stacks/footer-social',172,173,1,1),('/!stacks/header-navigation',173,174,1,1),('/!stacks/header-search',174,175,1,1),('/!stacks/header-site-title',175,176,1,1),('/services',176,178,1,1),('/!trash/portfolio',177,180,1,1),('/team',178,181,1,1),('/blog',179,183,1,1),('/search',180,184,1,1),('/contact',181,185,1,1),('/blank-page',182,186,1,1),('/!trash/portfolio/project-title',183,188,1,1),('/!trash/portfolio/project-title-2',184,189,1,1),('/!trash/portfolio/project-title-3',185,190,1,1),('/!trash/portfolio/project-title-4',186,191,1,1),('/!trash/portfolio/project-title-5',187,192,1,1),('/!trash/portfolio/project-title-6',188,193,1,1),('/blog/hello-world',189,195,1,1),('/blog/another-blog-post',190,196,1,1),('/blog/a-beautiful-blog',191,197,1,1),('/team/about',192,198,1,1),('/team/careers',193,199,1,1),('/team/faq',194,200,1,1),('/team/careers/web-developer',195,202,1,1),('/team/careers/sales-associate',196,203,1,1),('/stores',197,207,1,1),('/stores/detail',198,208,1,1);
+INSERT INTO `PagePaths` VALUES ('/dashboard',1,2,1,1),('/dashboard/sitemap',2,3,1,1),('/dashboard/sitemap/full',3,4,1,1),('/dashboard/sitemap/explore',4,5,1,1),('/dashboard/sitemap/search',5,6,1,1),('/dashboard/files',6,7,1,1),('/dashboard/files/search',7,8,1,1),('/dashboard/files/attributes',8,9,1,1),('/dashboard/files/sets',9,10,1,1),('/dashboard/files/add_set',10,11,1,1),('/dashboard/users',11,12,1,1),('/dashboard/users/search',12,13,1,1),('/dashboard/users/groups',13,14,1,1),('/dashboard/users/attributes',14,15,1,1),('/dashboard/users/add',15,16,1,1),('/dashboard/users/add_group',16,17,1,1),('/dashboard/users/groups/bulkupdate',17,18,1,1),('/dashboard/users/group_sets',18,19,1,1),('/dashboard/users/points',19,20,1,1),('/dashboard/users/points/assign',20,21,1,1),('/dashboard/users/points/actions',21,22,1,1),('/dashboard/express',22,23,1,1),('/dashboard/express/entries',23,24,1,1),('/dashboard/reports',24,25,1,1),('/dashboard/reports/forms',25,26,1,1),('/dashboard/reports/forms/legacy',26,27,1,1),('/dashboard/reports/surveys',27,28,1,1),('/dashboard/reports/logs',28,29,1,1),('/dashboard/pages',29,30,1,1),('/dashboard/pages/themes',30,31,1,1),('/dashboard/pages/themes/inspect',31,32,1,1),('/dashboard/pages/types',32,33,1,1),('/dashboard/pages/types/organize',33,34,1,1),('/dashboard/pages/types/add',34,35,1,1),('/dashboard/pages/types/form',35,36,1,1),('/dashboard/pages/types/output',36,37,1,1),('/dashboard/pages/types/attributes',37,38,1,1),('/dashboard/pages/types/permissions',38,39,1,1),('/dashboard/pages/templates',39,40,1,1),('/dashboard/pages/templates/add',40,41,1,1),('/dashboard/pages/attributes',41,42,1,1),('/dashboard/pages/single',42,43,1,1),('/dashboard/pages/feeds',43,44,1,1),('/dashboard/calendar',44,45,1,1),('/dashboard/calendar/events',45,46,1,1),('/dashboard/calendar/event_list',46,47,1,1),('/dashboard/calendar/add',47,48,1,1),('/dashboard/calendar/permissions',48,49,1,1),('/dashboard/calendar/attributes',49,50,1,1),('/dashboard/conversations',50,51,1,1),('/dashboard/conversations/messages',51,52,1,1),('/dashboard/blocks',52,53,1,1),('/dashboard/blocks/stacks',53,54,1,1),('/dashboard/blocks/permissions',54,55,1,1),('/dashboard/blocks/stacks/list',55,56,1,1),('/dashboard/blocks/types',56,57,1,1),('/dashboard/extend',57,58,1,1),('/dashboard/extend/install',58,59,1,1),('/dashboard/extend/update',59,60,1,1),('/dashboard/extend/connect',60,61,1,1),('/dashboard/extend/themes',61,62,1,1),('/dashboard/extend/addons',62,63,1,1),('/dashboard/system',63,64,1,1),('/dashboard/system/basics',64,65,1,1),('/dashboard/system/basics/name',65,66,1,1),('/dashboard/system/basics/accessibility',66,67,1,1),('/dashboard/system/basics/social',67,68,1,1),('/dashboard/system/basics/icons',68,69,1,1),('/dashboard/system/basics/editor',69,70,1,1),('/dashboard/system/basics/multilingual',70,71,1,1),('/dashboard/system/basics/multilingual/update',71,72,1,1),('/dashboard/system/basics/timezone',72,73,1,1),('/dashboard/system/basics/attributes',73,74,1,1),('/dashboard/system/basics/reset_edit_mode',74,75,1,1),('/dashboard/system/express',75,76,1,1),('/dashboard/system/express/entities',76,77,1,1),('/dashboard/system/express/entities/attributes',77,78,1,1),('/dashboard/system/express/entities/associations',78,79,1,1),('/dashboard/system/express/entities/forms',79,80,1,1),('/dashboard/system/express/entities/customize_search',80,81,1,1),('/dashboard/system/express/entities/order_entries',81,82,1,1),('/dashboard/system/express/entries',82,83,1,1),('/dashboard/system/multilingual',83,84,1,1),('/dashboard/system/multilingual/setup',84,85,1,1),('/dashboard/system/multilingual/copy',85,86,1,1),('/dashboard/system/multilingual/page_report',86,87,1,1),('/dashboard/system/multilingual/translate_interface',87,88,1,1),('/dashboard/system/seo',88,89,1,1),('/dashboard/system/seo/urls',89,90,1,1),('/dashboard/system/seo/bulk',90,91,1,1),('/dashboard/system/seo/codes',91,92,1,1),('/dashboard/system/seo/excluded',92,93,1,1),('/dashboard/system/seo/searchindex',93,94,1,1),('/dashboard/system/files',94,95,1,1),('/dashboard/system/files/filetypes',95,96,1,1),('/dashboard/system/files/permissions',96,97,1,1),('/dashboard/system/files/thumbnails',97,98,1,1),('/dashboard/system/files/thumbnails/options',98,99,1,1),('/dashboard/system/files/image_uploading',99,100,1,1),('/dashboard/system/files/storage',100,101,1,1),('/dashboard/system/optimization',101,102,1,1),('/dashboard/system/optimization/cache',102,103,1,1),('/dashboard/system/optimization/clearcache',103,104,1,1),('/dashboard/system/optimization/jobs',104,105,1,1),('/dashboard/system/permissions',106,107,1,1),('/dashboard/system/permissions/site',107,108,1,1),('/dashboard/system/permissions/tasks',108,109,1,1),('/dashboard/system/permissions/users',109,110,1,1),('/dashboard/system/permissions/advanced',110,111,1,1),('/dashboard/system/permissions/workflows',111,112,1,1),('/dashboard/system/permissions/blacklist',112,113,1,1),('/dashboard/system/permissions/blacklist/range',113,114,1,1),('/dashboard/system/permissions/captcha',114,115,1,1),('/dashboard/system/permissions/antispam',115,116,1,1),('/dashboard/system/permissions/maintenance',116,117,1,1),('/dashboard/system/registration',117,118,1,1),('/dashboard/system/registration/open',118,119,1,1),('/dashboard/system/registration/postlogin',119,120,1,1),('/dashboard/system/registration/profiles',120,121,1,1),('/dashboard/system/registration/authentication',121,122,1,1),('/dashboard/system/registration/global_password_reset',122,123,1,1),('/dashboard/system/registration/notification',123,124,1,1),('/dashboard/system/mail',124,125,1,1),('/dashboard/system/mail/method',125,126,1,1),('/dashboard/system/mail/method/test',126,127,1,1),('/dashboard/system/mail/importers',127,128,1,1),('/dashboard/system/mail/addresses',128,129,1,1),('/dashboard/system/calendar',129,130,1,1),('/dashboard/system/calendar/settings',130,131,1,1),('/dashboard/system/calendar/colors',131,132,1,1),('/dashboard/system/calendar/permissions',132,133,1,1),('/dashboard/system/calendar/import',133,134,1,1),('/dashboard/system/conversations',134,135,1,1),('/dashboard/system/conversations/settings',135,136,1,1),('/dashboard/system/conversations/points',136,137,1,1),('/dashboard/system/conversations/bannedwords',137,138,1,1),('/dashboard/system/conversations/permissions',138,139,1,1),('/dashboard/system/attributes',139,140,1,1),('/dashboard/system/attributes/types',140,141,1,1),('/dashboard/system/attributes/sets',141,142,1,1),('/dashboard/system/attributes/topics',142,143,1,1),('/dashboard/system/attributes/topics/add',143,144,1,1),('/dashboard/system/environment',144,145,1,1),('/dashboard/system/environment/info',145,146,1,1),('/dashboard/system/environment/debug',146,147,1,1),('/dashboard/system/environment/logging',147,148,1,1),('/dashboard/system/environment/proxy',148,149,1,1),('/dashboard/system/environment/entities',149,150,1,1),('/dashboard/system/environment/geolocation',150,151,1,1),('/dashboard/system/update',151,152,1,1),('/dashboard/system/update/update',152,153,1,1),('/dashboard/welcome',153,154,1,1),('/dashboard/welcome/me',154,155,1,1),('/!stacks',155,156,1,1),('/page_not_found',156,157,1,1),('/!trash',157,158,1,1),('/login',158,159,1,1),('/register',159,160,1,1),('/account',160,161,1,1),('/account/edit_profile',161,162,1,1),('/account/avatar',162,163,1,1),('/account/messages',163,164,1,1),('/page_forbidden',164,165,1,1),('/download_file',165,166,1,1),('/!drafts',166,167,1,1),('/account/welcome',167,168,1,0),('/!stacks/footer-contact',168,169,1,1),('/!stacks/footer-legal',169,170,1,1),('/!stacks/footer-navigation',170,171,1,1),('/!stacks/footer-site-title',171,172,1,1),('/!stacks/footer-social',172,173,1,1),('/!stacks/header-navigation',173,174,1,1),('/!stacks/header-search',174,175,1,1),('/!stacks/header-site-title',175,176,1,1),('/services',176,178,1,1),('/!trash/portfolio',177,180,1,1),('/team',178,181,1,1),('/blog',179,183,1,1),('/search',180,184,1,1),('/contact',181,185,1,1),('/blank-page',182,186,1,1),('/!trash/portfolio/project-title',183,188,1,1),('/!trash/portfolio/project-title-2',184,189,1,1),('/!trash/portfolio/project-title-3',185,190,1,1),('/!trash/portfolio/project-title-4',186,191,1,1),('/!trash/portfolio/project-title-5',187,192,1,1),('/!trash/portfolio/project-title-6',188,193,1,1),('/blog/hello-world',189,195,1,1),('/blog/another-blog-post',190,196,1,1),('/blog/a-beautiful-blog',191,197,1,1),('/team/about',192,198,1,1),('/team/careers',193,199,1,1),('/team/faq',194,200,1,1),('/team/careers/web-developer',195,202,1,1),('/team/careers/sales-associate',196,203,1,1),('/stores',197,207,1,1),('/stores/detail',198,208,1,1),('/dashboard/system/registration/deactivation',199,209,1,1),('/dashboard/system/api',200,210,1,1),('/dashboard/system/api/settings',201,211,1,1),('/dashboard/system/api/integrations',202,212,1,1),('/dashboard/system/permissions/trusted_proxies',203,213,1,1),('/dashboard/system/registration/automated_logout',204,214,1,1),('/dashboard/reports/page_changes',205,215,1,1),('/dashboard/system/files/export_options',206,216,1,1),('/dashboard/system/registration/password_requirements',207,217,1,1);
 /*!40000 ALTER TABLE `PagePaths` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -4210,7 +4386,7 @@ CREATE TABLE `PagePermissionAssignments` (
   PRIMARY KEY (`cID`,`pkID`,`paID`),
   KEY `paID` (`paID`,`pkID`),
   KEY `pkID` (`pkID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4233,11 +4409,11 @@ DROP TABLE IF EXISTS `PagePermissionPageTypeAccessList`;
 CREATE TABLE `PagePermissionPageTypeAccessList` (
   `paID` int(10) unsigned NOT NULL DEFAULT 0,
   `peID` int(10) unsigned NOT NULL DEFAULT 0,
-  `permission` varchar(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
+  `permission` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
   `externalLink` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`paID`,`peID`),
   KEY `peID` (`peID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4263,7 +4439,7 @@ CREATE TABLE `PagePermissionPageTypeAccessListCustom` (
   PRIMARY KEY (`paID`,`peID`,`ptID`),
   KEY `peID` (`peID`),
   KEY `ptID` (`ptID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4290,11 +4466,11 @@ CREATE TABLE `PagePermissionPropertyAccessList` (
   `uID` tinyint(1) DEFAULT 0,
   `description` tinyint(1) DEFAULT 0,
   `paths` tinyint(1) DEFAULT 0,
-  `attributePermission` varchar(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
+  `attributePermission` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
   PRIMARY KEY (`paID`,`peID`),
   KEY `peID` (`peID`),
   KEY `uID` (`uID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4320,7 +4496,7 @@ CREATE TABLE `PagePermissionPropertyAttributeAccessListCustom` (
   PRIMARY KEY (`paID`,`peID`,`akID`),
   KEY `peID` (`peID`),
   KEY `akID` (`akID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4342,10 +4518,10 @@ DROP TABLE IF EXISTS `PagePermissionThemeAccessList`;
 CREATE TABLE `PagePermissionThemeAccessList` (
   `paID` int(10) unsigned NOT NULL DEFAULT 0,
   `peID` int(10) unsigned NOT NULL DEFAULT 0,
-  `permission` varchar(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
+  `permission` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
   PRIMARY KEY (`paID`,`peID`),
   KEY `peID` (`peID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4371,7 +4547,7 @@ CREATE TABLE `PagePermissionThemeAccessListCustom` (
   PRIMARY KEY (`paID`,`peID`,`pThemeID`),
   KEY `peID` (`peID`),
   KEY `pThemeID` (`pThemeID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4392,10 +4568,10 @@ DROP TABLE IF EXISTS `PageSearchIndex`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `PageSearchIndex` (
   `cID` int(10) unsigned NOT NULL DEFAULT 0,
-  `content` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `cName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `cDescription` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `cPath` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cDescription` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `cPath` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cDatePublic` datetime DEFAULT NULL,
   `cDateLastIndexed` datetime DEFAULT NULL,
   `cDateLastSitemapped` datetime DEFAULT NULL,
@@ -4408,7 +4584,7 @@ CREATE TABLE `PageSearchIndex` (
   FULLTEXT KEY `cDescription` (`cDescription`),
   FULLTEXT KEY `content` (`content`),
   FULLTEXT KEY `content2` (`cName`,`cDescription`,`content`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4417,7 +4593,7 @@ CREATE TABLE `PageSearchIndex` (
 
 LOCK TABLES `PageSearchIndex` WRITE;
 /*!40000 ALTER TABLE `PageSearchIndex` DISABLE KEYS */;
-INSERT INTO `PageSearchIndex` VALUES (1,'Stand Out on the Web \n                                     Share your business with an impressive, yet minimal presentation. Let your customers understand your web presence through elegance and clarity.  A Simple Image Slider \n                                     This image slider can have any content that you want in it.   Easy to Edit \n                                                    Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. Pixel Perfect \n                                                    Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. Media Rich \n                                                    Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. \n                                    Presenting your Business has never been so easy Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna.   Latest Blog Post Now Open For Business \n                                                       We specialize in making your concepts a reality.          Sed cursus facilisis dignissim. Aliquam rhoncus enim et pellentesque varius. Nulla sodales nibh lorem, sit amet imperdiet arcu commodo sit amet. Mauris sed scelerisque nisl. Ut auctor ipsum tellus, vel viverra massa elementum sit amet.          Sed adipiscing tempus sem eu molestie. Aenean laoreet pretium ante vitae ultrices. Aenean eu gravida magna, vel aliquet magna. In auctor convallis gravida.            Contact Us Today    \n                                    Customizable footer area with accent class.  ','Home',NULL,NULL,'2018-04-21 09:48:46','2018-05-28 21:41:01',NULL,0),(2,'','Dashboard','','/dashboard','2018-04-21 09:49:32','2018-05-28 21:41:01',NULL,0),(3,'','Sitemap','Whole world at a glance.','/dashboard/sitemap','2018-04-21 09:49:32','2018-05-28 21:41:01',NULL,0),(4,'','Full Sitemap','','/dashboard/sitemap/full','2018-04-21 09:49:32','2018-05-28 21:41:01',NULL,0),(5,'','Flat View','','/dashboard/sitemap/explore','2018-04-21 09:49:32','2018-05-28 21:41:01',NULL,0),(6,'','Page Search','','/dashboard/sitemap/search','2018-04-21 09:49:32','2018-05-28 21:41:01',NULL,0),(7,'','Files','All documents and images.','/dashboard/files','2018-04-21 09:49:32','2018-05-28 21:41:01',NULL,0),(8,'','File Manager','','/dashboard/files/search','2018-04-21 09:49:32','2018-05-28 21:41:01',NULL,0),(9,'','Attributes','','/dashboard/files/attributes','2018-04-21 09:49:32','2018-05-28 21:41:01',NULL,0),(10,'','File Sets','','/dashboard/files/sets','2018-04-21 09:49:32','2018-05-28 21:41:01',NULL,0),(11,'','Add File Set','','/dashboard/files/add_set','2018-04-21 09:49:32','2018-05-28 21:41:01',NULL,0),(12,'','Members','Add and manage the user accounts and groups on your website.','/dashboard/users','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(13,'','Search Users','','/dashboard/users/search','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(14,'','User Groups','','/dashboard/users/groups','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(15,'','Attributes','','/dashboard/users/attributes','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(16,'','Add User','','/dashboard/users/add','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(17,'','Add Group','','/dashboard/users/add_group','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(18,'','Move Multiple Groups','','/dashboard/users/groups/bulkupdate','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(19,'','Group Sets','','/dashboard/users/group_sets','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(20,'','Community Points',NULL,'/dashboard/users/points','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(21,'','Assign Points',NULL,'/dashboard/users/points/assign','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(22,'','Actions',NULL,'/dashboard/users/points/actions','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(23,'','Express','Express Data Objects','/dashboard/express','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(24,'','View Entries','','/dashboard/express/entries','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(25,'','Reports','Get data from forms and logs.','/dashboard/reports','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(26,'','Form Results','Get submission data.','/dashboard/reports/forms','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(28,'','Surveys','','/dashboard/reports/surveys','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(29,'','Logs','','/dashboard/reports/logs','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(30,'','Pages & Themes','Reskin your site.','/dashboard/pages','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(31,'','Themes','Reskin your site.','/dashboard/pages/themes','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(32,'','Inspect','','/dashboard/pages/themes/inspect','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(33,'','Page Types','','/dashboard/pages/types','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(34,'','Organize Page Type Order','','/dashboard/pages/types/organize','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(35,'','Add Page Type','','/dashboard/pages/types/add','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(36,'','Compose Form','','/dashboard/pages/types/form','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(37,'','Defaults and Output','','/dashboard/pages/types/output','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(38,'','Page Type Attributes','','/dashboard/pages/types/attributes','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(39,'','Page Type Permissions','','/dashboard/pages/types/permissions','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(40,'','Page Templates','Form factors for pages in your site.','/dashboard/pages/templates','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(41,'','Add Page Template','Add page templates to your site.','/dashboard/pages/templates/add','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(42,'','Attributes','','/dashboard/pages/attributes','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(43,'','Single Pages','','/dashboard/pages/single','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(44,'','RSS Feeds','','/dashboard/pages/feeds','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(45,'','Calendar & Events','','/dashboard/calendar','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(46,'','View Calendar','','/dashboard/calendar/events','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(48,'','Add Calendar','','/dashboard/calendar/add','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(50,'','Attributes','','/dashboard/calendar/attributes','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(51,'','Conversations','','/dashboard/conversations','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(52,'','Messages','','/dashboard/conversations/messages','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(53,'','Stacks & Blocks','Manage sitewide content and administer block types.','/dashboard/blocks','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(54,'','Stacks & Global Areas','Share content across your site.','/dashboard/blocks/stacks','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(55,'','Block & Stack Permissions','Control who can add blocks and stacks on your site.','/dashboard/blocks/permissions','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(57,'','Block Types','Manage the installed block types in your site.','/dashboard/blocks/types','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(58,'','Extend concrete5','','/dashboard/extend','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(59,'','Add Functionality','Install add-ons & themes.','/dashboard/extend/install','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(60,'','Update Add-Ons','Update your installed packages.','/dashboard/extend/update','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(61,'','Connect to the Community','Connect to the concrete5 community.','/dashboard/extend/connect','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(62,'','Get More Themes','Download themes from concrete5.org.','/dashboard/extend/themes','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(63,'','Get More Add-Ons','Download add-ons from concrete5.org.','/dashboard/extend/addons','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(64,'','System & Settings','Secure and setup your site.','/dashboard/system','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(65,'','Basics','Basic information about your website.','/dashboard/system/basics','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(66,'','Name & Attributes','','/dashboard/system/basics/name','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(67,'','Accessibility','','/dashboard/system/basics/accessibility','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(68,'','Social Links','','/dashboard/system/basics/social','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(69,'','Bookmark Icons','Bookmark icon and mobile home screen icon setup.','/dashboard/system/basics/icons','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(70,'','Rich Text Editor','','/dashboard/system/basics/editor','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(71,'','Languages','','/dashboard/system/basics/multilingual','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(72,'','Update Languages','','/dashboard/system/basics/multilingual/update','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(73,'','Time Zone','','/dashboard/system/basics/timezone','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(75,'','Reset Edit Mode','','/dashboard/system/basics/reset_edit_mode','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(76,'','Express','Express','/dashboard/system/express','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(83,'','Custom Entry Locations','','/dashboard/system/express/entries','2018-04-21 09:49:34','2018-05-28 21:41:02',NULL,0),(84,'','Multilingual','Run your site in multiple languages.','/dashboard/system/multilingual','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(85,'','Multilingual Setup','','/dashboard/system/multilingual/setup','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(86,'','Copy Languages','','/dashboard/system/multilingual/copy','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(87,'','Page Report','','/dashboard/system/multilingual/page_report','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(88,'','Translate Site Interface','','/dashboard/system/multilingual/translate_interface','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(89,'','SEO & Statistics','Enable pretty URLs and tracking codes.','/dashboard/system/seo','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(90,'','URLs and Redirection','','/dashboard/system/seo/urls','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(91,'','Bulk SEO Updater','','/dashboard/system/seo/bulk','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(92,'','Tracking Codes','','/dashboard/system/seo/codes','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(93,'','Excluded URL Word List','','/dashboard/system/seo/excluded','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(94,'','Search Index','','/dashboard/system/seo/searchindex','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(95,'','Files','','/dashboard/system/files','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(96,'','Allowed File Types','','/dashboard/system/files/filetypes','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(97,'','File Manager Permissions','','/dashboard/system/files/permissions','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(98,'','Thumbnails','','/dashboard/system/files/thumbnails','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(99,'','Thumbnail Options','','/dashboard/system/files/thumbnails/options','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(100,'','Image Options','','/dashboard/system/files/image_uploading','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(101,'','File Storage Locations','','/dashboard/system/files/storage','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(102,'','Optimization','Keep your site running well.','/dashboard/system/optimization','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(103,'','Cache & Speed Settings','','/dashboard/system/optimization/cache','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(104,'','Clear Cache','','/dashboard/system/optimization/clearcache','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(105,'','Automated Jobs','','/dashboard/system/optimization/jobs','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(106,'','Database Query Log','','/dashboard/system/optimization/query_log','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(107,'','Permissions & Access','Control who sees and edits your site.','/dashboard/system/permissions','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(108,'','Site Access','','/dashboard/system/permissions/site','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(109,'','Task Permissions','','/dashboard/system/permissions/tasks','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(110,'','User Permissions','','/dashboard/system/permissions/users','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(111,'','Advanced Permissions','','/dashboard/system/permissions/advanced','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(112,'','Workflows','','/dashboard/system/permissions/workflows','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(113,'','IP Blacklist','','/dashboard/system/permissions/blacklist','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(114,'','IP Range','','/dashboard/system/permissions/blacklist/range','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(115,'','Captcha Setup','','/dashboard/system/permissions/captcha','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(116,'','Spam Control','','/dashboard/system/permissions/antispam','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(117,'','Maintenance Mode','','/dashboard/system/permissions/maintenance','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(118,'','Login & Registration','Change login behaviors and setup public profiles.','/dashboard/system/registration','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(119,'','Public Registration','','/dashboard/system/registration/open','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(120,'','Login Destination','','/dashboard/system/registration/postlogin','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(121,'','Public Profiles','','/dashboard/system/registration/profiles','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(122,'','Authentication Types','','/dashboard/system/registration/authentication','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(123,'','Global Password Reset','Signs out all users, resets all passwords and forces users to choose a new one','/dashboard/system/registration/global_password_reset','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(124,'','Notification Settings','','/dashboard/system/registration/notification','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(125,'','Email','Control how your site send and processes mail.','/dashboard/system/mail','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(126,'','SMTP Method','','/dashboard/system/mail/method','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(127,'','Test Mail Settings','','/dashboard/system/mail/method/test','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(128,'','Email Importers','','/dashboard/system/mail/importers','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(129,'','System Email Addresses','','/dashboard/system/mail/addresses','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(130,'','Calendar','Manage your calendar settings','/dashboard/system/calendar','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(131,'','General Settings','','/dashboard/system/calendar/settings','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(132,'','Color Settings','','/dashboard/system/calendar/colors','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(133,'','Permissions','','/dashboard/system/calendar/permissions','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(134,'','Import Calendar Data','','/dashboard/system/calendar/import','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(135,'','Conversations','Manage your conversations settings','/dashboard/system/conversations','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(136,'','Settings','','/dashboard/system/conversations/settings','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(137,'','Community Points','','/dashboard/system/conversations/points','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(138,'','Banned Words','','/dashboard/system/conversations/bannedwords','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(139,'','Conversation Permissions','','/dashboard/system/conversations/permissions','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(140,'','Attributes','Setup attributes for pages, users, files and more.','/dashboard/system/attributes','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(141,'','Types','Choose which attribute types are available for different items.','/dashboard/system/attributes/types','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(142,'','Sets','Group attributes into sets for easier organization','/dashboard/system/attributes/sets','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(143,'','Topics','','/dashboard/system/attributes/topics','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(144,'','Add Topic Tree','','/dashboard/system/attributes/topics/add','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(146,'','Environment Information','','/dashboard/system/environment/info','2018-04-21 09:49:35','2018-05-28 21:41:04',NULL,0),(147,'','Debug Settings','','/dashboard/system/environment/debug','2018-04-21 09:49:35','2018-05-28 21:41:04',NULL,0),(148,'','Logging Settings','','/dashboard/system/environment/logging','2018-04-21 09:49:35','2018-05-28 21:41:04',NULL,0),(149,'','Proxy Server','','/dashboard/system/environment/proxy','2018-04-21 09:49:35','2018-05-28 21:41:04',NULL,0),(150,'','Database Entities','','/dashboard/system/environment/entities','2018-04-21 09:49:35','2018-05-28 21:41:04',NULL,0),(151,'','Geolocation','','/dashboard/system/environment/geolocation','2018-04-21 09:49:35','2018-05-28 21:41:04',NULL,0),(152,'','Update concrete5','','/dashboard/system/update','2018-04-21 09:49:35','2018-05-28 21:41:04',NULL,0),(153,'','Apply Update','','/dashboard/system/update/update','2018-04-21 09:49:35','2018-05-28 21:41:04',NULL,0),(154,'Customize the core Calendar block time format How to customize the core Calendar block time format using a custom block template.\n  concrete5 and GDPR What we\'re doing about GDPR here. concrete5 8.4.0 Release Candidate 2 Now Available Our latest update gets a little closer to release. Introducing the new concrete5 Roadmap No Content.  ','Welcome','','/dashboard/welcome','2018-04-21 09:49:35','2018-05-28 21:41:04',NULL,0),(155,'','Waiting for Me',NULL,'/dashboard/welcome/me','2018-04-21 09:49:35','2018-05-28 21:41:04',NULL,0),(156,'','Stacks','','/!stacks','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(157,'','Page Not Found','','/page_not_found','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(158,'','Trash','','/!trash','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(159,'','Login','','/login','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(160,'','Register','','/register','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(161,'','My Account','','/account','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(162,'','Edit Profile','Edit your user profile and change password.','/account/edit_profile','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(163,'','Profile Picture','Specify a new image attached to posts or edits.','/account/avatar','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(164,'','Private Messages','Inbox for site-specific messages.','/account/messages','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(165,'','Page Forbidden','','/page_forbidden','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(166,'','Download File','','/download_file','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(167,'','Drafts','','/!drafts','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(168,'','Welcome Back','','/account/welcome','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(169,'\n                                     1234 SE StreetView  Suite 301  Portland, OR 98101  View on Google Maps  ','Footer Contact',NULL,'/!stacks/footer-contact','2018-04-21 09:49:43','2018-05-28 21:41:04',NULL,0),(170,'\n                                     © 2017 Elemental Theme  ','Footer Legal',NULL,'/!stacks/footer-legal','2018-04-21 09:49:43','2018-05-28 21:41:04',NULL,0),(171,'\n                                    \n                                     FAQ / Help \n                                     Case Studies \n                                     Blog \n                                     Another Link \n                                     ','Footer Navigation',NULL,'/!stacks/footer-navigation','2018-04-21 09:49:43','2018-05-28 21:41:04',NULL,0),(172,'\n                                    Elemental ','Footer Site Title',NULL,'/!stacks/footer-site-title','2018-04-21 09:49:43','2018-05-28 21:41:04',NULL,0),(173,'','Footer Social',NULL,'/!stacks/footer-social','2018-04-21 09:49:43','2018-05-28 21:41:04',NULL,0),(174,'','Header Navigation',NULL,'/!stacks/header-navigation','2018-04-21 09:49:43','2018-05-28 21:41:04',NULL,0),(175,'','Header Search',NULL,'/!stacks/header-search','2018-04-21 09:49:43','2018-05-28 21:41:04',NULL,0),(176,'\n                                    Elemental ','Header Site Title',NULL,'/!stacks/header-site-title','2018-04-21 09:49:43','2018-05-28 21:41:04',NULL,0),(177,'','',NULL,NULL,'2018-04-21 09:49:44','2018-05-28 21:41:04',NULL,0),(178,'Our Expertise Quality \n                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sodales non leo id aliquet. Design \n                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sodales non leo id aliquet. Development \n                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sodales non leo id aliquet. Security \n                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sodales non leo id aliquet. \n                                                    Awesome Features Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Sed consequat eleifend metus, vitae malesuada eros elementum sed.  Guide Books Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus. Vestibulum neque lectus, egestas non cursus vitae, aliquam at magna. Etiam aliquam, justo et varius eleifend, dui lectus egestas nunc, vel malesuada nisl purus nec metus.  Admin Accounts Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus. Vestibulum neque lectus, egestas non cursus vitae, aliquam at magna. Etiam aliquam, justo et varius eleifend, dui lectus egestas nunc, vel malesuada nisl purus nec metus.   \n                                                    Support Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Sed consequat eleifend metus, vitae malesuada eros elementum sed.  Additional Options Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus. Vestibulum neque lectus, egestas non cursus vitae, aliquam at magna.   Etiam aliquam, justo et varius eleifend, dui lectus egestas nunc, vel malesuada nisl purus nec metus. In gravida turpis a pharetra commodo. Donec non turpis vulputate, faucibus metus a, consectetur nunc. Morbi tortor nisi, hendrerit sed laoreet eget, fermentum et justo. Suspendisse potenti.  \n                                    What Clients Are Saying About Us  Franz Maruna\nCEO & Founder\nconcrete5\n\n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. John Doe\nMarketing Directory\nCompanyCo\n\n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Andrew Embler\nCTO & Founder\nconcrete5\n\n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Jane Doe\nIT Manager\nCompanyCo\n\n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. ','Services',NULL,'/services','2018-04-21 09:49:44','2018-05-28 21:41:04',NULL,0),(179,'','',NULL,NULL,'2018-04-21 09:49:44','2018-05-28 21:41:04',NULL,0),(181,'John Smith\nCo-Founder / CEO\n\n\n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Bob Smith\nCo-Founder / CTO\n\n\n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. John Smith\nArt Director\n\n\n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. John Smith\nArt Director\n\n\n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Bob Smith\nArt Director\n\n\n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Bob Smith\nArt Director\n\n\n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Bob Smith\nArt Director\n\n\n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Bob Smith\nArt Director\n\n\n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. \n                                                    Get in Touch  Sed cursus facilisis dignissim. Aliquam rhoncus enim et pellentesque varius. Nulla sodales nibh lorem, sit amet imperdiet arcu commodo sit amet.    Contact Us  ','Team',NULL,'/team','2018-04-21 09:49:44','2018-05-28 21:41:04',NULL,0),(182,'','',NULL,NULL,'2018-04-21 09:49:44','2018-05-28 21:41:04',NULL,0),(183,'','Blog',NULL,'/blog','2018-04-21 09:49:44','2018-05-28 21:41:04',NULL,0),(184,'','Search',NULL,'/search','2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(185,'\n                                                    Headquarters 1234 SE Street View Suite 301 Portland, OR 98101 HOURS  M-F:  10 AM - 7 PM Sat: Noon - Midnight Sun: Closed  \n                                                    Choosing Us Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. Quisque dignissim neque a ipsum sodales, mattis aliquam ante dictum. Vestibulum elementum pellentesque tortor ac congue. Mauris vel nibh id metus tincidunt eleifend. In interdum gravida ligula, at venenatis odio fermentum at. Donec dapibus enim lectus, quis venenatis tellus volutpat in. Nullam in velit tortor.  We would love to hear from you! ','Contact',NULL,'/contact','2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(186,' This is my empty content block on my blank page.  ','Blank Page',NULL,'/blank-page','2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(187,'','',NULL,NULL,'2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(194,'','',NULL,NULL,'2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(195,'\n                                    Fusce volutpat sodales mauris quis dapibus. Maecenas convallis, libero eu ultrices interdum, leo mauris commodo diam, sed cursus sapien ligula nec leo. Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Sed consequat eleifend metus, vitae malesuada eros elementum sed. Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus. Vestibulum neque lectus, egestas non cursus vitae, aliquam at magna. Etiam aliquam, justo et varius eleifend, dui lectus egestas nunc, vel malesuada nisl purus nec metus. In gravida turpis a pharetra commodo. Donec non turpis vulputate, faucibus metus a, consectetur nunc. Morbi tortor nisi, hendrerit sed laoreet eget, fermentum et justo. Suspendisse potenti.   Heading 2 Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Sed consequat eleifend metus, vitae malesuada eros elementum sed. Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus. Vestibulum neque lectus, egestas non cursus vitae, aliquam at magna. Etiam aliquam, justo et varius eleifend, dui lectus egestas nunc, vel malesuada nisl purus nec metus. In gravida turpis a pharetra commodo. Donec non turpis vulputate, faucibus metus a, consectetur nunc. Morbi tortor nisi, hendrerit sed laoreet eget, fermentum et justo. Suspendisse potenti. Heading 3 Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. Quisque dignissim neque a ipsum sodales, mattis aliquam ante dictum. Vestibulum elementum pellentesque tortor ac congue. Mauris vel nibh id metus tincidunt eleifend. In interdum gravida ligula, at venenatis odio fermentum at. Donec dapibus enim lectus, quis venenatis tellus volutpat in. Nullam in velit tortor. Heading 3 Donec blandit lectus nec neque ullamcorper rhoncus. Sed adipiscing tempus sem eu molestie. Aenean laoreet pretium ante vitae ultrices. Aenean eu gravida magna, vel aliquet magna. In auctor convallis gravida. Phasellus est erat, adipiscing nec lobortis quis, eleifend at sem. Curabitur fringilla viverra dolor, in rutrum ipsum rutrum sit amet. Vestibulum feugiat porttitor ipsum vel condimentum. Suspendisse at tempus libero. Sed eu tempor enim. Etiam convallis eleifend rutrum. Donec porta diam quis tellus feugiat dignissim. Cras posuere, massa eget laoreet laoreet, urna libero lobortis dolor, sed consequat elit urna eget massa. Donec aliquet pellentesque consectetur.  ','Hello World!','Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. Quisque dignissim neque a ipsum sodales, mattis aliquam ante dictum.','/blog/hello-world','2014-07-01 12:00:00','2018-05-28 21:41:05',NULL,0),(196,'\n                                     Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Sed consequat eleifend metus, vitae malesuada eros elementum sed. Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit.   CMS To the Rescue!  Nullam sit amet consectetur lacus. Vestibulum neque lectus, egestas non cursus vitae, aliquam at magna. Etiam aliquam, justo et varius eleifend, dui lectus egestas nunc, vel malesuada nisl purus nec metus. In gravida turpis a pharetra commodo. Donec non turpis vulputate, faucibus metus a, consectetur nunc. Morbi tortor nisi, hendrerit sed laoreet eget, fermentum et justo. Suspendisse potenti.  Learn more at concrete5.org    ','Another Blog Post','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus. Vestibulum neque lectus, egestas non cursus vitae, aliquam at magna.','/blog/another-blog-post','2014-07-04 15:00:00','2018-05-28 21:41:05',NULL,0),(197,'\n                                     Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Sed consequat eleifend metus, vitae malesuada eros elementum sed. Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus. Vestibulum neque lectus, egestas non cursus vitae, aliquam at magna. Etiam aliquam, justo et varius eleifend, dui lectus egestas nunc, vel malesuada nisl purus nec metus. In gravida turpis a pharetra commodo. Donec non turpis vulputate, faucibus metus a, consectetur nunc. Morbi tortor nisi, hendrerit sed laoreet eget, fermentum et justo. Suspendisse potenti.  Heading 3  Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. Quisque dignissim neque a ipsum sodales, mattis aliquam ante dictum. Vestibulum elementum pellentesque tortor ac congue. Mauris vel nibh id metus tincidunt eleifend. In interdum gravida ligula, at venenatis odio fermentum at. Donec dapibus enim lectus, quis venenatis tellus volutpat in. Nullam in velit tortor.    Look at my beautiful image. Don\'t you to look more?  Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. Quisque dignissim neque a ipsum sodales, mattis aliquam ante dictum. Vestibulum elementum pellentesque tortor ac congue. Mauris vel nibh id metus tincidunt eleifend. In interdum gravida ligula, at venenatis odio fermentum at. Donec dapibus enim lectus, quis venenatis tellus volutpat in. Nullam in velit tortor.  ','A Beautiful Site Deserves a Beautiful Blog','Donec blandit lectus nec neque ullamcorper rhoncus. Sed adipiscing tempus sem eu molestie. Aenean laoreet pretium ante vitae ultrices. Aenean eu gravida magna, vel aliquet magna. In auctor convallis gravida. Phasellus est erat.','/blog/a-beautiful-blog','2014-08-01 16:30:00','2018-05-28 21:41:05',NULL,0),(198,'\n                                                    Fusce volutpat sodales mauris quis dapibus. Maecenas convallis, libero eu ultrices interdum. \n                                                     Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna.   Quisque dignissim neque a ipsum sodales, mattis aliquam ante dictum. Vestibulum elementum pellentesque tortor ac congue. Mauris vel nibh id metus tincidunt eleifend.  \n                                                    Heading 1Heading 2Heading 3Heading 4Heading 5Heading 6 \n                                                     Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Sed consequat eleifend metus, vitae malesuada eros elementum sed. Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus. Vestibulum neque lectus, egestas non cursus vitae, aliquam at magna. Etiam aliquam, justo et varius eleifend, dui lectus egestas nunc, vel malesuada nisl purus nec metus. In gravida turpis a pharetra commodo. Donec non turpis vulputate, faucibus metus a, consectetur nunc. Morbi tortor nisi, hendrerit sed laoreet eget, fermentum et justo. Suspendisse potenti.     \n                                                       Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Sed consequat eleifend metus, vitae malesuada eros elementum sed. Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus. Vestibulum neque lectus, egestas non cursus vitae, aliquam at magna. Etiam aliquam, justo et varius eleifend, dui lectus egestas nunc, vel malesuada nisl purus nec metus. In gravida turpis a pharetra commodo. Donec non turpis vulputate, faucibus metus a, consectetur nunc. Morbi tortor nisi, hendrerit sed laoreet eget, fermentum et justo. Suspendisse potenti.  \n                                                    Get in Touch  Sed cursus facilisis dignissim. Aliquam rhoncus enim et pellentesque varius. Nulla sodales nibh lorem, sit amet imperdiet arcu commodo sit amet.    Contact Us  ','About',NULL,'/team/about','2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(199,'Work with Us   Welcome Home \n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Great Workers \n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Amazing Location \n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Paid Time Off \n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. No Meetings \n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Free Drinks \n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. \n                                                    Open Positions  ','Careers',NULL,'/team/careers','2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(200,'What are page versions? What are page versions? \n                                    Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. How do I add more people as editors in my website? How do I add more people as editors in my website? \n                                    Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna.  ','Frequently Asked Questions',NULL,'/team/faq','2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(201,'\n                                                      Back to Careers  Department Location Job Information \n                                                       ','',NULL,NULL,'2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(202,'\n                                                      Back to Careers  Department Location Job Information \n                                                       \n                                     Quisque accumsan leo sit amet neque pretium consectetur. Sed blandit nulla at justo volutpat rhoncus. Sed risus orci, luctus sit amet fringilla faucibus, congue nec dui. Phasellus mattis lobortis magna sed dapibus. Donec sagittis nunc sed accumsan eleifend. Ut porttitor sapien eu nisl volutpat, vitae interdum est mollis. Sed laoreet sit amet elit in eleifend. Sed a tincidunt velit, nec posuere urna. In eget metus non est varius viverra. Quisque accumsan odio sem, in consequat nunc lobortis ac.  Cras dignissim nulla ut euismod adipiscing. Mauris non eros sem. Cras at lacinia nulla. Maecenas nec magna arcu. Aenean iaculis, augue sed pretium semper, odio tellus volutpat risus, quis consectetur nibh mauris ut odio. Integer convallis, augue a accumsan condimentum, sem nisl congue lorem, consectetur lacinia neque tortor eu neque. Aenean convallis arcu vitae enim dignissim vestibulum. Phasellus tincidunt dolor id enim gravida ullamcorper. Nullam ut lorem auctor, congue quam non, auctor arcu. Morbi ac aliquam ipsum, at aliquet ligula.  Cras adipiscing tellus non nulla suscipit congue. Pellentesque id neque euismod, elementum augue vel, volutpat turpis. Pellentesque sit amet tortor non lorem hendrerit pellentesque ac in nisi. Sed aliquet tincidunt arcu, eu lacinia lorem fringilla id. Integer ut ornare orci. Donec scelerisque vulputate est a condimentum. Morbi tellus sapien, vehicula vel ipsum non, luctus ullamcorper mi. Phasellus felis tortor, egestas quis felis sit amet, malesuada auctor nibh. Sed mollis mi sit amet tristique scelerisque. Cras elementum mauris urna, ullamcorper consectetur orci vehicula ut.  ','Web Developer','Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Sed consequat eleifend metus, vitae malesuada eros elementum sed. Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus.','/team/careers/web-developer','2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(203,'\n                                                      Back to Careers  Department Location Job Information \n                                                       \n                                     Quisque accumsan leo sit amet neque pretium consectetur. Sed blandit nulla at justo volutpat rhoncus. Sed risus orci, luctus sit amet fringilla faucibus, congue nec dui. Phasellus mattis lobortis magna sed dapibus. Donec sagittis nunc sed accumsan eleifend. Ut porttitor sapien eu nisl volutpat, vitae interdum est mollis. Sed laoreet sit amet elit in eleifend. Sed a tincidunt velit, nec posuere urna. In eget metus non est varius viverra. Quisque accumsan odio sem, in consequat nunc lobortis ac.  Cras dignissim nulla ut euismod adipiscing. Mauris non eros sem. Cras at lacinia nulla. Maecenas nec magna arcu. Aenean iaculis, augue sed pretium semper, odio tellus volutpat risus, quis consectetur nibh mauris ut odio. Integer convallis, augue a accumsan condimentum, sem nisl congue lorem, consectetur lacinia neque tortor eu neque. Aenean convallis arcu vitae enim dignissim vestibulum. Phasellus tincidunt dolor id enim gravida ullamcorper. Nullam ut lorem auctor, congue quam non, auctor arcu. Morbi ac aliquam ipsum, at aliquet ligula.  Cras adipiscing tellus non nulla suscipit congue. Pellentesque id neque euismod, elementum augue vel, volutpat turpis. Pellentesque sit amet tortor non lorem hendrerit pellentesque ac in nisi. Sed aliquet tincidunt arcu, eu lacinia lorem fringilla id. Integer ut ornare orci. Donec scelerisque vulputate est a condimentum. Morbi tellus sapien, vehicula vel ipsum non, luctus ullamcorper mi. Phasellus felis tortor, egestas quis felis sit amet, malesuada auctor nibh. Sed mollis mi sit amet tristique scelerisque. Cras elementum mauris urna, ullamcorper consectetur orci vehicula ut.  ','Sales Associate','Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Sed consequat eleifend metus, vitae malesuada eros elementum sed. Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus.','/team/careers/sales-associate','2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(204,'','',NULL,NULL,'2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(205,'','',NULL,NULL,'2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(206,'','',NULL,NULL,'2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(207,'','神田カレー','神田カレー店舗一覧','/stores','2018-04-21 10:30:00','2018-05-28 21:41:05',NULL,0),(208,'','カレー店舗詳細','カレー店舗詳細','/stores/detail','2018-04-21 10:34:00','2018-05-28 21:41:05',NULL,0);
+INSERT INTO `PageSearchIndex` VALUES (1,'Stand Out on the Web \n                                     Share your business with an impressive, yet minimal presentation. Let your customers understand your web presence through elegance and clarity.  A Simple Image Slider \n                                     This image slider can have any content that you want in it.   Easy to Edit \n                                                    Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. Pixel Perfect \n                                                    Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. Media Rich \n                                                    Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. \n                                    Presenting your Business has never been so easy Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna.   Latest Blog Post Now Open For Business \n                                                       We specialize in making your concepts a reality.          Sed cursus facilisis dignissim. Aliquam rhoncus enim et pellentesque varius. Nulla sodales nibh lorem, sit amet imperdiet arcu commodo sit amet. Mauris sed scelerisque nisl. Ut auctor ipsum tellus, vel viverra massa elementum sit amet.          Sed adipiscing tempus sem eu molestie. Aenean laoreet pretium ante vitae ultrices. Aenean eu gravida magna, vel aliquet magna. In auctor convallis gravida.            Contact Us Today    \n                                    Customizable footer area with accent class.  ','Home',NULL,NULL,'2018-04-21 09:48:46','2018-07-08 17:09:18',NULL,0),(2,'','Dashboard','','/dashboard','2018-04-21 09:49:32','2018-05-28 21:41:01',NULL,0),(3,'','Sitemap','Whole world at a glance.','/dashboard/sitemap','2018-04-21 09:49:32','2018-05-28 21:41:01',NULL,0),(4,'','Full Sitemap','','/dashboard/sitemap/full','2018-04-21 09:49:32','2018-05-28 21:41:01',NULL,0),(5,'','Flat View','','/dashboard/sitemap/explore','2018-04-21 09:49:32','2018-05-28 21:41:01',NULL,0),(6,'','Page Search','','/dashboard/sitemap/search','2018-04-21 09:49:32','2018-05-28 21:41:01',NULL,0),(7,'','Files','All documents and images.','/dashboard/files','2018-04-21 09:49:32','2018-05-28 21:41:01',NULL,0),(8,'','File Manager','','/dashboard/files/search','2018-04-21 09:49:32','2018-05-28 21:41:01',NULL,0),(9,'','Attributes','','/dashboard/files/attributes','2018-04-21 09:49:32','2018-05-28 21:41:01',NULL,0),(10,'','File Sets','','/dashboard/files/sets','2018-04-21 09:49:32','2018-05-28 21:41:01',NULL,0),(11,'','Add File Set','','/dashboard/files/add_set','2018-04-21 09:49:32','2018-05-28 21:41:01',NULL,0),(12,'','Members','Add and manage the user accounts and groups on your website.','/dashboard/users','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(13,'','Search Users','','/dashboard/users/search','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(14,'','User Groups','','/dashboard/users/groups','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(15,'','Attributes','','/dashboard/users/attributes','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(16,'','Add User','','/dashboard/users/add','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(17,'','Add Group','','/dashboard/users/add_group','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(18,'','Move Multiple Groups','','/dashboard/users/groups/bulkupdate','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(19,'','Group Sets','','/dashboard/users/group_sets','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(20,'','Community Points',NULL,'/dashboard/users/points','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(21,'','Assign Points',NULL,'/dashboard/users/points/assign','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(22,'','Actions',NULL,'/dashboard/users/points/actions','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(23,'','Express','Express Data Objects','/dashboard/express','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(24,'','View Entries','','/dashboard/express/entries','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(25,'','Reports','Get data from forms and logs.','/dashboard/reports','2018-04-21 09:49:32','2018-05-28 21:41:02',NULL,0),(26,'','Form Results','Get submission data.','/dashboard/reports/forms','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(28,'','Surveys','','/dashboard/reports/surveys','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(29,'','Logs','','/dashboard/reports/logs','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(30,'','Pages & Themes','Reskin your site.','/dashboard/pages','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(31,'','Themes','Reskin your site.','/dashboard/pages/themes','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(32,'','Inspect','','/dashboard/pages/themes/inspect','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(33,'','Page Types','','/dashboard/pages/types','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(34,'','Organize Page Type Order','','/dashboard/pages/types/organize','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(35,'','Add Page Type','','/dashboard/pages/types/add','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(36,'','Compose Form','','/dashboard/pages/types/form','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(37,'','Defaults and Output','','/dashboard/pages/types/output','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(38,'','Page Type Attributes','','/dashboard/pages/types/attributes','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(39,'','Page Type Permissions','','/dashboard/pages/types/permissions','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(40,'','Page Templates','Form factors for pages in your site.','/dashboard/pages/templates','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(41,'','Add Page Template','Add page templates to your site.','/dashboard/pages/templates/add','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(42,'','Attributes','','/dashboard/pages/attributes','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(43,'','Single Pages','','/dashboard/pages/single','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(44,'','RSS Feeds','','/dashboard/pages/feeds','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(45,'','Calendar & Events','','/dashboard/calendar','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(46,'','View Calendar','','/dashboard/calendar/events','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(48,'','Add Calendar','','/dashboard/calendar/add','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(50,'','Attributes','','/dashboard/calendar/attributes','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(51,'','Conversations','','/dashboard/conversations','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(52,'','Messages','','/dashboard/conversations/messages','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(53,'','Stacks & Blocks','Manage sitewide content and administer block types.','/dashboard/blocks','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(54,'','Stacks & Global Areas','Share content across your site.','/dashboard/blocks/stacks','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(55,'','Block & Stack Permissions','Control who can add blocks and stacks on your site.','/dashboard/blocks/permissions','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(57,'','Block Types','Manage the installed block types in your site.','/dashboard/blocks/types','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(58,'','Extend concrete5','','/dashboard/extend','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(59,'','Add Functionality','Install add-ons & themes.','/dashboard/extend/install','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(60,'','Update Add-Ons','Update your installed packages.','/dashboard/extend/update','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(61,'','Connect to the Community','Connect to the concrete5 community.','/dashboard/extend/connect','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(62,'','Get More Themes','Download themes from concrete5.org.','/dashboard/extend/themes','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(63,'','Get More Add-Ons','Download add-ons from concrete5.org.','/dashboard/extend/addons','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(64,'','System & Settings','Secure and setup your site.','/dashboard/system','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(65,'','Basics','Basic information about your website.','/dashboard/system/basics','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(66,'','Name & Attributes','','/dashboard/system/basics/name','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(67,'','Accessibility','','/dashboard/system/basics/accessibility','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(68,'','Social Links','','/dashboard/system/basics/social','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(69,'','Bookmark Icons','Bookmark icon and mobile home screen icon setup.','/dashboard/system/basics/icons','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(70,'','Rich Text Editor','','/dashboard/system/basics/editor','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(71,'','Languages','','/dashboard/system/basics/multilingual','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(72,'','Update Languages','','/dashboard/system/basics/multilingual/update','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(73,'','Time Zone','','/dashboard/system/basics/timezone','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(75,'','Reset Edit Mode','','/dashboard/system/basics/reset_edit_mode','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(76,'','Express','Express','/dashboard/system/express','2018-04-21 09:49:33','2018-05-28 21:41:02',NULL,0),(83,'','Custom Entry Locations','','/dashboard/system/express/entries','2018-04-21 09:49:34','2018-05-28 21:41:02',NULL,0),(84,'','Multilingual','Run your site in multiple languages.','/dashboard/system/multilingual','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(85,'','Multilingual Setup','','/dashboard/system/multilingual/setup','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(86,'','Copy Languages','','/dashboard/system/multilingual/copy','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(87,'','Page Report','','/dashboard/system/multilingual/page_report','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(88,'','Translate Site Interface','','/dashboard/system/multilingual/translate_interface','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(89,'','SEO & Statistics','Enable pretty URLs and tracking codes.','/dashboard/system/seo','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(90,'','URLs and Redirection','','/dashboard/system/seo/urls','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(91,'','Bulk SEO Updater','','/dashboard/system/seo/bulk','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(92,'','Tracking Codes','','/dashboard/system/seo/codes','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(93,'','Excluded URL Word List','','/dashboard/system/seo/excluded','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(94,'','Search Index','','/dashboard/system/seo/searchindex','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(95,'','Files','','/dashboard/system/files','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(96,'','Allowed File Types','','/dashboard/system/files/filetypes','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(97,'','File Manager Permissions','','/dashboard/system/files/permissions','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(98,'','Thumbnails','','/dashboard/system/files/thumbnails','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(99,'','Thumbnail Options','','/dashboard/system/files/thumbnails/options','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(100,'','Image Options','','/dashboard/system/files/image_uploading','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(101,'','File Storage Locations','','/dashboard/system/files/storage','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(102,'','Optimization','Keep your site running well.','/dashboard/system/optimization','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(103,'','Cache & Speed Settings','','/dashboard/system/optimization/cache','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(104,'','Clear Cache','','/dashboard/system/optimization/clearcache','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(105,'','Automated Jobs','','/dashboard/system/optimization/jobs','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(107,'','Permissions & Access','Control who sees and edits your site.','/dashboard/system/permissions','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(108,'','Site Access','','/dashboard/system/permissions/site','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(109,'','Task Permissions','','/dashboard/system/permissions/tasks','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(110,'','User Permissions','','/dashboard/system/permissions/users','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(111,'','Advanced Permissions','','/dashboard/system/permissions/advanced','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(112,'','Workflows','','/dashboard/system/permissions/workflows','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(113,'','IP Blacklist','','/dashboard/system/permissions/blacklist','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(114,'','IP Range','','/dashboard/system/permissions/blacklist/range','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(115,'','Captcha Setup','','/dashboard/system/permissions/captcha','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(116,'','Spam Control','','/dashboard/system/permissions/antispam','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(117,'','Maintenance Mode','','/dashboard/system/permissions/maintenance','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(118,'','Login & Registration','Change login behaviors and setup public profiles.','/dashboard/system/registration','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(119,'','Public Registration','','/dashboard/system/registration/open','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(120,'','Login Destination','','/dashboard/system/registration/postlogin','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(121,'','Public Profiles','','/dashboard/system/registration/profiles','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(122,'','Authentication Types','','/dashboard/system/registration/authentication','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(123,'','Global Password Reset','Signs out all users, resets all passwords and forces users to choose a new one','/dashboard/system/registration/global_password_reset','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(124,'','Notification Settings','','/dashboard/system/registration/notification','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(125,'','Email','Control how your site send and processes mail.','/dashboard/system/mail','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(126,'','SMTP Method','','/dashboard/system/mail/method','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(127,'','Test Mail Settings','','/dashboard/system/mail/method/test','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(128,'','Email Importers','','/dashboard/system/mail/importers','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(129,'','System Email Addresses','','/dashboard/system/mail/addresses','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(130,'','Calendar','Manage your calendar settings','/dashboard/system/calendar','2018-04-21 09:49:34','2018-05-28 21:41:03',NULL,0),(131,'','General Settings','','/dashboard/system/calendar/settings','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(132,'','Color Settings','','/dashboard/system/calendar/colors','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(133,'','Permissions','','/dashboard/system/calendar/permissions','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(134,'','Import Calendar Data','','/dashboard/system/calendar/import','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(135,'','Conversations','Manage your conversations settings','/dashboard/system/conversations','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(136,'','Settings','','/dashboard/system/conversations/settings','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(137,'','Community Points','','/dashboard/system/conversations/points','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(138,'','Banned Words','','/dashboard/system/conversations/bannedwords','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(139,'','Conversation Permissions','','/dashboard/system/conversations/permissions','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(140,'','Attributes','Setup attributes for pages, users, files and more.','/dashboard/system/attributes','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(141,'','Types','Choose which attribute types are available for different items.','/dashboard/system/attributes/types','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(142,'','Sets','Group attributes into sets for easier organization','/dashboard/system/attributes/sets','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(143,'','Topics','','/dashboard/system/attributes/topics','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(144,'','Add Topic Tree','','/dashboard/system/attributes/topics/add','2018-04-21 09:49:35','2018-05-28 21:41:03',NULL,0),(146,'','Environment Information','','/dashboard/system/environment/info','2018-04-21 09:49:35','2018-05-28 21:41:04',NULL,0),(147,'','Debug Settings','','/dashboard/system/environment/debug','2018-04-21 09:49:35','2018-05-28 21:41:04',NULL,0),(148,'','Logging Settings','','/dashboard/system/environment/logging','2018-04-21 09:49:35','2018-05-28 21:41:04',NULL,0),(149,'','Proxy Server','','/dashboard/system/environment/proxy','2018-04-21 09:49:35','2018-05-28 21:41:04',NULL,0),(150,'','Database Entities','','/dashboard/system/environment/entities','2018-04-21 09:49:35','2018-05-28 21:41:04',NULL,0),(151,'','Geolocation','','/dashboard/system/environment/geolocation','2018-04-21 09:49:35','2018-05-28 21:41:04',NULL,0),(152,'','Update concrete5','','/dashboard/system/update','2018-04-21 09:49:35','2018-05-28 21:41:04',NULL,0),(153,'','Apply Update','','/dashboard/system/update/update','2018-04-21 09:49:35','2018-05-28 21:41:04',NULL,0),(154,'Customize the core Calendar block time format How to customize the core Calendar block time format using a custom block template.\n  concrete5 and GDPR What we\'re doing about GDPR here. concrete5 8.4.0 Release Candidate 2 Now Available Our latest update gets a little closer to release. Introducing the new concrete5 Roadmap No Content.  ','Welcome','','/dashboard/welcome','2018-04-21 09:49:35','2018-05-28 21:41:04',NULL,0),(155,'','Waiting for Me',NULL,'/dashboard/welcome/me','2018-04-21 09:49:35','2018-05-28 21:41:04',NULL,0),(156,'','Stacks','','/!stacks','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(157,'','Page Not Found','','/page_not_found','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(158,'','Trash','','/!trash','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(159,'','Login','','/login','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(160,'','Register','','/register','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(161,'','My Account','','/account','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(162,'','Edit Profile','Edit your user profile and change password.','/account/edit_profile','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(163,'','Profile Picture','Specify a new image attached to posts or edits.','/account/avatar','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(164,'','Private Messages','Inbox for site-specific messages.','/account/messages','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(165,'','Page Forbidden','','/page_forbidden','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(166,'','Download File','','/download_file','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(167,'','Drafts','','/!drafts','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(168,'','Welcome Back','','/account/welcome','2018-04-21 09:49:39','2018-05-28 21:41:04',NULL,0),(169,'\n                                     1234 SE StreetView  Suite 301  Portland, OR 98101  View on Google Maps  ','Footer Contact',NULL,'/!stacks/footer-contact','2018-04-21 09:49:43','2018-05-28 21:41:04',NULL,0),(170,'\n                                     © 2017 Elemental Theme  ','Footer Legal',NULL,'/!stacks/footer-legal','2018-04-21 09:49:43','2018-05-28 21:41:04',NULL,0),(171,'\n                                    \n                                     FAQ / Help \n                                     Case Studies \n                                     Blog \n                                     Another Link \n                                     ','Footer Navigation',NULL,'/!stacks/footer-navigation','2018-04-21 09:49:43','2018-05-28 21:41:04',NULL,0),(172,'\n                                    Elemental ','Footer Site Title',NULL,'/!stacks/footer-site-title','2018-04-21 09:49:43','2018-05-28 21:41:04',NULL,0),(173,'','Footer Social',NULL,'/!stacks/footer-social','2018-04-21 09:49:43','2018-05-28 21:41:04',NULL,0),(174,'','Header Navigation',NULL,'/!stacks/header-navigation','2018-04-21 09:49:43','2018-05-28 21:41:04',NULL,0),(175,'','Header Search',NULL,'/!stacks/header-search','2018-04-21 09:49:43','2018-05-28 21:41:04',NULL,0),(176,'\n                                    Elemental ','Header Site Title',NULL,'/!stacks/header-site-title','2018-04-21 09:49:43','2018-05-28 21:41:04',NULL,0),(177,'','',NULL,NULL,'2018-04-21 09:49:44','2018-05-28 21:41:04',NULL,0),(178,'Our Expertise Quality \n                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sodales non leo id aliquet. Design \n                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sodales non leo id aliquet. Development \n                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sodales non leo id aliquet. Security \n                                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sodales non leo id aliquet. \n                                                    Awesome Features Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Sed consequat eleifend metus, vitae malesuada eros elementum sed.  Guide Books Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus. Vestibulum neque lectus, egestas non cursus vitae, aliquam at magna. Etiam aliquam, justo et varius eleifend, dui lectus egestas nunc, vel malesuada nisl purus nec metus.  Admin Accounts Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus. Vestibulum neque lectus, egestas non cursus vitae, aliquam at magna. Etiam aliquam, justo et varius eleifend, dui lectus egestas nunc, vel malesuada nisl purus nec metus.   \n                                                    Support Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Sed consequat eleifend metus, vitae malesuada eros elementum sed.  Additional Options Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus. Vestibulum neque lectus, egestas non cursus vitae, aliquam at magna.   Etiam aliquam, justo et varius eleifend, dui lectus egestas nunc, vel malesuada nisl purus nec metus. In gravida turpis a pharetra commodo. Donec non turpis vulputate, faucibus metus a, consectetur nunc. Morbi tortor nisi, hendrerit sed laoreet eget, fermentum et justo. Suspendisse potenti.  \n                                    What Clients Are Saying About Us  Franz Maruna\nCEO & Founder\nconcrete5\n\n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. John Doe\nMarketing Directory\nCompanyCo\n\n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Andrew Embler\nCTO & Founder\nconcrete5\n\n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Jane Doe\nIT Manager\nCompanyCo\n\n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. ','Services',NULL,'/services','2018-04-21 09:49:44','2018-05-28 21:41:04',NULL,0),(179,'','',NULL,NULL,'2018-04-21 09:49:44','2018-05-28 21:41:04',NULL,0),(181,'John Smith\nCo-Founder / CEO\n\n\n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Bob Smith\nCo-Founder / CTO\n\n\n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. John Smith\nArt Director\n\n\n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. John Smith\nArt Director\n\n\n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Bob Smith\nArt Director\n\n\n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Bob Smith\nArt Director\n\n\n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Bob Smith\nArt Director\n\n\n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Bob Smith\nArt Director\n\n\n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. \n                                                    Get in Touch  Sed cursus facilisis dignissim. Aliquam rhoncus enim et pellentesque varius. Nulla sodales nibh lorem, sit amet imperdiet arcu commodo sit amet.    Contact Us  ','Team',NULL,'/team','2018-04-21 09:49:44','2018-05-28 21:41:04',NULL,0),(182,'','',NULL,NULL,'2018-04-21 09:49:44','2018-05-28 21:41:04',NULL,0),(183,'','Blog',NULL,'/blog','2018-04-21 09:49:44','2018-05-28 21:41:04',NULL,0),(184,'','Search',NULL,'/search','2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(185,'\n                                                    Headquarters 1234 SE Street View Suite 301 Portland, OR 98101 HOURS  M-F:  10 AM - 7 PM Sat: Noon - Midnight Sun: Closed  \n                                                    Choosing Us Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. Quisque dignissim neque a ipsum sodales, mattis aliquam ante dictum. Vestibulum elementum pellentesque tortor ac congue. Mauris vel nibh id metus tincidunt eleifend. In interdum gravida ligula, at venenatis odio fermentum at. Donec dapibus enim lectus, quis venenatis tellus volutpat in. Nullam in velit tortor.  We would love to hear from you! ','Contact',NULL,'/contact','2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(186,' This is my empty content block on my blank page.  ','Blank Page',NULL,'/blank-page','2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(187,'','',NULL,NULL,'2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(194,'','',NULL,NULL,'2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(195,'\n                                    Fusce volutpat sodales mauris quis dapibus. Maecenas convallis, libero eu ultrices interdum, leo mauris commodo diam, sed cursus sapien ligula nec leo. Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Sed consequat eleifend metus, vitae malesuada eros elementum sed. Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus. Vestibulum neque lectus, egestas non cursus vitae, aliquam at magna. Etiam aliquam, justo et varius eleifend, dui lectus egestas nunc, vel malesuada nisl purus nec metus. In gravida turpis a pharetra commodo. Donec non turpis vulputate, faucibus metus a, consectetur nunc. Morbi tortor nisi, hendrerit sed laoreet eget, fermentum et justo. Suspendisse potenti.   Heading 2 Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Sed consequat eleifend metus, vitae malesuada eros elementum sed. Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus. Vestibulum neque lectus, egestas non cursus vitae, aliquam at magna. Etiam aliquam, justo et varius eleifend, dui lectus egestas nunc, vel malesuada nisl purus nec metus. In gravida turpis a pharetra commodo. Donec non turpis vulputate, faucibus metus a, consectetur nunc. Morbi tortor nisi, hendrerit sed laoreet eget, fermentum et justo. Suspendisse potenti. Heading 3 Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. Quisque dignissim neque a ipsum sodales, mattis aliquam ante dictum. Vestibulum elementum pellentesque tortor ac congue. Mauris vel nibh id metus tincidunt eleifend. In interdum gravida ligula, at venenatis odio fermentum at. Donec dapibus enim lectus, quis venenatis tellus volutpat in. Nullam in velit tortor. Heading 3 Donec blandit lectus nec neque ullamcorper rhoncus. Sed adipiscing tempus sem eu molestie. Aenean laoreet pretium ante vitae ultrices. Aenean eu gravida magna, vel aliquet magna. In auctor convallis gravida. Phasellus est erat, adipiscing nec lobortis quis, eleifend at sem. Curabitur fringilla viverra dolor, in rutrum ipsum rutrum sit amet. Vestibulum feugiat porttitor ipsum vel condimentum. Suspendisse at tempus libero. Sed eu tempor enim. Etiam convallis eleifend rutrum. Donec porta diam quis tellus feugiat dignissim. Cras posuere, massa eget laoreet laoreet, urna libero lobortis dolor, sed consequat elit urna eget massa. Donec aliquet pellentesque consectetur.  ','Hello World!','Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. Quisque dignissim neque a ipsum sodales, mattis aliquam ante dictum.','/blog/hello-world','2014-07-01 12:00:00','2018-05-28 21:41:05',NULL,0),(196,'\n                                     Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Sed consequat eleifend metus, vitae malesuada eros elementum sed. Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit.   CMS To the Rescue!  Nullam sit amet consectetur lacus. Vestibulum neque lectus, egestas non cursus vitae, aliquam at magna. Etiam aliquam, justo et varius eleifend, dui lectus egestas nunc, vel malesuada nisl purus nec metus. In gravida turpis a pharetra commodo. Donec non turpis vulputate, faucibus metus a, consectetur nunc. Morbi tortor nisi, hendrerit sed laoreet eget, fermentum et justo. Suspendisse potenti.  Learn more at concrete5.org    ','Another Blog Post','Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus. Vestibulum neque lectus, egestas non cursus vitae, aliquam at magna.','/blog/another-blog-post','2014-07-04 15:00:00','2018-05-28 21:41:05',NULL,0),(197,'\n                                     Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Sed consequat eleifend metus, vitae malesuada eros elementum sed. Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus. Vestibulum neque lectus, egestas non cursus vitae, aliquam at magna. Etiam aliquam, justo et varius eleifend, dui lectus egestas nunc, vel malesuada nisl purus nec metus. In gravida turpis a pharetra commodo. Donec non turpis vulputate, faucibus metus a, consectetur nunc. Morbi tortor nisi, hendrerit sed laoreet eget, fermentum et justo. Suspendisse potenti.  Heading 3  Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. Quisque dignissim neque a ipsum sodales, mattis aliquam ante dictum. Vestibulum elementum pellentesque tortor ac congue. Mauris vel nibh id metus tincidunt eleifend. In interdum gravida ligula, at venenatis odio fermentum at. Donec dapibus enim lectus, quis venenatis tellus volutpat in. Nullam in velit tortor.    Look at my beautiful image. Don\'t you to look more?  Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. Quisque dignissim neque a ipsum sodales, mattis aliquam ante dictum. Vestibulum elementum pellentesque tortor ac congue. Mauris vel nibh id metus tincidunt eleifend. In interdum gravida ligula, at venenatis odio fermentum at. Donec dapibus enim lectus, quis venenatis tellus volutpat in. Nullam in velit tortor.  ','A Beautiful Site Deserves a Beautiful Blog','Donec blandit lectus nec neque ullamcorper rhoncus. Sed adipiscing tempus sem eu molestie. Aenean laoreet pretium ante vitae ultrices. Aenean eu gravida magna, vel aliquet magna. In auctor convallis gravida. Phasellus est erat.','/blog/a-beautiful-blog','2014-08-01 16:30:00','2018-05-28 21:41:05',NULL,0),(198,'\n                                                    Fusce volutpat sodales mauris quis dapibus. Maecenas convallis, libero eu ultrices interdum. \n                                                     Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna.   Quisque dignissim neque a ipsum sodales, mattis aliquam ante dictum. Vestibulum elementum pellentesque tortor ac congue. Mauris vel nibh id metus tincidunt eleifend.  \n                                                    Heading 1Heading 2Heading 3Heading 4Heading 5Heading 6 \n                                                     Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Sed consequat eleifend metus, vitae malesuada eros elementum sed. Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus. Vestibulum neque lectus, egestas non cursus vitae, aliquam at magna. Etiam aliquam, justo et varius eleifend, dui lectus egestas nunc, vel malesuada nisl purus nec metus. In gravida turpis a pharetra commodo. Donec non turpis vulputate, faucibus metus a, consectetur nunc. Morbi tortor nisi, hendrerit sed laoreet eget, fermentum et justo. Suspendisse potenti.     \n                                                       Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Sed consequat eleifend metus, vitae malesuada eros elementum sed. Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus. Vestibulum neque lectus, egestas non cursus vitae, aliquam at magna. Etiam aliquam, justo et varius eleifend, dui lectus egestas nunc, vel malesuada nisl purus nec metus. In gravida turpis a pharetra commodo. Donec non turpis vulputate, faucibus metus a, consectetur nunc. Morbi tortor nisi, hendrerit sed laoreet eget, fermentum et justo. Suspendisse potenti.  \n                                                    Get in Touch  Sed cursus facilisis dignissim. Aliquam rhoncus enim et pellentesque varius. Nulla sodales nibh lorem, sit amet imperdiet arcu commodo sit amet.    Contact Us  ','About',NULL,'/team/about','2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(199,'Work with Us   Welcome Home \n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Great Workers \n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Amazing Location \n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Paid Time Off \n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. No Meetings \n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Free Drinks \n                                                    Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. \n                                                    Open Positions  ','Careers',NULL,'/team/careers','2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(200,'What are page versions? What are page versions? \n                                    Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. How do I add more people as editors in my website? How do I add more people as editors in my website? \n                                    Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna. Pellentesque ultricies ligula vel neque dictum, eu mollis tortor adipiscing. Etiam congue, est vel tincidunt vestibulum, nunc nunc porta nulla, at adipiscing neque tellus quis urna.  ','Frequently Asked Questions',NULL,'/team/faq','2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(201,'\n                                                      Back to Careers  Department Location Job Information \n                                                       ','',NULL,NULL,'2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(202,'\n                                                      Back to Careers  Department Location Job Information \n                                                       \n                                     Quisque accumsan leo sit amet neque pretium consectetur. Sed blandit nulla at justo volutpat rhoncus. Sed risus orci, luctus sit amet fringilla faucibus, congue nec dui. Phasellus mattis lobortis magna sed dapibus. Donec sagittis nunc sed accumsan eleifend. Ut porttitor sapien eu nisl volutpat, vitae interdum est mollis. Sed laoreet sit amet elit in eleifend. Sed a tincidunt velit, nec posuere urna. In eget metus non est varius viverra. Quisque accumsan odio sem, in consequat nunc lobortis ac.  Cras dignissim nulla ut euismod adipiscing. Mauris non eros sem. Cras at lacinia nulla. Maecenas nec magna arcu. Aenean iaculis, augue sed pretium semper, odio tellus volutpat risus, quis consectetur nibh mauris ut odio. Integer convallis, augue a accumsan condimentum, sem nisl congue lorem, consectetur lacinia neque tortor eu neque. Aenean convallis arcu vitae enim dignissim vestibulum. Phasellus tincidunt dolor id enim gravida ullamcorper. Nullam ut lorem auctor, congue quam non, auctor arcu. Morbi ac aliquam ipsum, at aliquet ligula.  Cras adipiscing tellus non nulla suscipit congue. Pellentesque id neque euismod, elementum augue vel, volutpat turpis. Pellentesque sit amet tortor non lorem hendrerit pellentesque ac in nisi. Sed aliquet tincidunt arcu, eu lacinia lorem fringilla id. Integer ut ornare orci. Donec scelerisque vulputate est a condimentum. Morbi tellus sapien, vehicula vel ipsum non, luctus ullamcorper mi. Phasellus felis tortor, egestas quis felis sit amet, malesuada auctor nibh. Sed mollis mi sit amet tristique scelerisque. Cras elementum mauris urna, ullamcorper consectetur orci vehicula ut.  ','Web Developer','Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Sed consequat eleifend metus, vitae malesuada eros elementum sed. Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus.','/team/careers/web-developer','2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(203,'\n                                                      Back to Careers  Department Location Job Information \n                                                       \n                                     Quisque accumsan leo sit amet neque pretium consectetur. Sed blandit nulla at justo volutpat rhoncus. Sed risus orci, luctus sit amet fringilla faucibus, congue nec dui. Phasellus mattis lobortis magna sed dapibus. Donec sagittis nunc sed accumsan eleifend. Ut porttitor sapien eu nisl volutpat, vitae interdum est mollis. Sed laoreet sit amet elit in eleifend. Sed a tincidunt velit, nec posuere urna. In eget metus non est varius viverra. Quisque accumsan odio sem, in consequat nunc lobortis ac.  Cras dignissim nulla ut euismod adipiscing. Mauris non eros sem. Cras at lacinia nulla. Maecenas nec magna arcu. Aenean iaculis, augue sed pretium semper, odio tellus volutpat risus, quis consectetur nibh mauris ut odio. Integer convallis, augue a accumsan condimentum, sem nisl congue lorem, consectetur lacinia neque tortor eu neque. Aenean convallis arcu vitae enim dignissim vestibulum. Phasellus tincidunt dolor id enim gravida ullamcorper. Nullam ut lorem auctor, congue quam non, auctor arcu. Morbi ac aliquam ipsum, at aliquet ligula.  Cras adipiscing tellus non nulla suscipit congue. Pellentesque id neque euismod, elementum augue vel, volutpat turpis. Pellentesque sit amet tortor non lorem hendrerit pellentesque ac in nisi. Sed aliquet tincidunt arcu, eu lacinia lorem fringilla id. Integer ut ornare orci. Donec scelerisque vulputate est a condimentum. Morbi tellus sapien, vehicula vel ipsum non, luctus ullamcorper mi. Phasellus felis tortor, egestas quis felis sit amet, malesuada auctor nibh. Sed mollis mi sit amet tristique scelerisque. Cras elementum mauris urna, ullamcorper consectetur orci vehicula ut.  ','Sales Associate','Curabitur sagittis elementum felis at sodales. Nullam fermentum at urna quis accumsan. Nam bibendum leo nisi, lacinia molestie arcu consequat quis. Morbi at suscipit risus. Sed consequat eleifend metus, vitae malesuada eros elementum sed. Fusce risus felis, viverra et dignissim at, lobortis non est. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam sit amet consectetur lacus.','/team/careers/sales-associate','2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(204,'','',NULL,NULL,'2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(205,'','',NULL,NULL,'2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(206,'','',NULL,NULL,'2018-04-21 09:49:44','2018-05-28 21:41:05',NULL,0),(207,'','神田カレー','神田カレー店舗一覧','/stores','2018-04-21 10:30:00','2018-10-24 21:12:36',NULL,0),(208,'','カレー店舗詳細','カレー店舗詳細','/stores/detail','2018-04-21 10:34:00','2018-05-28 21:41:05',NULL,0);
 /*!40000 ALTER TABLE `PageSearchIndex` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -4430,13 +4606,13 @@ DROP TABLE IF EXISTS `PageTemplates`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `PageTemplates` (
   `pTemplateID` int(11) NOT NULL AUTO_INCREMENT,
-  `pTemplateHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `pTemplateIcon` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `pTemplateName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `pTemplateHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pTemplateIcon` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pTemplateName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pTemplateIsInternal` tinyint(1) NOT NULL,
   `pkgID` int(11) NOT NULL,
   PRIMARY KEY (`pTemplateID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4459,12 +4635,12 @@ DROP TABLE IF EXISTS `PageThemeCustomStyles`;
 CREATE TABLE `PageThemeCustomStyles` (
   `pThemeID` int(10) unsigned NOT NULL DEFAULT 0,
   `scvlID` int(10) unsigned DEFAULT 0,
-  `preset` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `preset` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `sccRecordID` int(10) unsigned DEFAULT 0,
   PRIMARY KEY (`pThemeID`),
   KEY `scvlID` (`scvlID`),
   KEY `sccRecordID` (`sccRecordID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4485,15 +4661,15 @@ DROP TABLE IF EXISTS `PageThemes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `PageThemes` (
   `pThemeID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `pThemeHandle` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `pThemeName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `pThemeDescription` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `pThemeHandle` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pThemeName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pThemeDescription` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pkgID` int(10) unsigned NOT NULL DEFAULT 0,
   `pThemeHasCustomClass` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`pThemeID`),
   UNIQUE KEY `ptHandle` (`pThemeHandle`),
   KEY `pkgID` (`pkgID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4515,13 +4691,13 @@ DROP TABLE IF EXISTS `PageTypeComposerControlTypes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `PageTypeComposerControlTypes` (
   `ptComposerControlTypeID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `ptComposerControlTypeHandle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ptComposerControlTypeName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ptComposerControlTypeHandle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ptComposerControlTypeName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pkgID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`ptComposerControlTypeID`),
   UNIQUE KEY `ptComposerControlTypeHandle` (`ptComposerControlTypeHandle`),
   KEY `pkgID` (`pkgID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4545,15 +4721,15 @@ CREATE TABLE `PageTypeComposerFormLayoutSetControls` (
   `ptComposerFormLayoutSetControlID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `ptComposerFormLayoutSetID` int(10) unsigned DEFAULT 0,
   `ptComposerControlTypeID` int(10) unsigned DEFAULT 0,
-  `ptComposerControlObject` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ptComposerControlObject` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ptComposerFormLayoutSetControlDisplayOrder` int(10) unsigned DEFAULT 0,
-  `ptComposerFormLayoutSetControlCustomLabel` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ptComposerFormLayoutSetControlCustomTemplate` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ptComposerFormLayoutSetControlDescription` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ptComposerFormLayoutSetControlCustomLabel` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ptComposerFormLayoutSetControlCustomTemplate` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ptComposerFormLayoutSetControlDescription` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ptComposerFormLayoutSetControlRequired` int(11) DEFAULT 0,
   PRIMARY KEY (`ptComposerFormLayoutSetControlID`),
   KEY `ptComposerControlTypeID` (`ptComposerControlTypeID`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4576,12 +4752,12 @@ DROP TABLE IF EXISTS `PageTypeComposerFormLayoutSets`;
 CREATE TABLE `PageTypeComposerFormLayoutSets` (
   `ptComposerFormLayoutSetID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `ptID` int(10) unsigned DEFAULT 0,
-  `ptComposerFormLayoutSetName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ptComposerFormLayoutSetDescription` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ptComposerFormLayoutSetName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ptComposerFormLayoutSetDescription` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `ptComposerFormLayoutSetDisplayOrder` int(10) unsigned DEFAULT 0,
   PRIMARY KEY (`ptComposerFormLayoutSetID`),
   KEY `ptID` (`ptID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4605,7 +4781,7 @@ CREATE TABLE `PageTypeComposerOutputBlocks` (
   `ptComposerOutputBlockID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `cID` int(10) unsigned NOT NULL DEFAULT 0,
   `cvID` int(10) unsigned NOT NULL DEFAULT 0,
-  `arHandle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `arHandle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cbDisplayOrder` int(10) unsigned DEFAULT 0,
   `ptComposerFormLayoutSetControlID` int(10) unsigned NOT NULL DEFAULT 0,
   `bID` int(10) unsigned DEFAULT 0,
@@ -4613,7 +4789,7 @@ CREATE TABLE `PageTypeComposerOutputBlocks` (
   KEY `cID` (`cID`),
   KEY `bID` (`bID`,`cID`),
   KEY `ptComposerFormLayoutSetControlID` (`ptComposerFormLayoutSetControlID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4641,7 +4817,7 @@ CREATE TABLE `PageTypeComposerOutputControls` (
   KEY `pTemplateID` (`pTemplateID`,`ptComposerFormLayoutSetControlID`),
   KEY `ptID` (`ptID`),
   KEY `ptComposerFormLayoutSetControlID` (`ptComposerFormLayoutSetControlID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4668,7 +4844,7 @@ CREATE TABLE `PageTypePageTemplateDefaultPages` (
   PRIMARY KEY (`pTemplateID`,`ptID`),
   KEY `ptID` (`ptID`),
   KEY `cID` (`cID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4693,7 +4869,7 @@ CREATE TABLE `PageTypePageTemplates` (
   `pTemplateID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`ptID`,`pTemplateID`),
   KEY `pTemplateID` (`pTemplateID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4720,7 +4896,7 @@ CREATE TABLE `PageTypePermissionAssignments` (
   PRIMARY KEY (`ptID`,`pkID`,`paID`),
   KEY `pkID` (`pkID`),
   KEY `ptID` (`ptID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4742,13 +4918,13 @@ DROP TABLE IF EXISTS `PageTypePublishTargetTypes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `PageTypePublishTargetTypes` (
   `ptPublishTargetTypeID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `ptPublishTargetTypeHandle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `ptPublishTargetTypeName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ptPublishTargetTypeHandle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `ptPublishTargetTypeName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pkgID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`ptPublishTargetTypeID`),
   KEY `ptPublishTargetTypeHandle` (`ptPublishTargetTypeHandle`),
   KEY `pkgID` (`pkgID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4770,23 +4946,23 @@ DROP TABLE IF EXISTS `PageTypes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `PageTypes` (
   `ptID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `ptName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `ptHandle` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `ptName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ptHandle` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
   `ptPublishTargetTypeID` int(10) unsigned DEFAULT NULL,
   `ptDefaultPageTemplateID` int(10) unsigned DEFAULT NULL,
-  `ptAllowedPageTemplates` varchar(1) COLLATE utf8_unicode_ci DEFAULT 'A',
+  `ptAllowedPageTemplates` varchar(1) COLLATE utf8mb4_unicode_ci DEFAULT 'A',
   `ptIsInternal` tinyint(1) NOT NULL DEFAULT 0,
   `ptIsFrequentlyAdded` tinyint(1) NOT NULL DEFAULT 1,
   `ptDisplayOrder` int(10) unsigned DEFAULT NULL,
   `ptLaunchInComposer` tinyint(1) NOT NULL DEFAULT 0,
   `pkgID` int(10) unsigned NOT NULL DEFAULT 0,
-  `ptPublishTargetObject` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ptPublishTargetObject` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `siteTypeID` int(10) unsigned DEFAULT 0,
   PRIMARY KEY (`ptID`),
   UNIQUE KEY `ptHandle` (`ptHandle`),
   KEY `siteTypeID` (`siteTypeID`),
   KEY `pkgID` (`pkgID`,`ptID`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4811,7 +4987,7 @@ CREATE TABLE `PageWorkflowProgress` (
   `wpID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`cID`,`wpID`),
   KEY `wpID` (`wpID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4842,10 +5018,10 @@ CREATE TABLE `Pages` (
   `cCheckedOutDatetimeLastEdit` datetime DEFAULT NULL,
   `cOverrideTemplatePermissions` tinyint(1) NOT NULL DEFAULT 1,
   `cInheritPermissionsFromCID` int(10) unsigned NOT NULL DEFAULT 0,
-  `cInheritPermissionsFrom` varchar(8) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'PARENT',
-  `cFilename` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cInheritPermissionsFrom` varchar(8) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'PARENT',
+  `cFilename` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cPointerID` int(10) unsigned NOT NULL DEFAULT 0,
-  `cPointerExternalLink` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `cPointerExternalLink` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cPointerExternalLinkNewWindow` tinyint(1) NOT NULL DEFAULT 0,
   `cIsActive` tinyint(1) NOT NULL DEFAULT 1,
   `cChildren` int(10) unsigned NOT NULL DEFAULT 0,
@@ -4855,7 +5031,7 @@ CREATE TABLE `Pages` (
   `cDraftTargetParentPageID` int(10) unsigned NOT NULL DEFAULT 0,
   `cIsDraft` tinyint(1) NOT NULL DEFAULT 0,
   `cCacheFullPageContent` smallint(6) NOT NULL DEFAULT -1,
-  `cCacheFullPageContentOverrideLifetime` varchar(32) COLLATE utf8_unicode_ci NOT NULL DEFAULT '0',
+  `cCacheFullPageContentOverrideLifetime` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
   `cCacheFullPageContentLifetimeCustom` int(10) unsigned NOT NULL DEFAULT 0,
   `cIsSystemPage` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`cID`,`ptID`),
@@ -4869,7 +5045,7 @@ CREATE TABLE `Pages` (
   KEY `cIsSystemPage` (`cID`,`cIsSystemPage`),
   KEY `pkgID` (`pkgID`),
   KEY `cParentMaxDisplay` (`cParentID`,`cDisplayOrder`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4878,7 +5054,7 @@ CREATE TABLE `Pages` (
 
 LOCK TABLES `Pages` WRITE;
 /*!40000 ALTER TABLE `Pages` DISABLE KEYS */;
-INSERT INTO `Pages` VALUES (1,1,0,0,1,0,NULL,NULL,NULL,1,1,'OVERRIDE',NULL,0,NULL,0,1,18,0,0,0,0,0,-1,'0',0,0),(2,0,0,0,1,0,NULL,NULL,NULL,1,2,'OVERRIDE','/dashboard/view.php',0,NULL,0,1,12,0,0,0,0,0,-1,'0',0,1),(3,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/sitemap/view.php',0,NULL,0,1,3,1,2,0,0,0,-1,'0',0,1),(4,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/sitemap/full.php',0,NULL,0,1,0,0,3,0,0,0,-1,'0',0,1),(5,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/sitemap/explore.php',0,NULL,0,1,0,1,3,0,0,0,-1,'0',0,1),(6,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/sitemap/search.php',0,NULL,0,1,0,2,3,0,0,0,-1,'0',0,1),(7,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/files/view.php',0,NULL,0,1,4,2,2,0,0,0,-1,'0',0,1),(8,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/files/search.php',0,NULL,0,1,0,0,7,0,0,0,-1,'0',0,1),(9,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/files/attributes.php',0,NULL,0,1,0,1,7,0,0,0,-1,'0',0,1),(10,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/files/sets.php',0,NULL,0,1,0,2,7,0,0,0,-1,'0',0,1),(11,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/files/add_set.php',0,NULL,0,1,0,3,7,0,0,0,-1,'0',0,1),(12,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/users/view.php',0,NULL,0,1,7,3,2,0,0,0,-1,'0',0,1),(13,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/users/search.php',0,NULL,0,1,0,0,12,0,0,0,-1,'0',0,1),(14,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/users/groups.php',0,NULL,0,1,1,1,12,0,0,0,-1,'0',0,1),(15,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/users/attributes.php',0,NULL,0,1,0,2,12,0,0,0,-1,'0',0,1),(16,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/users/add.php',0,NULL,0,1,0,3,12,0,0,0,-1,'0',0,1),(17,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/users/add_group.php',0,NULL,0,1,0,4,12,0,0,0,-1,'0',0,1),(18,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/users/groups/bulkupdate.php',0,NULL,0,1,0,0,14,0,0,0,-1,'0',0,1),(19,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/users/group_sets.php',0,NULL,0,1,0,5,12,0,0,0,-1,'0',0,1),(20,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/users/points/view.php',0,NULL,0,1,2,6,12,0,0,0,-1,'0',0,1),(21,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/users/points/assign.php',0,NULL,0,1,0,0,20,0,0,0,-1,'0',0,1),(22,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/users/points/actions.php',0,NULL,0,1,0,1,20,0,0,0,-1,'0',0,1),(23,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/express/view.php',0,NULL,0,1,1,4,2,0,0,0,-1,'0',0,1),(24,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/express/entries.php',0,NULL,0,1,0,0,23,0,0,0,-1,'0',0,1),(25,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/reports.php',0,NULL,0,1,3,5,2,0,0,0,-1,'0',0,1),(26,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/reports/forms.php',0,NULL,0,1,1,0,25,0,0,0,-1,'0',0,1),(27,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/reports/forms/legacy.php',0,NULL,0,1,0,0,26,0,0,0,-1,'0',0,1),(28,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/reports/surveys.php',0,NULL,0,1,0,1,25,0,0,0,-1,'0',0,1),(29,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/reports/logs.php',0,NULL,0,1,0,2,25,0,0,0,-1,'0',0,1),(30,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/view.php',0,NULL,0,1,6,6,2,0,0,0,-1,'0',0,1),(31,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/themes/view.php',0,NULL,0,1,1,0,30,0,0,0,-1,'0',0,1),(32,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/themes/inspect.php',0,NULL,0,1,0,0,31,0,0,0,-1,'0',0,1),(33,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/types/view.php',0,NULL,0,1,6,1,30,0,0,0,-1,'0',0,1),(34,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/types/organize.php',0,NULL,0,1,0,0,33,0,0,0,-1,'0',0,1),(35,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/types/add.php',0,NULL,0,1,0,1,33,0,0,0,-1,'0',0,1),(36,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/types/form.php',0,NULL,0,1,0,2,33,0,0,0,-1,'0',0,1),(37,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/types/output.php',0,NULL,0,1,0,3,33,0,0,0,-1,'0',0,1),(38,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/types/attributes.php',0,NULL,0,1,0,4,33,0,0,0,-1,'0',0,1),(39,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/types/permissions.php',0,NULL,0,1,0,5,33,0,0,0,-1,'0',0,1),(40,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/templates/view.php',0,NULL,0,1,1,2,30,0,0,0,-1,'0',0,1),(41,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/templates/add.php',0,NULL,0,1,0,0,40,0,0,0,-1,'0',0,1),(42,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/attributes.php',0,NULL,0,1,0,3,30,0,0,0,-1,'0',0,1),(43,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/single.php',0,NULL,0,1,0,4,30,0,0,0,-1,'0',0,1),(44,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/feeds.php',0,NULL,0,1,0,5,30,0,0,0,-1,'0',0,1),(45,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/calendar/view.php',0,NULL,0,1,5,7,2,0,0,0,-1,'0',0,1),(46,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/calendar/events.php',0,NULL,0,1,0,0,45,0,0,0,-1,'0',0,1),(47,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/calendar/event_list.php',0,NULL,0,1,0,1,45,0,0,0,-1,'0',0,1),(48,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/calendar/add.php',0,NULL,0,1,0,2,45,0,0,0,-1,'0',0,1),(49,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/calendar/permissions.php',0,NULL,0,1,0,3,45,0,0,0,-1,'0',0,1),(50,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/calendar/attributes.php',0,NULL,0,1,0,4,45,0,0,0,-1,'0',0,1),(51,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/conversations/view.php',0,NULL,0,1,1,8,2,0,0,0,-1,'0',0,1),(52,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/conversations/messages.php',0,NULL,0,1,0,0,51,0,0,0,-1,'0',0,1),(53,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/blocks/view.php',0,NULL,0,1,3,9,2,0,0,0,-1,'0',0,1),(54,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/blocks/stacks/view.php',0,NULL,0,1,1,0,53,0,0,0,-1,'0',0,1),(55,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/blocks/permissions.php',0,NULL,0,1,0,1,53,0,0,0,-1,'0',0,1),(56,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/blocks/stacks/list/view.php',0,NULL,0,1,0,0,54,0,0,0,-1,'0',0,1),(57,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/blocks/types/view.php',0,NULL,0,1,0,2,53,0,0,0,-1,'0',0,1),(58,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/extend/view.php',0,NULL,0,1,5,10,2,0,0,0,-1,'0',0,1),(59,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/extend/install.php',0,NULL,0,1,0,0,58,0,0,0,-1,'0',0,1),(60,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/extend/update.php',0,NULL,0,1,0,1,58,0,0,0,-1,'0',0,1),(61,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/extend/connect.php',0,NULL,0,1,0,2,58,0,0,0,-1,'0',0,1),(62,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/extend/themes.php',0,NULL,0,1,0,3,58,0,0,0,-1,'0',0,1),(63,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/extend/addons.php',0,NULL,0,1,0,4,58,0,0,0,-1,'0',0,1),(64,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/view.php',0,NULL,0,1,14,11,2,0,0,0,-1,'0',0,1),(65,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/basics/view.php',0,NULL,0,1,9,0,64,0,0,0,-1,'0',0,1),(66,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/basics/name.php',0,NULL,0,1,0,0,65,0,0,0,-1,'0',0,1),(67,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/basics/accessibility.php',0,NULL,0,1,0,1,65,0,0,0,-1,'0',0,1),(68,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/basics/social.php',0,NULL,0,1,0,2,65,0,0,0,-1,'0',0,1),(69,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/basics/icons.php',0,NULL,0,1,0,3,65,0,0,0,-1,'0',0,1),(70,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/basics/editor.php',0,NULL,0,1,0,4,65,0,0,0,-1,'0',0,1),(71,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/basics/multilingual/view.php',0,NULL,0,1,1,5,65,0,0,0,-1,'0',0,1),(72,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/basics/multilingual/update.php',0,NULL,0,1,0,0,71,0,0,0,-1,'0',0,1),(73,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/basics/timezone.php',0,NULL,0,1,0,6,65,0,0,0,-1,'0',0,1),(74,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/basics/attributes.php',0,NULL,0,1,0,7,65,0,0,0,-1,'0',0,1),(75,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/basics/reset_edit_mode.php',0,NULL,0,1,0,8,65,0,0,0,-1,'0',0,1),(76,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/express/view.php',0,NULL,0,1,2,1,64,0,0,0,-1,'0',0,1),(77,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/express/entities.php',0,NULL,0,1,5,0,76,0,0,0,-1,'0',0,1),(78,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/express/entities/attributes.php',0,NULL,0,1,0,0,77,0,0,0,-1,'0',0,1),(79,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/express/entities/associations.php',0,NULL,0,1,0,1,77,0,0,0,-1,'0',0,1),(80,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/express/entities/forms.php',0,NULL,0,1,0,2,77,0,0,0,-1,'0',0,1),(81,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/express/entities/customize_search.php',0,NULL,0,1,0,3,77,0,0,0,-1,'0',0,1),(82,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/express/entities/order_entries.php',0,NULL,0,1,0,4,77,0,0,0,-1,'0',0,1),(83,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/express/entries.php',0,NULL,0,1,0,1,76,0,0,0,-1,'0',0,1),(84,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/multilingual/view.php',0,NULL,0,1,4,2,64,0,0,0,-1,'0',0,1),(85,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/multilingual/setup.php',0,NULL,0,1,0,0,84,0,0,0,-1,'0',0,1),(86,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/multilingual/copy.php',0,NULL,0,1,0,1,84,0,0,0,-1,'0',0,1),(87,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/multilingual/page_report.php',0,NULL,0,1,0,2,84,0,0,0,-1,'0',0,1),(88,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/multilingual/translate_interface.php',0,NULL,0,1,0,3,84,0,0,0,-1,'0',0,1),(89,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/seo/view.php',0,NULL,0,1,5,3,64,0,0,0,-1,'0',0,1),(90,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/seo/urls.php',0,NULL,0,1,0,0,89,0,0,0,-1,'0',0,1),(91,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/seo/bulk.php',0,NULL,0,1,0,1,89,0,0,0,-1,'0',0,1),(92,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/seo/codes.php',0,NULL,0,1,0,2,89,0,0,0,-1,'0',0,1),(93,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/seo/excluded.php',0,NULL,0,1,0,3,89,0,0,0,-1,'0',0,1),(94,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/seo/searchindex.php',0,NULL,0,1,0,4,89,0,0,0,-1,'0',0,1),(95,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/files/view.php',0,NULL,0,1,5,4,64,0,0,0,-1,'0',0,1),(96,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/files/filetypes.php',0,NULL,0,1,0,0,95,0,0,0,-1,'0',0,1),(97,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/files/permissions.php',0,NULL,0,1,0,1,95,0,0,0,-1,'0',0,1),(98,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/files/thumbnails.php',0,NULL,0,1,1,2,95,0,0,0,-1,'0',0,1),(99,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/files/thumbnails/options.php',0,NULL,0,1,0,0,98,0,0,0,-1,'0',0,1),(100,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/files/image_uploading.php',0,NULL,0,1,0,3,95,0,0,0,-1,'0',0,1),(101,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/files/storage.php',0,NULL,0,1,0,4,95,0,0,0,-1,'0',0,1),(102,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/optimization/view.php',0,NULL,0,1,4,5,64,0,0,0,-1,'0',0,1),(103,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/optimization/cache.php',0,NULL,0,1,0,0,102,0,0,0,-1,'0',0,1),(104,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/optimization/clearcache.php',0,NULL,0,1,0,1,102,0,0,0,-1,'0',0,1),(105,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/optimization/jobs.php',0,NULL,0,1,0,2,102,0,0,0,-1,'0',0,1),(106,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/optimization/query_log.php',0,NULL,0,1,0,3,102,0,0,0,-1,'0',0,1),(107,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/permissions/view.php',0,NULL,0,1,9,6,64,0,0,0,-1,'0',0,1),(108,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/permissions/site.php',0,NULL,0,1,0,0,107,0,0,0,-1,'0',0,1),(109,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/permissions/tasks.php',0,NULL,0,1,0,1,107,0,0,0,-1,'0',0,1),(110,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/permissions/users.php',0,NULL,0,1,0,2,107,0,0,0,-1,'0',0,1),(111,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/permissions/advanced.php',0,NULL,0,1,0,3,107,0,0,0,-1,'0',0,1),(112,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/permissions/workflows.php',0,NULL,0,1,0,4,107,0,0,0,-1,'0',0,1),(113,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/permissions/blacklist.php',0,NULL,0,1,1,5,107,0,0,0,-1,'0',0,1),(114,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/permissions/blacklist/range.php',0,NULL,0,1,0,0,113,0,0,0,-1,'0',0,1),(115,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/permissions/captcha.php',0,NULL,0,1,0,6,107,0,0,0,-1,'0',0,1),(116,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/permissions/antispam.php',0,NULL,0,1,0,7,107,0,0,0,-1,'0',0,1),(117,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/permissions/maintenance.php',0,NULL,0,1,0,8,107,0,0,0,-1,'0',0,1),(118,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/registration/view.php',0,NULL,0,1,6,7,64,0,0,0,-1,'0',0,1),(119,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/registration/open.php',0,NULL,0,1,0,0,118,0,0,0,-1,'0',0,1),(120,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/registration/postlogin.php',0,NULL,0,1,0,1,118,0,0,0,-1,'0',0,1),(121,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/registration/profiles.php',0,NULL,0,1,0,2,118,0,0,0,-1,'0',0,1),(122,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/registration/authentication.php',0,NULL,0,1,0,3,118,0,0,0,-1,'0',0,1),(123,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/registration/global_password_reset.php',0,NULL,0,1,0,4,118,0,0,0,-1,'0',0,1),(124,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/registration/notification.php',0,NULL,0,1,0,5,118,0,0,0,-1,'0',0,1),(125,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/mail/view.php',0,NULL,0,1,3,8,64,0,0,0,-1,'0',0,1),(126,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/mail/method.php',0,NULL,0,1,1,0,125,0,0,0,-1,'0',0,1),(127,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/mail/method/test.php',0,NULL,0,1,0,0,126,0,0,0,-1,'0',0,1),(128,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/mail/importers.php',0,NULL,0,1,0,1,125,0,0,0,-1,'0',0,1),(129,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/mail/addresses.php',0,NULL,0,1,0,2,125,0,0,0,-1,'0',0,1),(130,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/calendar/view.php',0,NULL,0,1,4,9,64,0,0,0,-1,'0',0,1),(131,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/calendar/settings.php',0,NULL,0,1,0,0,130,0,0,0,-1,'0',0,1),(132,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/calendar/colors.php',0,NULL,0,1,0,1,130,0,0,0,-1,'0',0,1),(133,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/calendar/permissions.php',0,NULL,0,1,0,2,130,0,0,0,-1,'0',0,1),(134,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/calendar/import.php',0,NULL,0,1,0,3,130,0,0,0,-1,'0',0,1),(135,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/conversations/view.php',0,NULL,0,1,4,10,64,0,0,0,-1,'0',0,1),(136,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/conversations/settings.php',0,NULL,0,1,0,0,135,0,0,0,-1,'0',0,1),(137,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/conversations/points.php',0,NULL,0,1,0,1,135,0,0,0,-1,'0',0,1),(138,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/conversations/bannedwords.php',0,NULL,0,1,0,2,135,0,0,0,-1,'0',0,1),(139,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/conversations/permissions.php',0,NULL,0,1,0,3,135,0,0,0,-1,'0',0,1),(140,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/attributes/view.php',0,NULL,0,1,3,11,64,0,0,0,-1,'0',0,1),(141,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/attributes/types.php',0,NULL,0,1,0,0,140,0,0,0,-1,'0',0,1),(142,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/attributes/sets.php',0,NULL,0,1,0,1,140,0,0,0,-1,'0',0,1),(143,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/attributes/topics/view.php',0,NULL,0,1,1,2,140,0,0,0,-1,'0',0,1),(144,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/attributes/topics/add.php',0,NULL,0,1,0,0,143,0,0,0,-1,'0',0,1),(145,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/environment/view.php',0,NULL,0,1,6,12,64,0,0,0,-1,'0',0,1),(146,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/environment/info.php',0,NULL,0,1,0,0,145,0,0,0,-1,'0',0,1),(147,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/environment/debug.php',0,NULL,0,1,0,1,145,0,0,0,-1,'0',0,1),(148,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/environment/logging.php',0,NULL,0,1,0,2,145,0,0,0,-1,'0',0,1),(149,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/environment/proxy.php',0,NULL,0,1,0,3,145,0,0,0,-1,'0',0,1),(150,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/environment/entities.php',0,NULL,0,1,0,4,145,0,0,0,-1,'0',0,1),(151,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/environment/geolocation.php',0,NULL,0,1,0,5,145,0,0,0,-1,'0',0,1),(152,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/update/view.php',0,NULL,0,1,1,13,64,0,0,0,-1,'0',0,1),(153,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/update/update.php',0,NULL,0,1,0,0,152,0,0,0,-1,'0',0,1),(154,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/welcome.php',0,NULL,0,1,1,0,2,0,0,0,-1,'0',0,1),(155,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT',NULL,0,NULL,0,1,0,0,154,0,0,0,-1,'0',0,1),(156,0,0,0,1,0,NULL,NULL,NULL,1,1,'PARENT','/!stacks/view.php',0,NULL,0,1,8,0,0,0,0,0,-1,'0',0,1),(157,0,0,0,1,0,NULL,NULL,NULL,1,157,'OVERRIDE','/page_not_found.php',0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,1),(158,0,0,0,1,0,NULL,NULL,NULL,1,1,'PARENT','/!trash/view.php',0,NULL,0,1,1,0,0,0,0,0,-1,'0',0,1),(159,0,0,0,1,0,NULL,NULL,NULL,1,159,'OVERRIDE','/login.php',0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,1),(160,0,0,0,1,0,NULL,NULL,NULL,1,160,'OVERRIDE','/register.php',0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,1),(161,0,0,0,1,0,NULL,NULL,NULL,1,1,'PARENT','/account/view.php',0,NULL,0,1,3,0,0,0,0,0,-1,'0',0,1),(162,0,0,0,1,0,NULL,NULL,NULL,1,1,'PARENT','/account/edit_profile.php',0,NULL,0,1,0,0,161,0,0,0,-1,'0',0,1),(163,0,0,0,1,0,NULL,NULL,NULL,1,1,'PARENT','/account/avatar.php',0,NULL,0,1,0,1,161,0,0,0,-1,'0',0,1),(164,0,0,0,1,0,NULL,NULL,NULL,1,1,'PARENT','/account/messages.php',0,NULL,0,1,0,2,161,0,0,0,-1,'0',0,1),(165,0,0,0,1,0,NULL,NULL,NULL,1,165,'OVERRIDE','/page_forbidden.php',0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,1),(166,0,0,0,1,0,NULL,NULL,NULL,1,1,'PARENT','/download_file.php',0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,1),(167,1,0,0,1,0,NULL,NULL,NULL,1,167,'OVERRIDE','/!drafts/view.php',0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,1),(168,1,0,0,1,0,NULL,NULL,NULL,1,1,'PARENT','/desktop.php',0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,1),(169,0,1,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,0,156,0,0,0,-1,'0',0,1),(170,0,1,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,1,156,0,0,0,-1,'0',0,1),(171,0,1,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,2,156,0,0,0,-1,'0',0,1),(172,0,1,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,3,156,0,0,0,-1,'0',0,1),(173,0,1,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,4,156,0,0,0,-1,'0',0,1),(174,0,1,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,5,156,0,0,0,-1,'0',0,1),(175,0,1,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,6,156,0,0,0,-1,'0',0,1),(176,0,1,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,7,156,0,0,0,-1,'0',0,1),(177,1,5,1,NULL,0,NULL,NULL,NULL,1,177,'OVERRIDE',NULL,0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,0),(178,1,5,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,0,1,0,0,0,-1,'0',0,0),(179,1,10,1,NULL,0,NULL,NULL,NULL,1,179,'OVERRIDE',NULL,0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,0),(180,0,10,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,0,6,2,158,0,0,0,-1,'0',0,1),(181,1,5,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,3,2,1,0,0,0,-1,'0',0,0),(182,1,9,1,NULL,0,NULL,NULL,NULL,1,182,'OVERRIDE',NULL,0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,0),(183,1,9,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,3,3,1,0,0,0,-1,'0',0,0),(184,1,5,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,4,1,0,0,0,-1,'0',0,0),(185,1,5,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,5,1,0,0,0,-1,'0',0,0),(186,1,5,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,6,1,0,0,0,-1,'0',0,0),(187,1,8,1,NULL,0,NULL,NULL,NULL,1,187,'OVERRIDE',NULL,0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,0),(188,0,8,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,0,0,0,180,0,0,0,-1,'0',0,1),(189,0,8,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,0,0,1,180,0,0,0,-1,'0',0,1),(190,0,8,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,0,0,2,180,0,0,0,-1,'0',0,1),(191,0,8,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,0,0,3,180,0,0,0,-1,'0',0,1),(192,0,8,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,0,0,4,180,0,0,0,-1,'0',0,1),(193,0,8,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,0,0,5,180,0,0,0,-1,'0',0,1),(194,1,6,1,NULL,0,NULL,NULL,NULL,1,194,'OVERRIDE',NULL,0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,0),(195,1,6,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,0,183,0,0,0,-1,'0',0,0),(196,1,6,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,1,183,0,0,0,-1,'0',0,0),(197,1,6,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,2,183,0,0,0,-1,'0',0,0),(198,1,5,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,0,181,0,0,0,-1,'0',0,0),(199,1,5,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,2,1,181,0,0,0,-1,'0',0,0),(200,1,5,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,2,181,0,0,0,-1,'0',0,0),(201,1,7,1,NULL,0,NULL,NULL,NULL,1,201,'OVERRIDE',NULL,0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,0),(202,1,7,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,0,199,0,0,0,-1,'0',0,0),(203,1,7,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,1,199,0,0,0,-1,'0',0,0),(204,1,5,1,NULL,0,NULL,NULL,NULL,1,204,'OVERRIDE',NULL,0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,0),(205,1,5,1,NULL,0,NULL,NULL,NULL,1,205,'OVERRIDE',NULL,0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,0),(206,1,5,1,NULL,0,NULL,NULL,NULL,1,206,'OVERRIDE',NULL,0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,0),(207,1,5,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,1,1,1,0,1,0,-1,'0',0,0),(208,1,5,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,1,207,0,207,0,-1,'0',0,0);
+INSERT INTO `Pages` VALUES (1,1,0,0,1,0,NULL,NULL,NULL,1,1,'OVERRIDE',NULL,0,NULL,0,1,18,0,0,0,0,0,-1,'0',0,0),(2,0,0,0,1,0,NULL,NULL,NULL,1,2,'OVERRIDE','/dashboard/view.php',0,NULL,0,1,12,0,0,0,0,0,-1,'0',0,1),(3,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/sitemap/view.php',0,NULL,0,1,3,1,2,0,0,0,-1,'0',0,1),(4,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/sitemap/full.php',0,NULL,0,1,0,0,3,0,0,0,-1,'0',0,1),(5,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/sitemap/explore.php',0,NULL,0,1,0,1,3,0,0,0,-1,'0',0,1),(6,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/sitemap/search.php',0,NULL,0,1,0,2,3,0,0,0,-1,'0',0,1),(7,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/files/view.php',0,NULL,0,1,4,2,2,0,0,0,-1,'0',0,1),(8,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/files/search.php',0,NULL,0,1,0,0,7,0,0,0,-1,'0',0,1),(9,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/files/attributes.php',0,NULL,0,1,0,1,7,0,0,0,-1,'0',0,1),(10,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/files/sets.php',0,NULL,0,1,0,2,7,0,0,0,-1,'0',0,1),(11,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/files/add_set.php',0,NULL,0,1,0,3,7,0,0,0,-1,'0',0,1),(12,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/users/view.php',0,NULL,0,1,7,3,2,0,0,0,-1,'0',0,1),(13,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/users/search.php',0,NULL,0,1,0,0,12,0,0,0,-1,'0',0,1),(14,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/users/groups.php',0,NULL,0,1,1,1,12,0,0,0,-1,'0',0,1),(15,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/users/attributes.php',0,NULL,0,1,0,2,12,0,0,0,-1,'0',0,1),(16,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/users/add.php',0,NULL,0,1,0,3,12,0,0,0,-1,'0',0,1),(17,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/users/add_group.php',0,NULL,0,1,0,4,12,0,0,0,-1,'0',0,1),(18,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/users/groups/bulkupdate.php',0,NULL,0,1,0,0,14,0,0,0,-1,'0',0,1),(19,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/users/group_sets.php',0,NULL,0,1,0,5,12,0,0,0,-1,'0',0,1),(20,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/users/points/view.php',0,NULL,0,1,2,6,12,0,0,0,-1,'0',0,1),(21,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/users/points/assign.php',0,NULL,0,1,0,0,20,0,0,0,-1,'0',0,1),(22,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/users/points/actions.php',0,NULL,0,1,0,1,20,0,0,0,-1,'0',0,1),(23,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/express/view.php',0,NULL,0,1,1,4,2,0,0,0,-1,'0',0,1),(24,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/express/entries.php',0,NULL,0,1,0,0,23,0,0,0,-1,'0',0,1),(25,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/reports.php',0,NULL,0,1,4,5,2,0,0,0,-1,'0',0,1),(26,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/reports/forms.php',0,NULL,0,1,1,0,25,0,0,0,-1,'0',0,1),(27,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/reports/forms/legacy.php',0,NULL,0,1,0,0,26,0,0,0,-1,'0',0,1),(28,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/reports/surveys.php',0,NULL,0,1,0,1,25,0,0,0,-1,'0',0,1),(29,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/reports/logs.php',0,NULL,0,1,0,2,25,0,0,0,-1,'0',0,1),(30,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/view.php',0,NULL,0,1,6,6,2,0,0,0,-1,'0',0,1),(31,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/themes/view.php',0,NULL,0,1,1,0,30,0,0,0,-1,'0',0,1),(32,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/themes/inspect.php',0,NULL,0,1,0,0,31,0,0,0,-1,'0',0,1),(33,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/types/view.php',0,NULL,0,1,6,1,30,0,0,0,-1,'0',0,1),(34,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/types/organize.php',0,NULL,0,1,0,0,33,0,0,0,-1,'0',0,1),(35,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/types/add.php',0,NULL,0,1,0,1,33,0,0,0,-1,'0',0,1),(36,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/types/form.php',0,NULL,0,1,0,2,33,0,0,0,-1,'0',0,1),(37,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/types/output.php',0,NULL,0,1,0,3,33,0,0,0,-1,'0',0,1),(38,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/types/attributes.php',0,NULL,0,1,0,4,33,0,0,0,-1,'0',0,1),(39,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/types/permissions.php',0,NULL,0,1,0,5,33,0,0,0,-1,'0',0,1),(40,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/templates/view.php',0,NULL,0,1,1,2,30,0,0,0,-1,'0',0,1),(41,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/templates/add.php',0,NULL,0,1,0,0,40,0,0,0,-1,'0',0,1),(42,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/attributes.php',0,NULL,0,1,0,3,30,0,0,0,-1,'0',0,1),(43,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/single.php',0,NULL,0,1,0,4,30,0,0,0,-1,'0',0,1),(44,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/pages/feeds.php',0,NULL,0,1,0,5,30,0,0,0,-1,'0',0,1),(45,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/calendar/view.php',0,NULL,0,1,5,7,2,0,0,0,-1,'0',0,1),(46,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/calendar/events.php',0,NULL,0,1,0,0,45,0,0,0,-1,'0',0,1),(47,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/calendar/event_list.php',0,NULL,0,1,0,1,45,0,0,0,-1,'0',0,1),(48,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/calendar/add.php',0,NULL,0,1,0,2,45,0,0,0,-1,'0',0,1),(49,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/calendar/permissions.php',0,NULL,0,1,0,3,45,0,0,0,-1,'0',0,1),(50,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/calendar/attributes.php',0,NULL,0,1,0,4,45,0,0,0,-1,'0',0,1),(51,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/conversations/view.php',0,NULL,0,1,1,8,2,0,0,0,-1,'0',0,1),(52,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/conversations/messages.php',0,NULL,0,1,0,0,51,0,0,0,-1,'0',0,1),(53,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/blocks/view.php',0,NULL,0,1,3,9,2,0,0,0,-1,'0',0,1),(54,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/blocks/stacks/view.php',0,NULL,0,1,1,0,53,0,0,0,-1,'0',0,1),(55,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/blocks/permissions.php',0,NULL,0,1,0,1,53,0,0,0,-1,'0',0,1),(56,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/blocks/stacks/list/view.php',0,NULL,0,1,0,0,54,0,0,0,-1,'0',0,1),(57,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/blocks/types/view.php',0,NULL,0,1,0,2,53,0,0,0,-1,'0',0,1),(58,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/extend/view.php',0,NULL,0,1,5,10,2,0,0,0,-1,'0',0,1),(59,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/extend/install.php',0,NULL,0,1,0,0,58,0,0,0,-1,'0',0,1),(60,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/extend/update.php',0,NULL,0,1,0,1,58,0,0,0,-1,'0',0,1),(61,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/extend/connect.php',0,NULL,0,1,0,2,58,0,0,0,-1,'0',0,1),(62,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/extend/themes.php',0,NULL,0,1,0,3,58,0,0,0,-1,'0',0,1),(63,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/extend/addons.php',0,NULL,0,1,0,4,58,0,0,0,-1,'0',0,1),(64,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/view.php',0,NULL,0,1,15,11,2,0,0,0,-1,'0',0,1),(65,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/basics/view.php',0,NULL,0,1,9,0,64,0,0,0,-1,'0',0,1),(66,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/basics/name.php',0,NULL,0,1,0,0,65,0,0,0,-1,'0',0,1),(67,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/basics/accessibility.php',0,NULL,0,1,0,1,65,0,0,0,-1,'0',0,1),(68,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/basics/social.php',0,NULL,0,1,0,2,65,0,0,0,-1,'0',0,1),(69,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/basics/icons.php',0,NULL,0,1,0,3,65,0,0,0,-1,'0',0,1),(70,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/basics/editor.php',0,NULL,0,1,0,4,65,0,0,0,-1,'0',0,1),(71,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/basics/multilingual/view.php',0,NULL,0,1,1,5,65,0,0,0,-1,'0',0,1),(72,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/basics/multilingual/update.php',0,NULL,0,1,0,0,71,0,0,0,-1,'0',0,1),(73,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/basics/timezone.php',0,NULL,0,1,0,6,65,0,0,0,-1,'0',0,1),(74,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/basics/attributes.php',0,NULL,0,1,0,7,65,0,0,0,-1,'0',0,1),(75,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/basics/reset_edit_mode.php',0,NULL,0,1,0,8,65,0,0,0,-1,'0',0,1),(76,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/express/view.php',0,NULL,0,1,2,1,64,0,0,0,-1,'0',0,1),(77,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/express/entities.php',0,NULL,0,1,5,0,76,0,0,0,-1,'0',0,1),(78,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/express/entities/attributes.php',0,NULL,0,1,0,0,77,0,0,0,-1,'0',0,1),(79,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/express/entities/associations.php',0,NULL,0,1,0,1,77,0,0,0,-1,'0',0,1),(80,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/express/entities/forms.php',0,NULL,0,1,0,2,77,0,0,0,-1,'0',0,1),(81,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/express/entities/customize_search.php',0,NULL,0,1,0,3,77,0,0,0,-1,'0',0,1),(82,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/express/entities/order_entries.php',0,NULL,0,1,0,4,77,0,0,0,-1,'0',0,1),(83,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/express/entries.php',0,NULL,0,1,0,1,76,0,0,0,-1,'0',0,1),(84,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/multilingual/view.php',0,NULL,0,1,4,2,64,0,0,0,-1,'0',0,1),(85,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/multilingual/setup.php',0,NULL,0,1,0,0,84,0,0,0,-1,'0',0,1),(86,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/multilingual/copy.php',0,NULL,0,1,0,1,84,0,0,0,-1,'0',0,1),(87,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/multilingual/page_report.php',0,NULL,0,1,0,2,84,0,0,0,-1,'0',0,1),(88,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/multilingual/translate_interface.php',0,NULL,0,1,0,3,84,0,0,0,-1,'0',0,1),(89,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/seo/view.php',0,NULL,0,1,5,3,64,0,0,0,-1,'0',0,1),(90,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/seo/urls.php',0,NULL,0,1,0,0,89,0,0,0,-1,'0',0,1),(91,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/seo/bulk.php',0,NULL,0,1,0,1,89,0,0,0,-1,'0',0,1),(92,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/seo/codes.php',0,NULL,0,1,0,2,89,0,0,0,-1,'0',0,1),(93,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/seo/excluded.php',0,NULL,0,1,0,3,89,0,0,0,-1,'0',0,1),(94,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/seo/searchindex.php',0,NULL,0,1,0,4,89,0,0,0,-1,'0',0,1),(95,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/files/view.php',0,NULL,0,1,6,4,64,0,0,0,-1,'0',0,1),(96,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/files/filetypes.php',0,NULL,0,1,0,0,95,0,0,0,-1,'0',0,1),(97,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/files/permissions.php',0,NULL,0,1,0,1,95,0,0,0,-1,'0',0,1),(98,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/files/thumbnails.php',0,NULL,0,1,1,2,95,0,0,0,-1,'0',0,1),(99,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/files/thumbnails/options.php',0,NULL,0,1,0,0,98,0,0,0,-1,'0',0,1),(100,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/files/image_uploading.php',0,NULL,0,1,0,3,95,0,0,0,-1,'0',0,1),(101,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/files/storage.php',0,NULL,0,1,0,4,95,0,0,0,-1,'0',0,1),(102,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/optimization/view.php',0,NULL,0,1,3,5,64,0,0,0,-1,'0',0,1),(103,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/optimization/cache.php',0,NULL,0,1,0,0,102,0,0,0,-1,'0',0,1),(104,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/optimization/clearcache.php',0,NULL,0,1,0,1,102,0,0,0,-1,'0',0,1),(105,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/optimization/jobs.php',0,NULL,0,1,0,2,102,0,0,0,-1,'0',0,1),(107,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/permissions/view.php',0,NULL,0,1,10,6,64,0,0,0,-1,'0',0,1),(108,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/permissions/site.php',0,NULL,0,1,0,0,107,0,0,0,-1,'0',0,1),(109,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/permissions/tasks.php',0,NULL,0,1,0,1,107,0,0,0,-1,'0',0,1),(110,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/permissions/users.php',0,NULL,0,1,0,2,107,0,0,0,-1,'0',0,1),(111,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/permissions/advanced.php',0,NULL,0,1,0,3,107,0,0,0,-1,'0',0,1),(112,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/permissions/workflows.php',0,NULL,0,1,0,4,107,0,0,0,-1,'0',0,1),(113,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/permissions/blacklist.php',0,NULL,0,1,1,5,107,0,0,0,-1,'0',0,1),(114,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/permissions/blacklist/range.php',0,NULL,0,1,0,0,113,0,0,0,-1,'0',0,1),(115,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/permissions/captcha.php',0,NULL,0,1,0,6,107,0,0,0,-1,'0',0,1),(116,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/permissions/antispam.php',0,NULL,0,1,0,7,107,0,0,0,-1,'0',0,1),(117,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/permissions/maintenance.php',0,NULL,0,1,0,8,107,0,0,0,-1,'0',0,1),(118,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/registration/view.php',0,NULL,0,1,9,7,64,0,0,0,-1,'0',0,1),(119,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/registration/open.php',0,NULL,0,1,0,0,118,0,0,0,-1,'0',0,1),(120,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/registration/postlogin.php',0,NULL,0,1,0,1,118,0,0,0,-1,'0',0,1),(121,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/registration/profiles.php',0,NULL,0,1,0,2,118,0,0,0,-1,'0',0,1),(122,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/registration/authentication.php',0,NULL,0,1,0,3,118,0,0,0,-1,'0',0,1),(123,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/registration/global_password_reset.php',0,NULL,0,1,0,4,118,0,0,0,-1,'0',0,1),(124,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/registration/notification.php',0,NULL,0,1,0,5,118,0,0,0,-1,'0',0,1),(125,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/mail/view.php',0,NULL,0,1,3,8,64,0,0,0,-1,'0',0,1),(126,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/mail/method.php',0,NULL,0,1,1,0,125,0,0,0,-1,'0',0,1),(127,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/mail/method/test.php',0,NULL,0,1,0,0,126,0,0,0,-1,'0',0,1),(128,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/mail/importers.php',0,NULL,0,1,0,1,125,0,0,0,-1,'0',0,1),(129,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/mail/addresses.php',0,NULL,0,1,0,2,125,0,0,0,-1,'0',0,1),(130,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/calendar/view.php',0,NULL,0,1,4,9,64,0,0,0,-1,'0',0,1),(131,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/calendar/settings.php',0,NULL,0,1,0,0,130,0,0,0,-1,'0',0,1),(132,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/calendar/colors.php',0,NULL,0,1,0,1,130,0,0,0,-1,'0',0,1),(133,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/calendar/permissions.php',0,NULL,0,1,0,2,130,0,0,0,-1,'0',0,1),(134,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/calendar/import.php',0,NULL,0,1,0,3,130,0,0,0,-1,'0',0,1),(135,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/conversations/view.php',0,NULL,0,1,4,10,64,0,0,0,-1,'0',0,1),(136,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/conversations/settings.php',0,NULL,0,1,0,0,135,0,0,0,-1,'0',0,1),(137,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/conversations/points.php',0,NULL,0,1,0,1,135,0,0,0,-1,'0',0,1),(138,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/conversations/bannedwords.php',0,NULL,0,1,0,2,135,0,0,0,-1,'0',0,1),(139,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/conversations/permissions.php',0,NULL,0,1,0,3,135,0,0,0,-1,'0',0,1),(140,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/attributes/view.php',0,NULL,0,1,3,11,64,0,0,0,-1,'0',0,1),(141,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/attributes/types.php',0,NULL,0,1,0,0,140,0,0,0,-1,'0',0,1),(142,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/attributes/sets.php',0,NULL,0,1,0,1,140,0,0,0,-1,'0',0,1),(143,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/attributes/topics/view.php',0,NULL,0,1,1,2,140,0,0,0,-1,'0',0,1),(144,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/attributes/topics/add.php',0,NULL,0,1,0,0,143,0,0,0,-1,'0',0,1),(145,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/environment/view.php',0,NULL,0,1,6,12,64,0,0,0,-1,'0',0,1),(146,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/environment/info.php',0,NULL,0,1,0,0,145,0,0,0,-1,'0',0,1),(147,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/environment/debug.php',0,NULL,0,1,0,1,145,0,0,0,-1,'0',0,1),(148,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/environment/logging.php',0,NULL,0,1,0,2,145,0,0,0,-1,'0',0,1),(149,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/environment/proxy.php',0,NULL,0,1,0,3,145,0,0,0,-1,'0',0,1),(150,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/environment/entities.php',0,NULL,0,1,0,4,145,0,0,0,-1,'0',0,1),(151,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/environment/geolocation.php',0,NULL,0,1,0,5,145,0,0,0,-1,'0',0,1),(152,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/update/view.php',0,NULL,0,1,1,13,64,0,0,0,-1,'0',0,1),(153,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/update/update.php',0,NULL,0,1,0,0,152,0,0,0,-1,'0',0,1),(154,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/welcome.php',0,NULL,0,1,1,0,2,0,0,0,-1,'0',0,1),(155,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT',NULL,0,NULL,0,1,0,0,154,0,0,0,-1,'0',0,1),(156,0,0,0,1,0,NULL,NULL,NULL,1,1,'PARENT','/!stacks/view.php',0,NULL,0,1,8,0,0,0,0,0,-1,'0',0,1),(157,0,0,0,1,0,NULL,NULL,NULL,1,157,'OVERRIDE','/page_not_found.php',0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,1),(158,0,0,0,1,0,NULL,NULL,NULL,1,1,'PARENT','/!trash/view.php',0,NULL,0,1,1,0,0,0,0,0,-1,'0',0,1),(159,0,0,0,1,0,NULL,NULL,NULL,1,159,'OVERRIDE','/login.php',0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,1),(160,0,0,0,1,0,NULL,NULL,NULL,1,160,'OVERRIDE','/register.php',0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,1),(161,0,0,0,1,0,NULL,NULL,NULL,1,1,'PARENT','/account/view.php',0,NULL,0,1,3,0,0,0,0,0,-1,'0',0,1),(162,0,0,0,1,0,NULL,NULL,NULL,1,1,'PARENT','/account/edit_profile.php',0,NULL,0,1,0,0,161,0,0,0,-1,'0',0,1),(163,0,0,0,1,0,NULL,NULL,NULL,1,1,'PARENT','/account/avatar.php',0,NULL,0,1,0,1,161,0,0,0,-1,'0',0,1),(164,0,0,0,1,0,NULL,NULL,NULL,1,1,'PARENT','/account/messages.php',0,NULL,0,1,0,2,161,0,0,0,-1,'0',0,1),(165,0,0,0,1,0,NULL,NULL,NULL,1,165,'OVERRIDE','/page_forbidden.php',0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,1),(166,0,0,0,1,0,NULL,NULL,NULL,1,1,'PARENT','/download_file.php',0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,1),(167,1,0,0,1,0,NULL,NULL,NULL,1,167,'OVERRIDE','/!drafts/view.php',0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,1),(168,1,0,0,1,0,NULL,NULL,NULL,1,1,'PARENT','/desktop.php',0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,1),(169,0,1,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,0,156,0,0,0,-1,'0',0,1),(170,0,1,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,1,156,0,0,0,-1,'0',0,1),(171,0,1,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,2,156,0,0,0,-1,'0',0,1),(172,0,1,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,3,156,0,0,0,-1,'0',0,1),(173,0,1,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,4,156,0,0,0,-1,'0',0,1),(174,0,1,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,5,156,0,0,0,-1,'0',0,1),(175,0,1,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,6,156,0,0,0,-1,'0',0,1),(176,0,1,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,7,156,0,0,0,-1,'0',0,1),(177,1,5,1,NULL,0,NULL,NULL,NULL,1,177,'OVERRIDE',NULL,0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,0),(178,1,5,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,0,1,0,0,0,-1,'0',0,0),(179,1,10,1,NULL,0,NULL,NULL,NULL,1,179,'OVERRIDE',NULL,0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,0),(180,0,10,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,0,6,2,158,0,0,0,-1,'0',0,1),(181,1,5,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,3,2,1,0,0,0,-1,'0',0,0),(182,1,9,1,NULL,0,NULL,NULL,NULL,1,182,'OVERRIDE',NULL,0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,0),(183,1,9,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,3,3,1,0,0,0,-1,'0',0,0),(184,1,5,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,4,1,0,0,0,-1,'0',0,0),(185,1,5,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,5,1,0,0,0,-1,'0',0,0),(186,1,5,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,6,1,0,0,0,-1,'0',0,0),(187,1,8,1,NULL,0,NULL,NULL,NULL,1,187,'OVERRIDE',NULL,0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,0),(188,0,8,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,0,0,0,180,0,0,0,-1,'0',0,1),(189,0,8,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,0,0,1,180,0,0,0,-1,'0',0,1),(190,0,8,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,0,0,2,180,0,0,0,-1,'0',0,1),(191,0,8,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,0,0,3,180,0,0,0,-1,'0',0,1),(192,0,8,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,0,0,4,180,0,0,0,-1,'0',0,1),(193,0,8,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,0,0,5,180,0,0,0,-1,'0',0,1),(194,1,6,1,NULL,0,NULL,NULL,NULL,1,194,'OVERRIDE',NULL,0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,0),(195,1,6,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,0,183,0,0,0,-1,'0',0,0),(196,1,6,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,1,183,0,0,0,-1,'0',0,0),(197,1,6,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,2,183,0,0,0,-1,'0',0,0),(198,1,5,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,0,181,0,0,0,-1,'0',0,0),(199,1,5,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,2,1,181,0,0,0,-1,'0',0,0),(200,1,5,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,2,181,0,0,0,-1,'0',0,0),(201,1,7,1,NULL,0,NULL,NULL,NULL,1,201,'OVERRIDE',NULL,0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,0),(202,1,7,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,0,199,0,0,0,-1,'0',0,0),(203,1,7,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,1,199,0,0,0,-1,'0',0,0),(204,1,5,1,NULL,0,NULL,NULL,NULL,1,204,'OVERRIDE',NULL,0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,0),(205,1,5,1,NULL,0,NULL,NULL,NULL,1,205,'OVERRIDE',NULL,0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,0),(206,1,5,1,NULL,0,NULL,NULL,NULL,1,206,'OVERRIDE',NULL,0,NULL,0,1,0,0,0,0,0,0,-1,'0',0,0),(207,1,5,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,1,1,1,0,1,0,-1,'0',0,0),(208,1,5,0,1,0,NULL,NULL,NULL,1,1,'PARENT',NULL,0,NULL,0,1,0,1,207,0,207,0,-1,'0',0,0),(209,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/registration/deactivation.php',0,NULL,0,1,0,6,118,0,0,0,-1,'0',0,1),(210,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/api/view.php',0,NULL,0,1,2,14,64,0,0,0,-1,'0',0,1),(211,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/api/settings.php',0,NULL,0,1,0,0,210,0,0,0,-1,'0',0,1),(212,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/api/integrations.php',0,NULL,0,1,0,1,210,0,0,0,-1,'0',0,1),(213,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/permissions/trusted_proxies.php',0,NULL,0,1,0,9,107,0,0,0,-1,'0',0,1),(214,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/registration/automated_logout.php',0,NULL,0,1,0,7,118,0,0,0,-1,'0',0,1),(215,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/reports/page_changes.php',0,NULL,0,1,0,3,25,0,0,0,-1,'0',0,1),(216,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/files/export_options.php',0,NULL,0,1,0,5,95,0,0,0,-1,'0',0,1),(217,0,0,0,1,0,NULL,NULL,NULL,1,2,'PARENT','/dashboard/system/registration/password_requirements.php',0,NULL,0,1,0,8,118,0,0,0,-1,'0',0,1);
 /*!40000 ALTER TABLE `Pages` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -4893,7 +5069,7 @@ CREATE TABLE `PermissionAccess` (
   `paID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `paIsInUse` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`paID`)
-) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4918,7 +5094,7 @@ CREATE TABLE `PermissionAccessEntities` (
   `petID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`peID`),
   KEY `petID` (`petID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4943,7 +5119,7 @@ CREATE TABLE `PermissionAccessEntityGroupSets` (
   `gsID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`peID`,`gsID`),
   KEY `gsID` (`gsID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4969,7 +5145,7 @@ CREATE TABLE `PermissionAccessEntityGroups` (
   PRIMARY KEY (`pegID`),
   KEY `peID` (`peID`),
   KEY `gID` (`gID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4994,7 +5170,7 @@ CREATE TABLE `PermissionAccessEntityTypeCategories` (
   `pkCategoryID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`petID`,`pkCategoryID`),
   KEY `pkCategoryID` (`pkCategoryID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5016,13 +5192,13 @@ DROP TABLE IF EXISTS `PermissionAccessEntityTypes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `PermissionAccessEntityTypes` (
   `petID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `petHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `petName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `petHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `petName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pkgID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`petID`),
   UNIQUE KEY `petHandle` (`petHandle`),
   KEY `pkgID` (`pkgID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5047,7 +5223,7 @@ CREATE TABLE `PermissionAccessEntityUsers` (
   `uID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`peID`,`uID`),
   KEY `uID` (`uID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5078,7 +5254,7 @@ CREATE TABLE `PermissionAccessList` (
   KEY `peID_accessType` (`peID`,`accessType`),
   KEY `pdID` (`pdID`),
   KEY `permissionAccessDuration` (`paID`,`pdID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5103,7 +5279,7 @@ CREATE TABLE `PermissionAccessWorkflows` (
   `wfID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`paID`,`wfID`),
   KEY `wfID` (`wfID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5127,7 +5303,7 @@ CREATE TABLE `PermissionAssignments` (
   `pkID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`paID`,`pkID`),
   KEY `pkID` (`pkID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5149,9 +5325,9 @@ DROP TABLE IF EXISTS `PermissionDurationObjects`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `PermissionDurationObjects` (
   `pdID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `pdObject` text COLLATE utf8_unicode_ci NOT NULL,
+  `pdObject` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`pdID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5172,12 +5348,12 @@ DROP TABLE IF EXISTS `PermissionKeyCategories`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `PermissionKeyCategories` (
   `pkCategoryID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `pkCategoryHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `pkCategoryHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pkgID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`pkCategoryID`),
   UNIQUE KEY `pkCategoryHandle` (`pkCategoryHandle`),
   KEY `pkgID` (`pkgID`)
-) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5199,18 +5375,18 @@ DROP TABLE IF EXISTS `PermissionKeys`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `PermissionKeys` (
   `pkID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `pkHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `pkName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `pkHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `pkName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pkCanTriggerWorkflow` tinyint(1) NOT NULL DEFAULT 0,
   `pkHasCustomClass` tinyint(1) NOT NULL DEFAULT 0,
-  `pkDescription` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `pkDescription` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `pkCategoryID` int(10) unsigned DEFAULT NULL,
   `pkgID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`pkID`),
   UNIQUE KEY `akHandle` (`pkHandle`),
   KEY `pkCategoryID` (`pkCategoryID`),
   KEY `pkgID` (`pkgID`)
-) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=128 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5234,7 +5410,7 @@ CREATE TABLE `PileContents` (
   `pcID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `pID` int(10) unsigned NOT NULL DEFAULT 0,
   `itemID` int(10) unsigned NOT NULL DEFAULT 0,
-  `itemType` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `itemType` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `quantity` int(10) unsigned NOT NULL DEFAULT 1,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
   `displayOrder` int(10) unsigned NOT NULL DEFAULT 0,
@@ -5242,7 +5418,7 @@ CREATE TABLE `PileContents` (
   KEY `pID` (`pID`,`displayOrder`),
   KEY `itemID` (`itemID`),
   KEY `itemType` (`itemType`,`itemID`,`pID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5266,11 +5442,11 @@ CREATE TABLE `Piles` (
   `uID` int(10) unsigned DEFAULT NULL,
   `isDefault` tinyint(1) NOT NULL DEFAULT 0,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
-  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `state` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `state` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`pID`),
   KEY `uID` (`uID`,`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5295,7 +5471,7 @@ CREATE TABLE `PrivateMessageNotifications` (
   `nID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`nID`),
   CONSTRAINT `FK_1AB97592ED024EFD` FOREIGN KEY (`nID`) REFERENCES `Notifications` (`nID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5317,16 +5493,16 @@ DROP TABLE IF EXISTS `QueueMessages`;
 CREATE TABLE `QueueMessages` (
   `message_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `queue_id` int(10) unsigned NOT NULL,
-  `handle` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `body` longtext COLLATE utf8_unicode_ci NOT NULL,
-  `md5` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `handle` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `body` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `md5` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
   `timeout` decimal(14,0) DEFAULT NULL,
   `created` int(10) unsigned NOT NULL,
   PRIMARY KEY (`message_id`),
   UNIQUE KEY `message_handle` (`handle`),
   KEY `message_queueid` (`queue_id`),
   CONSTRAINT `FK_7C04D76477B5BAE` FOREIGN KEY (`queue_id`) REFERENCES `Queues` (`queue_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=213 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=213 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5346,12 +5522,12 @@ DROP TABLE IF EXISTS `QueuePageDuplicationRelations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `QueuePageDuplicationRelations` (
-  `queue_name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `queue_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `cID` int(10) unsigned NOT NULL DEFAULT 0,
   `originalCID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`cID`,`originalCID`),
   KEY `originalCID` (`originalCID`,`queue_name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5372,11 +5548,11 @@ DROP TABLE IF EXISTS `Queues`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Queues` (
   `queue_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `queue_name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `queue_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `timeout` int(10) unsigned NOT NULL DEFAULT 30,
   PRIMARY KEY (`queue_id`),
   KEY `queue_name` (`queue_name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5389,6 +5565,32 @@ LOCK TABLES `Queues` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `SavedExpressSearchQueries`
+--
+
+DROP TABLE IF EXISTS `SavedExpressSearchQueries`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `SavedExpressSearchQueries` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `presetName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `query_fields` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:object)',
+  `query_columns` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:object)',
+  `query_itemsPerPage` smallint(6) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `SavedExpressSearchQueries`
+--
+
+LOCK TABLES `SavedExpressSearchQueries` WRITE;
+/*!40000 ALTER TABLE `SavedExpressSearchQueries` DISABLE KEYS */;
+/*!40000 ALTER TABLE `SavedExpressSearchQueries` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `SavedFileSearchQueries`
 --
 
@@ -5397,12 +5599,12 @@ DROP TABLE IF EXISTS `SavedFileSearchQueries`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `SavedFileSearchQueries` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `presetName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `query_fields` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:object)',
-  `query_columns` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:object)',
+  `presetName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `query_fields` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:object)',
+  `query_columns` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:object)',
   `query_itemsPerPage` smallint(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5423,12 +5625,12 @@ DROP TABLE IF EXISTS `SavedPageSearchQueries`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `SavedPageSearchQueries` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `presetName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `query_fields` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:object)',
-  `query_columns` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:object)',
+  `presetName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `query_fields` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:object)',
+  `query_columns` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:object)',
   `query_itemsPerPage` smallint(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5449,12 +5651,12 @@ DROP TABLE IF EXISTS `SavedUserSearchQueries`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `SavedUserSearchQueries` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `presetName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `query_fields` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:object)',
-  `query_columns` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:object)',
+  `presetName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `query_fields` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:object)',
+  `query_columns` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:object)',
   `query_itemsPerPage` smallint(6) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5474,12 +5676,12 @@ DROP TABLE IF EXISTS `Sessions`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Sessions` (
-  `sessionID` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `sessionValue` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sessionID` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sessionValue` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `sessionTime` int(10) unsigned NOT NULL,
   `sessionLifeTime` int(10) unsigned NOT NULL,
   PRIMARY KEY (`sessionID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5502,7 +5704,7 @@ CREATE TABLE `SiblingPageRelations` (
   `mpRelationID` int(10) unsigned NOT NULL,
   `cID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`mpRelationID`,`cID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5525,7 +5727,7 @@ CREATE TABLE `SiteAttributeKeys` (
   `akID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`akID`),
   CONSTRAINT `FK_63D1E182B6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5555,7 +5757,7 @@ CREATE TABLE `SiteAttributeValues` (
   CONSTRAINT `FK_67658AF7521D8435` FOREIGN KEY (`siteID`) REFERENCES `Sites` (`siteID`),
   CONSTRAINT `FK_67658AF7A2A82A5D` FOREIGN KEY (`avID`) REFERENCES `AttributeValues` (`avID`),
   CONSTRAINT `FK_67658AF7B6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5577,11 +5779,11 @@ DROP TABLE IF EXISTS `SiteLocales`;
 CREATE TABLE `SiteLocales` (
   `siteLocaleID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `msIsDefault` tinyint(1) NOT NULL,
-  `msLanguage` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
-  `msCountry` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `msLanguage` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `msCountry` varchar(32) COLLATE utf8mb4_unicode_ci NOT NULL,
   `msNumPlurals` int(11) NOT NULL,
-  `msPluralRule` varchar(400) COLLATE utf8_unicode_ci NOT NULL,
-  `msPluralCases` varchar(1000) COLLATE utf8_unicode_ci NOT NULL,
+  `msPluralRule` varchar(400) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `msPluralCases` varchar(1000) COLLATE utf8mb4_unicode_ci NOT NULL,
   `siteID` int(10) unsigned DEFAULT NULL,
   `siteTreeID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`siteLocaleID`),
@@ -5589,7 +5791,7 @@ CREATE TABLE `SiteLocales` (
   KEY `IDX_2527AB2C521D8435` (`siteID`),
   CONSTRAINT `FK_2527AB2C521D8435` FOREIGN KEY (`siteID`) REFERENCES `Sites` (`siteID`),
   CONSTRAINT `FK_2527AB2CF9431B4B` FOREIGN KEY (`siteTreeID`) REFERENCES `SiteTreeTrees` (`siteTreeID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5610,9 +5812,10 @@ DROP TABLE IF EXISTS `SiteSearchIndexAttributes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `SiteSearchIndexAttributes` (
-  `siteID` int(10) unsigned NOT NULL DEFAULT 0,
-  PRIMARY KEY (`siteID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `siteID` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`siteID`),
+  CONSTRAINT `FK_3DD070B4521D8435` FOREIGN KEY (`siteID`) REFERENCES `Sites` (`siteID`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5638,7 +5841,7 @@ CREATE TABLE `SiteTreeTrees` (
   UNIQUE KEY `UNIQ_A4B9696EACD624CD` (`siteLocaleID`),
   CONSTRAINT `FK_A4B9696EACD624CD` FOREIGN KEY (`siteLocaleID`) REFERENCES `SiteLocales` (`siteLocaleID`),
   CONSTRAINT `FK_A4B9696EF9431B4B` FOREIGN KEY (`siteTreeID`) REFERENCES `SiteTrees` (`siteTreeID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5661,9 +5864,9 @@ DROP TABLE IF EXISTS `SiteTrees`;
 CREATE TABLE `SiteTrees` (
   `siteTreeID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `siteHomePageID` int(10) unsigned NOT NULL,
-  `treeType` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `treeType` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`siteTreeID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5685,8 +5888,8 @@ DROP TABLE IF EXISTS `SiteTypes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `SiteTypes` (
   `siteTypeID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `siteTypeHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `siteTypeName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `siteTypeHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `siteTypeName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `siteTypeThemeID` int(11) NOT NULL,
   `siteTypeHomePageTemplateID` int(11) NOT NULL,
   `pkgID` int(10) unsigned DEFAULT NULL,
@@ -5695,7 +5898,7 @@ CREATE TABLE `SiteTypes` (
   UNIQUE KEY `UNIQ_7CBFE975C7F74FC3` (`siteTypeName`),
   KEY `IDX_7CBFE975CE45CBB0` (`pkgID`),
   CONSTRAINT `FK_7CBFE975CE45CBB0` FOREIGN KEY (`pkgID`) REFERENCES `Packages` (`pkgID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5719,13 +5922,13 @@ CREATE TABLE `Sites` (
   `siteID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `pThemeID` int(10) unsigned NOT NULL,
   `siteIsDefault` tinyint(1) NOT NULL,
-  `siteHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `siteHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `siteTypeID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`siteID`),
   UNIQUE KEY `UNIQ_7DC18567D84E1976` (`siteHandle`),
   KEY `IDX_7DC18567E9548DF7` (`siteTypeID`),
   CONSTRAINT `FK_7DC18567E9548DF7` FOREIGN KEY (`siteTypeID`) REFERENCES `SiteTypes` (`siteTypeID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5746,14 +5949,14 @@ DROP TABLE IF EXISTS `SocialLinks`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `SocialLinks` (
-  `ssHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `url` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `ssHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `slID` int(11) NOT NULL AUTO_INCREMENT,
   `siteID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`slID`),
   KEY `IDX_84EBA2B4521D8435` (`siteID`),
   CONSTRAINT `FK_84EBA2B4521D8435` FOREIGN KEY (`siteID`) REFERENCES `Sites` (`siteID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5781,7 +5984,7 @@ CREATE TABLE `StackUsageRecord` (
   PRIMARY KEY (`stack_id`,`block_id`,`collection_id`,`collection_version_id`),
   KEY `block` (`block_id`),
   KEY `collection_version` (`collection_id`,`collection_version_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5802,7 +6005,7 @@ DROP TABLE IF EXISTS `Stacks`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Stacks` (
   `stID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `stName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `stName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `stType` int(10) unsigned NOT NULL DEFAULT 0,
   `cID` int(10) unsigned NOT NULL DEFAULT 0,
   `stMultilingualSection` int(10) unsigned NOT NULL DEFAULT 0,
@@ -5810,7 +6013,7 @@ CREATE TABLE `Stacks` (
   KEY `stType` (`stType`),
   KEY `stName` (`stName`),
   KEY `cID` (`cID`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5831,10 +6034,10 @@ DROP TABLE IF EXISTS `StyleCustomizerCustomCssRecords`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `StyleCustomizerCustomCssRecords` (
-  `value` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `value` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `sccRecordID` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`sccRecordID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5855,11 +6058,11 @@ DROP TABLE IF EXISTS `StyleCustomizerInlineStylePresets`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `StyleCustomizerInlineStylePresets` (
   `pssPresetID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `pssPresetName` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `pssPresetName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `issID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`pssPresetID`),
   KEY `issID` (`issID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5880,42 +6083,42 @@ DROP TABLE IF EXISTS `StyleCustomizerInlineStyleSets`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `StyleCustomizerInlineStyleSets` (
   `issID` int(11) NOT NULL AUTO_INCREMENT,
-  `customClass` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `customID` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `customElementAttribute` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `backgroundColor` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `customClass` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `customID` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `customElementAttribute` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `backgroundColor` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `backgroundImageFileID` int(11) NOT NULL,
-  `backgroundRepeat` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `backgroundSize` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `backgroundPosition` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `borderColor` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `borderStyle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `borderWidth` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `borderRadius` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `baseFontSize` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `alignment` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `textColor` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `linkColor` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `marginTop` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `marginBottom` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `marginLeft` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `marginRight` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `paddingTop` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `paddingBottom` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `paddingLeft` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `paddingRight` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `rotate` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `boxShadowHorizontal` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `boxShadowVertical` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `boxShadowBlur` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `boxShadowSpread` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `boxShadowColor` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `backgroundRepeat` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `backgroundSize` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `backgroundPosition` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `borderColor` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `borderStyle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `borderWidth` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `borderRadius` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `baseFontSize` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `alignment` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `textColor` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `linkColor` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `marginTop` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `marginBottom` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `marginLeft` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `marginRight` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `paddingTop` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `paddingBottom` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `paddingLeft` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `paddingRight` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `rotate` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `boxShadowHorizontal` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `boxShadowVertical` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `boxShadowBlur` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `boxShadowSpread` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `boxShadowColor` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `hideOnExtraSmallDevice` tinyint(1) DEFAULT NULL,
   `hideOnSmallDevice` tinyint(1) DEFAULT NULL,
   `hideOnMediumDevice` tinyint(1) DEFAULT NULL,
   `hideOnLargeDevice` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`issID`)
-) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5938,7 +6141,7 @@ DROP TABLE IF EXISTS `StyleCustomizerValueLists`;
 CREATE TABLE `StyleCustomizerValueLists` (
   `scvlID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`scvlID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5960,10 +6163,10 @@ DROP TABLE IF EXISTS `StyleCustomizerValues`;
 CREATE TABLE `StyleCustomizerValues` (
   `scvID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `scvlID` int(10) unsigned DEFAULT NULL,
-  `value` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `value` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`scvID`),
   KEY `scvlID` (`scvlID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5983,13 +6186,13 @@ DROP TABLE IF EXISTS `SystemAntispamLibraries`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `SystemAntispamLibraries` (
-  `saslHandle` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `saslName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `saslHandle` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `saslName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `saslIsActive` tinyint(1) NOT NULL DEFAULT 0,
   `pkgID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`saslHandle`),
   KEY `pkgID` (`pkgID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6009,13 +6212,13 @@ DROP TABLE IF EXISTS `SystemCaptchaLibraries`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `SystemCaptchaLibraries` (
-  `sclHandle` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `sclName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `sclHandle` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `sclName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `sclIsActive` tinyint(1) NOT NULL DEFAULT 0,
   `pkgID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`sclHandle`),
   KEY `pkgID` (`pkgID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6036,13 +6239,13 @@ DROP TABLE IF EXISTS `SystemContentEditorSnippets`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `SystemContentEditorSnippets` (
-  `scsHandle` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `scsName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `scsHandle` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `scsName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `scsIsActive` tinyint(1) NOT NULL DEFAULT 0,
   `pkgID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`scsHandle`),
   KEY `pkgID` (`pkgID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6063,9 +6266,9 @@ DROP TABLE IF EXISTS `SystemDatabaseMigrations`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `SystemDatabaseMigrations` (
-  `version` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `version` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`version`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6074,7 +6277,7 @@ CREATE TABLE `SystemDatabaseMigrations` (
 
 LOCK TABLES `SystemDatabaseMigrations` WRITE;
 /*!40000 ALTER TABLE `SystemDatabaseMigrations` DISABLE KEYS */;
-INSERT INTO `SystemDatabaseMigrations` VALUES ('20140919000000'),('20140930000000'),('20141017000000'),('20141024000000'),('20141113000000'),('20141219000000'),('20150109000000'),('20150504000000'),('20150515000000'),('20150610000000'),('20150612000000'),('20150615000000'),('20150616000000'),('20150619000000'),('20150622000000'),('20150623000000'),('20150713000000'),('20150731000000'),('20151221000000'),('20160107000000'),('20160213000000'),('20160314000000'),('20160412000000'),('20160615000000'),('20160725000000'),('20161109000000'),('20161203000000'),('20161208000000'),('20161216000000'),('20161216100000'),('20170118000000'),('20170123000000'),('20170201000000'),('20170202000000'),('20170227063249'),('20170313000000'),('20170316000000'),('20170404000000'),('20170406000000'),('20170407000001'),('20170412000000'),('20170418000000'),('20170420000000'),('20170421000000'),('20170424000000'),('20170505000000'),('20170512000000'),('20170519000000'),('20170608000000'),('20170608100000'),('20170609000000'),('20170609100000'),('20170610000000'),('20170611000000'),('20170613000000'),('20170614000000'),('20170626000000'),('20170711151953'),('20170731021618'),('20170802000000'),('20170804000000'),('20170810000000'),('20170818000000'),('20170824000000'),('20170905000000'),('20170915000000'),('20170926000000'),('20171012000000'),('20171025000000'),('20171109000000'),('20171109065758'),('20171110032423'),('20171121000000'),('20171129190607'),('20171218000000'),('20171221194440'),('20180119000000'),('20180122213656'),('20180122220813'),('20180123000000'),('20180126000000'),('20180130000000'),('20180212000000'),('20180213000000'),('20180227035239'),('20180308043255'),('20180328215345'),('20180329183749'),('20180330080830'),('20180403143200'),('20180518153531'),('20180524000000');
+INSERT INTO `SystemDatabaseMigrations` VALUES ('20140919000000'),('20140930000000'),('20141017000000'),('20141024000000'),('20141113000000'),('20141219000000'),('20150109000000'),('20150504000000'),('20150515000000'),('20150610000000'),('20150612000000'),('20150615000000'),('20150616000000'),('20150619000000'),('20150622000000'),('20150623000000'),('20150713000000'),('20150731000000'),('20151221000000'),('20160107000000'),('20160213000000'),('20160314000000'),('20160412000000'),('20160615000000'),('20160725000000'),('20161109000000'),('20161203000000'),('20161208000000'),('20161216000000'),('20161216100000'),('20170118000000'),('20170123000000'),('20170201000000'),('20170202000000'),('20170227063249'),('20170313000000'),('20170316000000'),('20170404000000'),('20170406000000'),('20170407000001'),('20170412000000'),('20170418000000'),('20170420000000'),('20170421000000'),('20170424000000'),('20170505000000'),('20170512000000'),('20170519000000'),('20170608000000'),('20170608100000'),('20170609000000'),('20170609100000'),('20170610000000'),('20170611000000'),('20170613000000'),('20170614000000'),('20170626000000'),('20170711151953'),('20170731021618'),('20170802000000'),('20170804000000'),('20170810000000'),('20170818000000'),('20170824000000'),('20170905000000'),('20170915000000'),('20170926000000'),('20171012000000'),('20171025000000'),('20171109000000'),('20171109065758'),('20171110032423'),('20171121000000'),('20171129190607'),('20171218000000'),('20171221194440'),('20180119000000'),('20180122213656'),('20180122220813'),('20180123000000'),('20180126000000'),('20180130000000'),('20180212000000'),('20180213000000'),('20180227035239'),('20180308043255'),('20180328215345'),('20180329183749'),('20180330080830'),('20180403143200'),('20180518153531'),('20180524000000'),('20180531000000'),('20180604000000'),('20180609000000'),('20180615000000'),('20180617000000'),('20180621222449'),('20180622192332'),('20180627000000'),('20180709175202'),('20180710203437'),('20180716000000'),('20180717000000'),('20180813220933'),('20180816210727'),('20180820205800'),('20180831213421'),('20180904165911'),('20180907091500'),('20180910000000'),('20180912113737'),('20180920000000'),('20180926000000'),('20180926070200'),('20180926070300'),('20181006212400'),('20181019010145'),('20181029223809'),('20181105102800'),('20181112211702'),('20181116072400'),('20181211000000'),('20181211100000'),('20181212000000'),('20181212221911'),('20181222183445'),('20190106000000'),('20190110194848'),('20190110231015'),('20190111181236'),('20190112000000'),('20190129000000'),('20190225184524'),('20190301133300');
 /*!40000 ALTER TABLE `SystemDatabaseMigrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -6087,11 +6290,11 @@ DROP TABLE IF EXISTS `SystemDatabaseQueryLog`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `SystemDatabaseQueryLog` (
   `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `query` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `params` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `executionMS` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `query` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `params` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `executionMS` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6112,9 +6315,9 @@ DROP TABLE IF EXISTS `TopicTrees`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `TopicTrees` (
   `treeID` int(10) unsigned NOT NULL DEFAULT 0,
-  `topicTreeName` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
+  `topicTreeName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '',
   PRIMARY KEY (`treeID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6139,7 +6342,7 @@ CREATE TABLE `TreeFileNodes` (
   `fID` int(10) unsigned DEFAULT 0,
   PRIMARY KEY (`treeNodeID`),
   KEY `fID` (`fID`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6164,7 +6367,7 @@ CREATE TABLE `TreeGroupNodes` (
   `gID` int(10) unsigned DEFAULT 0,
   PRIMARY KEY (`treeNodeID`),
   KEY `gID` (`gID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6191,7 +6394,7 @@ CREATE TABLE `TreeNodePermissionAssignments` (
   PRIMARY KEY (`treeNodeID`,`pkID`,`paID`),
   KEY `pkID` (`pkID`),
   KEY `paID` (`paID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6213,12 +6416,12 @@ DROP TABLE IF EXISTS `TreeNodeTypes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `TreeNodeTypes` (
   `treeNodeTypeID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `treeNodeTypeHandle` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
+  `treeNodeTypeHandle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '',
   `pkgID` int(10) unsigned DEFAULT 0,
   PRIMARY KEY (`treeNodeTypeID`),
   UNIQUE KEY `treeNodeTypeHandle` (`treeNodeTypeHandle`),
   KEY `pkgID` (`pkgID`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6244,7 +6447,7 @@ CREATE TABLE `TreeNodes` (
   `treeID` int(10) unsigned DEFAULT 0,
   `treeNodeParentID` int(10) unsigned DEFAULT 0,
   `treeNodeDisplayOrder` int(10) unsigned DEFAULT 0,
-  `treeNodeName` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
+  `treeNodeName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '',
   `dateModified` datetime DEFAULT NULL,
   `dateCreated` datetime DEFAULT NULL,
   `treeNodeOverridePermissions` tinyint(1) DEFAULT 0,
@@ -6254,7 +6457,7 @@ CREATE TABLE `TreeNodes` (
   KEY `treeNodeTypeID` (`treeNodeTypeID`),
   KEY `treeID` (`treeID`),
   KEY `inheritPermissionsFromTreeNodeID` (`inheritPermissionsFromTreeNodeID`,`treeNodeID`)
-) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6276,10 +6479,10 @@ DROP TABLE IF EXISTS `TreeSearchQueryNodes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `TreeSearchQueryNodes` (
   `treeNodeID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `savedSearchID` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `savedSearchID` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`treeNodeID`),
   KEY `savedSearchID` (`savedSearchID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6300,12 +6503,12 @@ DROP TABLE IF EXISTS `TreeTypes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `TreeTypes` (
   `treeTypeID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `treeTypeHandle` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
+  `treeTypeHandle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '',
   `pkgID` int(10) unsigned DEFAULT 0,
   PRIMARY KEY (`treeTypeID`),
   UNIQUE KEY `treeTypeHandle` (`treeTypeHandle`),
   KEY `pkgID` (`pkgID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6332,7 +6535,7 @@ CREATE TABLE `Trees` (
   `rootTreeNodeID` int(10) unsigned DEFAULT 0,
   PRIMARY KEY (`treeID`),
   KEY `treeTypeID` (`treeTypeID`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6343,6 +6546,32 @@ LOCK TABLES `Trees` WRITE;
 /*!40000 ALTER TABLE `Trees` DISABLE KEYS */;
 INSERT INTO `Trees` VALUES (1,1,'2018-04-21 09:48:45',1),(2,2,'2018-04-21 09:48:46',5),(3,4,'2018-04-21 09:49:40',7),(4,3,'2018-04-21 09:49:43',24),(5,3,'2018-04-21 09:49:43',33),(6,3,'2018-04-21 09:49:43',38),(7,3,'2018-04-21 10:43:24',46);
 /*!40000 ALTER TABLE `Trees` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `UsedStringLog`
+--
+
+DROP TABLE IF EXISTS `UsedStringLog`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `UsedStringLog` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `usedString` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `subject` int(11) NOT NULL,
+  `date` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_4E83837CF5E609AF` (`usedString`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `UsedStringLog`
+--
+
+LOCK TABLES `UsedStringLog` WRITE;
+/*!40000 ALTER TABLE `UsedStringLog` DISABLE KEYS */;
+/*!40000 ALTER TABLE `UsedStringLog` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -6362,7 +6591,7 @@ CREATE TABLE `UserAttributeKeys` (
   `akID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`akID`),
   CONSTRAINT `FK_28970033B6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6393,7 +6622,7 @@ CREATE TABLE `UserAttributeValues` (
   CONSTRAINT `FK_4DB68CA6A2A82A5D` FOREIGN KEY (`avID`) REFERENCES `AttributeValues` (`avID`),
   CONSTRAINT `FK_4DB68CA6B6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`),
   CONSTRAINT `FK_4DB68CA6FD71026C` FOREIGN KEY (`uID`) REFERENCES `Users` (`uID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6403,6 +6632,30 @@ CREATE TABLE `UserAttributeValues` (
 LOCK TABLES `UserAttributeValues` WRITE;
 /*!40000 ALTER TABLE `UserAttributeValues` DISABLE KEYS */;
 /*!40000 ALTER TABLE `UserAttributeValues` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `UserDeactivatedNotifications`
+--
+
+DROP TABLE IF EXISTS `UserDeactivatedNotifications`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `UserDeactivatedNotifications` (
+  `userID` int(10) unsigned NOT NULL,
+  `actorID` int(10) unsigned DEFAULT NULL,
+  `nID` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`nID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `UserDeactivatedNotifications`
+--
+
+LOCK TABLES `UserDeactivatedNotifications` WRITE;
+/*!40000 ALTER TABLE `UserDeactivatedNotifications` DISABLE KEYS */;
+/*!40000 ALTER TABLE `UserDeactivatedNotifications` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -6419,7 +6672,7 @@ CREATE TABLE `UserGroups` (
   PRIMARY KEY (`uID`,`gID`),
   KEY `uID` (`uID`),
   KEY `gID` (`gID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6429,6 +6682,30 @@ CREATE TABLE `UserGroups` (
 LOCK TABLES `UserGroups` WRITE;
 /*!40000 ALTER TABLE `UserGroups` DISABLE KEYS */;
 /*!40000 ALTER TABLE `UserGroups` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `UserLoginAttempts`
+--
+
+DROP TABLE IF EXISTS `UserLoginAttempts`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `UserLoginAttempts` (
+  `id` char(36) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:guid)',
+  `userId` int(10) unsigned NOT NULL,
+  `utcDate` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `UserLoginAttempts`
+--
+
+LOCK TABLES `UserLoginAttempts` WRITE;
+/*!40000 ALTER TABLE `UserLoginAttempts` DISABLE KEYS */;
+/*!40000 ALTER TABLE `UserLoginAttempts` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -6447,9 +6724,9 @@ CREATE TABLE `UserPermissionEditPropertyAccessList` (
   `uAvatar` tinyint(1) DEFAULT 0,
   `uTimezone` tinyint(1) DEFAULT 0,
   `uDefaultLanguage` tinyint(1) DEFAULT 0,
-  `attributePermission` varchar(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
+  `attributePermission` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
   PRIMARY KEY (`paID`,`peID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6475,7 +6752,7 @@ CREATE TABLE `UserPermissionEditPropertyAttributeAccessListCustom` (
   PRIMARY KEY (`paID`,`peID`,`akID`),
   KEY `peID` (`peID`),
   KEY `akID` (`akID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6497,10 +6774,10 @@ DROP TABLE IF EXISTS `UserPermissionViewAttributeAccessList`;
 CREATE TABLE `UserPermissionViewAttributeAccessList` (
   `paID` int(10) unsigned NOT NULL DEFAULT 0,
   `peID` int(10) unsigned NOT NULL DEFAULT 0,
-  `permission` varchar(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT '1',
+  `permission` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '1',
   PRIMARY KEY (`paID`,`peID`),
   KEY `peID` (`peID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6526,7 +6803,7 @@ CREATE TABLE `UserPermissionViewAttributeAccessListCustom` (
   PRIMARY KEY (`paID`,`peID`,`akID`),
   KEY `peID` (`peID`),
   KEY `akID` (`akID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6547,8 +6824,8 @@ DROP TABLE IF EXISTS `UserPointActions`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `UserPointActions` (
   `upaID` int(11) NOT NULL AUTO_INCREMENT,
-  `upaHandle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `upaName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `upaHandle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `upaName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `upaDefaultPoints` int(11) NOT NULL DEFAULT 0,
   `pkgID` int(10) unsigned NOT NULL DEFAULT 0,
   `upaHasCustomClass` tinyint(1) NOT NULL DEFAULT 0,
@@ -6558,7 +6835,7 @@ CREATE TABLE `UserPointActions` (
   UNIQUE KEY `upaHandle` (`upaHandle`),
   KEY `pkgID` (`pkgID`),
   KEY `gBBadgeID` (`gBadgeID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6583,12 +6860,12 @@ CREATE TABLE `UserPointHistory` (
   `upuID` int(11) NOT NULL DEFAULT 0,
   `upaID` int(11) DEFAULT 0,
   `upPoints` int(11) DEFAULT 0,
-  `object` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `object` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`upID`),
   KEY `upuID` (`upuID`),
   KEY `upaID` (`upaID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6611,12 +6888,12 @@ CREATE TABLE `UserPrivateMessages` (
   `msgID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `uAuthorID` int(10) unsigned NOT NULL DEFAULT 0,
   `msgDateCreated` datetime NOT NULL,
-  `msgSubject` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `msgBody` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `msgSubject` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `msgBody` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `uToID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`msgID`),
   KEY `uAuthorID` (`uAuthorID`,`msgDateCreated`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6648,7 +6925,7 @@ CREATE TABLE `UserPrivateMessagesTo` (
   KEY `uAuthorID` (`uAuthorID`),
   KEY `msgFolderID` (`msgMailboxID`),
   KEY `msgIsNew` (`msgIsNew`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6668,11 +6945,12 @@ DROP TABLE IF EXISTS `UserSearchIndexAttributes`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `UserSearchIndexAttributes` (
-  `uID` int(10) unsigned NOT NULL DEFAULT 0,
+  `uID` int(10) unsigned NOT NULL,
   `ak_profile_private_messages_enabled` tinyint(1) DEFAULT 0,
   `ak_profile_private_messages_notification_enabled` tinyint(1) DEFAULT 0,
-  PRIMARY KEY (`uID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  PRIMARY KEY (`uID`),
+  CONSTRAINT `FK_74798B07FD71026C` FOREIGN KEY (`uID`) REFERENCES `Users` (`uID`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6698,7 +6976,7 @@ CREATE TABLE `UserSignupNotifications` (
   KEY `IDX_7FB1DF5B7B18287E` (`usID`),
   CONSTRAINT `FK_7FB1DF5B7B18287E` FOREIGN KEY (`usID`) REFERENCES `UserSignups` (`usID`),
   CONSTRAINT `FK_7FB1DF5BED024EFD` FOREIGN KEY (`nID`) REFERENCES `Notifications` (`nID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6726,7 +7004,7 @@ CREATE TABLE `UserSignups` (
   KEY `IDX_FEB5D909D3564642` (`createdBy`),
   CONSTRAINT `FK_FEB5D909D3564642` FOREIGN KEY (`createdBy`) REFERENCES `Users` (`uID`),
   CONSTRAINT `FK_FEB5D909FD71026C` FOREIGN KEY (`uID`) REFERENCES `Users` (`uID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6748,7 +7026,7 @@ DROP TABLE IF EXISTS `UserValidationHashes`;
 CREATE TABLE `UserValidationHashes` (
   `uvhID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `uID` int(10) unsigned DEFAULT NULL,
-  `uHash` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `uHash` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
   `type` smallint(5) unsigned NOT NULL DEFAULT 0,
   `uDateGenerated` int(10) unsigned NOT NULL DEFAULT 0,
   `uDateRedeemed` int(10) unsigned NOT NULL DEFAULT 0,
@@ -6756,7 +7034,7 @@ CREATE TABLE `UserValidationHashes` (
   KEY `uID` (`uID`,`type`),
   KEY `uHash` (`uHash`,`type`),
   KEY `uDateGenerated` (`uDateGenerated`,`type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6779,7 +7057,7 @@ CREATE TABLE `UserWorkflowProgress` (
   `uID` int(10) unsigned NOT NULL DEFAULT 0,
   `wpID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`uID`,`wpID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6800,9 +7078,9 @@ DROP TABLE IF EXISTS `Users`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Users` (
   `uID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `uName` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `uEmail` varchar(254) COLLATE utf8_unicode_ci NOT NULL,
-  `uPassword` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `uName` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uEmail` varchar(254) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uPassword` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `uIsActive` tinyint(1) NOT NULL,
   `uIsFullRecord` tinyint(1) NOT NULL,
   `uIsValidated` tinyint(1) NOT NULL DEFAULT -1,
@@ -6814,14 +7092,14 @@ CREATE TABLE `Users` (
   `uPreviousLogin` int(10) unsigned DEFAULT 0,
   `uNumLogins` int(10) unsigned NOT NULL DEFAULT 0,
   `uLastAuthTypeID` int(10) unsigned NOT NULL DEFAULT 0,
-  `uLastIP` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `uTimezone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `uDefaultLanguage` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `uLastIP` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `uTimezone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `uDefaultLanguage` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `uIsPasswordReset` tinyint(1) NOT NULL,
   PRIMARY KEY (`uID`),
   UNIQUE KEY `UNIQ_D5428AED28459686` (`uName`),
   KEY `uEmail` (`uEmail`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6830,7 +7108,7 @@ CREATE TABLE `Users` (
 
 LOCK TABLES `Users` WRITE;
 /*!40000 ALTER TABLE `Users` DISABLE KEYS */;
-INSERT INTO `Users` VALUES (1,'admin','katz@example.com','$2a$12$GjQuIAAYdx6JObpq6mV8b.E0NEdlDhMP9ZylmNOaVt14pMTLKnIkS',1,1,1,'2018-04-21 09:48:45','2018-04-21 09:48:45',0,1528851352,1528851200,1527511140,6,1,'7f000001',NULL,NULL,0);
+INSERT INTO `Users` VALUES (1,'admin','katz@example.com','$2a$12$GjQuIAAYdx6JObpq6mV8b.E0NEdlDhMP9ZylmNOaVt14pMTLKnIkS',1,1,1,'2018-04-21 09:48:45','2018-04-21 09:48:45',0,1560768584,1560757392,1540383128,9,1,'7f000001',NULL,NULL,0);
 /*!40000 ALTER TABLE `Users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -6855,7 +7133,7 @@ CREATE TABLE `WorkflowProgress` (
   KEY `wpCategoryID` (`wpCategoryID`),
   KEY `wfID` (`wfID`),
   KEY `wrID` (`wrID`,`wpID`,`wpIsCompleted`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6876,12 +7154,12 @@ DROP TABLE IF EXISTS `WorkflowProgressCategories`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `WorkflowProgressCategories` (
   `wpCategoryID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `wpCategoryHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `wpCategoryHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pkgID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`wpCategoryID`),
   UNIQUE KEY `wpCategoryHandle` (`wpCategoryHandle`),
   KEY `pkgID` (`pkgID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6905,10 +7183,10 @@ CREATE TABLE `WorkflowProgressHistory` (
   `wphID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `wpID` int(10) unsigned NOT NULL DEFAULT 0,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
-  `object` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `object` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`wphID`),
   KEY `wpID` (`wpID`,`timestamp`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6917,7 +7195,7 @@ CREATE TABLE `WorkflowProgressHistory` (
 
 LOCK TABLES `WorkflowProgressHistory` WRITE;
 /*!40000 ALTER TABLE `WorkflowProgressHistory` DISABLE KEYS */;
-INSERT INTO `WorkflowProgressHistory` VALUES (1,1,'2018-04-21 01:29:19','O:48:\"Concrete\\Core\\Workflow\\Request\\DeletePageRequest\":7:{s:14:\"\0*\0wrStatusNum\";i:100;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:1:\"1\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"12\";s:3:\"cID\";s:3:\"180\";}'),(2,2,'2018-04-21 01:29:37','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:1:\"2\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:1:\"1\";s:4:\"cvID\";s:1:\"2\";}'),(3,3,'2018-04-21 01:30:26','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:1:\"3\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"207\";s:4:\"cvID\";s:1:\"1\";}'),(4,4,'2018-04-21 01:30:47','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:1:\"4\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"207\";s:4:\"cvID\";s:1:\"2\";}'),(5,5,'2018-04-21 01:34:40','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:1:\"5\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"208\";s:4:\"cvID\";s:1:\"1\";}'),(6,6,'2018-04-21 01:51:32','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:1:\"6\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"208\";s:4:\"cvID\";s:1:\"2\";}'),(7,7,'2018-04-21 02:22:07','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:1:\"7\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"207\";s:4:\"cvID\";s:1:\"3\";}'),(8,8,'2018-04-21 02:23:03','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:1:\"8\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"208\";s:4:\"cvID\";s:1:\"3\";}'),(9,9,'2018-04-21 03:21:32','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:1:\"9\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"207\";s:4:\"cvID\";s:1:\"4\";}'),(10,10,'2018-04-21 03:24:34','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:2:\"10\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"207\";s:4:\"cvID\";s:1:\"3\";}'),(11,11,'2018-04-21 03:46:00','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:2:\"11\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"208\";s:4:\"cvID\";s:1:\"4\";}'),(12,12,'2018-04-21 03:47:22','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:2:\"12\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"208\";s:4:\"cvID\";s:1:\"5\";}'),(13,13,'2018-04-21 05:57:32','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:2:\"13\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"207\";s:4:\"cvID\";s:1:\"4\";}'),(14,14,'2018-04-21 05:57:52','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:2:\"14\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"208\";s:4:\"cvID\";s:1:\"6\";}'),(15,15,'2018-04-21 05:59:53','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:2:\"15\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"208\";s:4:\"cvID\";s:1:\"5\";}'),(16,16,'2018-04-21 06:00:07','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:2:\"16\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"207\";s:4:\"cvID\";s:1:\"3\";}'),(17,17,'2018-04-21 06:38:21','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:2:\"17\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"207\";s:4:\"cvID\";s:1:\"4\";}'),(18,18,'2018-04-21 06:38:54','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:2:\"18\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"208\";s:4:\"cvID\";s:1:\"6\";}'),(19,19,'2018-05-28 12:40:00','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:2:\"19\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"207\";s:4:\"cvID\";s:1:\"5\";}');
+INSERT INTO `WorkflowProgressHistory` VALUES (1,1,'2018-04-21 01:29:19','O:48:\"Concrete\\Core\\Workflow\\Request\\DeletePageRequest\":7:{s:14:\"\0*\0wrStatusNum\";i:100;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:1:\"1\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"12\";s:3:\"cID\";s:3:\"180\";}'),(2,2,'2018-04-21 01:29:37','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:1:\"2\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:1:\"1\";s:4:\"cvID\";s:1:\"2\";}'),(3,3,'2018-04-21 01:30:26','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:1:\"3\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"207\";s:4:\"cvID\";s:1:\"1\";}'),(4,4,'2018-04-21 01:30:47','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:1:\"4\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"207\";s:4:\"cvID\";s:1:\"2\";}'),(5,5,'2018-04-21 01:34:40','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:1:\"5\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"208\";s:4:\"cvID\";s:1:\"1\";}'),(6,6,'2018-04-21 01:51:32','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:1:\"6\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"208\";s:4:\"cvID\";s:1:\"2\";}'),(7,7,'2018-04-21 02:22:07','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:1:\"7\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"207\";s:4:\"cvID\";s:1:\"3\";}'),(8,8,'2018-04-21 02:23:03','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:1:\"8\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"208\";s:4:\"cvID\";s:1:\"3\";}'),(9,9,'2018-04-21 03:21:32','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:1:\"9\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"207\";s:4:\"cvID\";s:1:\"4\";}'),(10,10,'2018-04-21 03:24:34','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:2:\"10\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"207\";s:4:\"cvID\";s:1:\"3\";}'),(11,11,'2018-04-21 03:46:00','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:2:\"11\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"208\";s:4:\"cvID\";s:1:\"4\";}'),(12,12,'2018-04-21 03:47:22','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:2:\"12\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"208\";s:4:\"cvID\";s:1:\"5\";}'),(13,13,'2018-04-21 05:57:32','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:2:\"13\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"207\";s:4:\"cvID\";s:1:\"4\";}'),(14,14,'2018-04-21 05:57:52','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:2:\"14\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"208\";s:4:\"cvID\";s:1:\"6\";}'),(15,15,'2018-04-21 05:59:53','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:2:\"15\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"208\";s:4:\"cvID\";s:1:\"5\";}'),(16,16,'2018-04-21 06:00:07','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:2:\"16\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"207\";s:4:\"cvID\";s:1:\"3\";}'),(17,17,'2018-04-21 06:38:21','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:2:\"17\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"207\";s:4:\"cvID\";s:1:\"4\";}'),(18,18,'2018-04-21 06:38:54','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:2:\"18\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"208\";s:4:\"cvID\";s:1:\"6\";}'),(19,19,'2018-05-28 12:40:00','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:2:\"19\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"207\";s:4:\"cvID\";s:1:\"5\";}'),(20,20,'2018-07-08 08:09:17','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:2:\"20\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:1:\"1\";s:4:\"cvID\";s:1:\"3\";}'),(21,21,'2018-10-24 12:12:35','O:49:\"Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\":11:{s:14:\"\0*\0wrStatusNum\";i:30;s:62:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0isScheduled\";b:0;s:64:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishDate\";N;s:67:\"\0Concrete\\Core\\Workflow\\Request\\ApprovePageRequest\0cvPublishEndDate\";N;s:12:\"\0*\0currentWP\";N;s:6:\"\0*\0uID\";s:1:\"1\";s:7:\"\0*\0wrID\";s:2:\"21\";s:5:\"error\";s:0:\"\";s:4:\"pkID\";s:2:\"14\";s:3:\"cID\";s:3:\"207\";s:4:\"cvID\";s:1:\"6\";}');
 /*!40000 ALTER TABLE `WorkflowProgressHistory` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -6933,7 +7211,7 @@ CREATE TABLE `WorkflowProgressNotifications` (
   `nID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`nID`),
   CONSTRAINT `FK_EC39CA81ED024EFD` FOREIGN KEY (`nID`) REFERENCES `Notifications` (`nID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6954,9 +7232,9 @@ DROP TABLE IF EXISTS `WorkflowRequestObjects`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `WorkflowRequestObjects` (
   `wrID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `wrObject` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `wrObject` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`wrID`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6977,13 +7255,13 @@ DROP TABLE IF EXISTS `WorkflowTypes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `WorkflowTypes` (
   `wftID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `wftHandle` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `wftName` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `wftHandle` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `wftName` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL,
   `pkgID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`wftID`),
   UNIQUE KEY `wftHandle` (`wftHandle`),
   KEY `pkgID` (`pkgID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7005,14 +7283,14 @@ DROP TABLE IF EXISTS `Workflows`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Workflows` (
   `wfID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `wfName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `wfName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `wftID` int(10) unsigned NOT NULL DEFAULT 0,
   `pkgID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`wfID`),
   UNIQUE KEY `wfName` (`wfName`),
   KEY `wftID` (`wftID`,`wfID`),
   KEY `pkgID` (`pkgID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7025,6 +7303,34 @@ LOCK TABLES `Workflows` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `_ExpressEntityAssociationSelectedEntries`
+--
+
+DROP TABLE IF EXISTS `_ExpressEntityAssociationSelectedEntries`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `_ExpressEntityAssociationSelectedEntries` (
+  `id` int(11) NOT NULL,
+  `exSelectedEntryID` int(11) NOT NULL,
+  PRIMARY KEY (`id`,`exSelectedEntryID`),
+  KEY `IDX_1F9C570CBF396750` (`id`),
+  KEY `IDX_1F9C570CC7B1F65C` (`exSelectedEntryID`),
+  CONSTRAINT `FK_1F9C570CBF396750` FOREIGN KEY (`id`) REFERENCES `ExpressEntityEntryAssociations` (`id`),
+  CONSTRAINT `FK_1F9C570CC7B1F65C` FOREIGN KEY (`exSelectedEntryID`) REFERENCES `ExpressEntityEntries` (`exEntryID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `_ExpressEntityAssociationSelectedEntries`
+--
+
+LOCK TABLES `_ExpressEntityAssociationSelectedEntries` WRITE;
+/*!40000 ALTER TABLE `_ExpressEntityAssociationSelectedEntries` DISABLE KEYS */;
+INSERT INTO `_ExpressEntityAssociationSelectedEntries` VALUES (1,4),(1,5),(1,6),(1,7),(2,1),(3,1),(4,1),(5,1);
+/*!40000 ALTER TABLE `_ExpressEntityAssociationSelectedEntries` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `atAddress`
 --
 
@@ -7032,17 +7338,17 @@ DROP TABLE IF EXISTS `atAddress`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `atAddress` (
-  `address1` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `address2` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `address3` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `city` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `state_province` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `country` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `postal_code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `address1` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address2` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `address3` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `city` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `state_province` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `postal_code` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `avID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`avID`),
   CONSTRAINT `FK_DA949740A2A82A5D` FOREIGN KEY (`avID`) REFERENCES `AttributeValues` (`avID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7063,14 +7369,14 @@ DROP TABLE IF EXISTS `atAddressSettings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `atAddressSettings` (
-  `akDefaultCountry` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `akDefaultCountry` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `akHasCustomCountries` tinyint(1) NOT NULL,
-  `customCountries` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:json_array)',
+  `customCountries` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT '(DC2Type:json_array)',
   `akGeolocateCountry` tinyint(1) NOT NULL,
   `akID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`akID`),
   CONSTRAINT `FK_5A737B61B6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7095,7 +7401,7 @@ CREATE TABLE `atBoolean` (
   `avID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`avID`),
   CONSTRAINT `FK_5D5F70A9A2A82A5D` FOREIGN KEY (`avID`) REFERENCES `AttributeValues` (`avID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7104,7 +7410,7 @@ CREATE TABLE `atBoolean` (
 
 LOCK TABLES `atBoolean` WRITE;
 /*!40000 ALTER TABLE `atBoolean` DISABLE KEYS */;
-INSERT INTO `atBoolean` VALUES (1,9),(1,16),(1,18),(1,24),(1,25),(1,30),(1,31),(1,32),(1,33),(1,34),(1,35),(1,36),(1,37),(1,41),(1,42),(1,43),(1,44),(1,47),(1,48),(1,55),(1,66),(1,69),(1,70),(1,72),(1,73),(1,74),(1,75),(1,76),(1,77),(1,78),(1,79),(1,80),(1,81),(1,82),(1,83),(1,93),(0,104),(1,126),(1,135),(0,136),(1,142),(1,143),(1,176),(1,177),(1,178),(1,189),(1,195),(1,211),(0,216),(1,226),(0,228),(1,229),(0,234),(0,241),(1,244);
+INSERT INTO `atBoolean` VALUES (1,9),(1,16),(1,18),(1,24),(1,25),(1,30),(1,31),(1,32),(1,33),(1,34),(1,35),(1,36),(1,37),(1,41),(1,42),(1,43),(1,44),(1,47),(1,48),(1,55),(1,66),(1,69),(1,70),(1,74),(1,75),(1,76),(1,77),(1,78),(1,79),(1,80),(1,81),(1,82),(1,83),(1,93),(0,104),(1,126),(1,135),(0,136),(1,142),(1,143),(1,176),(1,177),(1,178),(1,189),(1,195),(1,211),(0,216),(1,226),(0,228),(1,229),(0,234),(0,241),(1,244),(1,303),(1,304),(0,305),(0,306);
 /*!40000 ALTER TABLE `atBoolean` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -7117,11 +7423,11 @@ DROP TABLE IF EXISTS `atBooleanSettings`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `atBooleanSettings` (
   `akCheckedByDefault` tinyint(1) NOT NULL,
-  `checkboxLabel` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `checkboxLabel` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `akID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`akID`),
   CONSTRAINT `FK_78025F47B6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7146,7 +7452,7 @@ CREATE TABLE `atDateTime` (
   `avID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`avID`),
   CONSTRAINT `FK_DF75412AA2A82A5D` FOREIGN KEY (`avID`) REFERENCES `AttributeValues` (`avID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7167,13 +7473,13 @@ DROP TABLE IF EXISTS `atDateTimeSettings`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `atDateTimeSettings` (
   `akUseNowIfEmpty` tinyint(1) NOT NULL DEFAULT 0,
-  `akDateDisplayMode` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `akTextCustomFormat` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT 'Custom format for text inputs',
+  `akDateDisplayMode` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `akTextCustomFormat` longtext COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Custom format for text inputs',
   `akTimeResolution` int(10) unsigned NOT NULL DEFAULT 60 COMMENT 'Time resolution (in seconds)',
   `akID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`akID`),
   CONSTRAINT `FK_C6B3B63AB6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7193,11 +7499,11 @@ DROP TABLE IF EXISTS `atDefault`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `atDefault` (
-  `value` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `value` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `avID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`avID`),
   CONSTRAINT `FK_3484F81EA2A82A5D` FOREIGN KEY (`avID`) REFERENCES `AttributeValues` (`avID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7206,7 +7512,7 @@ CREATE TABLE `atDefault` (
 
 LOCK TABLES `atDefault` WRITE;
 /*!40000 ALTER TABLE `atDefault` DISABLE KEYS */;
-INSERT INTO `atDefault` VALUES ('fa fa-th-large',1),('pages, add page, delete page, copy, move, alias',2),('pages, add page, delete page, copy, move, alias',3),('pages, add page, delete page, copy, move, alias, bulk',4),('find page, search page, search, find, pages, sitemap',5),('add file, delete file, copy, move, alias, resize, crop, rename, images, title, attribute',6),('file, file attributes, title, attribute, description, rename',7),('files, category, categories',8),('new file set',10),('users, groups, people, find, delete user, remove user, change password, password',11),('find, search, people, delete user, remove user, change password, password',12),('user, group, people, permissions, expire, badges',13),('user attributes, user data, gather data, registration data',14),('new user, create',15),('new user group, new group, group, create',17),('group set',19),('community, points, karma',20),('action, community actions',21),('forms, log, error, email, mysql, exception, survey',22),('forms, questions, response, data',23),('questions, quiz, response',26),('forms, log, error, email, mysql, exception, survey, history',27),('new theme, theme, active theme, change theme, template, css',28),('page types',29),('page attributes, custom',38),('single, page, custom, application',39),('atom, rss, feed, syndication',40),('icon-bullhorn',45),('stacks, global areas, reusable content, scrapbook, copy, paste, paste block, copy block, site name, logo',46),('edit stacks, view stacks, all stacks',49),('block, refresh, custom',50),('add-on, addon, add on, package, app, ecommerce, discussions, forums, themes, templates, blocks',51),('add-on, addon, ecommerce, install, discussions, forums, themes, templates, blocks',52),('update, upgrade',53),('concrete5.org, my account, marketplace',54),('buy theme, new theme, marketplace, template',56),('buy addon, buy add on, buy add-on, purchase addon, purchase add on, purchase add-on, find addon, new addon, marketplace',57),('dashboard, configuration',58),('website name, title',59),('accessibility, easy mode',60),('sharing, facebook, twitter',61),('logo, favicon, iphone, icon, bookmark',62),('tinymce, content block, fonts, editor, content, overlay',63),('translate, translation, internationalization, multilingual',64),('languages, update, gettext, translation, translate',65),('timezone, profile, locale',67),('site attributes',68),('checkin, check-in, check, force',71),('multilingual, localization, internationalization, i18n',84),('vanity, pretty url, redirection, hostname, canonical, seo, pageview, view',85),('bulk, seo, change keywords, engine, optimization, search',86),('traffic, statistics, google analytics, quant, pageviews, hits',87),('pretty, slug',88),('configure search, site search, search option',89),('security, files, media, extension, manager, upload',90),('file options, file manager, upload, modify',91),('images, picture, responsive, retina',92),('thumbnail, format, png, jpg, jpeg, quality, compression, gd, imagick, imagemagick, transparency',94),('uploading, upload, images, image, resizing, manager, exif, rotation, rotate, quality, compression, png, jpg, jpeg',95),('security, alternate storage, hide files',96),('cache option, change cache, override, turn on cache, turn off cache, no cache, page cache, caching',97),('cache option, turn off cache, no cache, page cache, caching',98),('index search, reindex search, build sitemap, sitemap.xml, clear old versions, page versions, remove old',99),('queries, database, mysql',100),('editors, hide site, offline, private, public, access',101),('security, actions, administrator, admin, package, marketplace, search',102),('security, lock ip, lock out, block ip, address, restrict, access',103),('security, registration',105),('antispam, block spam, security',106),('lock site, under construction, hide, hidden',107),('signup, new user, community, public registration, public, registration',108),('profile, login, redirect, specific, dashboard, administrators',109),('member profile, member page, community, forums, social, avatar',110),('auth, authentication, types, oauth, facebook, login, registration',111),('global, password, reset, change password, force, sign out',112),('smtp, mail settings',113),('email server, mail settings, mail configuration, external, internal',114),('test smtp, test mail',115),('email server, mail settings, mail configuration, private message, message system, import, email, message',116),('mail settings, mail configuration, email, sender',117),('conversations',118),('conversations',119),('conversations ratings, ratings, community, community points',120),('conversations bad words, banned words, banned, bad words, bad, words, list',121),('attribute configuration',122),('attributes, types',123),('attributes, sets',124),('topics, tags, taxonomy',125),('overrides, system info, debug, support, help',127),('errors, exceptions, develop, support, help',128),('email, logging, logs, smtp, pop, errors, mysql, log',129),('network, proxy server',130),('database, entities, doctrine, orm',131),('geolocation, ip, address, country, nation, place, locate',132),('upgrade, new version, update',133),('fa fa-th',137),('fa fa-trash-o',138),('fa fa-briefcase',139),('fa fa-edit',140),('Test Client',181),('Test Client',186),('Test Client 2',192),('Test Client 2',198),('Test Client 2',203),('Test Client 2',208),('',212),('',213),('',214),('',215),('',223),('',224),('',225),('',227),('',230),('',231),('',232),('',233),('\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla massa lacus, vehicula eu interdum convallis, laoreet id lectus. Nunc turpis elit, aliquam sit amet aliquam tincidunt, dapibus vel tellus. ',236),('',237),('',238),('',239),('',240),('\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla massa lacus, vehicula eu interdum convallis, laoreet id lectus. Nunc turpis elit, aliquam sit amet aliquam tincidunt, dapibus vel tellus. ',243),('日乃屋カレー 神田西口店',255),('03-6206-0010',258),('Cozy （コージー） ',261),('03-5256-4566',264),('MIXカレー',265),('チキン、エビ、あわびが入った盛りだくさんのカレー。ちょっとお高いが、贅沢気分を味わいたい方におすすめ。',266),('チキンカレー',270),('立地なチキンがカレーのルーに交わって、立地なテイストを演出。Bondy 名物のじゃがいもを食べながら、リッチなカレーを味わう。自分へのご褒美。',271),('野菜カレー',275),('Bondy のリッチなルーに、ちょっとヘルシー気分を味わえる野菜がたくさん入ったメニュー。',276),('欧風カレー ボンディ 大手町店',280),('03-5283-6577',283),('チーズカレー',292),('御飯の上に加えて、カレーのルーにもたっぷり。とろけたチーズが乗った一品。お店の人によると女性ナンバーワンのメニュー。',293);
+INSERT INTO `atDefault` VALUES ('fa fa-th-large',1),('pages, add page, delete page, copy, move, alias',2),('pages, add page, delete page, copy, move, alias',3),('pages, add page, delete page, copy, move, alias, bulk',4),('find page, search page, search, find, pages, sitemap',5),('add file, delete file, copy, move, alias, resize, crop, rename, images, title, attribute',6),('file, file attributes, title, attribute, description, rename',7),('files, category, categories',8),('new file set',10),('users, groups, people, find, delete user, remove user, change password, password',11),('find, search, people, delete user, remove user, change password, password',12),('user, group, people, permissions, expire, badges',13),('user attributes, user data, gather data, registration data',14),('new user, create',15),('new user group, new group, group, create',17),('group set',19),('community, points, karma',20),('action, community actions',21),('forms, log, error, email, mysql, exception, survey',22),('forms, questions, response, data',23),('questions, quiz, response',26),('forms, log, error, email, mysql, exception, survey, history',27),('new theme, theme, active theme, change theme, template, css',28),('page types',29),('page attributes, custom',38),('single, page, custom, application',39),('atom, rss, feed, syndication',40),('icon-bullhorn',45),('stacks, global areas, reusable content, scrapbook, copy, paste, paste block, copy block, site name, logo',46),('edit stacks, view stacks, all stacks',49),('block, refresh, custom',50),('add-on, addon, add on, package, app, ecommerce, discussions, forums, themes, templates, blocks',51),('add-on, addon, ecommerce, install, discussions, forums, themes, templates, blocks',52),('update, upgrade',53),('concrete5.org, my account, marketplace',54),('buy theme, new theme, marketplace, template',56),('buy addon, buy add on, buy add-on, purchase addon, purchase add on, purchase add-on, find addon, new addon, marketplace',57),('dashboard, configuration',58),('website name, title',59),('accessibility, easy mode',60),('sharing, facebook, twitter',61),('logo, favicon, iphone, icon, bookmark',62),('tinymce, content block, fonts, editor, content, overlay',63),('translate, translation, internationalization, multilingual',64),('languages, update, gettext, translation, translate',65),('timezone, profile, locale',67),('site attributes',68),('checkin, check-in, check, force',71),('multilingual, localization, internationalization, i18n',84),('vanity, pretty url, redirection, hostname, canonical, seo, pageview, view',85),('bulk, seo, change keywords, engine, optimization, search',86),('traffic, statistics, google analytics, quant, pageviews, hits',87),('pretty, slug',88),('configure search, site search, search option',89),('security, files, media, extension, manager, upload',90),('file options, file manager, upload, modify',91),('images, picture, responsive, retina',92),('thumbnail, format, png, jpg, jpeg, quality, compression, gd, imagick, imagemagick, transparency',94),('uploading, upload, images, image, resizing, manager, exif, rotation, rotate, quality, compression, png, jpg, jpeg',95),('security, alternate storage, hide files',96),('cache option, change cache, override, turn on cache, turn off cache, no cache, page cache, caching',97),('cache option, turn off cache, no cache, page cache, caching',98),('index search, reindex search, build sitemap, sitemap.xml, clear old versions, page versions, remove old',99),('editors, hide site, offline, private, public, access',101),('security, actions, administrator, admin, package, marketplace, search',102),('security, lock ip, lock out, block ip, address, restrict, access',103),('security, registration',105),('antispam, block spam, security',106),('lock site, under construction, hide, hidden',107),('profile, login, redirect, specific, dashboard, administrators',109),('member profile, member page, community, forums, social, avatar',110),('auth, authentication, types, oauth, facebook, login, registration',111),('global, password, reset, change password, force, sign out',112),('smtp, mail settings',113),('email server, mail settings, mail configuration, external, internal',114),('test smtp, test mail',115),('email server, mail settings, mail configuration, private message, message system, import, email, message',116),('mail settings, mail configuration, email, sender',117),('conversations',118),('conversations',119),('conversations ratings, ratings, community, community points',120),('conversations bad words, banned words, banned, bad words, bad, words, list',121),('attribute configuration',122),('attributes, types',123),('attributes, sets',124),('topics, tags, taxonomy',125),('overrides, system info, debug, support, help',127),('errors, exceptions, develop, support, help',128),('email, logging, logs, smtp, pop, errors, mysql, log',129),('network, proxy server',130),('database, entities, doctrine, orm',131),('geolocation, ip, address, country, nation, place, locate',132),('upgrade, new version, update',133),('fa fa-th',137),('fa fa-trash-o',138),('fa fa-briefcase',139),('fa fa-edit',140),('Test Client',181),('Test Client',186),('Test Client 2',192),('Test Client 2',198),('Test Client 2',203),('Test Client 2',208),('',212),('',213),('',214),('',215),('',223),('',224),('',225),('',227),('',230),('',231),('',232),('',233),('\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla massa lacus, vehicula eu interdum convallis, laoreet id lectus. Nunc turpis elit, aliquam sit amet aliquam tincidunt, dapibus vel tellus. ',236),('',237),('',238),('',239),('',240),('\n                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla massa lacus, vehicula eu interdum convallis, laoreet id lectus. Nunc turpis elit, aliquam sit amet aliquam tincidunt, dapibus vel tellus. ',243),('日乃屋カレー 神田西口店',255),('03-6206-0010',258),('Cozy （コージー） ',261),('03-5256-4566',264),('MIXカレー',265),('チキン、エビ、あわびが入った盛りだくさんのカレー。ちょっとお高いが、贅沢気分を味わいたい方におすすめ。',266),('チキンカレー',270),('立地なチキンがカレーのルーに交わって、立地なテイストを演出。Bondy 名物のじゃがいもを食べながら、リッチなカレーを味わう。自分へのご褒美。',271),('野菜カレー',275),('Bondy のリッチなルーに、ちょっとヘルシー気分を味わえる野菜がたくさん入ったメニュー。',276),('欧風カレー ボンディ 大手町店',280),('03-5283-6577',283),('チーズカレー',292),('御飯の上に加えて、カレーのルーにもたっぷり。とろけたチーズが乗った一品。お店の人によると女性ナンバーワンのメニュー。',293),('trusted, proxy, proxies, ip, cloudflare',307),('login, logout, user, agent, ip, change, security, session, invalidation, invalid',308),('changes, csv, report',309),('files, export, csv, bom, encoding',310),('password, requirements, code, key, login, registration, security, nist',311),('signup, new user, community, public registration, public, registration',312);
 /*!40000 ALTER TABLE `atDefault` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -7221,7 +7527,7 @@ CREATE TABLE `atEmptySettings` (
   `akID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`akID`),
   CONSTRAINT `FK_ED1BF189B6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7245,7 +7551,7 @@ CREATE TABLE `atExpress` (
   `avID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`avID`),
   CONSTRAINT `FK_CFAF40F1A2A82A5D` FOREIGN KEY (`avID`) REFERENCES `AttributeValues` (`avID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7272,7 +7578,7 @@ CREATE TABLE `atExpressSelectedEntries` (
   KEY `IDX_C9D404BB6DCB6296` (`exEntryID`),
   CONSTRAINT `FK_C9D404BB6DCB6296` FOREIGN KEY (`exEntryID`) REFERENCES `ExpressEntityEntries` (`exEntryID`),
   CONSTRAINT `FK_C9D404BBA2A82A5D` FOREIGN KEY (`avID`) REFERENCES `atExpress` (`avID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7292,13 +7598,13 @@ DROP TABLE IF EXISTS `atExpressSettings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `atExpressSettings` (
-  `exEntityID` char(36) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
+  `exEntityID` char(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
   `akID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`akID`),
   KEY `IDX_E8F67F0FCE2D7284` (`exEntityID`),
   CONSTRAINT `FK_E8F67F0FB6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`),
   CONSTRAINT `FK_E8F67F0FCE2D7284` FOREIGN KEY (`exEntityID`) REFERENCES `ExpressEntities` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7324,7 +7630,7 @@ CREATE TABLE `atFile` (
   KEY `IDX_73D17D61E3111F45` (`fID`),
   CONSTRAINT `FK_73D17D61A2A82A5D` FOREIGN KEY (`avID`) REFERENCES `AttributeValues` (`avID`) ON DELETE CASCADE,
   CONSTRAINT `FK_73D17D61E3111F45` FOREIGN KEY (`fID`) REFERENCES `Files` (`fID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7349,7 +7655,7 @@ CREATE TABLE `atFileSettings` (
   `akID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`akID`),
   CONSTRAINT `FK_EADD86C8B6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7374,7 +7680,7 @@ CREATE TABLE `atNumber` (
   `avID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`avID`),
   CONSTRAINT `FK_41BA30B5A2A82A5D` FOREIGN KEY (`avID`) REFERENCES `AttributeValues` (`avID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7398,7 +7704,7 @@ CREATE TABLE `atSelect` (
   `avID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`avID`),
   CONSTRAINT `FK_9CD8C521A2A82A5D` FOREIGN KEY (`avID`) REFERENCES `AttributeValues` (`avID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7421,7 +7727,7 @@ DROP TABLE IF EXISTS `atSelectOptionLists`;
 CREATE TABLE `atSelectOptionLists` (
   `avSelectOptionListID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`avSelectOptionListID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7446,12 +7752,12 @@ CREATE TABLE `atSelectOptions` (
   `isEndUserAdded` tinyint(1) NOT NULL,
   `isDeleted` tinyint(1) NOT NULL DEFAULT 0,
   `displayOrder` int(11) NOT NULL,
-  `value` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `value` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `avSelectOptionListID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`avSelectOptionID`),
   KEY `IDX_797414B0CB59257C` (`avSelectOptionListID`),
   CONSTRAINT `FK_797414B0CB59257C` FOREIGN KEY (`avSelectOptionListID`) REFERENCES `atSelectOptionLists` (`avSelectOptionListID`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7479,7 +7785,7 @@ CREATE TABLE `atSelectOptionsSelected` (
   KEY `IDX_40C97EC3E584C274` (`avSelectOptionID`),
   CONSTRAINT `FK_40C97EC3A2A82A5D` FOREIGN KEY (`avID`) REFERENCES `atSelect` (`avID`),
   CONSTRAINT `FK_40C97EC3E584C274` FOREIGN KEY (`avSelectOptionID`) REFERENCES `atSelectOptions` (`avSelectOptionID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7503,7 +7809,7 @@ CREATE TABLE `atSelectSettings` (
   `akSelectAllowMultipleValues` tinyint(1) NOT NULL,
   `akSelectAllowOtherValues` tinyint(1) NOT NULL,
   `akHideNoneOption` tinyint(1) NOT NULL,
-  `akSelectOptionDisplayOrder` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `akSelectOptionDisplayOrder` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `akDisplayMultipleValuesOnSelect` tinyint(1) NOT NULL,
   `avSelectOptionListID` int(10) unsigned DEFAULT NULL,
   `akID` int(10) unsigned NOT NULL,
@@ -7511,7 +7817,7 @@ CREATE TABLE `atSelectSettings` (
   UNIQUE KEY `UNIQ_5D514424CB59257C` (`avSelectOptionListID`),
   CONSTRAINT `FK_5D514424B6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`),
   CONSTRAINT `FK_5D514424CB59257C` FOREIGN KEY (`avSelectOptionListID`) REFERENCES `atSelectOptionLists` (`avSelectOptionListID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7533,13 +7839,13 @@ DROP TABLE IF EXISTS `atSelectedSocialLinks`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `atSelectedSocialLinks` (
   `avsID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `service` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `serviceInfo` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `service` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `serviceInfo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `avID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`avsID`),
   KEY `IDX_10743709A2A82A5D` (`avID`),
   CONSTRAINT `FK_10743709A2A82A5D` FOREIGN KEY (`avID`) REFERENCES `atSocialLinks` (`avID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7565,7 +7871,7 @@ CREATE TABLE `atSelectedTopics` (
   PRIMARY KEY (`avTreeTopicNodeID`),
   KEY `IDX_E42A7D5BA2A82A5D` (`avID`),
   CONSTRAINT `FK_E42A7D5BA2A82A5D` FOREIGN KEY (`avID`) REFERENCES `atTopic` (`avID`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7589,7 +7895,7 @@ CREATE TABLE `atSocialLinks` (
   `avID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`avID`),
   CONSTRAINT `FK_1431EC8AA2A82A5D` FOREIGN KEY (`avID`) REFERENCES `AttributeValues` (`avID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7609,11 +7915,11 @@ DROP TABLE IF EXISTS `atTextSettings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `atTextSettings` (
-  `akTextPlaceholder` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `akTextPlaceholder` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `akID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`akID`),
   CONSTRAINT `FK_951A10CCB6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7634,11 +7940,11 @@ DROP TABLE IF EXISTS `atTextareaSettings`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `atTextareaSettings` (
-  `akTextareaDisplayMode` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `akTextareaDisplayMode` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `akID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`akID`),
   CONSTRAINT `FK_A6EA10D6B6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7662,7 +7968,7 @@ CREATE TABLE `atTopic` (
   `avID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`avID`),
   CONSTRAINT `FK_BABDD1FAA2A82A5D` FOREIGN KEY (`avID`) REFERENCES `AttributeValues` (`avID`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7689,7 +7995,7 @@ CREATE TABLE `atTopicSettings` (
   `akID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`akID`),
   CONSTRAINT `FK_830FD2FEB6561A7E` FOREIGN KEY (`akID`) REFERENCES `AttributeKeys` (`akID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7711,13 +8017,13 @@ DROP TABLE IF EXISTS `authTypeConcreteCookieMap`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `authTypeConcreteCookieMap` (
   `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `token` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `token` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `uID` int(11) DEFAULT NULL,
   `validThrough` int(11) DEFAULT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE KEY `token` (`token`),
   KEY `uID` (`uID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7739,17 +8045,17 @@ DROP TABLE IF EXISTS `btCalendar`;
 CREATE TABLE `btCalendar` (
   `bID` int(10) unsigned NOT NULL,
   `caID` int(10) unsigned NOT NULL DEFAULT 0,
-  `calendarAttributeKeyHandle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `calendarAttributeKeyHandle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `filterByTopicAttributeKeyID` int(10) unsigned NOT NULL DEFAULT 0,
   `filterByTopicID` int(10) unsigned NOT NULL DEFAULT 0,
-  `viewTypes` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `viewTypesOrder` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `defaultView` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `viewTypes` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `viewTypesOrder` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `defaultView` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `navLinks` int(11) DEFAULT NULL,
   `eventLimit` int(11) DEFAULT NULL,
-  `lightboxProperties` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `lightboxProperties` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7770,17 +8076,17 @@ DROP TABLE IF EXISTS `btCalendarEvent`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `btCalendarEvent` (
   `bID` int(10) unsigned NOT NULL,
-  `mode` varchar(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'S' COMMENT 'S = Specify, P = Page, R = Request',
-  `calendarEventAttributeKeyHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `mode` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'S' COMMENT 'S = Specify, P = Page, R = Request',
+  `calendarEventAttributeKeyHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `calendarID` int(10) unsigned NOT NULL DEFAULT 0,
   `eventID` int(10) unsigned NOT NULL DEFAULT 0,
-  `displayEventAttributes` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `displayEventAttributes` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `enableLinkToPage` tinyint(1) DEFAULT 0,
   `displayEventName` tinyint(1) DEFAULT 0,
   `displayEventDate` tinyint(1) DEFAULT 0,
   `displayEventDescription` tinyint(1) DEFAULT 0,
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7802,12 +8108,12 @@ DROP TABLE IF EXISTS `btContentFile`;
 CREATE TABLE `btContentFile` (
   `bID` int(10) unsigned NOT NULL,
   `fID` int(10) unsigned DEFAULT NULL,
-  `fileLinkText` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `filePassword` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `fileLinkText` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `filePassword` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `forceDownload` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`bID`),
   KEY `fID` (`fID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7833,15 +8139,15 @@ CREATE TABLE `btContentImage` (
   `cropImage` int(10) unsigned DEFAULT 0,
   `maxWidth` int(10) unsigned DEFAULT 0,
   `maxHeight` int(10) unsigned DEFAULT 0,
-  `externalLink` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `externalLink` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `internalLinkCID` int(10) unsigned DEFAULT 0,
   `fileLinkID` int(10) unsigned DEFAULT 0,
   `openLinkInNewWindow` tinyint(1) NOT NULL DEFAULT 0,
-  `altText` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `altText` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`bID`),
   KEY `fID` (`fID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7863,9 +8169,9 @@ DROP TABLE IF EXISTS `btContentLocal`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `btContentLocal` (
   `bID` int(10) unsigned NOT NULL,
-  `content` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `content` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7890,7 +8196,7 @@ CREATE TABLE `btCoreAreaLayout` (
   `arLayoutID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`bID`),
   KEY `arLayoutID` (`arLayoutID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7916,20 +8222,20 @@ CREATE TABLE `btCoreConversation` (
   `enablePosting` int(11) DEFAULT 1,
   `paginate` tinyint(1) NOT NULL DEFAULT 1,
   `itemsPerPage` smallint(5) unsigned NOT NULL DEFAULT 50,
-  `displayMode` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'threaded',
-  `orderBy` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'date_desc',
+  `displayMode` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'threaded',
+  `orderBy` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'date_desc',
   `enableOrdering` tinyint(1) NOT NULL DEFAULT 1,
   `enableCommentRating` tinyint(1) NOT NULL DEFAULT 1,
   `enableTopCommentReviews` tinyint(1) NOT NULL DEFAULT 0,
   `displaySocialLinks` tinyint(1) NOT NULL DEFAULT 1,
   `reviewAggregateAttributeKey` int(11) DEFAULT NULL,
-  `displayPostingForm` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'top',
-  `addMessageLabel` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
-  `dateFormat` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'default',
-  `customDateFormat` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `displayPostingForm` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'top',
+  `addMessageLabel` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
+  `dateFormat` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'default',
+  `customDateFormat` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`bID`),
   KEY `cnvID` (`cnvID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7954,7 +8260,7 @@ CREATE TABLE `btCorePageTypeComposerControlOutput` (
   `ptComposerOutputControlID` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`bID`),
   KEY `ptComposerOutputControlID` (`ptComposerOutputControlID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7979,7 +8285,7 @@ CREATE TABLE `btCoreScrapbookDisplay` (
   `bOriginalID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`bID`),
   KEY `bOriginalID` (`bOriginalID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8003,7 +8309,7 @@ CREATE TABLE `btCoreStackDisplay` (
   `stID` int(10) unsigned NOT NULL,
   PRIMARY KEY (`bID`),
   KEY `stID` (`stID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8024,14 +8330,14 @@ DROP TABLE IF EXISTS `btDateNavigation`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `btDateNavigation` (
   `bID` int(10) unsigned NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `filterByParent` tinyint(1) DEFAULT 0,
   `redirectToResults` tinyint(1) DEFAULT 0,
   `cParentID` int(10) unsigned NOT NULL DEFAULT 0,
   `cTargetID` int(10) unsigned NOT NULL DEFAULT 0 COMMENT 'this field is where the links will direct you',
   `ptID` smallint(5) unsigned DEFAULT NULL,
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8045,6 +8351,29 @@ INSERT INTO `btDateNavigation` VALUES (46,'Archives',1,0,183,0,6);
 UNLOCK TABLES;
 
 --
+-- Table structure for table `btDesktopDraftList`
+--
+
+DROP TABLE IF EXISTS `btDesktopDraftList`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `btDesktopDraftList` (
+  `bID` int(10) unsigned NOT NULL,
+  `draftsPerPage` int(11) DEFAULT NULL,
+  PRIMARY KEY (`bID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `btDesktopDraftList`
+--
+
+LOCK TABLES `btDesktopDraftList` WRITE;
+/*!40000 ALTER TABLE `btDesktopDraftList` DISABLE KEYS */;
+/*!40000 ALTER TABLE `btDesktopDraftList` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `btDesktopNewsflowLatest`
 --
 
@@ -8053,9 +8382,9 @@ DROP TABLE IF EXISTS `btDesktopNewsflowLatest`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `btDesktopNewsflowLatest` (
   `bID` int(10) unsigned NOT NULL,
-  `slot` varchar(1) COLLATE utf8_unicode_ci NOT NULL,
+  `slot` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8077,9 +8406,9 @@ DROP TABLE IF EXISTS `btDesktopSiteActivity`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `btDesktopSiteActivity` (
   `bID` int(10) unsigned NOT NULL,
-  `types` longtext COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '(DC2Type:json_array)',
+  `types` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '(DC2Type:json_array)',
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8101,35 +8430,35 @@ DROP TABLE IF EXISTS `btDocumentLibrary`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `btDocumentLibrary` (
   `bID` int(10) unsigned NOT NULL,
-  `setIds` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `setIds` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `folderID` int(11) NOT NULL DEFAULT 0,
-  `setMode` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `setMode` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `onlyCurrentUser` int(11) DEFAULT 0,
-  `tags` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `viewProperties` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `expandableProperties` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `searchProperties` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `orderBy` varchar(64) COLLATE utf8_unicode_ci DEFAULT 'title',
+  `tags` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `viewProperties` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `expandableProperties` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `searchProperties` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `orderBy` varchar(64) COLLATE utf8mb4_unicode_ci DEFAULT 'title',
   `displayLimit` int(11) DEFAULT 20,
   `displayOrderDesc` tinyint(1) NOT NULL DEFAULT 0,
   `addFilesToSetID` int(10) unsigned NOT NULL DEFAULT 0,
   `maxThumbWidth` int(11) DEFAULT 100,
   `maxThumbHeight` int(11) DEFAULT 150,
   `enableSearch` int(11) DEFAULT 0,
-  `heightMode` varchar(32) COLLATE utf8_unicode_ci DEFAULT 'auto',
-  `downloadFileMethod` varchar(32) COLLATE utf8_unicode_ci DEFAULT 'force',
+  `heightMode` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT 'auto',
+  `downloadFileMethod` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT 'force',
   `fixedHeightSize` int(11) DEFAULT 0,
-  `headerBackgroundColor` varchar(32) COLLATE utf8_unicode_ci DEFAULT '',
-  `headerBackgroundColorActiveSort` varchar(32) COLLATE utf8_unicode_ci DEFAULT '',
-  `headerTextColor` varchar(32) COLLATE utf8_unicode_ci DEFAULT '',
+  `headerBackgroundColor` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `headerBackgroundColorActiveSort` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `headerTextColor` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT '',
   `allowFileUploading` int(11) DEFAULT 0,
   `allowInPageFileManagement` int(11) DEFAULT 0,
-  `tableName` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
-  `tableDescription` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
+  `tableName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `tableDescription` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '',
   `tableStriped` tinyint(1) DEFAULT 0,
-  `rowBackgroundColorAlternate` varchar(32) COLLATE utf8_unicode_ci DEFAULT '',
+  `rowBackgroundColorAlternate` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT '',
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8150,18 +8479,18 @@ DROP TABLE IF EXISTS `btEventList`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `btEventList` (
   `bID` int(10) unsigned NOT NULL,
-  `caID` text COLLATE utf8_unicode_ci NOT NULL,
-  `calendarAttributeKeyHandle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `caID` mediumtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `calendarAttributeKeyHandle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `totalToRetrieve` smallint(5) unsigned NOT NULL DEFAULT 10,
   `totalPerPage` smallint(5) unsigned NOT NULL DEFAULT 10,
   `filterByTopicAttributeKeyID` int(10) unsigned NOT NULL DEFAULT 0,
   `filterByTopicID` int(10) unsigned NOT NULL DEFAULT 0,
-  `filterByPageTopicAttributeKeyHandle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `filterByPageTopicAttributeKeyHandle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `filterByFeatured` tinyint(1) NOT NULL DEFAULT 0,
-  `eventListTitle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `eventListTitle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `linkToPage` int(10) unsigned NOT NULL DEFAULT 0,
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8182,13 +8511,13 @@ DROP TABLE IF EXISTS `btExpressEntryDetail`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `btExpressEntryDetail` (
   `bID` int(10) unsigned NOT NULL,
-  `exEntityID` char(36) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
+  `exEntityID` char(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
   `exSpecificEntryID` int(10) unsigned DEFAULT NULL,
-  `exEntryAttributeKeyHandle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `exFormID` char(36) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
-  `entryMode` varchar(1) COLLATE utf8_unicode_ci DEFAULT 'S',
+  `exEntryAttributeKeyHandle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `exFormID` char(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
+  `entryMode` varchar(1) COLLATE utf8mb4_unicode_ci DEFAULT 'S',
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8210,23 +8539,25 @@ DROP TABLE IF EXISTS `btExpressEntryList`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `btExpressEntryList` (
   `bID` int(10) unsigned NOT NULL,
-  `exEntityID` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `exEntityID` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `detailPage` int(10) unsigned NOT NULL DEFAULT 0,
-  `linkedProperties` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `searchProperties` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `columns` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `linkedProperties` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `searchProperties` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `columns` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `displayLimit` int(11) DEFAULT 20,
   `enableSearch` int(11) DEFAULT 0,
   `enableKeywordSearch` int(11) DEFAULT 0,
-  `headerBackgroundColor` varchar(32) COLLATE utf8_unicode_ci DEFAULT '',
-  `headerBackgroundColorActiveSort` varchar(32) COLLATE utf8_unicode_ci DEFAULT '',
-  `headerTextColor` varchar(32) COLLATE utf8_unicode_ci DEFAULT '',
-  `tableName` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
-  `tableDescription` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
+  `headerBackgroundColor` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `headerBackgroundColorActiveSort` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `headerTextColor` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `tableName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `tableDescription` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '',
   `tableStriped` tinyint(1) DEFAULT 0,
-  `rowBackgroundColorAlternate` varchar(32) COLLATE utf8_unicode_ci DEFAULT '',
+  `rowBackgroundColorAlternate` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT '',
+  `searchAssociations` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `filterFields` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8235,7 +8566,7 @@ CREATE TABLE `btExpressEntryList` (
 
 LOCK TABLES `btExpressEntryList` WRITE;
 /*!40000 ALTER TABLE `btExpressEntryList` DISABLE KEYS */;
-INSERT INTO `btExpressEntryList` VALUES (172,'61fac1c2-4504-11e8-8c0e-9801a7b087ef',208,'[\"35\",\"36\",\"37\",\"39\",\"44\"]','Array','O:48:\"Concrete\\Core\\Express\\Search\\ColumnSet\\ColumnSet\":2:{s:10:\"\0*\0columns\";a:6:{i:0;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";O:35:\"Concrete\\Core\\Entity\\Express\\Entity\":18:{s:5:\"\0*\0id\";s:36:\"61fac1c2-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";s:15:\"カレー店舗\";s:9:\"\0*\0handle\";s:11:\"curry_store\";s:16:\"\0*\0plural_handle\";s:12:\"curry_stores\";s:13:\"\0*\0label_mask\";s:12:\"%store_name%\";s:32:\"\0*\0supports_custom_display_order\";b:0;s:14:\"\0*\0description\";s:0:\"\";s:20:\"\0*\0result_column_set\";N;s:25:\"\0*\0include_in_public_list\";b:1;s:25:\"\0*\0entity_results_node_id\";i:44;s:13:\"\0*\0attributes\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:15:\"\0*\0associations\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:1:{i:0;O:49:\"Concrete\\Core\\Entity\\Express\\OneToManyAssociation\":9:{s:5:\"\0*\0id\";s:36:\"90515134-4505-11e8-8c0e-9801a7b087ef\";s:16:\"\0*\0source_entity\";r:5;s:16:\"\0*\0target_entity\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Express\\Entity\":19:{s:17:\"__isInitialized__\";b:0;s:5:\"\0*\0id\";s:36:\"f68b23ea-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";N;s:9:\"\0*\0handle\";N;s:16:\"\0*\0plural_handle\";N;s:13:\"\0*\0label_mask\";N;s:32:\"\0*\0supports_custom_display_order\";b:0;s:14:\"\0*\0description\";N;s:20:\"\0*\0result_column_set\";N;s:25:\"\0*\0include_in_public_list\";b:1;s:25:\"\0*\0entity_results_node_id\";N;s:13:\"\0*\0attributes\";N;s:15:\"\0*\0associations\";N;s:8:\"\0*\0forms\";N;s:20:\"\0*\0default_view_form\";N;s:20:\"\0*\0default_edit_form\";N;s:10:\"\0*\0entries\";N;s:15:\"\0*\0created_date\";N;s:10:\"\0*\0package\";N;}s:26:\"\0*\0is_owned_by_association\";b:0;s:24:\"\0*\0is_owning_association\";b:0;s:8:\"\0*\0entry\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:11:\"\0*\0controls\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:23:\"\0*\0target_property_name\";s:11:\"curry_menus\";s:28:\"\0*\0inversed_by_property_name\";s:11:\"curry_store\";}}}s:14:\"\0*\0initialized\";b:1;}s:8:\"\0*\0forms\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:20:\"\0*\0default_view_form\";O:56:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Express\\Form\":5:{s:17:\"__isInitialized__\";b:0;s:5:\"\0*\0id\";s:36:\"61fad022-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";N;s:13:\"\0*\0field_sets\";N;s:9:\"\0*\0entity\";N;}s:20:\"\0*\0default_edit_form\";r:63;s:10:\"\0*\0entries\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:15:\"\0*\0created_date\";O:8:\"DateTime\":3:{s:4:\"date\";s:26:\"2018-04-21 10:37:10.000000\";s:13:\"timezone_type\";i:3;s:8:\"timezone\";s:10:\"Asia/Tokyo\";}s:10:\"\0*\0package\";N;}s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:37;s:11:\"\0*\0akHandle\";s:11:\"store_photo\";s:9:\"\0*\0akName\";s:12:\"店舗写真\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:5;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:14:\"ak_store_photo\";s:10:\"columnName\";s:12:\"店舗写真\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:1;O:34:\"Concrete\\Core\\Search\\Column\\Column\":5:{s:9:\"columnKey\";s:20:\"e.exEntryDateCreated\";s:10:\"columnName\";s:9:\"登録日\";s:13:\"sortDirection\";s:4:\"desc\";s:10:\"isSortable\";b:1;s:8:\"callback\";a:2:{i:0;s:50:\"\\Concrete\\Core\\Express\\Search\\ColumnSet\\DefaultSet\";i:1;s:12:\"getDateAdded\";}}i:2;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:44;s:11:\"\0*\0akHandle\";s:14:\"store_category\";s:9:\"\0*\0akName\";s:12:\"カテゴリ\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:13;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:17:\"ak_store_category\";s:10:\"columnName\";s:12:\"カテゴリ\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:3;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:35;s:11:\"\0*\0akHandle\";s:10:\"store_name\";s:9:\"\0*\0akName\";s:6:\"店名\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:1;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:13:\"ak_store_name\";s:10:\"columnName\";s:6:\"店名\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:4;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:36;s:11:\"\0*\0akHandle\";s:13:\"store_address\";s:9:\"\0*\0akName\";s:6:\"住所\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:8;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:16:\"ak_store_address\";s:10:\"columnName\";s:6:\"住所\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:5;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:39;s:11:\"\0*\0akHandle\";s:9:\"store_tel\";s:9:\"\0*\0akName\";s:12:\"電話番号\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:9;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:12:\"ak_store_tel\";s:10:\"columnName\";s:12:\"電話番号\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}}s:20:\"\0*\0defaultSortColumn\";r:106;}',20,0,0,'','','','','',0,''),(179,'61fac1c2-4504-11e8-8c0e-9801a7b087ef',208,'[\"35\",\"36\",\"37\",\"39\",\"44\"]','Array','O:48:\"Concrete\\Core\\Express\\Search\\ColumnSet\\ColumnSet\":2:{s:10:\"\0*\0columns\";a:6:{i:0;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";O:35:\"Concrete\\Core\\Entity\\Express\\Entity\":18:{s:5:\"\0*\0id\";s:36:\"61fac1c2-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";s:15:\"カレー店舗\";s:9:\"\0*\0handle\";s:11:\"curry_store\";s:16:\"\0*\0plural_handle\";s:12:\"curry_stores\";s:13:\"\0*\0label_mask\";s:12:\"%store_name%\";s:32:\"\0*\0supports_custom_display_order\";b:0;s:14:\"\0*\0description\";s:0:\"\";s:20:\"\0*\0result_column_set\";N;s:25:\"\0*\0include_in_public_list\";b:1;s:25:\"\0*\0entity_results_node_id\";i:44;s:13:\"\0*\0attributes\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:15:\"\0*\0associations\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:1:{i:0;O:49:\"Concrete\\Core\\Entity\\Express\\OneToManyAssociation\":9:{s:5:\"\0*\0id\";s:36:\"90515134-4505-11e8-8c0e-9801a7b087ef\";s:16:\"\0*\0source_entity\";r:5;s:16:\"\0*\0target_entity\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Express\\Entity\":19:{s:17:\"__isInitialized__\";b:0;s:5:\"\0*\0id\";s:36:\"f68b23ea-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";N;s:9:\"\0*\0handle\";N;s:16:\"\0*\0plural_handle\";N;s:13:\"\0*\0label_mask\";N;s:32:\"\0*\0supports_custom_display_order\";b:0;s:14:\"\0*\0description\";N;s:20:\"\0*\0result_column_set\";N;s:25:\"\0*\0include_in_public_list\";b:1;s:25:\"\0*\0entity_results_node_id\";N;s:13:\"\0*\0attributes\";N;s:15:\"\0*\0associations\";N;s:8:\"\0*\0forms\";N;s:20:\"\0*\0default_view_form\";N;s:20:\"\0*\0default_edit_form\";N;s:10:\"\0*\0entries\";N;s:15:\"\0*\0created_date\";N;s:10:\"\0*\0package\";N;}s:26:\"\0*\0is_owned_by_association\";b:0;s:24:\"\0*\0is_owning_association\";b:0;s:8:\"\0*\0entry\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:11:\"\0*\0controls\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:23:\"\0*\0target_property_name\";s:11:\"curry_menus\";s:28:\"\0*\0inversed_by_property_name\";s:11:\"curry_store\";}}}s:14:\"\0*\0initialized\";b:1;}s:8:\"\0*\0forms\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:20:\"\0*\0default_view_form\";O:56:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Express\\Form\":5:{s:17:\"__isInitialized__\";b:0;s:5:\"\0*\0id\";s:36:\"61fad022-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";N;s:13:\"\0*\0field_sets\";N;s:9:\"\0*\0entity\";N;}s:20:\"\0*\0default_edit_form\";r:63;s:10:\"\0*\0entries\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:15:\"\0*\0created_date\";O:8:\"DateTime\":3:{s:4:\"date\";s:26:\"2018-04-21 10:37:10.000000\";s:13:\"timezone_type\";i:3;s:8:\"timezone\";s:10:\"Asia/Tokyo\";}s:10:\"\0*\0package\";N;}s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:37;s:11:\"\0*\0akHandle\";s:11:\"store_photo\";s:9:\"\0*\0akName\";s:12:\"店舗写真\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:5;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:14:\"ak_store_photo\";s:10:\"columnName\";s:12:\"店舗写真\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:1;O:34:\"Concrete\\Core\\Search\\Column\\Column\":5:{s:9:\"columnKey\";s:20:\"e.exEntryDateCreated\";s:10:\"columnName\";s:9:\"登録日\";s:13:\"sortDirection\";s:4:\"desc\";s:10:\"isSortable\";b:1;s:8:\"callback\";a:2:{i:0;s:50:\"\\Concrete\\Core\\Express\\Search\\ColumnSet\\DefaultSet\";i:1;s:12:\"getDateAdded\";}}i:2;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:44;s:11:\"\0*\0akHandle\";s:14:\"store_category\";s:9:\"\0*\0akName\";s:12:\"カテゴリ\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:13;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:17:\"ak_store_category\";s:10:\"columnName\";s:12:\"カテゴリ\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:3;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:35;s:11:\"\0*\0akHandle\";s:10:\"store_name\";s:9:\"\0*\0akName\";s:6:\"店名\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:1;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:13:\"ak_store_name\";s:10:\"columnName\";s:6:\"店名\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:4;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:36;s:11:\"\0*\0akHandle\";s:13:\"store_address\";s:9:\"\0*\0akName\";s:6:\"住所\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:8;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:16:\"ak_store_address\";s:10:\"columnName\";s:6:\"住所\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:5;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:39;s:11:\"\0*\0akHandle\";s:9:\"store_tel\";s:9:\"\0*\0akName\";s:12:\"電話番号\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:9;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:12:\"ak_store_tel\";s:10:\"columnName\";s:12:\"電話番号\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}}s:20:\"\0*\0defaultSortColumn\";r:106;}',20,0,0,'','','','','',0,''),(181,'61fac1c2-4504-11e8-8c0e-9801a7b087ef',208,'[\"35\",\"36\",\"37\",\"39\",\"44\"]','[]','O:48:\"Concrete\\Core\\Express\\Search\\ColumnSet\\ColumnSet\":2:{s:10:\"\0*\0columns\";a:6:{i:0;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";O:35:\"Concrete\\Core\\Entity\\Express\\Entity\":18:{s:5:\"\0*\0id\";s:36:\"61fac1c2-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";s:15:\"カレー店舗\";s:9:\"\0*\0handle\";s:11:\"curry_store\";s:16:\"\0*\0plural_handle\";s:12:\"curry_stores\";s:13:\"\0*\0label_mask\";s:12:\"%store_name%\";s:32:\"\0*\0supports_custom_display_order\";b:0;s:14:\"\0*\0description\";s:0:\"\";s:20:\"\0*\0result_column_set\";N;s:25:\"\0*\0include_in_public_list\";b:1;s:25:\"\0*\0entity_results_node_id\";i:44;s:13:\"\0*\0attributes\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:15:\"\0*\0associations\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:1:{i:0;O:49:\"Concrete\\Core\\Entity\\Express\\OneToManyAssociation\":9:{s:5:\"\0*\0id\";s:36:\"90515134-4505-11e8-8c0e-9801a7b087ef\";s:16:\"\0*\0source_entity\";r:5;s:16:\"\0*\0target_entity\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Express\\Entity\":19:{s:17:\"__isInitialized__\";b:0;s:5:\"\0*\0id\";s:36:\"f68b23ea-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";N;s:9:\"\0*\0handle\";N;s:16:\"\0*\0plural_handle\";N;s:13:\"\0*\0label_mask\";N;s:32:\"\0*\0supports_custom_display_order\";b:0;s:14:\"\0*\0description\";N;s:20:\"\0*\0result_column_set\";N;s:25:\"\0*\0include_in_public_list\";b:1;s:25:\"\0*\0entity_results_node_id\";N;s:13:\"\0*\0attributes\";N;s:15:\"\0*\0associations\";N;s:8:\"\0*\0forms\";N;s:20:\"\0*\0default_view_form\";N;s:20:\"\0*\0default_edit_form\";N;s:10:\"\0*\0entries\";N;s:15:\"\0*\0created_date\";N;s:10:\"\0*\0package\";N;}s:26:\"\0*\0is_owned_by_association\";b:0;s:24:\"\0*\0is_owning_association\";b:0;s:8:\"\0*\0entry\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:11:\"\0*\0controls\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:23:\"\0*\0target_property_name\";s:11:\"curry_menus\";s:28:\"\0*\0inversed_by_property_name\";s:11:\"curry_store\";}}}s:14:\"\0*\0initialized\";b:1;}s:8:\"\0*\0forms\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:20:\"\0*\0default_view_form\";O:56:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Express\\Form\":5:{s:17:\"__isInitialized__\";b:0;s:5:\"\0*\0id\";s:36:\"61fad022-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";N;s:13:\"\0*\0field_sets\";N;s:9:\"\0*\0entity\";N;}s:20:\"\0*\0default_edit_form\";r:63;s:10:\"\0*\0entries\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:15:\"\0*\0created_date\";O:8:\"DateTime\":3:{s:4:\"date\";s:26:\"2018-04-21 10:37:10.000000\";s:13:\"timezone_type\";i:3;s:8:\"timezone\";s:10:\"Asia/Tokyo\";}s:10:\"\0*\0package\";N;}s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:37;s:11:\"\0*\0akHandle\";s:11:\"store_photo\";s:9:\"\0*\0akName\";s:12:\"店舗写真\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:5;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:14:\"ak_store_photo\";s:10:\"columnName\";s:12:\"店舗写真\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:1;O:34:\"Concrete\\Core\\Search\\Column\\Column\":5:{s:9:\"columnKey\";s:20:\"e.exEntryDateCreated\";s:10:\"columnName\";s:9:\"登録日\";s:13:\"sortDirection\";s:4:\"desc\";s:10:\"isSortable\";b:1;s:8:\"callback\";a:2:{i:0;s:50:\"\\Concrete\\Core\\Express\\Search\\ColumnSet\\DefaultSet\";i:1;s:12:\"getDateAdded\";}}i:2;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:44;s:11:\"\0*\0akHandle\";s:14:\"store_category\";s:9:\"\0*\0akName\";s:12:\"カテゴリ\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:13;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:17:\"ak_store_category\";s:10:\"columnName\";s:12:\"カテゴリ\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:3;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:35;s:11:\"\0*\0akHandle\";s:10:\"store_name\";s:9:\"\0*\0akName\";s:6:\"店名\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:1;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:13:\"ak_store_name\";s:10:\"columnName\";s:6:\"店名\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:4;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:36;s:11:\"\0*\0akHandle\";s:13:\"store_address\";s:9:\"\0*\0akName\";s:6:\"住所\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:8;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:16:\"ak_store_address\";s:10:\"columnName\";s:6:\"住所\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:5;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:39;s:11:\"\0*\0akHandle\";s:9:\"store_tel\";s:9:\"\0*\0akName\";s:12:\"電話番号\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:9;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:12:\"ak_store_tel\";s:10:\"columnName\";s:12:\"電話番号\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}}s:20:\"\0*\0defaultSortColumn\";r:106;}',20,1,1,'','','','','',0,'');
+INSERT INTO `btExpressEntryList` VALUES (172,'61fac1c2-4504-11e8-8c0e-9801a7b087ef',208,'[\"35\",\"36\",\"37\",\"39\",\"44\"]','Array','O:48:\"Concrete\\Core\\Express\\Search\\ColumnSet\\ColumnSet\":2:{s:10:\"\0*\0columns\";a:6:{i:0;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";O:35:\"Concrete\\Core\\Entity\\Express\\Entity\":18:{s:5:\"\0*\0id\";s:36:\"61fac1c2-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";s:15:\"カレー店舗\";s:9:\"\0*\0handle\";s:11:\"curry_store\";s:16:\"\0*\0plural_handle\";s:12:\"curry_stores\";s:13:\"\0*\0label_mask\";s:12:\"%store_name%\";s:32:\"\0*\0supports_custom_display_order\";b:0;s:14:\"\0*\0description\";s:0:\"\";s:20:\"\0*\0result_column_set\";N;s:25:\"\0*\0include_in_public_list\";b:1;s:25:\"\0*\0entity_results_node_id\";i:44;s:13:\"\0*\0attributes\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:15:\"\0*\0associations\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:1:{i:0;O:49:\"Concrete\\Core\\Entity\\Express\\OneToManyAssociation\":9:{s:5:\"\0*\0id\";s:36:\"90515134-4505-11e8-8c0e-9801a7b087ef\";s:16:\"\0*\0source_entity\";r:5;s:16:\"\0*\0target_entity\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Express\\Entity\":19:{s:17:\"__isInitialized__\";b:0;s:5:\"\0*\0id\";s:36:\"f68b23ea-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";N;s:9:\"\0*\0handle\";N;s:16:\"\0*\0plural_handle\";N;s:13:\"\0*\0label_mask\";N;s:32:\"\0*\0supports_custom_display_order\";b:0;s:14:\"\0*\0description\";N;s:20:\"\0*\0result_column_set\";N;s:25:\"\0*\0include_in_public_list\";b:1;s:25:\"\0*\0entity_results_node_id\";N;s:13:\"\0*\0attributes\";N;s:15:\"\0*\0associations\";N;s:8:\"\0*\0forms\";N;s:20:\"\0*\0default_view_form\";N;s:20:\"\0*\0default_edit_form\";N;s:10:\"\0*\0entries\";N;s:15:\"\0*\0created_date\";N;s:10:\"\0*\0package\";N;}s:26:\"\0*\0is_owned_by_association\";b:0;s:24:\"\0*\0is_owning_association\";b:0;s:8:\"\0*\0entry\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:11:\"\0*\0controls\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:23:\"\0*\0target_property_name\";s:11:\"curry_menus\";s:28:\"\0*\0inversed_by_property_name\";s:11:\"curry_store\";}}}s:14:\"\0*\0initialized\";b:1;}s:8:\"\0*\0forms\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:20:\"\0*\0default_view_form\";O:56:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Express\\Form\":5:{s:17:\"__isInitialized__\";b:0;s:5:\"\0*\0id\";s:36:\"61fad022-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";N;s:13:\"\0*\0field_sets\";N;s:9:\"\0*\0entity\";N;}s:20:\"\0*\0default_edit_form\";r:63;s:10:\"\0*\0entries\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:15:\"\0*\0created_date\";O:8:\"DateTime\":3:{s:4:\"date\";s:26:\"2018-04-21 10:37:10.000000\";s:13:\"timezone_type\";i:3;s:8:\"timezone\";s:10:\"Asia/Tokyo\";}s:10:\"\0*\0package\";N;}s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:37;s:11:\"\0*\0akHandle\";s:11:\"store_photo\";s:9:\"\0*\0akName\";s:12:\"店舗写真\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:5;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:14:\"ak_store_photo\";s:10:\"columnName\";s:12:\"店舗写真\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:1;O:34:\"Concrete\\Core\\Search\\Column\\Column\":5:{s:9:\"columnKey\";s:20:\"e.exEntryDateCreated\";s:10:\"columnName\";s:9:\"登録日\";s:13:\"sortDirection\";s:4:\"desc\";s:10:\"isSortable\";b:1;s:8:\"callback\";a:2:{i:0;s:50:\"\\Concrete\\Core\\Express\\Search\\ColumnSet\\DefaultSet\";i:1;s:12:\"getDateAdded\";}}i:2;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:44;s:11:\"\0*\0akHandle\";s:14:\"store_category\";s:9:\"\0*\0akName\";s:12:\"カテゴリ\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:13;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:17:\"ak_store_category\";s:10:\"columnName\";s:12:\"カテゴリ\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:3;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:35;s:11:\"\0*\0akHandle\";s:10:\"store_name\";s:9:\"\0*\0akName\";s:6:\"店名\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:1;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:13:\"ak_store_name\";s:10:\"columnName\";s:6:\"店名\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:4;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:36;s:11:\"\0*\0akHandle\";s:13:\"store_address\";s:9:\"\0*\0akName\";s:6:\"住所\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:8;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:16:\"ak_store_address\";s:10:\"columnName\";s:6:\"住所\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:5;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:39;s:11:\"\0*\0akHandle\";s:9:\"store_tel\";s:9:\"\0*\0akName\";s:12:\"電話番号\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:9;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:12:\"ak_store_tel\";s:10:\"columnName\";s:12:\"電話番号\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}}s:20:\"\0*\0defaultSortColumn\";r:106;}',20,0,0,'','','','','',0,'',NULL,NULL),(179,'61fac1c2-4504-11e8-8c0e-9801a7b087ef',208,'[\"35\",\"36\",\"37\",\"39\",\"44\"]','Array','O:48:\"Concrete\\Core\\Express\\Search\\ColumnSet\\ColumnSet\":2:{s:10:\"\0*\0columns\";a:6:{i:0;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";O:35:\"Concrete\\Core\\Entity\\Express\\Entity\":18:{s:5:\"\0*\0id\";s:36:\"61fac1c2-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";s:15:\"カレー店舗\";s:9:\"\0*\0handle\";s:11:\"curry_store\";s:16:\"\0*\0plural_handle\";s:12:\"curry_stores\";s:13:\"\0*\0label_mask\";s:12:\"%store_name%\";s:32:\"\0*\0supports_custom_display_order\";b:0;s:14:\"\0*\0description\";s:0:\"\";s:20:\"\0*\0result_column_set\";N;s:25:\"\0*\0include_in_public_list\";b:1;s:25:\"\0*\0entity_results_node_id\";i:44;s:13:\"\0*\0attributes\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:15:\"\0*\0associations\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:1:{i:0;O:49:\"Concrete\\Core\\Entity\\Express\\OneToManyAssociation\":9:{s:5:\"\0*\0id\";s:36:\"90515134-4505-11e8-8c0e-9801a7b087ef\";s:16:\"\0*\0source_entity\";r:5;s:16:\"\0*\0target_entity\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Express\\Entity\":19:{s:17:\"__isInitialized__\";b:0;s:5:\"\0*\0id\";s:36:\"f68b23ea-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";N;s:9:\"\0*\0handle\";N;s:16:\"\0*\0plural_handle\";N;s:13:\"\0*\0label_mask\";N;s:32:\"\0*\0supports_custom_display_order\";b:0;s:14:\"\0*\0description\";N;s:20:\"\0*\0result_column_set\";N;s:25:\"\0*\0include_in_public_list\";b:1;s:25:\"\0*\0entity_results_node_id\";N;s:13:\"\0*\0attributes\";N;s:15:\"\0*\0associations\";N;s:8:\"\0*\0forms\";N;s:20:\"\0*\0default_view_form\";N;s:20:\"\0*\0default_edit_form\";N;s:10:\"\0*\0entries\";N;s:15:\"\0*\0created_date\";N;s:10:\"\0*\0package\";N;}s:26:\"\0*\0is_owned_by_association\";b:0;s:24:\"\0*\0is_owning_association\";b:0;s:8:\"\0*\0entry\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:11:\"\0*\0controls\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:23:\"\0*\0target_property_name\";s:11:\"curry_menus\";s:28:\"\0*\0inversed_by_property_name\";s:11:\"curry_store\";}}}s:14:\"\0*\0initialized\";b:1;}s:8:\"\0*\0forms\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:20:\"\0*\0default_view_form\";O:56:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Express\\Form\":5:{s:17:\"__isInitialized__\";b:0;s:5:\"\0*\0id\";s:36:\"61fad022-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";N;s:13:\"\0*\0field_sets\";N;s:9:\"\0*\0entity\";N;}s:20:\"\0*\0default_edit_form\";r:63;s:10:\"\0*\0entries\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:15:\"\0*\0created_date\";O:8:\"DateTime\":3:{s:4:\"date\";s:26:\"2018-04-21 10:37:10.000000\";s:13:\"timezone_type\";i:3;s:8:\"timezone\";s:10:\"Asia/Tokyo\";}s:10:\"\0*\0package\";N;}s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:37;s:11:\"\0*\0akHandle\";s:11:\"store_photo\";s:9:\"\0*\0akName\";s:12:\"店舗写真\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:5;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:14:\"ak_store_photo\";s:10:\"columnName\";s:12:\"店舗写真\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:1;O:34:\"Concrete\\Core\\Search\\Column\\Column\":5:{s:9:\"columnKey\";s:20:\"e.exEntryDateCreated\";s:10:\"columnName\";s:9:\"登録日\";s:13:\"sortDirection\";s:4:\"desc\";s:10:\"isSortable\";b:1;s:8:\"callback\";a:2:{i:0;s:50:\"\\Concrete\\Core\\Express\\Search\\ColumnSet\\DefaultSet\";i:1;s:12:\"getDateAdded\";}}i:2;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:44;s:11:\"\0*\0akHandle\";s:14:\"store_category\";s:9:\"\0*\0akName\";s:12:\"カテゴリ\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:13;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:17:\"ak_store_category\";s:10:\"columnName\";s:12:\"カテゴリ\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:3;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:35;s:11:\"\0*\0akHandle\";s:10:\"store_name\";s:9:\"\0*\0akName\";s:6:\"店名\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:1;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:13:\"ak_store_name\";s:10:\"columnName\";s:6:\"店名\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:4;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:36;s:11:\"\0*\0akHandle\";s:13:\"store_address\";s:9:\"\0*\0akName\";s:6:\"住所\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:8;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:16:\"ak_store_address\";s:10:\"columnName\";s:6:\"住所\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:5;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:39;s:11:\"\0*\0akHandle\";s:9:\"store_tel\";s:9:\"\0*\0akName\";s:12:\"電話番号\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:9;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:12:\"ak_store_tel\";s:10:\"columnName\";s:12:\"電話番号\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}}s:20:\"\0*\0defaultSortColumn\";r:106;}',20,0,0,'','','','','',0,'',NULL,NULL),(181,'61fac1c2-4504-11e8-8c0e-9801a7b087ef',208,'[\"35\",\"36\",\"37\",\"39\",\"44\"]','[]','O:48:\"Concrete\\Core\\Express\\Search\\ColumnSet\\ColumnSet\":2:{s:10:\"\0*\0columns\";a:6:{i:0;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";O:35:\"Concrete\\Core\\Entity\\Express\\Entity\":18:{s:5:\"\0*\0id\";s:36:\"61fac1c2-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";s:15:\"カレー店舗\";s:9:\"\0*\0handle\";s:11:\"curry_store\";s:16:\"\0*\0plural_handle\";s:12:\"curry_stores\";s:13:\"\0*\0label_mask\";s:12:\"%store_name%\";s:32:\"\0*\0supports_custom_display_order\";b:0;s:14:\"\0*\0description\";s:0:\"\";s:20:\"\0*\0result_column_set\";N;s:25:\"\0*\0include_in_public_list\";b:1;s:25:\"\0*\0entity_results_node_id\";i:44;s:13:\"\0*\0attributes\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:15:\"\0*\0associations\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:1:{i:0;O:49:\"Concrete\\Core\\Entity\\Express\\OneToManyAssociation\":9:{s:5:\"\0*\0id\";s:36:\"90515134-4505-11e8-8c0e-9801a7b087ef\";s:16:\"\0*\0source_entity\";r:5;s:16:\"\0*\0target_entity\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Express\\Entity\":19:{s:17:\"__isInitialized__\";b:0;s:5:\"\0*\0id\";s:36:\"f68b23ea-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";N;s:9:\"\0*\0handle\";N;s:16:\"\0*\0plural_handle\";N;s:13:\"\0*\0label_mask\";N;s:32:\"\0*\0supports_custom_display_order\";b:0;s:14:\"\0*\0description\";N;s:20:\"\0*\0result_column_set\";N;s:25:\"\0*\0include_in_public_list\";b:1;s:25:\"\0*\0entity_results_node_id\";N;s:13:\"\0*\0attributes\";N;s:15:\"\0*\0associations\";N;s:8:\"\0*\0forms\";N;s:20:\"\0*\0default_view_form\";N;s:20:\"\0*\0default_edit_form\";N;s:10:\"\0*\0entries\";N;s:15:\"\0*\0created_date\";N;s:10:\"\0*\0package\";N;}s:26:\"\0*\0is_owned_by_association\";b:0;s:24:\"\0*\0is_owning_association\";b:0;s:8:\"\0*\0entry\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:11:\"\0*\0controls\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:23:\"\0*\0target_property_name\";s:11:\"curry_menus\";s:28:\"\0*\0inversed_by_property_name\";s:11:\"curry_store\";}}}s:14:\"\0*\0initialized\";b:1;}s:8:\"\0*\0forms\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:20:\"\0*\0default_view_form\";O:56:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Express\\Form\":5:{s:17:\"__isInitialized__\";b:0;s:5:\"\0*\0id\";s:36:\"61fad022-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";N;s:13:\"\0*\0field_sets\";N;s:9:\"\0*\0entity\";N;}s:20:\"\0*\0default_edit_form\";r:63;s:10:\"\0*\0entries\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:15:\"\0*\0created_date\";O:8:\"DateTime\":3:{s:4:\"date\";s:26:\"2018-04-21 10:37:10.000000\";s:13:\"timezone_type\";i:3;s:8:\"timezone\";s:10:\"Asia/Tokyo\";}s:10:\"\0*\0package\";N;}s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:37;s:11:\"\0*\0akHandle\";s:11:\"store_photo\";s:9:\"\0*\0akName\";s:12:\"店舗写真\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:5;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:14:\"ak_store_photo\";s:10:\"columnName\";s:12:\"店舗写真\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:1;O:34:\"Concrete\\Core\\Search\\Column\\Column\":5:{s:9:\"columnKey\";s:20:\"e.exEntryDateCreated\";s:10:\"columnName\";s:9:\"登録日\";s:13:\"sortDirection\";s:4:\"desc\";s:10:\"isSortable\";b:1;s:8:\"callback\";a:2:{i:0;s:50:\"\\Concrete\\Core\\Express\\Search\\ColumnSet\\DefaultSet\";i:1;s:12:\"getDateAdded\";}}i:2;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:44;s:11:\"\0*\0akHandle\";s:14:\"store_category\";s:9:\"\0*\0akName\";s:12:\"カテゴリ\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:13;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:17:\"ak_store_category\";s:10:\"columnName\";s:12:\"カテゴリ\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:3;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:35;s:11:\"\0*\0akHandle\";s:10:\"store_name\";s:9:\"\0*\0akName\";s:6:\"店名\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:1;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:13:\"ak_store_name\";s:10:\"columnName\";s:6:\"店名\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:4;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:36;s:11:\"\0*\0akHandle\";s:13:\"store_address\";s:9:\"\0*\0akName\";s:6:\"住所\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:8;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:16:\"ak_store_address\";s:10:\"columnName\";s:6:\"住所\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:5;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:39;s:11:\"\0*\0akHandle\";s:9:\"store_tel\";s:9:\"\0*\0akName\";s:12:\"電話番号\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:9;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:12:\"ak_store_tel\";s:10:\"columnName\";s:12:\"電話番号\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}}s:20:\"\0*\0defaultSortColumn\";r:106;}',20,1,1,'','','','','',0,'',NULL,NULL),(183,'61fac1c2-4504-11e8-8c0e-9801a7b087ef',208,'[\"35\",\"36\",\"37\",\"39\",\"44\"]','[]','O:48:\"Concrete\\Core\\Express\\Search\\ColumnSet\\ColumnSet\":2:{s:10:\"\0*\0columns\";a:6:{i:0;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";O:35:\"Concrete\\Core\\Entity\\Express\\Entity\":18:{s:5:\"\0*\0id\";s:36:\"61fac1c2-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";s:15:\"カレー店舗\";s:9:\"\0*\0handle\";s:11:\"curry_store\";s:16:\"\0*\0plural_handle\";s:12:\"curry_stores\";s:13:\"\0*\0label_mask\";s:12:\"%store_name%\";s:32:\"\0*\0supports_custom_display_order\";b:0;s:14:\"\0*\0description\";s:0:\"\";s:20:\"\0*\0result_column_set\";N;s:25:\"\0*\0include_in_public_list\";b:1;s:25:\"\0*\0entity_results_node_id\";i:44;s:13:\"\0*\0attributes\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:15:\"\0*\0associations\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:1:{i:0;O:49:\"Concrete\\Core\\Entity\\Express\\OneToManyAssociation\":9:{s:5:\"\0*\0id\";s:36:\"90515134-4505-11e8-8c0e-9801a7b087ef\";s:16:\"\0*\0source_entity\";r:5;s:16:\"\0*\0target_entity\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Express\\Entity\":19:{s:17:\"__isInitialized__\";b:0;s:5:\"\0*\0id\";s:36:\"f68b23ea-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";N;s:9:\"\0*\0handle\";N;s:16:\"\0*\0plural_handle\";N;s:13:\"\0*\0label_mask\";N;s:32:\"\0*\0supports_custom_display_order\";b:0;s:14:\"\0*\0description\";N;s:20:\"\0*\0result_column_set\";N;s:25:\"\0*\0include_in_public_list\";b:1;s:25:\"\0*\0entity_results_node_id\";N;s:13:\"\0*\0attributes\";N;s:15:\"\0*\0associations\";N;s:8:\"\0*\0forms\";N;s:20:\"\0*\0default_view_form\";N;s:20:\"\0*\0default_edit_form\";N;s:10:\"\0*\0entries\";N;s:15:\"\0*\0created_date\";N;s:10:\"\0*\0package\";N;}s:26:\"\0*\0is_owned_by_association\";b:0;s:24:\"\0*\0is_owning_association\";b:0;s:8:\"\0*\0entry\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:11:\"\0*\0controls\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:23:\"\0*\0target_property_name\";s:11:\"curry_menus\";s:28:\"\0*\0inversed_by_property_name\";s:11:\"curry_store\";}}}s:14:\"\0*\0initialized\";b:1;}s:8:\"\0*\0forms\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:20:\"\0*\0default_view_form\";O:56:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Express\\Form\":5:{s:17:\"__isInitialized__\";b:0;s:5:\"\0*\0id\";s:36:\"61fad022-4504-11e8-8c0e-9801a7b087ef\";s:7:\"\0*\0name\";N;s:13:\"\0*\0field_sets\";N;s:9:\"\0*\0entity\";N;}s:20:\"\0*\0default_edit_form\";r:63;s:10:\"\0*\0entries\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:15:\"\0*\0created_date\";O:8:\"DateTime\":3:{s:4:\"date\";s:26:\"2018-04-21 10:37:10.000000\";s:13:\"timezone_type\";i:3;s:8:\"timezone\";s:10:\"Asia/Tokyo\";}s:10:\"\0*\0package\";N;}s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:37;s:11:\"\0*\0akHandle\";s:11:\"store_photo\";s:9:\"\0*\0akName\";s:12:\"店舗写真\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:5;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:14:\"ak_store_photo\";s:10:\"columnName\";s:12:\"店舗写真\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:1;O:34:\"Concrete\\Core\\Search\\Column\\Column\":5:{s:9:\"columnKey\";s:20:\"e.exEntryDateCreated\";s:10:\"columnName\";s:9:\"登録日\";s:13:\"sortDirection\";s:4:\"desc\";s:10:\"isSortable\";b:1;s:8:\"callback\";a:2:{i:0;s:50:\"\\Concrete\\Core\\Express\\Search\\ColumnSet\\DefaultSet\";i:1;s:12:\"getDateAdded\";}}i:2;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:44;s:11:\"\0*\0akHandle\";s:14:\"store_category\";s:9:\"\0*\0akName\";s:12:\"カテゴリ\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:13;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:17:\"ak_store_category\";s:10:\"columnName\";s:12:\"カテゴリ\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:3;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:35;s:11:\"\0*\0akHandle\";s:10:\"store_name\";s:9:\"\0*\0akName\";s:6:\"店名\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:1;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:13:\"ak_store_name\";s:10:\"columnName\";s:6:\"店名\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:4;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:36;s:11:\"\0*\0akHandle\";s:13:\"store_address\";s:9:\"\0*\0akName\";s:6:\"住所\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:8;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:16:\"ak_store_address\";s:10:\"columnName\";s:6:\"住所\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}i:5;O:46:\"Concrete\\Core\\Search\\Column\\AttributeKeyColumn\":6:{s:15:\"\0*\0attributeKey\";O:45:\"Concrete\\Core\\Entity\\Attribute\\Key\\ExpressKey\":13:{s:9:\"\0*\0entity\";r:5;s:13:\"\0*\0controller\";N;s:11:\"\0*\0settings\";N;s:7:\"\0*\0akID\";i:39;s:11:\"\0*\0akHandle\";s:9:\"store_tel\";s:9:\"\0*\0akName\";s:12:\"電話番号\";s:17:\"\0*\0akIsSearchable\";b:1;s:15:\"\0*\0akIsInternal\";b:0;s:24:\"\0*\0akIsSearchableIndexed\";b:0;s:11:\"\0*\0set_keys\";O:33:\"Doctrine\\ORM\\PersistentCollection\":2:{s:13:\"\0*\0collection\";O:43:\"Doctrine\\Common\\Collections\\ArrayCollection\":1:{s:53:\"\0Doctrine\\Common\\Collections\\ArrayCollection\0elements\";a:0:{}}s:14:\"\0*\0initialized\";b:0;}s:7:\"\0*\0type\";O:58:\"DoctrineProxies\\__CG__\\Concrete\\Core\\Entity\\Attribute\\Type\":7:{s:17:\"__isInitialized__\";b:0;s:13:\"\0*\0controller\";N;s:7:\"\0*\0atID\";i:9;s:11:\"\0*\0atHandle\";N;s:13:\"\0*\0categories\";N;s:9:\"\0*\0atName\";N;s:10:\"\0*\0package\";N;}s:11:\"\0*\0category\";N;s:10:\"\0*\0package\";N;}s:9:\"columnKey\";s:12:\"ak_store_tel\";s:10:\"columnName\";s:12:\"電話番号\";s:13:\"sortDirection\";s:3:\"asc\";s:10:\"isSortable\";b:1;s:8:\"callback\";b:0;}}s:20:\"\0*\0defaultSortColumn\";r:106;}',20,1,1,'','','','','',0,'',NULL,NULL);
 /*!40000 ALTER TABLE `btExpressEntryList` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -8248,18 +8579,19 @@ DROP TABLE IF EXISTS `btExpressForm`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `btExpressForm` (
   `bID` int(10) unsigned NOT NULL,
-  `exFormID` char(36) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
-  `submitLabel` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'Submit',
-  `thankyouMsg` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `exFormID` char(36) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT '(DC2Type:guid)',
+  `submitLabel` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'Submit',
+  `thankyouMsg` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `notifyMeOnSubmission` tinyint(1) NOT NULL DEFAULT 0,
-  `recipientEmail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `recipientEmail` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `displayCaptcha` int(11) DEFAULT 1,
   `redirectCID` int(11) DEFAULT 0,
-  `replyToEmailControlID` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `replyToEmailControlID` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `addFilesToSet` int(11) DEFAULT 0,
   `addFilesToFolder` int(11) DEFAULT 0,
+  `storeFormSubmission` tinyint(1) DEFAULT 1,
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8268,7 +8600,7 @@ CREATE TABLE `btExpressForm` (
 
 LOCK TABLES `btExpressForm` WRITE;
 /*!40000 ALTER TABLE `btExpressForm` DISABLE KEYS */;
-INSERT INTO `btExpressForm` VALUES (135,'881b6bde-220f-4482-b8f9-ace40b5d169b','Submit','Thanks!',0,'',0,0,'02181ae2-634d-11e6-a245-62e65b165d8e\n                                                ',0,0);
+INSERT INTO `btExpressForm` VALUES (135,'881b6bde-220f-4482-b8f9-ace40b5d169b','Submit','Thanks!',0,'',0,0,'02181ae2-634d-11e6-a245-62e65b165d8e\n                                                ',0,0,1),(182,'61fad022-4504-11e8-8c0e-9801a7b087ef','送信','ありがとうございます',0,'',0,0,NULL,0,7,1);
 /*!40000 ALTER TABLE `btExpressForm` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -8281,9 +8613,9 @@ DROP TABLE IF EXISTS `btExternalForm`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `btExternalForm` (
   `bID` int(10) unsigned NOT NULL,
-  `filename` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `filename` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8304,9 +8636,9 @@ DROP TABLE IF EXISTS `btFaq`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `btFaq` (
   `bID` int(10) unsigned NOT NULL,
-  `blockTitle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `blockTitle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8329,13 +8661,13 @@ DROP TABLE IF EXISTS `btFaqEntries`;
 CREATE TABLE `btFaqEntries` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `bID` int(10) unsigned DEFAULT NULL,
-  `linkTitle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `linkTitle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `sortOrder` int(11) DEFAULT NULL,
-  `description` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `bID` (`bID`,`sortOrder`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8357,13 +8689,13 @@ DROP TABLE IF EXISTS `btFeature`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `btFeature` (
   `bID` int(10) unsigned NOT NULL,
-  `icon` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `paragraph` text COLLATE utf8_unicode_ci DEFAULT NULL,
-  `externalLink` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `icon` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `paragraph` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `externalLink` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `internalLinkCID` int(10) unsigned DEFAULT 0,
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8386,17 +8718,17 @@ DROP TABLE IF EXISTS `btForm`;
 CREATE TABLE `btForm` (
   `bID` int(10) unsigned NOT NULL,
   `questionSetId` int(10) unsigned DEFAULT 0,
-  `surveyName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `submitText` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'Submit',
-  `thankyouMsg` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `surveyName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `submitText` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'Submit',
+  `thankyouMsg` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `notifyMeOnSubmission` tinyint(1) NOT NULL DEFAULT 0,
-  `recipientEmail` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `recipientEmail` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `displayCaptcha` int(11) DEFAULT 1,
   `redirectCID` int(11) DEFAULT 0,
   `addFilesToSet` int(11) DEFAULT 0,
   PRIMARY KEY (`bID`),
   KEY `questionSetIdForeign` (`questionSetId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8423,7 +8755,7 @@ CREATE TABLE `btFormAnswerSet` (
   PRIMARY KEY (`asID`),
   KEY `questionSetId` (`questionSetId`),
   KEY `uID` (`uID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8446,12 +8778,12 @@ CREATE TABLE `btFormAnswers` (
   `aID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `asID` int(10) unsigned DEFAULT 0,
   `msqID` int(10) unsigned DEFAULT 0,
-  `answer` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `answerLong` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `answer` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `answerLong` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`aID`),
   KEY `asID` (`asID`),
   KEY `msqID` (`msqID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8475,19 +8807,19 @@ CREATE TABLE `btFormQuestions` (
   `msqID` int(10) unsigned DEFAULT 0,
   `bID` int(10) unsigned DEFAULT 0,
   `questionSetId` int(10) unsigned DEFAULT 0,
-  `question` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `inputType` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `options` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `question` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `inputType` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `options` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `position` int(10) unsigned DEFAULT 1000,
   `width` int(10) unsigned DEFAULT 50,
   `height` int(10) unsigned DEFAULT 3,
-  `defaultDate` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
+  `defaultDate` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '',
   `required` int(11) DEFAULT 0,
   PRIMARY KEY (`qID`),
   KEY `questionSetId` (`questionSetId`),
   KEY `msqID` (`msqID`),
   KEY `bID` (`bID`,`questionSetId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8508,16 +8840,16 @@ DROP TABLE IF EXISTS `btGoogleMap`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `btGoogleMap` (
   `bID` int(10) unsigned NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `location` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `location` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `latitude` double DEFAULT NULL,
   `longitude` double DEFAULT NULL,
   `zoom` smallint(6) DEFAULT NULL,
-  `width` varchar(8) COLLATE utf8_unicode_ci DEFAULT '100%',
-  `height` varchar(8) COLLATE utf8_unicode_ci DEFAULT '400px',
+  `width` varchar(8) COLLATE utf8mb4_unicode_ci DEFAULT '100%',
+  `height` varchar(8) COLLATE utf8mb4_unicode_ci DEFAULT '400px',
   `scrollwheel` tinyint(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8546,7 +8878,7 @@ CREATE TABLE `btImageSlider` (
   `pause` int(10) unsigned DEFAULT NULL,
   `maxWidth` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8571,13 +8903,13 @@ CREATE TABLE `btImageSliderEntries` (
   `bID` int(10) unsigned DEFAULT NULL,
   `cID` int(10) unsigned DEFAULT 0,
   `fID` int(10) unsigned DEFAULT 0,
-  `linkURL` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `linkURL` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `internalLinkCID` int(10) unsigned DEFAULT 0,
-  `title` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
-  `description` longtext COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` longtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `sortOrder` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8599,16 +8931,16 @@ DROP TABLE IF EXISTS `btNavigation`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `btNavigation` (
   `bID` int(10) unsigned NOT NULL,
-  `orderBy` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'alpha_asc',
-  `displayPages` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'top' COMMENT 'was enum(''top'',''current'',''above'',''below'',''custom'')',
+  `orderBy` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'alpha_asc',
+  `displayPages` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'top' COMMENT 'was enum(''top'',''current'',''above'',''below'',''custom'')',
   `displayPagesCID` int(10) unsigned NOT NULL DEFAULT 1,
   `displayPagesIncludeSelf` tinyint(1) NOT NULL DEFAULT 0,
-  `displaySubPages` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'none' COMMENT 'was enum(''none'',''all'',''relevant'',''relevant_breadcrumb'')',
-  `displaySubPageLevels` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'none' COMMENT 'was enum(''all'',''none'',''enough'',''enough_plus1'',''custom'')',
+  `displaySubPages` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'none' COMMENT 'was enum(''none'',''all'',''relevant'',''relevant_breadcrumb'')',
+  `displaySubPageLevels` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT 'none' COMMENT 'was enum(''all'',''none'',''enough'',''enough_plus1'',''custom'')',
   `displaySubPageLevelsNum` smallint(5) unsigned NOT NULL DEFAULT 0,
   `displayUnavailablePages` tinyint(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8630,13 +8962,13 @@ DROP TABLE IF EXISTS `btNextPrevious`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `btNextPrevious` (
   `bID` int(10) unsigned NOT NULL,
-  `nextLabel` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `previousLabel` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `parentLabel` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `nextLabel` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `previousLabel` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `parentLabel` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `loopSequence` int(11) DEFAULT 1,
-  `orderBy` varchar(20) COLLATE utf8_unicode_ci DEFAULT 'display_asc',
+  `orderBy` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT 'display_asc',
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8658,15 +8990,15 @@ DROP TABLE IF EXISTS `btPageAttributeDisplay`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `btPageAttributeDisplay` (
   `bID` int(10) unsigned NOT NULL,
-  `attributeHandle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `attributeTitleText` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `displayTag` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `dateFormat` varchar(100) COLLATE utf8_unicode_ci DEFAULT 'div',
+  `attributeHandle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `attributeTitleText` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `displayTag` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dateFormat` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT 'div',
   `thumbnailHeight` int(10) unsigned DEFAULT NULL,
   `thumbnailWidth` int(10) unsigned DEFAULT NULL,
-  `delimiter` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `delimiter` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8689,21 +9021,21 @@ DROP TABLE IF EXISTS `btPageList`;
 CREATE TABLE `btPageList` (
   `bID` int(10) unsigned NOT NULL,
   `num` smallint(5) unsigned NOT NULL,
-  `orderBy` varchar(32) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Was enum, display_asc'',''display_desc'',''chrono_asc'',''chrono_desc'',''alpha_asc'',''alpha_desc'',''score_asc'',''score_desc''',
+  `orderBy` varchar(32) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Was enum, display_asc'',''display_desc'',''chrono_asc'',''chrono_desc'',''alpha_asc'',''alpha_desc'',''score_asc'',''score_desc''',
   `cParentID` int(10) unsigned NOT NULL DEFAULT 1,
   `cThis` tinyint(1) NOT NULL DEFAULT 0,
   `cThisParent` tinyint(1) NOT NULL DEFAULT 0,
   `useButtonForLink` tinyint(1) NOT NULL DEFAULT 0,
-  `buttonLinkText` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `pageListTitle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `buttonLinkText` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pageListTitle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `filterByRelated` tinyint(1) NOT NULL DEFAULT 0,
   `filterByCustomTopic` tinyint(1) NOT NULL DEFAULT 0,
-  `filterDateOption` varchar(25) COLLATE utf8_unicode_ci DEFAULT 'all' COMMENT '(''all'',''today'',''past'',''future'',''between'')',
+  `filterDateOption` varchar(25) COLLATE utf8mb4_unicode_ci DEFAULT 'all' COMMENT '(''all'',''today'',''past'',''future'',''between'')',
   `filterDateDays` int(10) unsigned NOT NULL DEFAULT 0,
-  `filterDateStart` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `filterDateEnd` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `relatedTopicAttributeKeyHandle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `customTopicAttributeKeyHandle` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `filterDateStart` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `filterDateEnd` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `relatedTopicAttributeKeyHandle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `customTopicAttributeKeyHandle` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `customTopicTreeNodeID` int(10) unsigned NOT NULL DEFAULT 0,
   `includeName` tinyint(1) NOT NULL DEFAULT 1,
   `includeDescription` tinyint(1) NOT NULL DEFAULT 1,
@@ -8717,12 +9049,12 @@ CREATE TABLE `btPageList` (
   `pfID` int(11) DEFAULT 0,
   `truncateSummaries` int(11) DEFAULT 0,
   `displayFeaturedOnly` tinyint(1) DEFAULT 0,
-  `noResultsMessage` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `noResultsMessage` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `displayThumbnail` tinyint(1) DEFAULT 0,
   `truncateChars` int(11) DEFAULT 128,
   PRIMARY KEY (`bID`),
   KEY `ptID` (`ptID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8749,14 +9081,14 @@ CREATE TABLE `btPageTitle` (
   `useFilterTopic` int(10) unsigned DEFAULT 0,
   `useFilterTag` int(10) unsigned DEFAULT 0,
   `useFilterDate` int(10) unsigned DEFAULT 0,
-  `topicTextFormat` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `tagTextFormat` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `dateTextFormat` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `filterDateFormat` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `titleText` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `formatting` varchar(3) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `topicTextFormat` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tagTextFormat` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dateTextFormat` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `filterDateFormat` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `titleText` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `formatting` varchar(3) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8778,14 +9110,14 @@ DROP TABLE IF EXISTS `btRssDisplay`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `btRssDisplay` (
   `bID` int(10) unsigned NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `dateFormat` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `url` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `dateFormat` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `itemsToDisplay` int(10) unsigned DEFAULT 5,
   `showSummary` tinyint(1) NOT NULL DEFAULT 1,
   `launchInNewWindow` tinyint(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8807,13 +9139,13 @@ DROP TABLE IF EXISTS `btSearch`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `btSearch` (
   `bID` int(10) unsigned NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `buttonText` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `baseSearchPath` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `buttonText` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `baseSearchPath` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `postTo_cID` int(10) unsigned DEFAULT NULL,
-  `resultsURL` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `resultsURL` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8836,10 +9168,10 @@ DROP TABLE IF EXISTS `btShareThisPage`;
 CREATE TABLE `btShareThisPage` (
   `btShareThisPageID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `bID` int(10) unsigned DEFAULT 0,
-  `service` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `service` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `displayOrder` int(10) unsigned DEFAULT 0,
   PRIMARY KEY (`btShareThisPageID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8867,7 +9199,7 @@ CREATE TABLE `btSocialLinks` (
   PRIMARY KEY (`btSocialLinkID`),
   KEY `bID` (`bID`,`displayOrder`),
   KEY `slID` (`slID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8889,10 +9221,10 @@ DROP TABLE IF EXISTS `btSurvey`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `btSurvey` (
   `bID` int(10) unsigned NOT NULL,
-  `question` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
+  `question` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '',
   `requiresRegistration` int(11) DEFAULT 0,
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8914,11 +9246,11 @@ DROP TABLE IF EXISTS `btSurveyOptions`;
 CREATE TABLE `btSurveyOptions` (
   `optionID` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `bID` int(11) DEFAULT NULL,
-  `optionName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `optionName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `displayOrder` int(11) DEFAULT 0,
   PRIMARY KEY (`optionID`),
   KEY `bID` (`bID`,`displayOrder`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8943,14 +9275,14 @@ CREATE TABLE `btSurveyResults` (
   `uID` int(10) unsigned DEFAULT 0,
   `bID` int(11) DEFAULT NULL,
   `cID` int(11) DEFAULT NULL,
-  `ipAddress` varchar(128) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `ipAddress` varchar(128) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp(),
   PRIMARY KEY (`resultID`),
   KEY `optionID` (`optionID`),
   KEY `cID` (`cID`,`optionID`,`bID`),
   KEY `bID` (`bID`,`cID`,`uID`),
   KEY `uID` (`uID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8971,9 +9303,9 @@ DROP TABLE IF EXISTS `btSwitchLanguage`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `btSwitchLanguage` (
   `bID` int(10) unsigned NOT NULL,
-  `label` varchar(255) COLLATE utf8_unicode_ci DEFAULT '',
+  `label` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT '',
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8994,12 +9326,12 @@ DROP TABLE IF EXISTS `btTags`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `btTags` (
   `bID` int(10) unsigned NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `targetCID` int(11) DEFAULT NULL,
-  `displayMode` varchar(20) COLLATE utf8_unicode_ci DEFAULT 'page',
+  `displayMode` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT 'page',
   `cloudCount` int(11) DEFAULT 10,
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -9021,13 +9353,13 @@ DROP TABLE IF EXISTS `btTestimonial`;
 CREATE TABLE `btTestimonial` (
   `bID` int(10) unsigned NOT NULL,
   `fID` int(10) unsigned DEFAULT 0,
-  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `position` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `company` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `companyURL` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `paragraph` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `position` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `company` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `companyURL` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `paragraph` mediumtext COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -9049,13 +9381,13 @@ DROP TABLE IF EXISTS `btTopicList`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `btTopicList` (
   `bID` int(10) unsigned NOT NULL,
-  `mode` varchar(1) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'S' COMMENT 'S = Search, P = Page',
-  `topicAttributeKeyHandle` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `mode` varchar(1) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'S' COMMENT 'S = Search, P = Page',
+  `topicAttributeKeyHandle` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `topicTreeID` int(10) unsigned NOT NULL DEFAULT 0,
   `cParentID` int(10) unsigned NOT NULL DEFAULT 0,
-  `title` varchar(255) COLLATE utf8_unicode_ci NOT NULL DEFAULT '',
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -9084,7 +9416,7 @@ CREATE TABLE `btVideo` (
   `videoSize` int(10) unsigned DEFAULT 0,
   `width` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -9105,23 +9437,24 @@ DROP TABLE IF EXISTS `btYouTube`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `btYouTube` (
   `bID` int(10) unsigned NOT NULL,
-  `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `videoURL` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `vHeight` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `vWidth` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `sizing` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `videoURL` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `vHeight` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `vWidth` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sizing` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `startTimeEnabled` tinyint(1) DEFAULT NULL,
-  `startTime` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `startTime` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `autoplay` tinyint(1) NOT NULL DEFAULT 0,
-  `color` varchar(10) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `color` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `controls` int(10) unsigned DEFAULT NULL,
   `iv_load_policy` int(10) unsigned DEFAULT NULL,
   `loopEnd` tinyint(1) NOT NULL DEFAULT 0,
   `modestbranding` tinyint(1) NOT NULL DEFAULT 0,
   `rel` tinyint(1) NOT NULL DEFAULT 0,
   `showinfo` tinyint(1) NOT NULL DEFAULT 0,
+  `noCookie` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`bID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -9145,7 +9478,7 @@ CREATE TABLE `gaPage` (
   `cID` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`gaiID`),
   KEY `cID` (`cID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -9166,4 +9499,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-06-13  9:56:44
+-- Dump completed on 2019-06-18 14:13:07
